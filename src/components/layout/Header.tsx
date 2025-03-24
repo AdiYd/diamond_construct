@@ -53,7 +53,7 @@ export function Header() {
             </Flex>
           </Flex>
 
-          <Flex align="center" direction="row-reverse" gap="8">
+          <Flex align="center" direction="row-reverse" gap="4">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
                 <IconButton

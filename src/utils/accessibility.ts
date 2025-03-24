@@ -78,6 +78,7 @@ const resetAllSettings = (): Record<string, boolean> => {
   // Remove all accessibility classes
   document.body.classList.remove(
     'high-contrast',
+    'high-contrast-invert',
     'emphasize-links',
     'large-cursor',
     'increased-spacing',
