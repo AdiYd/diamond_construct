@@ -54,7 +54,6 @@ const applySettings = (settings: Record<string, boolean>): void => {
         toggleClassBasedSetting('high-contrast', enabled);
         break;
       case 'invertColors':
-        console.log('invertColors', enabled);
         toggleClassBasedSetting('high-contrast-invert', enabled);
         break;
       case 'emphasizeLinks':

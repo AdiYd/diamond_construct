@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Box, Container, Flex, IconButton, DropdownMenu } from '@radix-ui/themes';
+import { Box, Container, Flex, IconButton, DropdownMenu, useThemeContext } from '@radix-ui/themes';
 import { Menu, X, Moon, Sun, Globe } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -11,6 +11,19 @@ export function Header() {
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
   const location = useLocation();
+  const context = useThemeContext();
+  console.log('Theme context:', context);
+  useEffect(() => {
+    const config = {
+      accentColor: context.accentColor,
+      grayColor: context.grayColor,
+      panelBackground: context.panelBackground,
+      scaling: context.scaling,
+      radius: context.radius,
+      theme,
+    };
+    console.log('Theme config:', config);
+  }, [context, theme]);
 
   const isDarkTheme = theme === 'dark';
 
