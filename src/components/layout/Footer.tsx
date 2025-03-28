@@ -61,8 +61,12 @@ export function Footer() {
                 gap: '0.5rem',
               }}
             >
-              <img src="/vite.svg" alt="Logo" style={{ height: '2rem' }} />
-              Brand
+              <img
+                src={`${import.meta.env.VITE_BASE_URL}/logo.jpeg`}
+                alt="Logo"
+                style={{ height: '2rem', borderRadius: '50%' }}
+              />
+              Diamond
             </Link>
             <p style={{ color: 'var(--muted-foreground)' }}>{t('brandDescription')}</p>
           </div>
@@ -262,7 +266,7 @@ export function Footer() {
           }}
         >
           <p>
-            &copy; {currentYear} Brand. {t('allRightsReserved')}.
+            &copy; {currentYear} Diamond. {t('allRightsReserved')}.
           </p>
         </div>
       </div>

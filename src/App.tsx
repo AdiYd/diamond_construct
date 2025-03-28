@@ -6,7 +6,9 @@ import { Footer } from './components/layout/Footer';
 import { AccessibilityMenu } from './components/ui/AccessibilityMenu';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
-import { Blog } from './pages/Blog';
+import { Services } from './pages/Services';
+import { Gallery } from './pages/Gallery';
+import { Contact } from './pages/Contact';
 import '@radix-ui/themes/styles.css';
 import './styles/styles.css';
 
@@ -27,7 +29,9 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/blog" element={<Blog />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/contact" element={<Contact />} />
               </Routes>
             </main>
             <Footer />

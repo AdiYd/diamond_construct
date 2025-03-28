@@ -18,7 +18,6 @@ export const pagesConfig: PageConfig[] = [
       he: 'בית',
     },
     icon: 'Home',
-
     isProtected: false,
   },
   {
@@ -32,13 +31,33 @@ export const pagesConfig: PageConfig[] = [
     isProtected: false,
   },
   {
-    id: 'blog',
-    path: '/blog',
+    id: 'services',
+    path: '/services',
     translations: {
-      en: 'Blog',
-      he: 'בלוג',
+      en: 'Services',
+      he: 'שירותים',
     },
-    icon: 'FileText',
+    icon: 'Settings',
+    isProtected: false,
+  },
+  {
+    id: 'gallery',
+    path: '/gallery',
+    translations: {
+      en: 'Gallery',
+      he: 'גלריה',
+    },
+    icon: 'Image',
+    isProtected: false,
+  },
+  {
+    id: 'contact',
+    path: '/contact',
+    translations: {
+      en: 'Contact',
+      he: 'צור קשר',
+    },
+    icon: 'Mail',
     isProtected: false,
   },
 ];

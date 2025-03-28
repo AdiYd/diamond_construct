@@ -209,7 +209,7 @@ export const AccessibilityMenu: React.FC<AccessibilityMenuProps> = ({
         aria-controls="accessibility-menu"
         style={{
           ...position,
-          color: 'var(--gray-2)',
+          color: 'var(--accent-contrast)',
           backgroundColor: 'var(--accent-10)',
           position: 'fixed', // Ensure it stays fixed regardless of other settings
           transition: 'background-color 0.4s ease',

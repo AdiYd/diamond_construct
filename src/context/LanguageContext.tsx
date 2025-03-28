@@ -13,7 +13,9 @@ const translations = {
     // Navigation
     home: 'Home',
     about: 'About',
-    blog: 'Blog',
+    services: 'Services',
+    gallery: 'Gallery',
+    contact: 'Contact Us',
     // Footer
     termsOfService: 'Terms of Service',
     privacyPolicy: 'Privacy Policy',
@@ -33,7 +35,9 @@ const translations = {
     // Navigation
     home: 'דף הבית',
     about: 'אודות',
-    blog: 'בלוג',
+    services: 'שירותים',
+    gallery: 'גלריה',
+    contact: 'צור קשר',
     // Footer
     termsOfService: 'תנאי שימוש',
     privacyPolicy: 'מדיניות פרטיות',
@@ -54,7 +58,7 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('he');
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations.en] || key;
