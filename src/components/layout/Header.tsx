@@ -10,13 +10,15 @@ import { ScrollToTop } from './scrollToTop';
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isOnTop, setIsOnTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const scrollThreshold = 1000; // Threshold for header visibility
-
   const { theme, toggleTheme } = useTheme();
   const { language } = useLanguage();
   const location = useLocation();
   const context = useThemeContext();
+  const pageName = location.pathname.split('/')[1] || 'home';
+  const isHomePage = pageName === 'home';
 
   // Handle scroll events to control header visibility
   useEffect(() => {
@@ -26,6 +28,7 @@ export function Header() {
       // Show header when scrolling back up or at the top
       if (currentScrollY < lastScrollY || currentScrollY < scrollThreshold) {
         setIsVisible(true);
+        setIsOnTop(currentScrollY <= 20);
       }
       // Hide header when scrolling down past threshold
       else if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
@@ -70,14 +73,18 @@ export function Header() {
           top: 0,
           left: 0,
           right: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.2)', // Semi-transparent background
+          backgroundColor: isOnTop
+            ? 'transparent'
+            : isHomePage
+            ? 'rgba(0, 0, 0, 0.4)'
+            : 'rgba(255,255,255,0.2)', // Semi-transparent background
           // borderBottom: '1px solid var(--gray-5)',
           zIndex: 50,
           backdropFilter: 'blur(20px)',
           color: 'white',
           transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
           transition: 'transform 0.3s ease',
-          boxShadow: isVisible ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none',
+          boxShadow: isVisible && !isOnTop ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none',
         }}
       >
         <Container px="3" dir="rtl">
@@ -102,7 +109,14 @@ export function Header() {
                     className={location.pathname === page.path ? 'header-nav-active' : 'header-nav'}
                     style={{
                       textDecoration: 'none',
-                      color: location.pathname === page.path ? 'var(--accent-11)' : 'white',
+                      color:
+                        location.pathname === page.path
+                          ? isHomePage
+                            ? 'var(--accent-4)'
+                            : 'var(--accent-8)'
+                          : isHomePage
+                          ? 'var(--accent-1)'
+                          : 'var(--accent-12)',
                       fontWeight: location.pathname === page.path ? 700 : 400,
                     }}
                   >
@@ -117,6 +131,9 @@ export function Header() {
               <Box position="relative" top="4px" display={{ initial: 'block', md: 'none' }}>
                 <IconButton
                   size="3"
+                  style={{
+                    color: 'var(--gray-11)',
+                  }}
                   variant="ghost"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   aria-label="Toggle menu"
@@ -163,7 +180,12 @@ export function Header() {
                     onClick={() => setIsMenuOpen(false)}
                     style={{
                       textDecoration: 'none',
-                      color: location.pathname === page.path ? 'var(--accent-11)' : '',
+                      color:
+                        location.pathname === page.path
+                          ? isHomePage
+                            ? 'var(--accent-4)'
+                            : 'var(--accent-8)'
+                          : '',
                       fontWeight: location.pathname === page.path ? 700 : 600,
                       padding: 'var(--space-2)',
                     }}

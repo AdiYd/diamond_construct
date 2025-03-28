@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Container, Section, Heading, Text, Flex, Box, Grid, Card } from '@radix-ui/themes';
 import { Star, Heart, Users, Shield, Zap, Handshake } from 'lucide-react';
+import useScreen from '../hooks/useScreen';
 
 // Team members data
 const teamMembers = [
@@ -117,28 +118,33 @@ const milestones = [
 ];
 
 export function About() {
+  const { isMobile } = useScreen();
   return (
     <Box dir="rtl">
       {/* Hero Section */}
       <Section
-        size="3"
+        size={isMobile ? '3' : '2'}
         style={{
           background: 'linear-gradient(to right, var(--accent-4), var(--accent-2))',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        <Box className="bg-pattenr2"></Box>
-        <Container>
-          <Flex direction="column" align="center" gap="6" py="9">
+        <Box className="bg-pattern2"></Box>
+        <Container style={{ zIndex: 10 }}>
+          <Flex direction="column" align="center" gap="6" py="7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               style={{ textAlign: 'center', maxWidth: '800px' }}
             >
-              <Box className="bg-pattern2" />
-              <Heading size="8" align="center" style={{ marginBottom: '1.5rem' }}>
+              {/* <Box className="bg-pattern2" /> */}
+              <Heading
+                size={isMobile ? '8' : '9'}
+                align="center"
+                style={{ marginBottom: '1.5rem' }}
+              >
                 אודות דיאמונד
               </Heading>
               <Text
@@ -159,12 +165,18 @@ export function About() {
           <Grid columns={{ initial: '1', md: '2' }} gap="8" align="center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, x: 0 }}
+              // whileInView={{ opacity: 1, x: 0 }}
+              // viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
               <Box>
-                <Heading as="h2" size="6" mb="4">
+                <Heading
+                  size={{ initial: '6', sm: '7' }}
+                  align="center"
+                  className="section-title with-accent"
+                  mb="8"
+                >
                   מי אנחנו
                 </Heading>
                 <Text size="3" style={{ color: 'var(--gray-11)', lineHeight: '1.8' }}>
@@ -172,13 +184,20 @@ export function About() {
                   ושירות לקוחות יוצא דופן. אנו שואפים להפוך את חוויית השיפוץ לחיובית ונעימה עבור
                   לקוחותינו. אנו מבצעים מגוון רחב של פרויקטים, החל משיפוצים קטנים ועד תוספות בנייה
                   מורכבות, תוך התמקדות בשיפוצים כלליים. אנו מקפידים על שימוש בחומרים איכותיים, עמידה
-                  בלוחות זמנים ועבודה מקצועית. בניגוד למקובל בתחום, אנו שואפים להבטיח שהלקוח ירגיש
-                  בנוח ומרוצה לאורך כל התהליך. אנו מקשיבים לצרכיו ומתחשבים ברצונותיו, תוך שמירה על
-                  שקיפות ויחס אישי. אנו עובדים בשיתוף פעולה מלא עם בעלי מקצוע אחרים, כגון אדריכלים,
-                  מעצבים ומהנדסים, ומקפידים על סביבת עבודה נקייה ומסודרת, תוך תיאום עם השכנים
-                  והתחשבות בסביבה. אנו מבינים את החשיבות של הבית כמקום של חום, ביטחון ואהבה, ועושים
-                  כל מאמץ להעניק חוויה זו ללקוחותינו, תוך הקפדה על בנייה מתוכננת ואיכותית.
+                  בלוחות זמנים ועבודה מקצועית.
+                  {!isMobile && (
+                    <>
+                      <br />
+                      <br />` בניגוד למקובל בתחום, אנו שואפים להבטיח שהלקוח ירגיש בנוח ומרוצה לאורך
+                      כל התהליך. אנו מקשיבים לצרכיו ומתחשבים ברצונותיו, תוך שמירה על שקיפות ויחס
+                      אישי. אנו עובדים בשיתוף פעולה מלא עם בעלי מקצוע אחרים, כגון אדריכלים, מעצבים
+                      ומהנדסים, ומקפידים על סביבת עבודה נקייה ומסודרת, תוך תיאום עם השכנים והתחשבות
+                      בסביבה. אנו מבינים את החשיבות של הבית כמקום של חום, ביטחון ואהבה, ועושים כל
+                      מאמץ להעניק חוויה זו ללקוחותינו, תוך הקפדה על בנייה מתוכננת ואיכותית.`
+                    </>
+                  )}
                 </Text>
+                <br /> <br />
                 <Text
                   size="3"
                   style={{ color: 'var(--gray-11)', lineHeight: '1.8', marginTop: '1rem' }}
@@ -187,6 +206,14 @@ export function About() {
                   פורמלית בתחומי הבנייה, ההנדסה והעיצוב. אנו מייחסים חשיבות עליונה לאיכות הביצוע,
                   לעמידה בלוחות זמנים ולשירות לקוחות יוצא דופן.
                 </Text>
+                {!isMobile && (
+                  <Text
+                    size="3"
+                    style={{ color: 'var(--gray-11)', lineHeight: '1.8', marginTop: '1rem' }}
+                  >
+                    אנו שואפים להעניק ללקוחותינו את השירות הטוב ביותר, תוך הקפדה על מקצועיות ודיוק.
+                  </Text>
+                )}
                 <Box mt="6">
                   <Flex gap="6" wrap="wrap">
                     {[
@@ -223,6 +250,12 @@ export function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                position: 'relative',
+                top: !isMobile ? '-20px' : '',
+              }}
             >
               <Box
                 style={{
@@ -260,7 +293,12 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <Heading size="6" align="center" mb="6">
+              <Heading
+                size={{ initial: '6', sm: '7' }}
+                align="center"
+                className="section-title with-accent"
+                mb="8"
+              >
                 הערכים שלנו
               </Heading>
             </motion.div>
@@ -344,7 +382,13 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <Heading size="6" align="center" mb="2">
+              <Heading
+                mx="auto"
+                size={{ initial: '6', sm: '7' }}
+                align="center"
+                className="section-title with-accent"
+                mb="4"
+              >
                 הצוות שלנו
               </Heading>
               <Text

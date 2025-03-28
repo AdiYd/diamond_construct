@@ -13,6 +13,7 @@ import {
   Users,
   Shield,
 } from 'lucide-react';
+import useScreen from '../hooks/useScreen';
 
 const servicesList = [
   {
@@ -103,17 +104,7 @@ const servicesList = [
 ];
 
 export function Services() {
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== 'undefined' ? window.innerWidth : 0
-  );
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const isMobile = windowWidth < 768;
+  const { isMobile } = useScreen();
 
   return (
     <Box dir="rtl">
@@ -128,9 +119,9 @@ export function Services() {
           padding: isMobile ? 'var(--section-spacing-sm) var(--page-padding-mobile)' : undefined,
         }}
       >
+        <Box className="bg-pattern2" />
         <Container>
-          <Box className="bg-pattern2" />
-          <Flex direction="column" align="center" gap="6" py={{ initial: '4', sm: '6', md: '9' }}>
+          <Flex direction="column" align="center" gap="6" py="7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -140,7 +131,7 @@ export function Services() {
               }}
             >
               <Heading
-                size={{ initial: '6', sm: '7', md: '8' }}
+                size={isMobile ? '8' : '9'}
                 align="center"
                 style={{
                   //   maxWidth: '800px',
@@ -162,91 +153,96 @@ export function Services() {
               >
                 אנו מציעים מגוון רחב של פתרונות בנייה ושיפוצים באיכות הגבוהה ביותר
               </Text>
-
-              <Grid
-                columns={{ initial: '1', sm: '2', md: '3' }}
-                gap={{ initial: '3', sm: '4' }}
-                my="6"
-              >
-                {servicesList.map((service, index) => (
-                  <motion.div
-                    key={service.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.5,
-                      delay: index * 0.1,
-                    }}
-                  >
-                    <Card
-                      style={{
-                        height: '100%',
-                        background: 'var(--color-background)',
-                        boxShadow: 'var(--shadow-3)',
-                        borderRadius: 'var(--radius-4)',
-                        padding: isMobile ? 'var(--space-4)' : 'var(--space-5)',
-                      }}
-                      className="service-brief-card"
-                    >
-                      <Flex direction="column" gap="3" style={{ height: '100%' }}>
-                        <Box
-                          style={{
-                            color: service.color,
-                            marginBottom: '0.5rem',
-                          }}
-                        >
-                          {service.icon}
-                        </Box>
-                        <Heading size={{ initial: '3', sm: '4' }} as="h3">
-                          {service.title}
-                        </Heading>
-                        <Text
-                          size={{ initial: '2', sm: '2' }}
-                          style={{ color: 'var(--gray-11)', flex: 1 }}
-                        >
-                          {service.shortDescription}
-                        </Text>
-                        <Box>
-                          <a
-                            href={`#${service.id}`}
-                            style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '0.25rem',
-                              color: service.color,
-                              fontWeight: 500,
-                              textDecoration: 'none',
-                              fontSize: '0.9rem',
-                            }}
-                          >
-                            קרא עוד
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 16 16"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                              style={{ transform: 'scaleX(-1)' }}
-                            >
-                              <path
-                                d="M6.5 3L11.5 8L6.5 13"
-                                stroke="currentColor"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </a>
-                        </Box>
-                      </Flex>
-                    </Card>
-                  </motion.div>
-                ))}
-              </Grid>
             </motion.div>
           </Flex>
         </Container>
+      </Section>
+
+      <Section
+        size="3"
+        className="section"
+        style={{
+          background: 'var(--color-background)',
+          padding: isMobile ? 'var(--section-spacing-sm) var(--page-padding-mobile)' : undefined,
+        }}
+      >
+        <Grid columns={{ initial: '1', sm: '2', md: '3' }} gap={{ initial: '3', sm: '4' }} my="6">
+          {servicesList.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+              }}
+            >
+              <Card
+                style={{
+                  height: '100%',
+                  background: 'var(--color-background)',
+                  boxShadow: 'var(--shadow-3)',
+                  borderRadius: 'var(--radius-4)',
+                  padding: isMobile ? 'var(--space-4)' : 'var(--space-5)',
+                }}
+                className="service-brief-card"
+              >
+                <Flex direction="column" gap="3" style={{ height: '100%' }}>
+                  <Box
+                    style={{
+                      color: service.color,
+                      marginBottom: '0.5rem',
+                    }}
+                  >
+                    {service.icon}
+                  </Box>
+                  <Heading size={{ initial: '3', sm: '4' }} as="h3">
+                    {service.title}
+                  </Heading>
+                  <Text
+                    size={{ initial: '2', sm: '2' }}
+                    style={{ color: 'var(--gray-11)', flex: 1 }}
+                  >
+                    {service.shortDescription}
+                  </Text>
+                  <Box>
+                    <a
+                      href={`#${service.id}`}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        color: service.color,
+                        fontWeight: 500,
+                        textDecoration: 'none',
+                        fontSize: '0.9rem',
+                      }}
+                    >
+                      קרא עוד
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style={{ transform: 'scaleX(-1)' }}
+                      >
+                        <path
+                          d="M6.5 3L11.5 8L6.5 13"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </a>
+                  </Box>
+                </Flex>
+              </Card>
+            </motion.div>
+          ))}
+        </Grid>
       </Section>
 
       {/* Why Choose Us */}

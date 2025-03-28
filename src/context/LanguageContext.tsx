@@ -48,7 +48,7 @@ const translations = {
     allRightsReserved: 'כל הזכויות שמורות',
     readMore: 'קרא עוד',
     close: 'סגור',
-    brandDescription: 'אנו יוצרים פתרונות חדשניים לאתגרים מודרניים.',
+    brandDescription: 'שיפוצים • בנייה • תחזוקה •  בסטנדרט גבוה',
     // Theme
     darkMode: 'מצב כהה',
     lightMode: 'מצב בהיר',

@@ -27,6 +27,7 @@ import {
   Clock,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import useScreen from '../hooks/useScreen';
 
 interface FormData {
   name: string;
@@ -42,7 +43,7 @@ export function Home() {
     email: '',
   });
   const [formErrors, setFormErrors] = useState<Partial<FormData>>({});
-  const [windowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+  const { isMobile } = useScreen();
 
   const validateForm = () => {
     const errors: Partial<FormData> = {};
@@ -78,7 +79,6 @@ export function Home() {
   };
 
   // Helper to determine sizes based on screen width
-  const isMobile = windowWidth < 768;
 
   return (
     <Box dir="rtl">
@@ -205,7 +205,7 @@ export function Home() {
         </Box>
 
         <Container
-          mt={{ initial: '0', sm: '7' }}
+          mt={{ initial: isMobile ? '8' : '0', sm: '4' }}
           style={{ position: 'relative', zIndex: 2, width: '100%' }}
         >
           <motion.div
@@ -217,7 +217,7 @@ export function Home() {
               <Box className="hero-badge">
                 <Wrench color="var(--accent-contrast)" size={16} />
                 <Text
-                  size={{ initial: '1', sm: '3' }}
+                  size={{ initial: '2', sm: '3', md: '2' }}
                   style={{ color: 'var(--accent-contrast)', opacity: 0.9 }}
                 >
                   בניה • שיפוצים • תחזוקה
@@ -231,26 +231,28 @@ export function Home() {
                   className="hero-heading"
                   style={{
                     width: '100%',
-                    maxWidth: '85%',
+                    // maxWidth: '85%',
                   }}
                 >
                   שיפוץ מקצועי מהתכנון ועד המסירה
                 </Heading>
 
-                <Text
-                  size={{ initial: '5', sm: '4', md: '5' }}
-                  align="center"
-                  className="hero-text*"
-                  style={{
-                    width: '100%',
-                    fontSize: '1.6rem',
-                    // maxWidth: '42rem',
-                    opacity: 0.9,
-                    padding: '0 1rem',
-                  }}
-                >
-                  Diamond – שיפוצים עם לב וראש מקצועי
-                </Text>
+                {!isMobile && (
+                  <Text
+                    size={{ initial: '5', sm: '4', md: '5' }}
+                    align="center"
+                    className="hero-text*"
+                    style={{
+                      width: '100%',
+                      fontSize: '1.6rem',
+                      // maxWidth: '42rem',
+                      opacity: 0.9,
+                      padding: '0 1rem',
+                    }}
+                  >
+                    Diamond – מקצועיות ואכפתיות מכל הלב
+                  </Text>
+                )}
 
                 <Text
                   size={{ initial: '2', sm: '3', md: '4' }}
@@ -260,20 +262,21 @@ export function Home() {
                     width: '100%',
                     // maxWidth: '42rem',
                     opacity: 0.85,
-                    padding: '0 1rem',
+                    padding: isMobile ? '0' : '0 1rem',
                   }}
                 >
-                  אנחנו כאן כדי להפוך את הבית שלכם למה שתמיד חלמתם עליו – מבלי לעבור מסע ייסורים
-                  בדרך. עם ניסיון עשיר, צוות איכותי ושקיפות מלאה – אנחנו מציעים חוויית שיפוץ אחרת:
-                  בטוחה, מדויקת, ומלאת אכפתיות.
+                  אנחנו כאן כדי להפוך את הבית שלכם למה שתמיד חלמתם עליו מבלי לעבור מסע ייסורים בדרך.
+                  עם ניסיון עשיר, צוות איכותי ושקיפות מלאה – אנחנו מציעים חוויית שיפוץ אחרת: בטוחה,
+                  מדויקת, ומלאת אכפתיות.
                 </Text>
               </Flex>
 
-              <Flex justify="center" gap="4" mt="2">
+              <Flex justify="center" gap="4" mt={isMobile ? '0' : '2'}>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                   <Button
                     size={{ initial: '3', sm: '4' }}
                     className="hero-cta"
+                    mb={isMobile ? '8' : '0'}
                     onClick={() => setShowModal(true)}
                   >
                     צור קשר עכשיו
@@ -295,8 +298,8 @@ export function Home() {
           }}
           style={{
             position: 'absolute',
-            bottom: isMobile ? '10px' : '10px',
-            left: '49%',
+            bottom: isMobile ? '5px' : '10px',
+            left: isMobile ? '45%' : '49%',
             display: 'grid',
             transform: 'translateX(-50%)',
             // background: 'rgba(255, 255, 255, 0.1)',
@@ -374,7 +377,7 @@ export function Home() {
                 className="section-title with-accent"
                 mb="2"
                 style={{
-                  color: 'var(--accent-9)',
+                  // color: 'var(--accent-9)',
                   textShadow: '0 1px 2px rgba(0,0,0,0.05)',
                 }}
               >
@@ -512,7 +515,7 @@ export function Home() {
       <Section
         size="3"
         style={{
-          background: 'linear-gradient(to bottom, var(--accent-a2), var(--gray-1))',
+          // background: 'linear-gradient(to bottom, var(--accent-a2), var(--gray-1))',
           position: 'relative',
           overflow: 'hidden',
           padding: isMobile ? '4rem 1.5rem' : '5rem 2rem',
@@ -532,6 +535,7 @@ export function Home() {
             <Heading
               size={{ initial: '6', sm: '7' }}
               align="center"
+              as="h2"
               className="section-title with-accent"
               mb="8"
             >
@@ -582,7 +586,7 @@ export function Home() {
                     className="modern-benefit-card"
                     style={{
                       borderColor: benefit.borderColor,
-                      background: `linear-gradient(145deg, white, ${benefit.bgColor}10)`,
+                      background: `linear-gradient(145deg, var(--gray-1), ${benefit.bgColor})`,
                     }}
                   >
                     <Box
@@ -706,7 +710,15 @@ export function Home() {
                   rel="noopener noreferrer"
                   className="cta-link"
                 >
-                  <Button size="4" variant="outline" className="cta-button secondary">
+                  <Button
+                    style={{
+                      borderColor: 'var(--accent-10)',
+                      color: 'var(--accent-10)',
+                    }}
+                    size="4"
+                    variant="outline"
+                    className="cta-button* secondary"
+                  >
                     <ChevronLeft size={16} />
                     שלחו לנו וואטסאפ עכשיו
                   </Button>

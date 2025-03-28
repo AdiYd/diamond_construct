@@ -24,6 +24,7 @@ import {
   AlertCircle,
   Loader2,
 } from 'lucide-react';
+import useScreen from '../hooks/useScreen';
 
 interface FormData {
   name: string;
@@ -52,6 +53,7 @@ export function Contact() {
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const { isMobile } = useScreen();
 
   const validateForm = () => {
     const errors: FormErrors = {};
@@ -128,17 +130,21 @@ export function Contact() {
           overflow: 'hidden',
         }}
       >
-        <Box className="bg-pattenr2"></Box>
-        <Container>
-          <Flex direction="column" align="center" gap="6" py="9">
+        <Box className="bg-pattern2"></Box>
+        <Container style={{ zIndex: 10 }}>
+          <Flex direction="column" align="center" gap="6" py="7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               style={{ textAlign: 'center', maxWidth: '800px' }}
             >
-              <Box className="bg-pattern2" />
-              <Heading size="8" align="center" style={{ marginBottom: '1.5rem' }}>
+              {/* <Box className="bg-pattern2" /> */}
+              <Heading
+                size={isMobile ? '8' : '9'}
+                align="center"
+                style={{ marginBottom: '1.5rem' }}
+              >
                 צור קשר
               </Heading>
               <Text

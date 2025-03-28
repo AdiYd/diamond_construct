@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container, Section, Heading, Text, Flex, Box, Grid, Button, Tabs } from '@radix-ui/themes';
 import { Image as ImageIcon, X, ChevronRight, ChevronLeft } from 'lucide-react';
+import useScreen from '../hooks/useScreen';
 
 // Project portfolio data
 const portfolioProjects = [
@@ -409,6 +410,7 @@ export function Gallery() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageType, setCurrentImageType] = useState<'before' | 'after' | 'process'>('after');
   const [processIndex, setProcessIndex] = useState(0);
+  const { isMobile } = useScreen();
 
   const filteredProjects =
     selectedCategory === 'all'
@@ -440,15 +442,19 @@ export function Gallery() {
         }}
       >
         <Box className="bg-pattern2"></Box>
-        <Container>
-          <Flex direction="column" align="center" gap="6" py="9">
+        <Container style={{ zIndex: 10 }}>
+          <Flex direction="column" align="center" gap="6" py="7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               style={{ textAlign: 'center', maxWidth: '800px' }}
             >
-              <Heading size="8" align="center" style={{ marginBottom: '1.5rem' }}>
+              <Heading
+                size={isMobile ? '8' : '9'}
+                align="center"
+                style={{ marginBottom: '1.5rem' }}
+              >
                 גלריית פרויקטים
               </Heading>
               <Text
