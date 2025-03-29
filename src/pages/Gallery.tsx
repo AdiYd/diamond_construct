@@ -289,7 +289,8 @@ const Lightbox: React.FC<LightboxProps> = ({
       <Box
         style={{
           position: 'relative',
-          width: '90%',
+          //   width: '90%',
+          padding: '1rem',
           maxWidth: '900px',
           height: '80vh',
           backgroundColor: 'transparent',
@@ -376,6 +377,7 @@ const Lightbox: React.FC<LightboxProps> = ({
         />
 
         <Box
+          mx="auto"
           style={{
             position: 'absolute',
             bottom: '1rem',
@@ -383,6 +385,7 @@ const Lightbox: React.FC<LightboxProps> = ({
             right: '1rem',
             padding: '1rem',
             backgroundColor: 'rgba(0,0,0,0.7)',
+            width: '95%',
             color: 'white',
             backdropFilter: 'blur(10px)',
             borderRadius: 'var(--radius-3)',
@@ -391,7 +394,7 @@ const Lightbox: React.FC<LightboxProps> = ({
           <Text size="3" weight="bold">
             {project.title}
           </Text>
-          <Text size="2" style={{ opacity: 0.8 }}>
+          <Text mx="2" size="2" style={{ opacity: 0.8 }}>
             {currentImageType === 'before'
               ? 'לפני השיפוץ'
               : currentImageType === 'after'
@@ -477,9 +480,12 @@ export function Gallery() {
               {categories.map(category => (
                 <Button
                   key={category.id}
+                  size="3"
                   variant={selectedCategory === category.id ? 'solid' : 'outline'}
                   onClick={() => setSelectedCategory(category.id)}
-                  style={{ minWidth: '120px' }}
+                  style={{
+                    minWidth: '120px',
+                  }}
                 >
                   {category.label}
                 </Button>

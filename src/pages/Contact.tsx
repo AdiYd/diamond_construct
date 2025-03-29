@@ -162,7 +162,7 @@ export function Contact() {
       {/* Contact Information and Form */}
       <Section size="3" style={{ background: 'var(--color-background)' }}>
         <Container>
-          <Grid columns={{ initial: '1', md: '3' }} gap="8">
+          <Grid columns={isMobile ? '1' : '3'} gapY="4" gapX={!isMobile ? '4' : '0'}>
             {/* Contact Info Cards */}
             <Box>
               <Grid rows="3" gap="4" height="100%">
@@ -234,7 +234,11 @@ export function Contact() {
                         >
                           {item.icon}
                         </Box>
-                        <Box>
+                        <Box
+                          style={{
+                            textAlign: 'start',
+                          }}
+                        >
                           <Text weight="bold" size="3" mb="1">
                             {item.title}
                           </Text>
@@ -284,9 +288,10 @@ export function Contact() {
                         <Text weight="bold" size="3" mb="1">
                           שעות פעילות
                         </Text>
+                        <br />
                         <Text size="2">ימים א'-ה': 09:00-18:00</Text>
+                        <br />
                         <Text size="2">יום ו': 09:00-13:00</Text>
-                        <Text size="2">שבת: סגור</Text>
                       </Box>
                     </Flex>
                   </Card>

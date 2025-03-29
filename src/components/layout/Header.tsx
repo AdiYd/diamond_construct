@@ -112,10 +112,10 @@ export function Header() {
                       color:
                         location.pathname === page.path
                           ? isHomePage
-                            ? 'var(--accent-4)'
-                            : 'var(--accent-8)'
+                            ? 'var(--secondary)'
+                            : 'var(--secondary)'
                           : isHomePage
-                          ? 'var(--accent-1)'
+                          ? 'white'
                           : 'var(--accent-12)',
                       fontWeight: location.pathname === page.path ? 700 : 400,
                     }}
@@ -183,8 +183,8 @@ export function Header() {
                       color:
                         location.pathname === page.path
                           ? isHomePage
-                            ? 'var(--accent-4)'
-                            : 'var(--accent-8)'
+                            ? 'var(--secondary)'
+                            : 'var(--secondary)'
                           : '',
                       fontWeight: location.pathname === page.path ? 700 : 600,
                       padding: 'var(--space-2)',

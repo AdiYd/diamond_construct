@@ -8,9 +8,9 @@ import './styles/styles.css'; // Import Tailwind CSS
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Theme {...themeConfig}>
+    <Theme panelBackground="translucent" {...themeConfig}>
       <App />
-      {/* <ThemePanel /> */}
+      <ThemePanel />
     </Theme>
   </React.StrictMode>
 );

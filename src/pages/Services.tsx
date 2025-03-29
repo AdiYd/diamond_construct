@@ -133,11 +133,7 @@ export function Services() {
               <Heading
                 size={isMobile ? '8' : '9'}
                 align="center"
-                style={{
-                  //   maxWidth: '800px',
-                  marginBottom: '1rem',
-                  padding: isMobile ? '0 var(--space-2)' : 0,
-                }}
+                style={{ marginBottom: '1.5rem' }}
               >
                 השירותים שלנו
               </Heading>
@@ -256,8 +252,14 @@ export function Services() {
       >
         <Container>
           <Flex direction="column" align="center" gap="6" py={{ initial: '4', sm: '6' }}>
-            <Heading size={{ initial: '5', sm: '6' }} align="center">
-              למה לבחור בנו?
+            <Heading
+              mx="auto"
+              size={{ initial: '6', sm: '7' }}
+              align="center"
+              className="section-title with-accent"
+              mb="4"
+            >
+             מה אנחנו מציעים?
             </Heading>
             <Grid
               columns={{ initial: '1', sm: '2', md: '3' }}
@@ -308,6 +310,9 @@ export function Services() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  style={{
+                    textAlign: isMobile ? 'center' : 'initial',
+                  }}
                 >
                   <Flex
                     gap="3"
@@ -315,9 +320,11 @@ export function Services() {
                     direction={isMobile ? 'column' : 'row'}
                     style={{
                       padding: isMobile ? 'var(--space-3)' : 'var(--space-4)',
-                      borderRadius: 'var(--radius-3)',
-                      background: 'var(--gray-1)',
+                      borderRadius: '6px',
+                      background: 'linear-gradient(to bottom left,var(--gray-4), var(--gray-2))',
                       height: '100%',
+                      transform: 'skew(4deg)',
+                      textAlign: isMobile ? 'start' : 'start',
                     }}
                   >
                     <Box
@@ -335,6 +342,7 @@ export function Services() {
                       <Text weight="bold" size="3">
                         {feature.title}
                       </Text>
+                      <br />
                       <Text size="2" style={{ color: 'var(--gray-11)' }}>
                         {feature.description}
                       </Text>
@@ -355,7 +363,7 @@ export function Services() {
           size="3"
           className="section"
           style={{
-            background: index % 2 === 0 ? 'var(--gray-1)' : 'var(--color-background)',
+            background: index % 2 === 0 ? 'var(--gray-2)' : 'var(--color-background)',
             position: 'relative',
             overflow: 'hidden',
             padding: isMobile
@@ -406,23 +414,20 @@ export function Services() {
                     {service.fullDescription}
                   </Text>
 
-                  <Box
-                    mt="6"
-                    style={{
-                      textAlign: isMobile ? 'center' : 'initial',
-                    }}
-                  >
+                  <Box my="6">
                     <Text
                       weight="bold"
                       size="3"
-                      mb="3"
+                      mb="4"
                       style={{
-                        textAlign: isMobile ? 'center' : 'initial',
+                        textAlign: 'start',
+                        marginBottom: '1rem',
                       }}
                     >
                       היתרונות שלנו:
                     </Text>
                     <Flex
+                      mt="4"
                       direction="column"
                       gap="2"
                       style={{

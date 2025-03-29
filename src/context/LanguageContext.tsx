@@ -48,7 +48,7 @@ const translations = {
     allRightsReserved: 'כל הזכויות שמורות',
     readMore: 'קרא עוד',
     close: 'סגור',
-    brandDescription: 'שיפוצים • בנייה • תחזוקה •  בסטנדרט גבוה',
+    brandDescription: 'שיפוצים • בנייה • תחזוקה •  סטנדרט גבוה',
     // Theme
     darkMode: 'מצב כהה',
     lightMode: 'מצב בהיר',

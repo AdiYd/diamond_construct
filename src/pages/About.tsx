@@ -123,7 +123,7 @@ export function About() {
     <Box dir="rtl">
       {/* Hero Section */}
       <Section
-        size={isMobile ? '3' : '2'}
+        size="3"
         style={{
           background: 'linear-gradient(to right, var(--accent-4), var(--accent-2))',
           position: 'relative',
@@ -145,7 +145,7 @@ export function About() {
                 align="center"
                 style={{ marginBottom: '1.5rem' }}
               >
-                אודות דיאמונד
+                אודות Diamond
               </Heading>
               <Text
                 size="5"
@@ -173,13 +173,16 @@ export function About() {
               <Box>
                 <Heading
                   size={{ initial: '6', sm: '7' }}
-                  align="center"
                   className="section-title with-accent"
-                  mb="8"
+                  mb="4"
                 >
                   מי אנחנו
                 </Heading>
-                <Text size="3" style={{ color: 'var(--gray-11)', lineHeight: '1.8' }}>
+                <Text
+                  size="3"
+                  weight="medium"
+                  style={{ color: 'var(--gray-11)', lineHeight: '1.8' }}
+                >
                   דיאמונד מתמחה בביצוע פרויקטי בנייה ושיפוצים, תוך הקפדה על סטנדרטים מקצועיים גבוהים
                   ושירות לקוחות יוצא דופן. אנו שואפים להפוך את חוויית השיפוץ לחיובית ונעימה עבור
                   לקוחותינו. אנו מבצעים מגוון רחב של פרויקטים, החל משיפוצים קטנים ועד תוספות בנייה
@@ -188,18 +191,19 @@ export function About() {
                   {!isMobile && (
                     <>
                       <br />
-                      <br />` בניגוד למקובל בתחום, אנו שואפים להבטיח שהלקוח ירגיש בנוח ומרוצה לאורך
+                      <br /> בניגוד למקובל בתחום, אנו שואפים להבטיח שהלקוח ירגיש בנוח ומרוצה לאורך
                       כל התהליך. אנו מקשיבים לצרכיו ומתחשבים ברצונותיו, תוך שמירה על שקיפות ויחס
                       אישי. אנו עובדים בשיתוף פעולה מלא עם בעלי מקצוע אחרים, כגון אדריכלים, מעצבים
                       ומהנדסים, ומקפידים על סביבת עבודה נקייה ומסודרת, תוך תיאום עם השכנים והתחשבות
                       בסביבה. אנו מבינים את החשיבות של הבית כמקום של חום, ביטחון ואהבה, ועושים כל
-                      מאמץ להעניק חוויה זו ללקוחותינו, תוך הקפדה על בנייה מתוכננת ואיכותית.`
+                      מאמץ להעניק חוויה זו ללקוחותינו, תוך הקפדה על בנייה מתוכננת ואיכותית.
                     </>
                   )}
                 </Text>
                 <br /> <br />
                 <Text
                   size="3"
+                  weight="medium"
                   style={{ color: 'var(--gray-11)', lineHeight: '1.8', marginTop: '1rem' }}
                 >
                   הצוות שלנו מורכב ממקצוענים מנוסים, רובם בוגרי צבא ביחידות הנדסה ובעלי השכלה
@@ -209,6 +213,7 @@ export function About() {
                 {!isMobile && (
                   <Text
                     size="3"
+                    weight="medium"
                     style={{ color: 'var(--gray-11)', lineHeight: '1.8', marginTop: '1rem' }}
                   >
                     אנו שואפים להעניק ללקוחותינו את השירות הטוב ביותר, תוך הקפדה על מקצועיות ודיוק.
@@ -294,10 +299,11 @@ export function About() {
               transition={{ duration: 0.5 }}
             >
               <Heading
+                mx="auto"
                 size={{ initial: '6', sm: '7' }}
                 align="center"
                 className="section-title with-accent"
-                mb="8"
+                mb="4"
               >
                 הערכים שלנו
               </Heading>

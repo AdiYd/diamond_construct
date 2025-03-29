@@ -11,7 +11,9 @@ import {
   TextField,
   Grid,
   Card,
+  IconButton,
 } from '@radix-ui/themes';
+import { Icon } from '@iconify/react';
 import {
   ChevronRight,
   X,
@@ -276,11 +278,14 @@ export function Home() {
                   <Button
                     size={{ initial: '3', sm: '4' }}
                     className="hero-cta"
+                    style={{
+                      alignItems: 'center',
+                    }}
                     mb={isMobile ? '8' : '0'}
                     onClick={() => setShowModal(true)}
                   >
                     צור קשר עכשיו
-                    <ChevronLeft size={16} />
+                    <Icon icon="ion:diamond-sharp" width={20} />
                   </Button>
                 </motion.div>
               </Flex>
@@ -342,7 +347,7 @@ export function Home() {
         size="3"
         className="section"
         style={{
-          background: 'linear-gradient(to bottom right, var(--gray-3), var(--gray-6))',
+          background: 'linear-gradient(to bottom right, var(--gray-1), var(--gray-2))',
           position: 'relative',
           overflow: 'hidden',
           padding: isMobile ? '4rem 1.5rem' : '5rem 2rem',
@@ -371,17 +376,13 @@ export function Home() {
           >
             <div style={{ display: 'block' }}>
               <Heading
-                as="h2"
-                size={{ initial: '5', sm: '6', md: '7' }}
-                // align="center"
+                mx="auto"
+                size={{ initial: '6', sm: '7' }}
+                align="center"
                 className="section-title with-accent"
-                mb="2"
-                style={{
-                  // color: 'var(--accent-9)',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.05)',
-                }}
+                mb="4"
               >
-                שירותי שיפוצים ובנייה באזור כרמיאל והסביבה
+                שירותי שיפוצים ובנייה בצפון
               </Heading>
 
               <Text
@@ -533,11 +534,11 @@ export function Home() {
             transition={{ duration: 0.8 }}
           >
             <Heading
+              mx="auto"
               size={{ initial: '6', sm: '7' }}
               align="center"
-              as="h2"
               className="section-title with-accent"
-              mb="8"
+              mb="4"
             >
               למה לבחור בנו?
             </Heading>
@@ -623,10 +624,11 @@ export function Home() {
       <Section size="3" className="testimonials-section">
         <Container>
           <Heading
+            mx="auto"
             size={{ initial: '6', sm: '7' }}
             align="center"
             className="section-title with-accent"
-            mb="8"
+            mb="4"
           >
             מה הלקוחות שלנו אומרים?
           </Heading>
@@ -750,88 +752,135 @@ export function Home() {
       <Dialog.Root open={showModal} onOpenChange={setShowModal}>
         <Dialog.Portal>
           <Dialog.Overlay className="DialogOverlay enhanced" />
-          <Dialog.Content className="DialogContent enhanced">
-            <Dialog.Title asChild>
-              <Heading size="6" mb="4" style={{ textAlign: 'center' }}>
-                צור קשר
-              </Heading>
-            </Dialog.Title>
-            <Dialog.Description asChild>
-              <Text size="3" mb="6" style={{ color: 'var(--gray-11)', textAlign: 'center' }}>
-                השאירו פרטים ונחזור אליכם בהקדם
-              </Text>
-            </Dialog.Description>
-
-            <form onSubmit={handleSubmit} className="contact-form">
-              <Flex direction="column" gap="4">
-                <Box className="form-field">
-                  <Text as="label" size="2" mb="2" weight="medium" className="form-label">
-                    שם מלא
-                  </Text>
-                  <TextField.Root className="form-input-container">
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="הכנס את שמך המלא"
-                      className="form-input"
-                    />
-                  </TextField.Root>
-                  {formErrors.name && (
-                    <Text size="1" className="form-error">
-                      {formErrors.name}
-                    </Text>
-                  )}
+          <Dialog.Content className="DialogContent contact-dialog">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Dialog header with icon */}
+              <Box className="dialog-header">
+                <Box className="dialog-icon-container">
+                  <Icon icon="ion:diamond-sharp" width={20} color="var(--accent-contrast)" />
                 </Box>
+                <Dialog.Title asChild>
+                  <Heading size={{ initial: '5', md: '6' }} className="dialog-title">
+                    דברו איתנו עכשיו
+                  </Heading>
+                </Dialog.Title>
+                <Text size={{ initial: '2', md: '3' }} className="dialog-subtitle">
+                  אנחנו כאן כדי להפוך את החלום שלכם למציאות
+                </Text>
+              </Box>
 
-                <Box className="form-field">
-                  <Text as="label" size="2" mb="2" weight="medium" className="form-label">
-                    טלפון
-                  </Text>
-                  <TextField.Root className="form-input-container">
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="הכנס את מספר הטלפון שלך"
-                      className="form-input"
-                    />
-                  </TextField.Root>
-                  {formErrors.phone && (
-                    <Text size="1" className="form-error">
-                      {formErrors.phone}
-                    </Text>
-                  )}
-                </Box>
+              {/* Form area */}
+              <Box py="5" px={{ initial: '4', md: '6' }} className="dialog-body">
+                <form onSubmit={handleSubmit} className="contact-form">
+                  <Flex direction="column" gap="5">
+                    <Box className="form-field">
+                      <Text as="label" size="2" className="form-label">
+                        שם מלא
+                      </Text>
+                      <TextField.Root
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="הקלד את שמך המלא"
+                        className="form-input-container"
+                      >
+                        {/* <input
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          placeholder="הקלד את שמך המלא"
+                          className="form-input"
+                        /> */}
+                      </TextField.Root>
+                      {formErrors.name && (
+                        <Text size="1" className="form-error">
+                          {formErrors.name}
+                        </Text>
+                      )}
+                    </Box>
 
-                <Box className="form-field">
-                  <Text as="label" size="2" mb="2" weight="medium" className="form-label">
-                    אימייל
-                  </Text>
-                  <TextField.Root className="form-input-container">
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="הכנס את כתובת האימייל שלך"
-                      className="form-input"
-                    />
-                  </TextField.Root>
-                  {formErrors.email && (
-                    <Text size="1" className="form-error">
-                      {formErrors.email}
-                    </Text>
-                  )}
-                </Box>
+                    <Box className="form-field">
+                      <Text as="label" size="2" className="form-label">
+                        מספר טלפון
+                      </Text>
+                      <TextField.Root
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="הקלד את מספר הטלפון שלך"
+                        className="form-input-container"
+                      >
+                        {/* <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          placeholder="הקלד את מספר הטלפון שלך"
+                          className="form-input"
+                        /> */}
+                      </TextField.Root>
+                      {formErrors.phone && (
+                        <Text size="1" className="form-error">
+                          {formErrors.phone}
+                        </Text>
+                      )}
+                    </Box>
 
-                <Button type="submit" size="3" variant="solid" mt="4" className="form-submit">
-                  שלח פרטים
-                </Button>
-              </Flex>
-            </form>
+                    <Box className="form-field">
+                      <Text as="label" size="2" className="form-label">
+                        דוא"ל
+                      </Text>
+                      <TextField.Root
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="you@example.com"
+                        className="form-input-container"
+                      >
+                        {/* <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          placeholder="you@example.com"
+                          className="form-input"
+                        /> */}
+                      </TextField.Root>
+                      {formErrors.email && (
+                        <Text size="1" className="form-error">
+                          {formErrors.email}
+                        </Text>
+                      )}
+                    </Box>
+
+                    <Button type="submit" size="3" variant="solid" className="form-submit-button">
+                      שלח פרטים ונחזור אליך בהקדם
+                    </Button>
+                  </Flex>
+                </form>
+              </Box>
+
+              {/* Dialog footer with additional contact options */}
+              <Box className="dialog-footer">
+                <Text size="2" className="dialog-footer-text">
+                  או צרו קשר דרך:
+                </Text>
+                <Flex justify="center" gap="4" mt="2">
+                  <a href="https://wa.me/972527036959" target="_blank" rel="noopener noreferrer">
+                    <IconButton variant="ghost" className="contact-icon-button">
+                      <Icon icon="ion:logo-whatsapp" width={20} color="green" />
+                      וואטסאפ
+                    </IconButton>
+                  </a>
+                </Flex>
+              </Box>
+            </motion.div>
 
             <Dialog.Close asChild>
               <Button variant="ghost" className="dialog-close">

@@ -16,6 +16,7 @@
   --accent-color: #101437;
   --accent: #101437;
   --accent-foreground: #ffffff;
+  --secondary: #c27f14;
   /* --accent-1: #f0f4ff;
   --accent-2: #d9e2ff;
   --accent-3: #c0d0ff;
@@ -89,10 +90,6 @@
   /* Border color  */
   --border: #aba6a62b;
 
-  --text-dialog: #000000;
-  --background: #ffffff;
-  /* --navigation-background: #ffffffa8; */
-  /* --color-background: #ffffff; */
 }
 
 .radix-themes {
@@ -105,6 +102,9 @@
 
 .dark {
   /* Radix Dark Mode Colors */
+
+  --secondary: #cf963b;
+  
   --accent-1: #0c1029;
   --accent-2: #0e1230;
   --accent-3: #101437;
@@ -113,16 +113,28 @@
   --accent-6: #2c3a69;
   --accent-7: #3a487f;
   --accent-8: #586495;
-  --accent-9: #9da9e3;
+  --accent-9: #7986c6;
   --accent-10: #b9c2e8;
   --accent-11: #d2d7ee;
   --accent-12: #d0d4ed;
+
+  --accent-a1: rgba(208, 212, 237, 0.05);
+  --accent-a2: rgba(208, 212, 237, 0.1);
+  --accent-a3: rgba(208, 212, 237, 0.15);
+  --accent-a4: rgba(208, 212, 237, 0.2);
+  --accent-a5: rgba(208, 212, 237, 0.3);
+  --accent-a6: rgba(208, 212, 237, 0.4);
+  --accent-a7: rgba(208, 212, 237, 0.5);
+  --accent-a8: rgba(208, 212, 237, 0.6);
+  --accent-a9: rgba(208, 212, 237, 0.7);
+  --accent-a10: rgba(208, 212, 237, 0.8);
+  --accent-a11: rgba(208, 212, 237, 0.9);
+  --accent-a12: rgba(208, 212, 237, 1);
+
   --accent-foreground: #ffffff;
 
   --text-dialog: #ffffff;
-  --background: #1a1a1a;
   --navigation-background: #1a1a1a8f;
-  --color-background: #1a1a1a;
 }
 
 /* Reset and base styles */
@@ -132,9 +144,9 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-duration: 0.1s;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.855, 1);
+  /* transition-property: background-color, border-color, color, fill, stroke; */
+  /* transition-duration: 0.1s; */
+  /* transition-timing-function: cubic-bezier(0.215, 0.61, 0.855, 1); */
 }
 
 /* Global Styles */
@@ -548,6 +560,7 @@ button {
 }
 
 .DialogContent {
+  overflow-y: auto;
   border-radius: var(--radius-4);
   box-shadow: var(--shadow-5);
   position: fixed;
@@ -556,7 +569,7 @@ button {
   transform: translate(-50%, -50%);
   width: min(calc(100% - 3rem), 800px);
   max-height: 90vh;
-  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1); */
   padding: 0;
   overflow: hidden;
 }
@@ -600,6 +613,216 @@ button {
 
 .DialogCloseButton:active {
   transform: scale(0.95);
+}
+
+/* Enhanced Dialog Styles */
+.DialogOverlay.enhanced {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.DialogContent.contact-dialog {
+  background: linear-gradient(to bottom, var(--gray-1), var(--gray-2));
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--gray-4);
+  padding: 0;
+  overflow: hidden;
+  margin: 0 auto;
+  /* width: min(500px, 100%); */
+  text-align: center;
+  /* position: relative; */
+  /* animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1); */
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .DialogContent.contact-dialog {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+    max-width: none;
+  }
+}
+
+.dialog-header {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-7), var(--accent-9));
+  color: white;
+}
+
+.dialog-icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dialog-title {
+  margin: 0 0 0.5rem;
+  color: white;
+  font-weight: 700;
+}
+
+.dialog-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 400;
+}
+
+.dialog-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.dialog-footer {
+  padding: 1.5rem;
+  background-color: var(--gray-2);
+  border-top: 1px solid var(--gray-4);
+}
+
+.dialog-footer-text {
+  color: var(--gray-11);
+  margin-bottom: 0.5rem;
+}
+
+.dialog-close-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  outline: none;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.dialog-close-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-form {
+  width: 100%;
+}
+
+.form-field {
+  margin-bottom: 1rem;
+  text-align: right;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: var(--gray-12);
+}
+
+.form-input-container {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid var(--gray-5);
+  transition: all 0.2s ease;
+}
+
+.form-input-container:focus-within {
+  border-color: var(--accent-8);
+  box-shadow: 0 0 0 2px var(--accent-4);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--gray-12);
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.form-error {
+  color: var(--red-9);
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.form-submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent-9), var(--accent-10));
+  color: white;
+  border-radius: 8px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  margin-top: 1rem;
+  border: none;
+}
+
+.form-submit-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(110%);
+}
+
+.form-submit-button:active {
+  transform: translateY(0);
+}
+
+.contact-icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--gray-6);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.contact-icon-button:hover {
+  background-color: var(--accent-3);
+  border-color: var(--accent-6);
+  color: var(--accent-11);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Animation Keyframes */
@@ -656,6 +879,8 @@ button {
 }
 
 div[role='dialog'] {
+  overflow-y: auto !important;
+  margin: auto !important;
   font-family: 'Inter', sans-serif !important;
   max-width: 90vw;
   min-width: 80vw;
@@ -1367,7 +1592,7 @@ div[role='dialog'] {
 }
 
 .DialogContent {
-  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1); */
 }
 
 @keyframes overlayShow {
@@ -1677,7 +1902,7 @@ div[role='dialog'] {
 
 /* Modern Testimonial Card - NEW */
 .testimonials-section {
-  background: linear-gradient(to bottom, var(--gray-1), white);
+  background: linear-gradient(to bottom, var(--gray-1), transparent);
   padding: 5rem 1rem;
 }
 
