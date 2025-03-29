@@ -488,7 +488,11 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <Heading size="6" align="center" mb="6">
+              <Heading
+                size={{ initial: '6', sm: '7' }}
+                className="section-title with-accent"
+                mb="4"
+              >
                 אבני דרך
               </Heading>
             </motion.div>

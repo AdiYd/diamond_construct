@@ -153,7 +153,7 @@ export function Header() {
                 }}
                 aria-label={isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'}
               >
-                {isDarkTheme ? <Sun size={15} /> : <Moon size={15} />}
+                {!isDarkTheme ? <Sun size={15} /> : <Moon size={15} />}
               </IconButton>
             </Flex>
           </Flex>

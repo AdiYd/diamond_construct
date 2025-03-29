@@ -308,7 +308,7 @@ export function Home() {
             display: 'grid',
             transform: 'translateX(-50%)',
             // background: 'rgba(255, 255, 255, 0.1)',
-            backdropFilter: 'blur(5px)',
+            // backdropFilter: 'blur(5px)',
             borderRadius: '50%',
             padding: '0.5rem',
             boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)',
@@ -376,9 +376,9 @@ export function Home() {
           >
             <div style={{ display: 'block' }}>
               <Heading
-                mx="auto"
+                mx={isMobile ? 'auto' : ''}
                 size={{ initial: '6', sm: '7' }}
-                align="center"
+                align={isMobile ? 'center' : 'right'}
                 className="section-title with-accent"
                 mb="4"
               >
