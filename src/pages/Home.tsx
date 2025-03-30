@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
 import {
   Button,
   Container,
@@ -8,15 +7,13 @@ import {
   Text,
   Flex,
   Box,
-  TextField,
   Grid,
   Card,
-  IconButton,
+  TextField,
 } from '@radix-ui/themes';
 import { Icon } from '@iconify/react';
 import {
   ChevronRight,
-  X,
   Building2,
   Wrench,
   CheckCircle2,
@@ -27,60 +24,60 @@ import {
   ArrowLeft,
   ChevronLeft,
   Clock,
+  Phone,
+  Mail,
+  MapPin,
+  Send,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import useScreen from '../hooks/useScreen';
 
-interface FormData {
+interface QuickFormData {
   name: string;
   phone: string;
-  email: string;
+}
+
+interface QuickFormErrors {
+  [key: string]: string | undefined;
+  name?: string;
+  phone?: string;
 }
 
 export function Home() {
-  const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState<FormData>({
+  const [quickFormData, setQuickFormData] = useState<QuickFormData>({
     name: '',
     phone: '',
-    email: '',
   });
-  const [formErrors, setFormErrors] = useState<Partial<FormData>>({});
+  const [quickFormErrors, setQuickFormErrors] = useState<QuickFormErrors>({});
+  const [showModal, setShowModal] = useState(false);
   const { isMobile } = useScreen();
 
-  const validateForm = () => {
-    const errors: Partial<FormData> = {};
-    if (!formData.name) errors.name = 'נדרש למלא שם';
-    if (!formData.phone) errors.phone = 'נדרש למלא מספר טלפון';
-    else if (!/^[0-9-+\s()]*$/.test(formData.phone)) errors.phone = 'מספר טלפון לא תקין';
-    if (!formData.email) errors.email = 'נדרש למלא אימייל';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-      errors.email = 'כתובת אימייל לא תקינה';
+  const validateQuickForm = () => {
+    const errors: QuickFormErrors = {};
+    if (!quickFormData.name) errors.name = 'נדרש למלא שם';
+    if (!quickFormData.phone) errors.phone = 'נדרש למלא מספר טלפון';
+    else if (!/^[0-9-+\s()]*$/.test(quickFormData.phone)) errors.phone = 'מספר טלפון לא תקין';
 
-    setFormErrors(errors);
+    setQuickFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleQuickFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      // Handle form submission
-      console.log('Form submitted:', formData);
-      setShowModal(false);
-      setFormData({ name: '', phone: '', email: '' });
-      setFormErrors({});
+    if (validateQuickForm()) {
+      console.log('Quick form submitted:', quickFormData);
+      setQuickFormData({ name: '', phone: '' });
+      setQuickFormErrors({});
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleQuickFormInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
-    if (formErrors[name as keyof FormData]) {
-      setFormErrors(prev => ({ ...prev, [name]: undefined }));
+    setQuickFormData(prev => ({ ...prev, [name]: value }));
+    if (quickFormErrors[name]) {
+      setQuickFormErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
-
-  // Helper to determine sizes based on screen width
 
   return (
     <Box dir="rtl">
@@ -278,11 +275,12 @@ export function Home() {
                   <Button
                     size={{ initial: '3', sm: '4' }}
                     className="hero-cta"
-                    style={{
-                      alignItems: 'center',
-                    }}
+                    style={{ alignItems: 'center' }}
                     mb={isMobile ? '8' : '0'}
-                    onClick={() => setShowModal(true)}
+                    onClick={() => {
+                      const contactSection = document.getElementById('contact-section');
+                      contactSection?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
                     צור קשר עכשיו
                     <Icon icon="ion:diamond-sharp" width={20} />
@@ -501,7 +499,10 @@ export function Home() {
                   variant="solid"
                   size="3"
                   className="cta-button primary"
-                  onClick={() => setShowModal(true)}
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact-section');
+                    contactSection?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
                   צור קשר לייעוץ
                   <ArrowLeft size={16} />
@@ -667,6 +668,216 @@ export function Home() {
         </Container>
       </Section>
 
+      <Section
+        id="contact-section"
+        size="3"
+        style={{
+          // background: 'linear-gradient(135deg, var(--accent-4), var(--accent-1))',
+          position: 'relative',
+          overflow: 'hidden',
+          padding: isMobile ? '4rem 1.5rem' : '5rem 2rem',
+        }}
+      >
+        <Box className="bg-pattern2 cta-background-pattern" />
+
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Grid columns={{ initial: '1', sm: '2' }} gap="6">
+              {/* Contact Information */}
+              <Box>
+                <Heading size="6" mb="4">
+                  צור קשר
+                </Heading>
+                <Text size="3" mb="6" style={{ color: 'var(--gray-11)', maxWidth: '500px' }}>
+                  נשמח לענות על כל שאלה ולסייע בתכנון הפרויקט הבא שלכם. השאירו פרטים או פנו אלינו
+                  ישירות.
+                </Text>
+
+                <Flex direction="column" gap="4" mb="6">
+                  {[
+                    {
+                      icon: <Phone size={20} />,
+                      title: 'טלפון',
+                      content: '052-703-6959',
+                      action: 'tel:+972527036959',
+                      color: 'var(--accent-9)',
+                    },
+                    {
+                      icon: <Mail size={20} />,
+                      title: 'אימייל',
+                      content: 'info@diamond-renovation.co.il',
+                      action: 'mailto:info@diamond-renovation.co.il',
+                      color: 'var(--accent-9)',
+                    },
+                    {
+                      icon: <MapPin size={20} />,
+                      title: 'כתובת',
+                      content: 'רחוב המלאכה 5, כרמיאל',
+                      action: 'https://maps.google.com/?q=כרמיאל+המלאכה+5',
+                      color: 'var(--accent-9)',
+                    },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <Flex gap="3" align="center">
+                        <Box
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            background: 'var(--accent-3)',
+                            color: item.color,
+                            width: '2.5rem',
+                            height: '2.5rem',
+                            borderRadius: '50%',
+                            flexShrink: 0,
+                          }}
+                        >
+                          {item.icon}
+                        </Box>
+                        <Box>
+                          <Text weight="bold" size="2" mb="1" ml="1">
+                            {item.title}:
+                          </Text>
+                          <a
+                            href={item.action}
+                            target={item.action.startsWith('http') ? '_blank' : undefined}
+                            rel="noreferrer"
+                            style={{
+                              color: 'var(--gray-12)',
+                              textDecoration: 'none',
+                            }}
+                          >
+                            <Text size="2" mx="1">
+                              {item.content}
+                            </Text>
+                          </a>
+                        </Box>
+                      </Flex>
+                    </motion.div>
+                  ))}
+                </Flex>
+              </Box>
+
+              {/* Quick Contact Form */}
+              <Box>
+                <Card
+                  style={{
+                    backdropFilter: 'blur(10px)',
+                    // backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    // border: '1px solid var(--accent-5)',
+                    padding: 'var(--space-5)',
+                  }}
+                >
+                  <Flex direction="column" gap="4">
+                    <Box>
+                      <Heading size="4" mb="2">
+                        השאירו פרטים ונחזור אליכם
+                      </Heading>
+                      <Text size="2" style={{ color: 'var(--gray-11)' }}>
+                        מלאו את הטופס המקוצר או צרו קשר בוואטסאפ
+                      </Text>
+                    </Box>
+
+                    <form onSubmit={handleQuickFormSubmit}>
+                      <Flex direction="column" gap="3">
+                        <Box>
+                          <Text as="label" size="2" mb="1" style={{ display: 'block' }}>
+                            שם מלא*
+                          </Text>
+                          <TextField.Root
+                            size="3"
+                            name="name"
+                            value={quickFormData.name}
+                            onChange={handleQuickFormInputChange}
+                            placeholder="הכנס את שמך המלא"
+                            // className="form-input"
+                          >
+                            {/* <input
+                           
+                          /> */}
+                          </TextField.Root>
+                          {quickFormErrors.name && (
+                            <Text size="1" color="red" style={{ marginTop: '0.25rem' }}>
+                              {quickFormErrors.name}
+                            </Text>
+                          )}
+                        </Box>
+
+                        <Box>
+                          <Text as="label" size="2" mb="1" style={{ display: 'block' }}>
+                            טלפון*
+                          </Text>
+                          <TextField.Root
+                            size="3"
+                            type="tel"
+                            name="phone"
+                            value={quickFormData.phone}
+                            onChange={handleQuickFormInputChange}
+                            placeholder="הכנס מספר טלפון"
+                            // className="form-input"
+                          />
+                          {quickFormErrors.phone && (
+                            <Text size="1" color="red" style={{ marginTop: '0.25rem' }}>
+                              {quickFormErrors.phone}
+                            </Text>
+                          )}
+                        </Box>
+
+                        <Flex gap="3" mt="2">
+                          <Button
+                            type="submit"
+                            size="3"
+                            style={{
+                              flex: 1,
+                              background:
+                                'linear-gradient(135deg, var(--accent-9), var(--accent-10))',
+                            }}
+                          >
+                            <Send size={16} />
+                            שלח פרטים
+                          </Button>
+
+                          <a
+                            href="https://wa.me/972527036959"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ flex: 1 }}
+                          >
+                            <Button
+                              size="3"
+                              variant="soft"
+                              style={{
+                                width: '100%',
+                                backgroundColor: '#25D366',
+                                color: 'white',
+                              }}
+                            >
+                              <Icon icon="mdi:whatsapp" width={20} />
+                              וואטסאפ
+                            </Button>
+                          </a>
+                        </Flex>
+                      </Flex>
+                    </form>
+                  </Flex>
+                </Card>
+              </Box>
+            </Grid>
+          </motion.div>
+        </Container>
+      </Section>
+
       {/* Final CTA Section - Enhanced with modern design */}
       <Section size="3" className="final-cta-section">
         <motion.div
@@ -747,149 +958,6 @@ export function Home() {
           </Flex>
         </Container>
       </Section>
-
-      {/* Contact Dialog with improved form - Enhanced UI */}
-      <Dialog.Root open={showModal} onOpenChange={setShowModal}>
-        <Dialog.Portal>
-          <Dialog.Overlay className="DialogOverlay enhanced" />
-          <Dialog.Content className="DialogContent contact-dialog">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Dialog header with icon */}
-              <Box className="dialog-header">
-                <Box className="dialog-icon-container">
-                  <Icon icon="ion:diamond-sharp" width={20} color="var(--accent-contrast)" />
-                </Box>
-                <Dialog.Title asChild>
-                  <Heading size={{ initial: '5', md: '6' }} className="dialog-title">
-                    דברו איתנו עכשיו
-                  </Heading>
-                </Dialog.Title>
-                <Text size={{ initial: '2', md: '3' }} className="dialog-subtitle">
-                  אנחנו כאן כדי להפוך את החלום שלכם למציאות
-                </Text>
-              </Box>
-
-              {/* Form area */}
-              <Box py="5" px={{ initial: '4', md: '6' }} className="dialog-body">
-                <form onSubmit={handleSubmit} className="contact-form">
-                  <Flex direction="column" gap="5">
-                    <Box className="form-field">
-                      <Text as="label" size="2" className="form-label">
-                        שם מלא
-                      </Text>
-                      <TextField.Root
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="הקלד את שמך המלא"
-                        className="form-input-container"
-                      >
-                        {/* <input
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          placeholder="הקלד את שמך המלא"
-                          className="form-input"
-                        /> */}
-                      </TextField.Root>
-                      {formErrors.name && (
-                        <Text size="1" className="form-error">
-                          {formErrors.name}
-                        </Text>
-                      )}
-                    </Box>
-
-                    <Box className="form-field">
-                      <Text as="label" size="2" className="form-label">
-                        מספר טלפון
-                      </Text>
-                      <TextField.Root
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="הקלד את מספר הטלפון שלך"
-                        className="form-input-container"
-                      >
-                        {/* <input
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          placeholder="הקלד את מספר הטלפון שלך"
-                          className="form-input"
-                        /> */}
-                      </TextField.Root>
-                      {formErrors.phone && (
-                        <Text size="1" className="form-error">
-                          {formErrors.phone}
-                        </Text>
-                      )}
-                    </Box>
-
-                    <Box className="form-field">
-                      <Text as="label" size="2" className="form-label">
-                        דוא"ל
-                      </Text>
-                      <TextField.Root
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="you@example.com"
-                        className="form-input-container"
-                      >
-                        {/* <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder="you@example.com"
-                          className="form-input"
-                        /> */}
-                      </TextField.Root>
-                      {formErrors.email && (
-                        <Text size="1" className="form-error">
-                          {formErrors.email}
-                        </Text>
-                      )}
-                    </Box>
-
-                    <Button type="submit" size="3" variant="solid" className="form-submit-button">
-                      שלח פרטים ונחזור אליך בהקדם
-                    </Button>
-                  </Flex>
-                </form>
-              </Box>
-
-              {/* Dialog footer with additional contact options */}
-              <Box className="dialog-footer">
-                <Text size="2" className="dialog-footer-text">
-                  או צרו קשר דרך:
-                </Text>
-                <Flex justify="center" gap="4" mt="2">
-                  <a href="https://wa.me/972527036959" target="_blank" rel="noopener noreferrer">
-                    <IconButton variant="ghost" className="contact-icon-button">
-                      <Icon icon="ion:logo-whatsapp" width={20} color="green" />
-                      וואטסאפ
-                    </IconButton>
-                  </a>
-                </Flex>
-              </Box>
-            </motion.div>
-
-            <Dialog.Close asChild>
-              <Button variant="ghost" className="dialog-close">
-                <X size={16} />
-              </Button>
-            </Dialog.Close>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
     </Box>
   );
 }
