@@ -45,7 +45,7 @@ export const pagesConfig: PageConfig[] = [
     path: '/gallery',
     translations: {
       en: 'Gallery',
-      he: 'גלריה',
+      he: 'גלריית פרוייקטים',
     },
     icon: 'Image',
     isProtected: false,

@@ -10,6 +10,7 @@ import {
   Grid,
   Card,
   TextField,
+  TextArea,
 } from '@radix-ui/themes';
 import { Icon } from '@iconify/react';
 import {
@@ -20,7 +21,6 @@ import {
   Construction,
   Heart,
   Hammer,
-  Quote,
   ArrowLeft,
   ChevronLeft,
   Clock,
@@ -31,16 +31,28 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import useScreen from '../hooks/useScreen';
+import { TestimonialCarousel } from '../components/ui/TestimonialCarousel';
 
 interface QuickFormData {
   name: string;
   phone: string;
+  service?: string;
+  info?: string;
 }
 
 interface QuickFormErrors {
   [key: string]: string | undefined;
   name?: string;
   phone?: string;
+  service?: string;
+  info?: string;
+}
+
+interface QuickFormData {
+  name: string;
+  phone: string;
+  service?: string;
+  info?: string;
 }
 
 export function Home() {
@@ -49,7 +61,9 @@ export function Home() {
     phone: '',
   });
   const [quickFormErrors, setQuickFormErrors] = useState<QuickFormErrors>({});
-  const [showModal, setShowModal] = useState(false);
+  const [moreInfo, setMoreInfo] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [, setShowModal] = useState(false);
   const { isMobile } = useScreen();
 
   const validateQuickForm = () => {
@@ -57,21 +71,30 @@ export function Home() {
     if (!quickFormData.name) errors.name = 'נדרש למלא שם';
     if (!quickFormData.phone) errors.phone = 'נדרש למלא מספר טלפון';
     else if (!/^[0-9-+\s()]*$/.test(quickFormData.phone)) errors.phone = 'מספר טלפון לא תקין';
-
+    else if (moreInfo) {
+      if (!quickFormData.service) errors.service = 'נדרש למלא שירות';
+      if (!quickFormData.info) errors.info = 'נדרש למלא מידע נוסף';
+    }
     setQuickFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
-  const handleQuickFormSubmit = (e: React.FormEvent) => {
+  const handleQuickFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateQuickForm()) {
       console.log('Quick form submitted:', quickFormData);
-      setQuickFormData({ name: '', phone: '' });
+      setLoading(true);
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setLoading(false);
+      // setQuickFormData({ name: '', phone: '', ...(moreInfo ? { service: '', info: '' } : {}) });
       setQuickFormErrors({});
     }
   };
 
-  const handleQuickFormInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleQuickFormInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setQuickFormData(prev => ({ ...prev, [name]: value }));
     if (quickFormErrors[name]) {
@@ -79,8 +102,16 @@ export function Home() {
     }
   };
 
+  // const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const { name, value } = e.target;
+  //   setQuickFormData(prev => ({ ...prev, [name]: value }));
+  //   if (quickFormErrors[name]) {
+  //     setQuickFormErrors(prev => ({ ...prev, [name]: undefined }));
+  //   }
+  // };
+
   return (
-    <Box dir="rtl">
+    <Box style={{ position: 'relative' }} dir="rtl">
       {/* Hero Section - Enhanced with improved styling */}
       <Section
         size="3"
@@ -309,7 +340,7 @@ export function Home() {
             // backdropFilter: 'blur(5px)',
             borderRadius: '50%',
             padding: '0.5rem',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)',
+            // boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)',
             fontSize: '1.6rem',
             color: 'white',
             zIndex: 200,
@@ -345,7 +376,7 @@ export function Home() {
         size="3"
         className="section"
         style={{
-          background: 'linear-gradient(to bottom right, var(--gray-1), var(--gray-2))',
+          // background: 'linear-gradient(to bottom right, var(--gray-1), var(--gray-2))',
           position: 'relative',
           overflow: 'hidden',
           padding: isMobile ? '4rem 1.5rem' : '5rem 2rem',
@@ -448,7 +479,7 @@ export function Home() {
                 >
                   <Box
                     style={{
-                      background: 'var(--gray-1)',
+                      background: 'var(--gray-2)',
                     }}
                     className="modern-service-card"
                   >
@@ -481,12 +512,12 @@ export function Home() {
                       {service.description}
                     </Text>
 
-                    <Box className="service-card-action">
+                    {/* <Box className="service-card-action">
                       <Button variant="ghost" className="read-more-button">
                         קרא עוד
                         <ArrowLeft size={16} />
                       </Button>
-                    </Box>
+                    </Box> */}
                   </Box>
                 </motion.div>
               ))}
@@ -621,50 +652,41 @@ export function Home() {
         </Container>
       </Section>
 
-      {/* Testimonials Section - Enhanced with modern design */}
-      <Section size="3" className="testimonials-section">
+      {/* Testimonials Section */}
+      <Section mb="4" size="3" className="testimonials-section">
+        <Box className="testimonial-bg-pattern" />
         <Container>
-          <Heading
-            mx="auto"
-            size={{ initial: '6', sm: '7' }}
-            align="center"
-            className="section-title with-accent"
-            mb="4"
-          >
-            מה הלקוחות שלנו אומרים?
-          </Heading>
-
-          <Card className="modern-testimonial-card">
-            {/* Enhanced quote icon */}
-            <Box className="testimonial-quote-icon">
-              <Quote size={28} />
-            </Box>
-
-            {/* Add decorative elements */}
-            <Box className="testimonial-decoration-1" />
-            <Box className="testimonial-decoration-2" />
-
-            <Text size={{ initial: '4', sm: '5' }} align="center" className="testimonial-text">
-              "יעקב והצוות פשוט תענוג לעבוד איתם. מקצועיים, מדויקים, זמינים ורגועים. השיפוץ עבר
-              בצורה חלקה ומסודרת עם תקשורת מעולה – לא האמנתי שזה אפשרי! ממליצה בחום."
-            </Text>
-
-            <Flex className="testimonial-author" align="center" justify="center" gap="3" mt="4">
-              <Box className="testimonial-avatar">
-                <Text>א</Text>
-              </Box>
-              <Text size="3" weight="medium">
-                איילת, כרמיאל
+          <Flex direction="column" align="center" gap="6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <Heading
+                size="7"
+                mx="auto"
+                align="center"
+                className="section-title with-accent"
+                mb="4"
+              >
+                מה הלקוחות שלנו אומרים?
+              </Heading>
+              <Text
+                size="3"
+                align="center"
+                style={{
+                  maxWidth: '600px',
+                  marginBottom: '2rem',
+                  color: 'var(--gray-11)',
+                }}
+              >
+                אנחנו גאים בשירות שאנחנו מעניקים ובשביעות הרצון של לקוחותינו
               </Text>
-            </Flex>
+            </motion.div>
 
-            <Box style={{ textAlign: 'center', marginTop: 'var(--space-6)' }}>
-              <Button variant="soft" size="3" className="testimonial-action-button">
-                לצפייה בהמלצות נוספות
-                <ChevronRight size={16} />
-              </Button>
-            </Box>
-          </Card>
+            <TestimonialCarousel />
+          </Flex>
         </Container>
       </Section>
 
@@ -777,9 +799,10 @@ export function Home() {
                     // backgroundColor: 'rgba(255, 255, 255, 0.8)',
                     // border: '1px solid var(--accent-5)',
                     padding: 'var(--space-5)',
+                    position: 'relative',
                   }}
                 >
-                  <Flex direction="column" gap="4">
+                  <Flex style={{ zIndex: 10 }} direction="column" gap="4">
                     <Box>
                       <Heading size="4" mb="2">
                         השאירו פרטים ונחזור אליכם
@@ -792,16 +815,28 @@ export function Home() {
                     <form onSubmit={handleQuickFormSubmit}>
                       <Flex direction="column" gap="3">
                         <Box>
-                          <Text as="label" size="2" mb="1" style={{ display: 'block' }}>
+                          <Text
+                            align="right"
+                            as="label"
+                            size="2"
+                            mb="1"
+                            style={{ display: 'block' }}
+                          >
                             שם מלא*
                           </Text>
                           <TextField.Root
                             size="3"
                             name="name"
+                            // variant="soft"
                             value={quickFormData.name}
                             onChange={handleQuickFormInputChange}
                             placeholder="הכנס את שמך המלא"
-                            // className="form-input"
+                            // className="input"
+                            style={{
+                              backgroundColor: 'var(--gray-1)',
+                              minHeight: '2rem',
+                              // padding: '0.5rem',
+                            }}
                           >
                             {/* <input
                            
@@ -815,17 +850,28 @@ export function Home() {
                         </Box>
 
                         <Box>
-                          <Text as="label" size="2" mb="1" style={{ display: 'block' }}>
+                          <Text
+                            align="right"
+                            as="label"
+                            size="2"
+                            mb="1"
+                            style={{ display: 'block' }}
+                          >
                             טלפון*
                           </Text>
                           <TextField.Root
                             size="3"
-                            type="tel"
+                            // variant="soft"
+                            // type="tel"
                             name="phone"
                             value={quickFormData.phone}
                             onChange={handleQuickFormInputChange}
                             placeholder="הכנס מספר טלפון"
-                            // className="form-input"
+                            style={{
+                              backgroundColor: 'var(--gray-1)',
+                              minHeight: '2rem',
+                              // padding: '0.5rem',
+                            }}
                           />
                           {quickFormErrors.phone && (
                             <Text size="1" color="red" style={{ marginTop: '0.25rem' }}>
@@ -833,15 +879,126 @@ export function Home() {
                             </Text>
                           )}
                         </Box>
+                        <div
+                          onClick={() => setMoreInfo(!moreInfo)}
+                          style={{ cursor: 'pointer', color: 'var(--gray-12)' }}
+                        >
+                          <Text
+                            align="center"
+                            style={{
+                              display: 'flex',
+                              gap: '0.5rem',
+                              alignItems: 'center',
+                            }}
+                            size="2"
+                            weight="bold"
+                            mb="1"
+                          >
+                            {moreInfo ? 'רוצה לפרט פחות?' : 'רוצה לפרט יותר?'}
 
-                        <Flex gap="3" mt="2">
+                            <Icon
+                              style={{
+                                transform: !moreInfo ? 'rotate(180deg)' : 'rotate(0deg)',
+                                transition: 'transform 0.3s ease-in-out',
+                              }}
+                              width={24}
+                              icon="mdi:chevron-up"
+                            />
+                          </Text>
+                        </div>
+
+                        {moreInfo && (
+                          <>
+                            <Box>
+                              <Text
+                                as="label"
+                                size="2"
+                                weight="bold"
+                                htmlFor="service"
+                                mb="1"
+                                style={{ display: 'block' }}
+                              >
+                                סוג השירות
+                              </Text>
+                              <select
+                                id="service"
+                                name="service"
+                                value={quickFormData.service}
+                                onChange={handleQuickFormInputChange}
+                                // placeholder="בחר שירות מבוקש"
+                                style={{
+                                  width: '100%',
+                                  padding: '0.75rem',
+                                  borderRadius: 'var(--radius-3)',
+                                  border: '1px solid var(--gray-6)',
+                                  backgroundColor: 'var(--gray-1)',
+                                  color: 'var(--gray-11)',
+                                  fontSize: '1rem',
+                                }}
+                              >
+                                <option value="">בחר שירות מבוקש</option>
+                                <option value="bathrooms">שיפוץ אמבטיות</option>
+                                <option value="kitchens">שיפוץ מטבחים</option>
+                                <option value="construction">בנייה פרטית</option>
+                                <option value="renovations">שיפוצים כלליים</option>
+                                <option value="maintenance">תחזוקה שוטפת</option>
+                                <option value="other">אחר</option>
+                              </select>
+                            </Box>
+                            <div>
+                              {quickFormErrors.service && (
+                                <Text size="1" color="red" style={{ marginTop: '0.25rem' }}>
+                                  {quickFormErrors.service}
+                                </Text>
+                              )}
+                            </div>
+
+                            <Box>
+                              <Text
+                                as="label"
+                                size="2"
+                                weight="bold"
+                                htmlFor="message"
+                                mb="1"
+                                style={{ display: 'block' }}
+                              >
+                                תוכן הפנייה*
+                              </Text>
+                              <TextArea
+                                id="info"
+                                name="info"
+                                // variant="soft"
+                                value={quickFormData?.info}
+                                onChange={handleQuickFormInputChange}
+                                placeholder="תאר בקצרה את השירות שאתה מעוניין בו"
+                                style={{
+                                  width: '100%',
+                                  minHeight: '150px',
+                                  backgroundColor: 'var(--gray-1)',
+                                  border: quickFormErrors.info
+                                    ? '1px solid var(--red-9)'
+                                    : undefined,
+                                }}
+                              />
+                              {quickFormErrors.info && (
+                                <Text size="1" color="red" style={{ marginTop: '0.25rem' }}>
+                                  {quickFormErrors.info}
+                                </Text>
+                              )}
+                            </Box>
+                          </>
+                        )}
+
+                        <Flex gap="3" mt="8" mb="4">
                           <Button
                             type="submit"
-                            size="3"
+                            loading={loading}
+                            size="4"
                             style={{
                               flex: 1,
-                              background:
-                                'linear-gradient(135deg, var(--accent-9), var(--accent-10))',
+                              background: loading
+                                ? 'var(--gray-6)'
+                                : 'linear-gradient(135deg, var(--accent-9), var(--accent-10))',
                             }}
                           >
                             <Send size={16} />
@@ -855,8 +1012,14 @@ export function Home() {
                             style={{ flex: 1 }}
                           >
                             <Button
-                              size="3"
-                              variant="soft"
+                              size="4"
+                              // variant="soft"
+                              onClick={e => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                // Open WhatsApp link in a new tab
+                                window.open('https://wa.me/972527036959', '_blank');
+                              }}
                               style={{
                                 width: '100%',
                                 backgroundColor: '#25D366',
@@ -876,12 +1039,11 @@ export function Home() {
             </Grid>
           </motion.div>
         </Container>
-      </Section>
+        {/* </Section> */}
 
-      {/* Final CTA Section - Enhanced with modern design */}
-      <Section size="3" className="final-cta-section">
+        {/* Final CTA Section - Enhanced with modern design */}
         <motion.div
-          className="cta-background-pattern"
+          className="cta-background-pattern*"
           animate={{
             backgroundPosition: ['0% 0%', '100% 100%'],
           }}
@@ -891,11 +1053,23 @@ export function Home() {
             duration: 30,
             ease: 'linear',
           }}
+          style={{
+            marginTop: 'var(--space-8)',
+            marginBottom: 'var(--space-8)',
+            borderTop: '1px solid var(--gray-6)',
+          }}
         />
 
         <Container>
-          <Flex direction="column" align="center" gap="6" className="cta-container">
-            <Heading size={{ initial: '6', sm: '7' }} align="center" className="cta-heading">
+          <Flex direction="column" align="center" gap="6" className="">
+            <Heading
+              size={{ initial: '6', sm: '7' }}
+              align="center"
+              className="section-title with-accent"
+              style={{
+                marginBottom: '1rem',
+              }}
+            >
               רוצים להתחיל?
             </Heading>
 
@@ -940,11 +1114,23 @@ export function Home() {
             </Flex>
 
             <Box className="cta-tagline">
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '20px',
+                }}
+                // className="animatedShine"
+              >
+                <Icon icon="ion:diamond-sharp" width={50} />
+              </div>
               <Text
                 size="5"
                 weight="bold"
+                className="animatedShine"
                 style={{
-                  color: 'var(--accent-11)',
+                  // color: 'var(--accent-11)',
                   marginBottom: 'var(--space-2)',
                   display: 'block',
                 }}

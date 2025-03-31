@@ -1,0 +1,50 @@
+/* About Page Specific Styles */
+.team-card {
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.milestone {
+  transition: transform 0.3s ease;
+}
+
+.milestone:hover {
+  transform: translateY(-3px);
+}
+
+.testimonial-quote {
+  position: relative;
+  padding: 2rem;
+  border-radius: var(--radius-4);
+  background: var(--accent-2);
+}
+
+.testimonial-quote::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  right: 1rem;
+  font-size: 4rem;
+  color: var(--accent-6);
+  font-family: serif;
+  opacity: 0.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-spacing {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .value-icon {
+    font-size: 1.5rem;
+  }
+}

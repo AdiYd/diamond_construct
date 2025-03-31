@@ -28,7 +28,7 @@ export function Header() {
       // Show header when scrolling back up or at the top
       if (currentScrollY < lastScrollY || currentScrollY < scrollThreshold) {
         setIsVisible(true);
-        setIsOnTop(currentScrollY <= 20);
+        setIsOnTop(currentScrollY <= 50);
       }
       // Hide header when scrolling down past threshold
       else if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
@@ -114,9 +114,9 @@ export function Header() {
                           ? isHomePage
                             ? 'var(--secondary)'
                             : 'var(--secondary)'
-                          : isHomePage
+                          : isOnTop
                           ? 'white'
-                          : 'var(--accent-12)',
+                          : 'var(--text-color)',
                       fontWeight: location.pathname === page.path ? 700 : 400,
                     }}
                   >
@@ -185,7 +185,7 @@ export function Header() {
                           ? isHomePage
                             ? 'var(--secondary)'
                             : 'var(--secondary)'
-                          : '',
+                          : 'var(--gray-11)',
                       fontWeight: location.pathname === page.path ? 700 : 600,
                       padding: 'var(--space-2)',
                     }}

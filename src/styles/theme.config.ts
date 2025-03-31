@@ -1,8 +1,8 @@
 import { Theme } from '@radix-ui/themes';
-import '@radix-ui/themes/styles.css';
+// import '@radix-ui/themes/styles.css';
 
 export const themeConfig = {
-  // accentColor: 'indigo',
+  // accentColor: '#ddd6d6',
   grayColor: 'sage',
   scaling: '100%',
   radius: 'medium',

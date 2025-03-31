@@ -439,7 +439,7 @@ export function Gallery() {
       <Section
         size="3"
         style={{
-          background: 'linear-gradient(to right, var(--accent-4), var(--accent-2))',
+          background: 'linear-gradient(to right, #30345e, #0b0e29)',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -456,16 +456,16 @@ export function Gallery() {
               <Heading
                 size={isMobile ? '8' : '9'}
                 align="center"
-                style={{ marginBottom: '1.5rem' }}
+                style={{ marginBottom: '1.5rem', color: 'white' }}
               >
                 גלריית פרויקטים
               </Heading>
               <Text
                 size="5"
                 align="center"
-                style={{ marginBottom: '2rem', color: 'var(--gray-11)', lineHeight: '1.6' }}
+                style={{ marginBottom: '2rem', color: 'var(--gray-9)', lineHeight: '1.6' }}
               >
-                מגוון פרויקטים שביצענו - לפני ואחרי השיפוץ
+                פה תוכלו לראות מגוון פרויקטים שביצענו - לפני ואחרי השיפוץ
               </Text>
             </motion.div>
           </Flex>

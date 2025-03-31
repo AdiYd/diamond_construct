@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Container, Section, Heading, Text, Flex, Box, Card, Grid } from '@radix-ui/themes';
 import {
@@ -113,7 +112,7 @@ export function Services() {
         size="3"
         className="section services-hero"
         style={{
-          background: 'linear-gradient(to right, var(--accent-3), var(--accent-2))',
+          background: 'linear-gradient(to right, #30345e, #0b0e29)',
           position: 'relative',
           overflow: 'hidden',
           padding: isMobile ? 'var(--section-spacing-sm) var(--page-padding-mobile)' : undefined,
@@ -133,7 +132,7 @@ export function Services() {
               <Heading
                 size={isMobile ? '8' : '9'}
                 align="center"
-                style={{ marginBottom: '1.5rem' }}
+                style={{ marginBottom: '1.5rem', color: 'white' }}
               >
                 השירותים שלנו
               </Heading>
@@ -143,7 +142,7 @@ export function Services() {
                 style={{
                   maxWidth: '800px',
                   marginBottom: '2rem',
-                  color: 'var(--gray-11)',
+                  color: 'var(--gray-9)',
                   padding: isMobile ? '0 var(--space-3)' : 0,
                 }}
               >
@@ -177,10 +176,18 @@ export function Services() {
               <Card
                 style={{
                   height: '100%',
-                  background: 'var(--color-background)',
-                  boxShadow: 'var(--shadow-3)',
+                  // background: 'var(--color-background)',
+                  border: 'none',
+                  boxShadow: 'var(--shadow-4)',
                   borderRadius: 'var(--radius-4)',
                   padding: isMobile ? 'var(--space-4)' : 'var(--space-5)',
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  const element = document.getElementById(service.id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }}
                 className="service-brief-card"
               >
@@ -259,7 +266,7 @@ export function Services() {
               className="section-title with-accent"
               mb="4"
             >
-             מה אנחנו מציעים?
+              מה אנחנו מציעים?
             </Heading>
             <Grid
               columns={{ initial: '1', sm: '2', md: '3' }}
@@ -321,7 +328,7 @@ export function Services() {
                     style={{
                       padding: isMobile ? 'var(--space-3)' : 'var(--space-4)',
                       borderRadius: '6px',
-                      background: 'linear-gradient(to bottom left,var(--gray-4), var(--gray-2))',
+                      background: 'linear-gradient(to bottom left,var(--gray-2), var(--gray-3))',
                       height: '100%',
                       transform: 'skew(4deg)',
                       textAlign: isMobile ? 'start' : 'start',

@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Container, Section, Heading, Text, Flex, Box, Grid, Card } from '@radix-ui/themes';
 import { Star, Heart, Users, Shield, Zap, Handshake } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
+import '../styles/about.css';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 // Team members data
 const teamMembers = [
@@ -125,7 +127,7 @@ export function About() {
       <Section
         size="3"
         style={{
-          background: 'linear-gradient(to right, var(--accent-4), var(--accent-2))',
+          background: 'linear-gradient(to right, #30345e, #0b0e29)',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -139,152 +141,144 @@ export function About() {
               transition={{ duration: 0.8 }}
               style={{ textAlign: 'center', maxWidth: '800px' }}
             >
-              {/* <Box className="bg-pattern2" /> */}
               <Heading
                 size={isMobile ? '8' : '9'}
                 align="center"
-                style={{ marginBottom: '1.5rem' }}
+                style={{ marginBottom: '1.5rem', color: 'white' }}
               >
                 אודות Diamond
               </Heading>
               <Text
                 size="5"
                 align="center"
-                style={{ marginBottom: '2rem', color: 'var(--gray-11)', lineHeight: '1.6' }}
+                style={{ marginBottom: '2rem', color: 'var(--gray-9)', lineHeight: '1.6' }}
               >
-                המומחים לשיפוצים ובנייה פרטית באזור הצפון
+                שיפוץ ובנייה זה לא רק קירות – זה אנשים, הקשבה, ותוצאה שמשנה חיים
               </Text>
+              {/* <br />
+              <Text
+                size="4"
+                align="center"
+                style={{ marginBottom: '1rem', color: 'var(--gray-12)', lineHeight: '1.8' }}
+              >
+                דיאמונד – בניה | שיפוצים | תחזוקה הוקמה מתוך חזון פשוט: להפוך את חוויית השיפוץ
+                בישראל – מדבר שצריך "לשרוד" לדבר שמרגישים בו בטוחים, שמחים, ושיודעים שיש על מי
+                לסמוך.
+              </Text> */}
             </motion.div>
           </Flex>
         </Container>
       </Section>
 
-      {/* About Us Content */}
+      {/* Vision Section */}
+      <Section size="3" style={{ background: 'var(--gray-1)' }}>
+        <Container>
+          <Flex direction="column" align="center" gap="6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              style={{ maxWidth: '800px', textAlign: 'center' }}
+            >
+              <Card style={{ padding: '2rem' }}>
+                <Text size="4" style={{ lineHeight: '1.8', marginBottom: '1.5rem' }}>
+                  אנחנו עוסקים בשיפוץ דירות ובתים פרטיים, תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור
+                  כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב בין מקצועיות טכנית בלתי מתפשרת, לבין
+                  יחס אישי שמציב את הלקוח במרכז.
+                </Text>
+                <Text size="4" style={{ lineHeight: '1.8' }}>
+                  אנו מאמינים ששיפוץ איכותי מתחיל בהקשבה אמיתית, ומתבצע מתוך הבנה שהבית שלכם הוא
+                  הרבה יותר ממבנה – הוא המקום הכי חשוב בעולם.
+                </Text>
+              </Card>
+            </motion.div>
+          </Flex>
+        </Container>
+      </Section>
+
+      {/* Our Approach Section */}
       <Section size="3" style={{ background: 'var(--color-background)' }}>
         <Container>
-          <Grid columns={{ initial: '1', md: '2' }} gap="8" align="center">
+          <Flex direction="column" align="center" gap="6">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              // whileInView={{ opacity: 1, x: 0 }}
-              // viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <Box>
-                <Heading
-                  size={{ initial: '6', sm: '7' }}
-                  className="section-title with-accent"
-                  mb="4"
-                >
-                  מי אנחנו
-                </Heading>
-                <Text
-                  size="3"
-                  weight="medium"
-                  style={{ color: 'var(--gray-11)', lineHeight: '1.8' }}
-                >
-                  דיאמונד מתמחה בביצוע פרויקטי בנייה ושיפוצים, תוך הקפדה על סטנדרטים מקצועיים גבוהים
-                  ושירות לקוחות יוצא דופן. אנו שואפים להפוך את חוויית השיפוץ לחיובית ונעימה עבור
-                  לקוחותינו. אנו מבצעים מגוון רחב של פרויקטים, החל משיפוצים קטנים ועד תוספות בנייה
-                  מורכבות, תוך התמקדות בשיפוצים כלליים. אנו מקפידים על שימוש בחומרים איכותיים, עמידה
-                  בלוחות זמנים ועבודה מקצועית.
-                  {!isMobile && (
-                    <>
-                      <br />
-                      <br /> בניגוד למקובל בתחום, אנו שואפים להבטיח שהלקוח ירגיש בנוח ומרוצה לאורך
-                      כל התהליך. אנו מקשיבים לצרכיו ומתחשבים ברצונותיו, תוך שמירה על שקיפות ויחס
-                      אישי. אנו עובדים בשיתוף פעולה מלא עם בעלי מקצוע אחרים, כגון אדריכלים, מעצבים
-                      ומהנדסים, ומקפידים על סביבת עבודה נקייה ומסודרת, תוך תיאום עם השכנים והתחשבות
-                      בסביבה. אנו מבינים את החשיבות של הבית כמקום של חום, ביטחון ואהבה, ועושים כל
-                      מאמץ להעניק חוויה זו ללקוחותינו, תוך הקפדה על בנייה מתוכננת ואיכותית.
-                    </>
-                  )}
-                </Text>
-                <br /> <br />
-                <Text
-                  size="3"
-                  weight="medium"
-                  style={{ color: 'var(--gray-11)', lineHeight: '1.8', marginTop: '1rem' }}
-                >
-                  הצוות שלנו מורכב ממקצוענים מנוסים, רובם בוגרי צבא ביחידות הנדסה ובעלי השכלה
-                  פורמלית בתחומי הבנייה, ההנדסה והעיצוב. אנו מייחסים חשיבות עליונה לאיכות הביצוע,
-                  לעמידה בלוחות זמנים ולשירות לקוחות יוצא דופן.
-                </Text>
-                {!isMobile && (
-                  <Text
-                    size="3"
-                    weight="medium"
-                    style={{ color: 'var(--gray-11)', lineHeight: '1.8', marginTop: '1rem' }}
-                  >
-                    אנו שואפים להעניק ללקוחותינו את השירות הטוב ביותר, תוך הקפדה על מקצועיות ודיוק.
-                  </Text>
-                )}
-                <Box mt="6">
-                  <Flex gap="6" wrap="wrap">
-                    {[
-                      { number: '15+', label: 'שנות ניסיון' },
-                      { number: '500+', label: 'פרויקטים שהושלמו' },
-                      { number: '98%', label: 'לקוחות מרוצים' },
-                    ].map((stat, index) => (
-                      <Box
-                        key={index}
-                        style={{ flex: '1', minWidth: '120px', textAlign: 'center' }}
-                      >
-                        <Text
-                          size="8"
-                          weight="bold"
-                          style={{
-                            color: 'var(--accent-9)',
-                            display: 'block',
-                            marginBottom: '0.5rem',
-                          }}
-                        >
-                          {stat.number}
-                        </Text>
-                        <Text size="2" style={{ color: 'var(--gray-11)' }}>
-                          {stat.label}
-                        </Text>
-                      </Box>
-                    ))}
-                  </Flex>
-                </Box>
-              </Box>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                position: 'relative',
-                top: !isMobile ? '-20px' : '',
-              }}
+              transition={{ duration: 0.5 }}
+              style={{ width: '100%' }}
             >
-              <Box
-                style={{
-                  position: 'relative',
-                  display: 'flex',
-                  borderRadius: 'var(--radius-4)',
-                  overflow: 'hidden',
-                  height: '100%',
-                  minHeight: '400px',
-                  boxShadow: 'var(--shadow-4)',
-                }}
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2574&auto=format&fit=crop"
-                  alt="צוות דיאמונד בעבודה"
-                  style={{
-                    width: '100%',
-                    // height: '100%',S
-                    objectFit: 'cover',
-                  }}
-                />
-              </Box>
+              <Heading size="6" align="center" className="section-title with-accent" mb="4">
+                💡 הגישה שלנו: שקיפות, סדר ונשמה
+              </Heading>
+              <Text size="3" align="center" style={{ maxWidth: '600px', marginBottom: '2rem' }}>
+                אנחנו יודעים עד כמה תהליך שיפוץ יכול להיות מלחיץ – ולכן תכננו את כל מערך העבודה שלנו
+                כך שתהיה ללקוח תחושת ביטחון ושליטה
+              </Text>
             </motion.div>
-          </Grid>
+
+            <Grid columns={{ initial: '1', sm: '2' }} gap="4" width="100%">
+              {[
+                {
+                  title: 'תקשורת שוטפת',
+                  description: 'עדכונים שוטפים בקבוצת וואטסאפ ייעודית לכל פרויקט',
+                  icon: (
+                    <Icon color="var(--green-9)" icon="ri:whatsapp-fill" width="28" height="28" />
+                  ),
+                },
+                {
+                  title: 'תכנון מקדים',
+                  description: 'תכנון מפורט שמונע הפתעות ומבטיח ביצוע חלק',
+
+                  icon: (
+                    <Icon
+                      color="var(--blue-9)"
+                      icon="ri:calendar-check-fill"
+                      width="28"
+                      height="28"
+                    />
+                  ),
+                },
+                {
+                  title: 'חוזה ברור',
+                  description: 'חוזה מפורט ולוחות זמנים מוגדרים מראש',
+                  icon: (
+                    <Icon color="var(--red-9)" icon="mdi:contract-outline" width="28" height="28" />
+                  ),
+                },
+                {
+                  title: 'צוות מקצועי',
+                  description: 'צוות נעים, מנומס, ומסודר שעובד בסטנדרטים גבוהים',
+                  icon: <Icon color="var(--purple-9)" icon="ri:team-fill" width="28" height="28" />,
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card
+                    variant="classic"
+                    // size="3"
+                    style={{
+                      height: '100%',
+                      // background: 'linear-gradient(to right, #30345e, #0b0e29)',
+                    }}
+                  >
+                    <Heading style={{ display: 'flex', gap: '12px' }} size="4" mb="2">
+                      {item.icon}
+                      {item.title}
+                    </Heading>
+                    <Text size="2" style={{ color: 'var(--gray-11)' }}>
+                      {item.description}
+                    </Text>
+                  </Card>
+                </motion.div>
+              ))}
+            </Grid>
+          </Flex>
         </Container>
       </Section>
 
@@ -418,8 +412,16 @@ export function About() {
                     delay: index * 0.1,
                   }}
                 >
-                  <Card style={{ height: '100%' }} className="team-card">
-                    <Flex direction="column" gap="3">
+                  <Card
+                    style={{
+                      height: '100%',
+                      // display: 'flex',
+                      // flexDirection: 'column',
+                      // justifyContent: 'space-between',
+                    }}
+                    className="team-card"
+                  >
+                    <Flex pb="2" height="100%" direction="column" gap="3">
                       <Box
                         style={{
                           width: '100%',
@@ -454,7 +456,7 @@ export function About() {
                           <Text size="3" weight="bold">
                             {member.name}
                           </Text>
-                          <Text size="1" style={{ opacity: 0.9 }}>
+                          <Text mr="2" size="1" style={{ opacity: 0.9 }}>
                             {member.position}
                           </Text>
                         </Box>
@@ -500,6 +502,7 @@ export function About() {
             <Box style={{ width: '100%', position: 'relative' }}>
               {/* Timeline line */}
               <Box
+                display={{ initial: 'none', md: 'block' }}
                 style={{
                   position: 'absolute',
                   top: 0,
@@ -509,7 +512,7 @@ export function About() {
                   backgroundColor: 'var(--accent-6)',
                   transform: 'translateX(-50%)',
                   zIndex: 0,
-                  display: { initial: 'none', md: 'block' },
+                  // display: { initial: 'none', md: 'block' },
                 }}
               />
 
@@ -525,14 +528,18 @@ export function About() {
                   }}
                 >
                   <Box
+                    pl={index % 2 === 0 ? { md: '3rem' } : { md: '0' }}
+                    pr={index % 2 === 1 ? { md: '3rem' } : { md: '0' }}
+                    ml={index % 2 === 0 ? { md: '50%' } : { md: '0' }}
+                    mr={index % 2 === 1 ? { md: '50%' } : { md: '0' }}
                     style={{
                       position: 'relative',
                       marginBottom: '2rem',
-                      paddingLeft: index % 2 === 0 ? { md: '3rem' } : { md: '0' },
-                      paddingRight: index % 2 === 1 ? { md: '3rem' } : { md: '0' },
-                      marginLeft: index % 2 === 0 ? { md: '50%' } : { md: '0' },
-                      marginRight: index % 2 === 1 ? { md: '50%' } : { md: '0' },
-                      textAlign: index % 2 === 0 ? { md: 'right' } : { md: 'left' },
+                      // paddingLeft: index % 2 === 0 ? { md: '3rem' } : { md: '0' },
+                      // paddingRight: index % 2 === 1 ? { md: '3rem' } : { md: '0' },
+                      // marginLeft: index % 2 === 0 ? { md: '50%' } : { md: '0' },
+                      // marginRight: index % 2 === 1 ? { md: '50%' } : { md: '0' },
+                      textAlign: index % 2 === 0 ? 'left' : 'right',
                     }}
                     className="milestone"
                   >
@@ -562,6 +569,7 @@ export function About() {
                           <Text weight="bold" size="3" mb="1">
                             {milestone.title}
                           </Text>
+                          <br />
                           <Text size="2" style={{ color: 'var(--gray-11)' }}>
                             {milestone.description}
                           </Text>
@@ -570,11 +578,12 @@ export function About() {
 
                       {/* Circle on timeline (visible only on medium screens and up) */}
                       <Box
+                        left={index % 2 === 0 ? { md: '-1.5rem' } : { md: 'auto' }}
+                        right={index % 2 === 1 ? { md: '-1.5rem' } : { md: 'auto' }}
+                        display={{ initial: 'none', md: 'block' }}
                         style={{
                           position: 'absolute',
                           top: '50%',
-                          left: index % 2 === 0 ? { md: '-1.5rem' } : { md: 'auto' },
-                          right: index % 2 === 1 ? { md: '-1.5rem' } : { md: 'auto' },
                           width: '1rem',
                           height: '1rem',
                           borderRadius: '50%',
@@ -582,7 +591,6 @@ export function About() {
                           border: '3px solid var(--accent-3)',
                           transform: 'translate(-50%, -50%)',
                           zIndex: 3,
-                          display: { initial: 'none', md: 'block' },
                         }}
                       />
                     </Card>
