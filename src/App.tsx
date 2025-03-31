@@ -81,8 +81,8 @@ function App() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width: '3rem',
-                    height: '3rem',
+                    width: '2rem',
+                    height: '2rem',
                     borderRadius: '50%',
                     backgroundColor: '#25D366',
                     color: 'white',
@@ -100,8 +100,8 @@ function App() {
                   }}
                 >
                   <svg
-                    width="28"
-                    height="28"
+                    width="20"
+                    height="20"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Box, Container, Heading, Text, Button } from '@radix-ui/themes';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import useScreen from '../../hooks/useScreen';
 import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
@@ -106,6 +106,30 @@ const projectImages = [
     category: 'kitchens',
     size: 'medium',
   },
+  {
+    id: 13,
+    url: '/image/IMG-20250325-WA0009.jpg',
+    title: 'חדר אמבטיה מודרני',
+    description: 'שיפוץ חדר אמבטיה עם עיצוב מודרני',
+    category: 'bathrooms',
+    size: 'small',
+  },
+  {
+    id: 14,
+    url: '/image/IMG-20250325-WA0016.jpg',
+    title: 'תוספת קומה',
+    description: 'הרחבת דירה עם תוספת קומה חדשה',
+    category: 'construction',
+    size: 'large',
+  },
+  {
+    id: 15,
+    url: '/image/IMG-20250325-WA0020.jpg',
+    title: 'עיצוב פנים מודרני',
+    description: 'עיצוב פנים לדירה חדשה בסגנון מודרני',
+    category: 'design',
+    size: 'medium',
+  },
 ];
 
 export function ProjectShowcase() {
@@ -131,7 +155,7 @@ export function ProjectShowcase() {
     // },
   });
 
-  const shuffledProjects = [...projectImages].slice(0, 10);
+  const shuffledProjects = useRef([...projectImages].sort(() => Math.random() - 0.5).slice(0, 10)); // Shuffle projects
 
   //   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   //   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -195,7 +219,7 @@ export function ProjectShowcase() {
           <Box mt="4" className="embla" style={{ position: 'relative' }}>
             <Box className="embla__viewport" ref={emblaRef}>
               <Box className="embla__container">
-                {shuffledProjects.slice(0, 5).map((project, index) => (
+                {shuffledProjects.current.slice(0, 5).map((project, index) => (
                   <Box key={project.id} className="embla__slide">
                     <motion.div
                       //   initial={{ opacity: 0, y: 20 }}
@@ -207,12 +231,18 @@ export function ProjectShowcase() {
                         <Box className="project-image-container" style={{ height: '300px' }}>
                           <img src={project.url} alt={project.title} className="project-image" />
                           <Box className="project-overlay">
-                            <div className="rt-r-position-absolute rt-r-bottom-3">
-                              <Text className="project-title" size="4" weight="bold">
+                            <div className="rt-r-position-absolute rt-r-bottom-3 rt-r-right-4">
+                              <Text
+                                as="div"
+                                align="right"
+                                className="project-title"
+                                size="4"
+                                weight="bold"
+                              >
                                 {project.title}
                               </Text>
-                              <br />
-                              <Text className="project-description" size="2">
+                              {/* <br /> */}
+                              <Text as="div" align="right" className="project-description" size="2">
                                 {project.description}
                               </Text>
                             </div>
@@ -279,7 +309,7 @@ export function ProjectShowcase() {
               className="embla__dots"
               style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}
             >
-              {shuffledProjects.map((_, index) => (
+              {shuffledProjects.current.map((_, index) => (
                 <Box
                   key={index}
                   onClick={() => emblaApi?.scrollTo(index)}
@@ -291,7 +321,7 @@ export function ProjectShowcase() {
         ) : (
           // Desktop Masonry Layout
           <Box mt="4" className="masonry-gallery">
-            {shuffledProjects.map((project, index) => (
+            {shuffledProjects.current.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}

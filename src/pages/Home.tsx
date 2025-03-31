@@ -718,12 +718,17 @@ export function Home() {
                 <Heading size="6" mb="4">
                   צור קשר
                 </Heading>
-                <Text size="3" mb="6" style={{ color: 'var(--gray-11)', maxWidth: '500px' }}>
+                <Text
+                  as="div"
+                  size="3"
+                  mb="6"
+                  style={{ color: 'var(--gray-11)', maxWidth: '500px' }}
+                >
                   נשמח לענות על כל שאלה ולסייע בתכנון הפרויקט הבא שלכם. השאירו פרטים או פנו אלינו
                   ישירות.
                 </Text>
 
-                <Flex direction="column" gap="4" mb="6">
+                <Flex direction="column" gap="4" my="6">
                   {[
                     {
                       icon: <Phone size={20} />,

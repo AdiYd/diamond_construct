@@ -33,7 +33,7 @@ export const ScrollToTop = () => {
           style={{
             position: 'fixed',
             bottom: '2rem',
-            left: '2rem',
+            left: '1rem',
             zIndex: 50,
           }}
         >
