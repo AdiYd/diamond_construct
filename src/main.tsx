@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Theme {...themeConfig}>
       <App />
-      {/* <ThemePanel /> */}
+      <ThemePanel />
     </Theme>
   </React.StrictMode>
 );

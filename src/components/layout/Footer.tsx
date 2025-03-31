@@ -38,7 +38,8 @@ export function Footer() {
   return (
     <footer
       style={{
-        backgroundColor: 'var(--background)',
+        // backgroundColor: 'var(--background-color)',
+        zIndex: 100,
         borderTop: '1px solid var(--border)',
         padding: '2rem 0',
         marginTop: 'auto',

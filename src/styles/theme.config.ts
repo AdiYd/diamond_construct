@@ -2,10 +2,11 @@ import { Theme } from '@radix-ui/themes';
 // import '@radix-ui/themes/styles.css';
 
 export const themeConfig = {
-  accentColor: '#ddd6d6',
+  // accentColor: '#101437',
+  accentColor: 'brown',
   grayColor: 'sage',
   scaling: '100%',
-  radius: 'medium',
+  radius: 'small',
 } as const;
 
 export { Theme };

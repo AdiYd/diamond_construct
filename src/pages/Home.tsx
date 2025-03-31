@@ -33,6 +33,7 @@ import { motion } from 'framer-motion';
 import useScreen from '../hooks/useScreen';
 import { TestimonialCarousel } from '../components/ui/TestimonialCarousel';
 import { ProjectShowcase } from '../components/sections/ProjectShowcase';
+import { TeamShowCase } from '../components/sections/TeamShowCase';
 
 interface QuickFormData {
   name: string;
@@ -236,7 +237,7 @@ export function Home() {
         </Box>
 
         <Container
-          mt={{ initial: isMobile ? '8' : '0', sm: '4' }}
+          mt={isMobile ? '8' : '0'}
           style={{ position: 'relative', zIndex: 2, width: '100%' }}
         >
           <motion.div
@@ -245,15 +246,29 @@ export function Home() {
             transition={{ duration: 1.5 }}
           >
             <Flex direction="column" align="center" gap="6" py={{ initial: '0', sm: '6' }}>
-              <Box className="hero-badge">
-                <Wrench color="var(--accent-contrast)" size={16} />
-                <Text
-                  size={{ initial: '2', sm: '3', md: '2' }}
-                  style={{ color: 'var(--accent-contrast)', opacity: 0.9 }}
-                >
-                  בניה • שיפוצים • תחזוקה
-                </Text>
-              </Box>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '8px',
+                }}
+              >
+                <div className="rt-r-display-flex rt-r-jc-center">
+                  <Icon color="var(--amber-8)" icon="ion:diamond-sharp" width={40} />
+                </div>
+                <Box className="hero-badge">
+                  <Wrench color="var(--text-color)" size={16} />
+                  <Text
+                    as="div"
+                    weight="bold"
+                    size="2"
+                    style={{ color: 'var(--text-color)', opacity: 0.9 }}
+                  >
+                    בניה • שיפוצים • תחזוקה
+                  </Text>
+                </Box>
+              </div>
               <Flex direction="column" align="center" gap="4">
                 <Heading
                   size={{ initial: '6', xs: '7', sm: '8', md: '9' }}
@@ -305,8 +320,8 @@ export function Home() {
               <Flex justify="center" gap="4" mt={isMobile ? '0' : '2'}>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                   <Button
-                    size={{ initial: '3', sm: '4' }}
-                    className="hero-cta"
+                    size="4"
+                    className="cta-button primary"
                     style={{ alignItems: 'center' }}
                     mb={isMobile ? '8' : '0'}
                     onClick={() => {
@@ -315,7 +330,7 @@ export function Home() {
                     }}
                   >
                     צור קשר עכשיו
-                    <Icon icon="ion:diamond-sharp" width={20} />
+                    {/* <Icon icon="ion:diamond-sharp" width={20} /> */}
                   </Button>
                 </motion.div>
               </Flex>
@@ -416,14 +431,17 @@ export function Home() {
               </Heading>
 
               <Text
-                size={{ initial: '3', sm: '4' }}
-                align="center"
-                mb="8"
+                size={isMobile ? '3' : '5'}
+                align={isMobile ? 'center' : 'right'}
+                mx={isMobile ? 'auto' : undefined}
+                as="div"
+                weight="medium"
+                // mb="8"
                 style={{
                   maxWidth: '800px',
                   // margin: '0 auto 2.5rem auto',
                   color: 'var(--gray-11)',
-                  opacity: 0.9,
+                  // opacity: 0.9,
                   // padding: '0 1rem',
                   lineHeight: 1.7,
                 }}
@@ -486,7 +504,12 @@ export function Home() {
                   >
                     {/* Decorative elements */}
                     <Box className="service-card-decoration-corner" />
-                    <Box className="service-card-decoration-circle" />
+                    <Box
+                      style={{
+                        animationDelay: `${index * 2}s`,
+                      }}
+                      className="service-card-decoration-circle"
+                    />
 
                     {/* Icon container */}
                     <Box
@@ -503,6 +526,7 @@ export function Home() {
                     </Heading>
 
                     <Text
+                      as="div"
                       size="2"
                       style={{
                         color: 'var(--gray-11)',
@@ -529,7 +553,7 @@ export function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                 <Button
                   variant="solid"
-                  size="3"
+                  size="4"
                   className="cta-button primary"
                   onClick={() => {
                     const contactSection = document.getElementById('contact-section');
@@ -545,6 +569,9 @@ export function Home() {
         </Container>
       </Section>
 
+      <ProjectShowcase />
+      <TeamShowCase />
+
       {/* Benefits Section - Enhanced with modern card design */}
       <Section
         size="3"
@@ -555,7 +582,7 @@ export function Home() {
           padding: isMobile ? '4rem 1.5rem' : '5rem 2rem',
         }}
       >
-        <Box className="bg-pattern2" />
+        {/* <Box className="bg-pattern2" /> */}
         {/* Add decorative elements */}
         <Box className="benefits-background-decoration" />
 
@@ -653,8 +680,6 @@ export function Home() {
         </Container>
       </Section>
 
-      <ProjectShowcase />
-
       {/* Testimonials Section */}
       <Section mb="4" size="3" className="testimonials-section">
         <Box className="testimonial-bg-pattern" />
@@ -676,11 +701,14 @@ export function Home() {
                 מה הלקוחות שלנו אומרים?
               </Heading>
               <Text
-                size="3"
+                as="div"
+                mx="auto"
+                weight="medium"
+                size={isMobile ? '3' : '5'}
                 align="center"
                 style={{
                   maxWidth: '600px',
-                  marginBottom: '2rem',
+                  // marginBottom: '2rem',
                   color: 'var(--gray-11)',
                 }}
               >
@@ -693,6 +721,7 @@ export function Home() {
         </Container>
       </Section>
 
+      {/* Contact Section */}
       <Section
         id="contact-section"
         size="3"
@@ -703,24 +732,23 @@ export function Home() {
           padding: isMobile ? '4rem 1.5rem' : '5rem 2rem',
         }}
       >
-        <Box className="bg-pattern2 cta-background-pattern" />
-
-        <Container>
+        <Container style={{ position: 'relative', zIndex: 10 }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            style={{ zIndex: 20 }}
           >
-            <Grid columns={{ initial: '1', sm: '2' }} gap="6">
+            <Grid style={{ zIndex: 20 }} columns={{ initial: '1', sm: '2' }} gap="6">
               {/* Contact Information */}
               <Box>
                 <Heading size="6" mb="4">
-                  צור קשר
+                  בואו נדבר על הפרויקט שלכם
                 </Heading>
                 <Text
                   as="div"
-                  size="3"
+                  size={isMobile ? '3' : '5'}
                   mb="6"
                   style={{ color: 'var(--gray-11)', maxWidth: '500px' }}
                 >
@@ -728,28 +756,28 @@ export function Home() {
                   ישירות.
                 </Text>
 
-                <Flex direction="column" gap="4" my="6">
+                <Flex style={{ zIndex: 10 }} direction="column" gap="4" my="6">
                   {[
                     {
                       icon: <Phone size={20} />,
-                      title: 'טלפון',
+                      title: 'יעקב',
                       content: '052-703-6959',
                       action: 'tel:+972527036959',
-                      color: 'var(--accent-9)',
+                      color: 'var(--red-9)',
                     },
                     {
                       icon: <Mail size={20} />,
                       title: 'אימייל',
                       content: 'info@diamond-renovation.co.il',
                       action: 'mailto:info@diamond-renovation.co.il',
-                      color: 'var(--accent-9)',
+                      color: 'var(--blue-9)',
                     },
                     {
                       icon: <MapPin size={20} />,
                       title: 'כתובת',
                       content: 'רחוב המלאכה 5, כרמיאל',
                       action: 'https://maps.google.com/?q=כרמיאל+המלאכה+5',
-                      color: 'var(--accent-9)',
+                      color: 'var(--green-9)',
                     },
                   ].map((item, index) => (
                     <motion.div
@@ -758,11 +786,15 @@ export function Home() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
+                      style={{
+                        cursor: 'pointer',
+                      }}
                     >
                       <Flex gap="3" align="center">
                         <Box
                           style={{
                             display: 'flex',
+                            cursor: 'pointer',
                             alignItems: 'center',
                             justifyContent: 'center',
                             background: 'var(--accent-3)',
@@ -771,12 +803,17 @@ export function Home() {
                             height: '2.5rem',
                             borderRadius: '50%',
                             flexShrink: 0,
+
+                            border: `1px solid var(--accent-a5)`,
+                          }}
+                          onClick={() => {
+                            window.open(item.action, '_blank');
                           }}
                         >
                           {item.icon}
                         </Box>
                         <Box>
-                          <Text weight="bold" size="2" mb="1" ml="1">
+                          <Text weight="bold" size="3" mb="1" ml="1">
                             {item.title}:
                           </Text>
                           <a
@@ -788,8 +825,27 @@ export function Home() {
                               textDecoration: 'none',
                             }}
                           >
-                            <Text size="2" mx="1">
+                            <Text
+                              onClick={() => {
+                                window.open(item.action);
+                              }}
+                              size="2"
+                              mx="1"
+                            >
                               {item.content}
+                              {item.title === 'יעקב' && (
+                                <Text
+                                  as="label"
+                                  className="rt-underline-hover rt-underline-always"
+                                  style={{
+                                    color: 'var(--gray-11)',
+                                    marginRight: '4px',
+                                    cursor: 'pointer',
+                                  }}
+                                >
+                                  (לחצו לחיוג)
+                                </Text>
+                              )}
                             </Text>
                           </a>
                         </Box>
@@ -951,11 +1007,11 @@ export function Home() {
                                   borderRadius: 'var(--radius-3)',
                                   border: '1px solid var(--gray-6)',
                                   backgroundColor: 'var(--gray-1)',
-                                  color: 'var(--gray-11)',
+                                  color: 'var(--text-color)',
                                   fontSize: '1rem',
                                 }}
                               >
-                                <option value="">בחר שירות מבוקש</option>
+                                <option value="">ובחר שירות מבוקש</option>
                                 <option value="bathrooms">שיפוץ אמבטיות</option>
                                 <option value="kitchens">שיפוץ מטבחים</option>
                                 <option value="construction">בנייה פרטית</option>
@@ -995,7 +1051,7 @@ export function Home() {
                                 // variant="soft"
                                 value={quickFormData?.info}
                                 onChange={handleQuickFormInputChange}
-                                placeholder="תאר בקצרה את השירות שאתה מעוניין בו"
+                                placeholder="תארו בקצרה את השיפוץ שאתם מעוניים בו"
                                 style={{
                                   width: '100%',
                                   minHeight: '150px',
@@ -1032,7 +1088,7 @@ export function Home() {
                             }}
                           >
                             <Send size={16} />
-                            שלח פרטים
+                            שליחת פרטים
                           </Button>
 
                           <a
@@ -1103,7 +1159,14 @@ export function Home() {
               רוצים להתחיל?
             </Heading>
 
-            <Text size={{ initial: '3', sm: '4' }} align="center" className="cta-subheading">
+            <Text
+              size={isMobile ? '3' : '5'}
+              mx="auto"
+              as="div"
+              weight="medium"
+              align="center"
+              className="cta-subheading"
+            >
               זה הזמן לדבר איתנו ולתכנן את השיפוץ שלכם – כמו שצריך.
             </Text>
 
@@ -1173,6 +1236,7 @@ export function Home() {
             </Box>
           </Flex>
         </Container>
+        <div style={{ zIndex: 0 }} className="bg-pattern2* cta-background-pattern" />
       </Section>
     </Box>
   );

@@ -211,7 +211,12 @@ export function About() {
               <Heading size="6" align="center" className="section-title with-accent" mb="4">
                 💡 הגישה שלנו: שקיפות, סדר ונשמה
               </Heading>
-              <Text size="3" align="center" style={{ maxWidth: '600px', marginBottom: '2rem' }}>
+              <Text
+                as="div"
+                align={isMobile ? 'center' : 'right'}
+                size={isMobile ? '3' : '5'}
+                style={{ maxWidth: '800px' }}
+              >
                 אנחנו יודעים עד כמה תהליך שיפוץ יכול להיות מלחיץ – ולכן תכננו את כל מערך העבודה שלנו
                 כך שתהיה ללקוח תחושת ביטחון ושליטה
               </Text>

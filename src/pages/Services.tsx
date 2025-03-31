@@ -327,10 +327,11 @@ export function Services() {
                     direction={isMobile ? 'column' : 'row'}
                     style={{
                       padding: isMobile ? 'var(--space-3)' : 'var(--space-4)',
-                      borderRadius: '6px',
-                      background: 'linear-gradient(to bottom left,var(--gray-2), var(--gray-3))',
+                      borderRadius: 'var(--radius-2)',
+                      border: '1px solid var(--gray-a1)',
+                      background: 'linear-gradient(to bottom left,var(--iris-a3), var(--sky-a3))',
                       height: '100%',
-                      transform: 'skew(4deg)',
+                      transform: 'skew(5deg)',
                       textAlign: isMobile ? 'start' : 'start',
                     }}
                   >

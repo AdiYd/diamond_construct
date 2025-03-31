@@ -39,7 +39,7 @@ function App() {
                   borderRadius: '50%',
                   filter: 'blur(150px)',
                   background:
-                    'linear-gradient(to right, rgba(126, 222, 237, 0.8), rgba(237, 140, 71, 0.8))',
+                    'linear-gradient(to right, rgba(86, 218, 152, 0.8), rgba(237, 140, 71, 0.8))',
                   opacity: 0.7,
                 }}
               />
@@ -55,7 +55,8 @@ function App() {
               left={{ initial: '1rem', md: '2rem' }}
               style={{
                 position: 'fixed',
-                bottom: '5rem',
+                bottom: '1.5rem',
+                left: '1rem',
                 zIndex: 100,
               }}
             >
@@ -81,8 +82,8 @@ function App() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width: '2rem',
-                    height: '2rem',
+                    width: '2.5rem',
+                    height: '2.5rem',
                     borderRadius: '50%',
                     backgroundColor: '#25D366',
                     color: 'white',
@@ -100,8 +101,8 @@ function App() {
                   }}
                 >
                   <svg
-                    width="20"
-                    height="20"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

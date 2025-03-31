@@ -12,7 +12,7 @@ export function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [isOnTop, setIsOnTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const scrollThreshold = 1000; // Threshold for header visibility
+  const scrollThreshold = 1400; // Threshold for header visibility
   const { theme, toggleTheme } = useTheme();
   const { language } = useLanguage();
   const location = useLocation();

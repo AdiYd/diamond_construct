@@ -666,14 +666,14 @@ export function Gallery() {
                     </Text>
 
                     {/* View Process Button */}
-                    <Button
+                    {/* <Button
                       variant="outline"
                       mt="4"
                       onClick={() => openLightbox(project, 'process')}
                       style={{ alignSelf: 'flex-start' }}
                     >
                       צפה בתהליך העבודה
-                    </Button>
+                    </Button> */}
 
                     {/* Testimonial Quote */}
                     {project.testimonial && (
@@ -681,8 +681,8 @@ export function Gallery() {
                         mt="4"
                         style={{
                           padding: '1rem',
-                          backgroundColor: 'var(--accent-2)',
-                          borderRadius: 'var(--radius-3)',
+                          backgroundColor: 'var(--lime-a2)',
+                          borderRadius: 'var(--radius-4)',
                           position: 'relative',
                         }}
                       >

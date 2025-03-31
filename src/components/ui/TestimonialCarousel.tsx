@@ -8,6 +8,7 @@ import useScreen from '../../hooks/useScreen';
 
 export function TestimonialCarousel() {
   const { isMobile, isTablet } = useScreen();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Calculate slides to show based on screen size
   const getSlidesToShow = () => {
@@ -25,9 +26,15 @@ export function TestimonialCarousel() {
     containScroll: 'keepSnaps',
   });
 
+  const goToSlide = (index: number) => {
+    if (emblaApi) {
+      emblaApi.scrollTo(index);
+      setCurrentIndex(index);
+    }
+  };
+
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const [, setSelectedIndex] = useState(0);
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -36,17 +43,27 @@ export function TestimonialCarousel() {
     if (!emblaApi) return;
     setPrevBtnEnabled(emblaApi.canScrollPrev());
     setNextBtnEnabled(emblaApi.canScrollNext());
-    setSelectedIndex(emblaApi.selectedScrollSnap());
+    setCurrentIndex(emblaApi.selectedScrollSnap()); // Update currentIndex on scroll
+  }, [emblaApi]);
+
+  const onScroll = useCallback(() => {
+    if (!emblaApi) return;
+    setCurrentIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
+    let autoScroll = null; // Declare autoScroll variable
+    autoScroll = setInterval(() => {
+      if (emblaApi) emblaApi.scrollNext();
+    }, 5000); // Auto-scroll every 5 seconds
 
     // Set the number of slides to show
     emblaApi.reInit();
     onSelect();
-    emblaApi.on('select', onSelect);
+    emblaApi.on('select', onSelect); // Listen to the 'select' event
     emblaApi.on('reInit', onSelect);
+    // emblaApi.on('scroll', onSelect); // Listen to the 'scroll' event
 
     // This helps with proper alignment after resize
     const handleResize = () => {
@@ -54,7 +71,13 @@ export function TestimonialCarousel() {
     };
 
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      emblaApi.off('select', onSelect); // Clean up event listener
+      emblaApi.off('reInit', onSelect);
+      //   emblaApi.off('scroll', onScroll); // Clean up event listener
+      clearInterval(autoScroll);
+    };
   }, [emblaApi, onSelect, slidesToShow]);
 
   return (
@@ -79,6 +102,7 @@ export function TestimonialCarousel() {
                   style={{
                     display: 'flex',
                     height: '100%',
+                    border: 'none',
                   }}
                   className="testimonial-slide* modern-testimonial-card*"
                 >
@@ -90,18 +114,24 @@ export function TestimonialCarousel() {
                     style={{
                       fontSize: '2rem',
                       fontFamily: 'serif',
+                      top: '1.5rem',
                     }}
                   >
                     <div
                       style={{
                         position: 'relative',
-                        top: '0.5rem',
                       }}
                     >
                       ❝
                     </div>
                   </Box>
-                  <Flex direction="column" gap="4" style={{ position: 'relative', zIndex: 1 }}>
+                  <Flex
+                    direction="column"
+                    justify="between"
+                    p="2"
+                    // gap="4"
+                    style={{ position: 'relative', zIndex: 1 }}
+                  >
                     <Flex direction="column" gap="3" align="center" mb="4">
                       <Box style={{ textAlign: 'center' }}>
                         <Text size="4" weight="bold" mb="1" className="testimonial-author">
@@ -118,13 +148,31 @@ export function TestimonialCarousel() {
                       {testimonial.content}
                     </Text>
 
+                    {/* <Box
+                      className="testimonial-quote-icon"
+                      style={{
+                        fontSize: '2rem',
+                        fontFamily: 'serif',
+                        bottom: '1.5rem',
+                        left: '0.5rem',
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: 'relative',
+                        }}
+                      >
+                        ❝
+                      </div>
+                    </Box> */}
+
                     <Flex gap="1" mt="2" justify="center">
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
                           size={20}
                           fill={i < testimonial.rating ? 'var(--yellow-9)' : 'transparent'}
-                          stroke={i < testimonial.rating ? 'var(--yellow-9)' : 'var(--gray-8)'}
+                          stroke={i < testimonial.rating ? 'var(--amber-9)' : 'var(--gray-8)'}
                         />
                       ))}
                     </Flex>
@@ -175,6 +223,25 @@ export function TestimonialCarousel() {
           >
             <ChevronRight size={24} />
           </button>
+        </Flex>
+
+        {/* Carousel pagination */}
+        <Flex justify="center" mt="4">
+          {testimonials.map((_, index) => (
+            <Box
+              key={index}
+              className={`pagination-dot ${currentIndex === index ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+              style={{
+                width: '10px',
+                height: '10px',
+                borderRadius: '50%',
+                backgroundColor: currentIndex === index ? 'var(--accent-11)' : 'var(--gray-8)',
+                margin: '0 5px',
+                cursor: 'pointer',
+              }}
+            />
+          ))}
         </Flex>
       </Box>
     </Box>

@@ -77,8 +77,8 @@ const projectImages = [
   {
     id: 9,
     url: '/image/IMG-20240517-WA0054.jpg',
-    title: 'מטבח חדש',
-    description: 'התקנת מטבח חדש בדירה חדשה',
+    title: 'שירוקלחת',
+    description: 'התקנת שירותים ומקלחת חדשים',
     category: 'kitchens',
     size: 'large',
   },
@@ -90,14 +90,14 @@ const projectImages = [
     category: 'bathrooms',
     size: 'medium',
   },
-  {
-    id: 11,
-    url: '/image/IMG-20250325-WA0004.jpg',
-    title: 'ריצוף חצר',
-    description: 'התקנת ריצוף דקורטיבי בחצר בית פרטי',
-    category: 'renovations',
-    size: 'large',
-  },
+  //   {
+  //     id: 11,
+  //     url: '/image/IMG-20250325-WA0004.jpg',
+  //     title: 'עובדים יסודי ומקצועי',
+  //     description: 'עבודה מקצועית עם דגש על פרטים',
+  //     category: 'renovations',
+  //     size: 'large',
+  //   },
   {
     id: 12,
     url: '/image/IMG-20250325-WA0006.jpg',
@@ -155,7 +155,17 @@ export function ProjectShowcase() {
     // },
   });
 
-  const shuffledProjects = useRef([...projectImages].sort(() => Math.random() - 0.5).slice(0, 10)); // Shuffle projects
+  const shuffledProjects = useRef([
+    ...[...projectImages].sort(() => Math.random() - 0.5).slice(0, 9),
+    {
+      id: 11,
+      url: '/image/IMG-20250325-WA0004.jpg',
+      title: 'עובדים יסודי ומקצועי',
+      description: 'עבודה מקצועית עם דגש על פרטים',
+      category: 'renovations',
+      size: 'medium',
+    },
+  ]); // Shuffle projects
 
   //   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   //   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -198,17 +208,21 @@ export function ProjectShowcase() {
           transition={{ duration: 0.5 }}
         >
           <Heading
-            align="center"
+            mx="auto"
             size={{ initial: '6', sm: '7' }}
-            mb="4"
+            align="center"
             className="section-title with-accent"
+            mb="4"
           >
             הפרויקטים שלנו
           </Heading>
           <Text
+            as="div"
             align="center"
-            size="3"
-            style={{ maxWidth: '600px', margin: '0 auto 2rem', color: 'var(--gray-11)' }}
+            mx="auto"
+            weight="medium"
+            size={isMobile ? '3' : '5'}
+            style={{ maxWidth: '600px', color: 'var(--gray-11)' }}
           >
             מבחר מהפרויקטים האחרונים שביצענו
           </Text>
@@ -369,9 +383,14 @@ export function ProjectShowcase() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <Button size="4" onClick={() => navigate('/gallery')} className="gallery-btn">
-              <ArrowRight size={16} style={{ marginRight: '8px', transform: 'scaleX(-1)' }} />
+            <Button
+              mx="auto"
+              size="4"
+              onClick={() => navigate('/gallery')}
+              className="cta-button primary"
+            >
               <Text>לצפיה בעוד פרויקטים</Text>
+              <ArrowRight size={16} style={{ marginRight: '8px', transform: 'scaleX(-1)' }} />
             </Button>
           </motion.div>
         </Box>

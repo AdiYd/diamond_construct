@@ -74,7 +74,6 @@
 
 .testimonial-quote-icon {
   position: absolute;
-  top: 1.5rem;
   right: 2rem;
   width: 3.5rem;
   height: 3.5rem;
@@ -145,7 +144,7 @@
 }
 
 .testimonial-author {
-  color: var(--gray-11);
+  color: var(--text-color);
 }
 
 .testimonial-action-button {
@@ -155,4 +154,21 @@
 
 .testimonial-action-button:hover {
   transform: translateX(-5px);
+}
+
+/* Pagination Dots */
+.pagination-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--gray-8);
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-dot.active {
+  background-color: var(--accent-11);
+  width: 12px;
+  height: 12px;
 }
