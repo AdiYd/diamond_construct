@@ -32,6 +32,7 @@ import {
 import { motion } from 'framer-motion';
 import useScreen from '../hooks/useScreen';
 import { TestimonialCarousel } from '../components/ui/TestimonialCarousel';
+import { ProjectShowcase } from '../components/sections/ProjectShowcase';
 
 interface QuickFormData {
   name: string;
@@ -652,6 +653,8 @@ export function Home() {
         </Container>
       </Section>
 
+      <ProjectShowcase />
+
       {/* Testimonials Section */}
       <Section mb="4" size="3" className="testimonials-section">
         <Box className="testimonial-bg-pattern" />
@@ -843,7 +846,12 @@ export function Home() {
                           /> */}
                           </TextField.Root>
                           {quickFormErrors.name && (
-                            <Text size="1" color="red" style={{ marginTop: '0.25rem' }}>
+                            <Text
+                              size="1"
+                              color="red"
+                              align="left"
+                              style={{ marginTop: '0.25rem', display: 'block' }}
+                            >
                               {quickFormErrors.name}
                             </Text>
                           )}
@@ -874,7 +882,12 @@ export function Home() {
                             }}
                           />
                           {quickFormErrors.phone && (
-                            <Text size="1" color="red" style={{ marginTop: '0.25rem' }}>
+                            <Text
+                              size="1"
+                              color="red"
+                              align="left"
+                              style={{ marginTop: '0.25rem', display: 'block' }}
+                            >
                               {quickFormErrors.phone}
                             </Text>
                           )}
@@ -894,7 +907,7 @@ export function Home() {
                             weight="bold"
                             mb="1"
                           >
-                            {moreInfo ? 'רוצה לפרט פחות?' : 'רוצה לפרט יותר?'}
+                            {moreInfo ? 'רוצים לפרט פחות?' : 'רוצים לפרט יותר?'}
 
                             <Icon
                               style={{
@@ -912,7 +925,8 @@ export function Home() {
                             <Box>
                               <Text
                                 as="label"
-                                size="2"
+                                align="right"
+                                // size="2"
                                 weight="bold"
                                 htmlFor="service"
                                 mb="1"
@@ -947,7 +961,12 @@ export function Home() {
                             </Box>
                             <div>
                               {quickFormErrors.service && (
-                                <Text size="1" color="red" style={{ marginTop: '0.25rem' }}>
+                                <Text
+                                  size="1"
+                                  color="red"
+                                  align="left"
+                                  style={{ marginTop: '0.25rem', display: 'block' }}
+                                >
                                   {quickFormErrors.service}
                                 </Text>
                               )}
@@ -956,7 +975,8 @@ export function Home() {
                             <Box>
                               <Text
                                 as="label"
-                                size="2"
+                                align="right"
+                                // size="2"
                                 weight="bold"
                                 htmlFor="message"
                                 mb="1"
@@ -981,7 +1001,12 @@ export function Home() {
                                 }}
                               />
                               {quickFormErrors.info && (
-                                <Text size="1" color="red" style={{ marginTop: '0.25rem' }}>
+                                <Text
+                                  size="1"
+                                  color="red"
+                                  align="left"
+                                  style={{ marginTop: '0.25rem', display: 'block' }}
+                                >
                                   {quickFormErrors.info}
                                 </Text>
                               )}

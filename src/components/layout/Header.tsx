@@ -75,7 +75,7 @@ export function Header() {
           right: 0,
           backgroundColor: isOnTop
             ? 'transparent'
-            : isHomePage
+            : isDarkTheme
             ? 'rgba(0, 0, 0, 0.4)'
             : 'rgba(255,255,255,0.2)', // Semi-transparent background
           // borderBottom: '1px solid var(--gray-5)',

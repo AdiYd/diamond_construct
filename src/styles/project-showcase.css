@@ -1,0 +1,230 @@
+/* Project Showcase Styles */
+
+/* Main container */
+.project-showcase {
+  padding: var(--section-spacing-md) 0;
+  background: var(--color-background);
+}
+
+/* Masonry Gallery Layout */
+.masonry-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 10px;
+  grid-gap: 1.5rem;
+}
+
+.masonry-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-self: stretch;
+  transition: transform 0.3s ease;
+}
+
+.masonry-item.small {
+  grid-row-end: span 15;
+}
+
+.masonry-item.medium {
+  grid-row-end: span 24;
+}
+
+.masonry-item.large {
+  grid-row-end: span 30;
+}
+
+/* Embla Carousel Styles */
+.embla {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex !important;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.embla__slide {
+  flex: 0 0 80%;
+  min-width: 0;
+  padding: 0 8px;
+  position: relative;
+}
+
+.embla__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.embla__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.embla__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gray-6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.embla__dot--active {
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-9);
+}
+
+/* Project Card Shared Styles */
+.project-card {
+  /* border-radius: var(--radius-4); */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* .project-card:hover {
+  transform: translateY(-8px);
+} */
+
+.project-image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 20%, transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: var(--radius-4) !important;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-title {
+  color: white;
+  margin-bottom: 0.5rem;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.project-description {
+  color: var(--gray-4);
+  transform: translateY(20px);
+  transition: transform 0.3s ease 0.1s;
+}
+
+.project-card:hover .project-title,
+.project-card:hover .project-description {
+  transform: translateY(0);
+}
+
+/* Navigation buttons */
+.carousel-nav-button {
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-nav-button:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Gallery Button */
+.gallery-btn {
+  background-color: transparent;
+  border: 2px solid var(--accent-9);
+  color: var(--accent-9);
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.gallery-btn:hover {
+  background-color: var(--accent-9);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-4);
+}
+
+/* For mobile devices, always show the overlay */
+@media (max-width: 768px) {
+  .project-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    justify-content: flex-end;
+    text-align: start;
+    padding: 1rem;
+  }
+
+  .project-title,
+  .project-description {
+    transform: translateY(0);
+  }
+
+  .embla__slide {
+    flex: 0 0 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .masonry-item.small,
+  .masonry-item.medium,
+  .masonry-item.large {
+    grid-row-end: span 18;
+  }
+
+  .embla__slide {
+    flex: 0 0 85%;
+  }
+}

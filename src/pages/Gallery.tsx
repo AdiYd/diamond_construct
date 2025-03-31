@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Container, Section, Heading, Text, Flex, Box, Grid, Button, Tabs } from '@radix-ui/themes';
+import {
+  Container,
+  Section,
+  Heading,
+  Text,
+  Flex,
+  Box,
+  Grid,
+  Button,
+  Tabs,
+  Card,
+} from '@radix-ui/themes';
 import { Image as ImageIcon, X, ChevronRight, ChevronLeft } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
 
@@ -510,12 +521,12 @@ export function Gallery() {
                   delay: index * 0.1,
                 }}
               >
-                <Box
+                <Card
                   style={{
                     borderRadius: 'var(--radius-4)',
                     overflow: 'hidden',
                     // backgroundColor: 'white',
-                    boxShadow: 'var(--shadow-3)',
+                    // boxShadow: 'var(--shadow-5)',
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -684,7 +695,7 @@ export function Gallery() {
                       </Box>
                     )}
                   </Box>
-                </Box>
+                </Card>
               </motion.div>
             ))}
           </Grid>

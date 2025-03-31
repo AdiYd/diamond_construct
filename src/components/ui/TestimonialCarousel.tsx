@@ -65,7 +65,7 @@ export function TestimonialCarousel() {
       <Box className="embla" dir="ltr">
         <Box className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">
-            {testimonials.map(testimonial => (
+            {testimonials.map((testimonial, index) => (
               <Box
                 className="embla__slide"
                 key={testimonial.id}
@@ -82,8 +82,9 @@ export function TestimonialCarousel() {
                   }}
                   className="testimonial-slide* modern-testimonial-card*"
                 >
-                  <Box className="testimonial-decoration-1" />
-                  <Box className="testimonial-decoration-2" />
+                  {index % 3 === 0 && <Box className="testimonial-decoration-1" />}
+                  {index % 3 === 1 && <Box className="testimonial-decoration-2" />}
+                  {index % 3 === 2 && <Box className="testimonial-decoration-3" />}
                   <Box
                     className="testimonial-quote-icon"
                     style={{

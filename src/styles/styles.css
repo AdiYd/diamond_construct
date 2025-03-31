@@ -11,6 +11,7 @@
 
 :root {
   transition: all 0.4s ease-in-out;
+  overflow-x: hidden;
 
   /* Accent colors based on color: #101437 */
   --accent-color: #101437;
@@ -157,7 +158,7 @@ body {
   font-family: 'Assistant', sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 h1, h2, h3 {
@@ -927,20 +928,20 @@ div[role='dialog'] {
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  color: var(--gray-10);
+  color: var(--text-color);
 }
 
 .markdown-content p {
   margin-bottom: 1.25rem;
   line-height: 1.7;
-  color: var(--gray-10);
+  color: var(--gray-12);
 }
 
 .markdown-content ul,
 .markdown-content ol {
   margin: 1.25rem 0;
   padding-left: 1.75rem;
-  color: var (--gray-10);
+  color: var(--gray-11);
 }
 
 .markdown-content li {
@@ -953,13 +954,13 @@ div[role='dialog'] {
 }
 
 .markdown-content a {
-  color: var(--gray-10);
+  color: var(--text-color);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .markdown-content a:hover {
-  color: var(--gray-10);
+  color: var(--blue-9);
   text-decoration: underline;
 }
 
@@ -2097,7 +2098,7 @@ div[role='dialog'] {
   position: relative;
   width: fit-content;
   /* display: inline-block; */
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .section-title.with-accent::after {
