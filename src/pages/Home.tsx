@@ -738,7 +738,7 @@ export function Home() {
       </Section>
 
       {/* Contact Section */}
-      <ContactSection extendSection />
+      <ContactSection />
     </Box>
   );
 }

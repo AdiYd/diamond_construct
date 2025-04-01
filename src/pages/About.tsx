@@ -238,7 +238,7 @@ export function About() {
             <Box as="div" style={{ width: '100vw' }}>
               <div
                 style={{
-                  animation: 'scrollX 30s linear alternate infinite',
+                  animation: 'scrollX 15s linear alternate infinite',
                   display: 'flex',
                   gap: '1rem',
                   overflowX: 'visible',
@@ -345,7 +345,7 @@ export function About() {
                   <Box
                     style={{
                       padding: isMobile ? 'var(--space-3)' : 'var(--space-4)',
-                      borderRadius: 'var(--radius-2)',
+                      borderRadius: 'var(--radius-4)',
                       border: '1px solid var(--gray-a1)',
                       backgroundImage:
                         'linear-gradient(to bottom left,var(--iris-a3), var(--sky-a3))',
