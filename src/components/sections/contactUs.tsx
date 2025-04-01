@@ -454,7 +454,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                           href="https://wa.me/972527036959"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{ flex: 1 }}
+                          style={{ flex: 1, display: 'flex', justifyContent: 'end' }}
                         >
                           <IconButton
                             size="4"

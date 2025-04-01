@@ -158,7 +158,7 @@ export function Contact() {
           </Flex>
         </Container>
       </Section>
-      <Section size="1" style={{ background: 'var(--color-background)' }}>
+      <Section size={'1'} style={{ background: 'var(--color-background)' }}>
         <Box
           mx="auto"
           style={{
@@ -185,8 +185,10 @@ export function Contact() {
         </Box>
       </Section>
       <Section
+        mx="auto"
+        px={isMobile ? '0.5rem' : '2rem'}
         size={isMobile ? '1' : '2'}
-        style={{ background: 'var(--color-background)', padding: isMobile ? '0rem' : '0.5rem' }}
+        style={{ background: 'var(--color-background)', maxWidth: isMobile ? '100%' : '90%' }}
       >
         <Grid columns={isMobile ? '1' : '3'} gapY="8" gapX={!isMobile ? '4' : '0'}>
           {/* Contact Info Cards */}
@@ -656,7 +658,7 @@ export function Contact() {
           style={{
             maxHeight: '500px',
             width: '80%',
-            aspectRatio: '16/9',
+            aspectRatio: '1',
             boxShadow: 'var(--shadow-6)',
           }}
         >

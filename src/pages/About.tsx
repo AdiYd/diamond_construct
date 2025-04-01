@@ -1,19 +1,6 @@
 import { motion } from 'framer-motion';
-import {
-  Container,
-  Section,
-  Heading,
-  Text,
-  Flex,
-  Box,
-  Grid,
-  Card,
-  IconButton,
-  Button,
-  TextArea,
-  TextField,
-} from '@radix-ui/themes';
-import { Star, Heart, Users, Shield, Zap, Handshake, Send } from 'lucide-react';
+import { Container, Section, Heading, Text, Flex, Box, Grid, Card } from '@radix-ui/themes';
+import { Star, Heart, Users, Shield, Zap, Handshake } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
 import '../styles/about.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
@@ -238,11 +225,12 @@ export function About() {
             <Box as="div" style={{ width: '100vw' }}>
               <div
                 style={{
-                  animation: 'scrollX 15s linear alternate infinite',
+                  animation: `scrollX ${isMobile ? '15' : '30'}s linear alternate infinite`,
                   display: 'flex',
                   gap: '1rem',
                   overflowX: 'visible',
                   position: 'relative',
+                  top: isMobile ? '' : '50px',
                   // top: '-50px',
                   rotate: '3deg',
                   zIndex: 1,
@@ -281,9 +269,10 @@ export function About() {
               style={{ width: '100%' }}
             >
               <Heading
-                mx="auto"
+                as="h2"
+                mx={isMobile ? 'auto' : undefined}
                 size="6"
-                align="center"
+                align={isMobile ? 'center' : 'right'}
                 className="section-title with-accent"
                 mb="4"
               >
@@ -291,6 +280,7 @@ export function About() {
               </Heading>
               <Text
                 as="div"
+                mx={isMobile ? 'auto' : undefined}
                 align={isMobile ? 'center' : 'right'}
                 size={isMobile ? '3' : '5'}
                 style={{ maxWidth: '800px' }}

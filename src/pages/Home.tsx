@@ -1,18 +1,4 @@
-import React, { useState } from 'react';
-import {
-  Button,
-  Container,
-  Section,
-  Heading,
-  Text,
-  Flex,
-  Box,
-  Grid,
-  Card,
-  TextField,
-  TextArea,
-  IconButton,
-} from '@radix-ui/themes';
+import { Button, Container, Section, Heading, Text, Flex, Box, Grid } from '@radix-ui/themes';
 import { Icon } from '@iconify/react';
 import {
   ChevronRight,
@@ -23,12 +9,7 @@ import {
   Heart,
   Hammer,
   ArrowLeft,
-  ChevronLeft,
   Clock,
-  Phone,
-  Mail,
-  MapPin,
-  Send,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import useScreen from '../hooks/useScreen';
@@ -37,82 +18,8 @@ import { ProjectShowcase } from '../components/sections/ProjectShowcase';
 import { TeamShowCase } from '../components/sections/TeamShowCase';
 import ContactSection from '../components/sections/contactUs';
 
-interface QuickFormData {
-  name: string;
-  phone: string;
-  service?: string;
-  info?: string;
-}
-
-interface QuickFormErrors {
-  [key: string]: string | undefined;
-  name?: string;
-  phone?: string;
-  service?: string;
-  info?: string;
-}
-
-interface QuickFormData {
-  name: string;
-  phone: string;
-  service?: string;
-  info?: string;
-}
-
 export function Home() {
-  const [quickFormData, setQuickFormData] = useState<QuickFormData>({
-    name: '',
-    phone: '',
-  });
-  const [quickFormErrors, setQuickFormErrors] = useState<QuickFormErrors>({});
-  const [moreInfo, setMoreInfo] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [, setShowModal] = useState(false);
   const { isMobile } = useScreen();
-
-  const validateQuickForm = () => {
-    const errors: QuickFormErrors = {};
-    if (!quickFormData.name) errors.name = 'נדרש למלא שם';
-    if (!quickFormData.phone) errors.phone = 'נדרש למלא מספר טלפון';
-    else if (!/^[0-9-+\s()]*$/.test(quickFormData.phone)) errors.phone = 'מספר טלפון לא תקין';
-    else if (moreInfo) {
-      if (!quickFormData.service) errors.service = 'נדרש למלא שירות';
-      if (!quickFormData.info) errors.info = 'נדרש למלא מידע נוסף';
-    }
-    setQuickFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleQuickFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateQuickForm()) {
-      console.log('Quick form submitted:', quickFormData);
-      setLoading(true);
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setLoading(false);
-      // setQuickFormData({ name: '', phone: '', ...(moreInfo ? { service: '', info: '' } : {}) });
-      setQuickFormErrors({});
-    }
-  };
-
-  const handleQuickFormInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setQuickFormData(prev => ({ ...prev, [name]: value }));
-    if (quickFormErrors[name]) {
-      setQuickFormErrors(prev => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  // const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //   const { name, value } = e.target;
-  //   setQuickFormData(prev => ({ ...prev, [name]: value }));
-  //   if (quickFormErrors[name]) {
-  //     setQuickFormErrors(prev => ({ ...prev, [name]: undefined }));
-  //   }
-  // };
 
   return (
     <Box style={{ position: 'relative' }} dir="rtl">
@@ -336,7 +243,7 @@ export function Home() {
                     className="cta-button primary"
                     style={{
                       alignItems: 'center',
-                      boxShadow: '0 10px 50px var(--amber-a10)',
+                      boxShadow: '0 8px 40px var(--amber-a9)',
                       borderRadius: 'var(--radius-6)',
                     }}
                     mb={isMobile ? '8' : '0'}
