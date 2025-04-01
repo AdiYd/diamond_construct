@@ -433,7 +433,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                         </>
                       )}
 
-                      <Flex align="center" wrap="wrap" justify="between" gap="4" mt="4" mb="4">
+                      <Flex align="center" justify="between" gap="4" mt="4" mb="4">
                         <Button
                           type="submit"
                           loading={loading}
