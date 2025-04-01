@@ -182,9 +182,7 @@ export function Header() {
                   transition: 'height 0.3s ease',
                   left: 0,
                   right: 0,
-                  backgroundImage: isDarkTheme
-                    ? 'linear-gradient(to right,rgba(0, 0, 0, 0.9),var(--gray-2))'
-                    : 'linear-gradient(to right,rgba(216, 217, 222, 0.85),rgba(234, 235, 241, 0.88))',
+                  background: isDarkTheme ? 'black' : 'white',
                   backdropFilter: 'blur(40px)',
                   borderBottom: '1px solid var(--gray-5)',
                   padding: 'var(--space-4)',
