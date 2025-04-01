@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { Box, Card, Flex, Text } from '@radix-ui/themes';
+import { Box, Flex, Text } from '@radix-ui/themes';
 import { Star, ChevronRight, ChevronLeft } from 'lucide-react';
 import { testimonials } from '../../content/testimonials';
 import '../../styles/carousel.css';
@@ -46,10 +46,10 @@ export function TestimonialCarousel() {
     setCurrentIndex(emblaApi.selectedScrollSnap()); // Update currentIndex on scroll
   }, [emblaApi]);
 
-  const onScroll = useCallback(() => {
-    if (!emblaApi) return;
-    setCurrentIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  //   const onScroll = useCallback(() => {
+  //     if (!emblaApi) return;
+  //     setCurrentIndex(emblaApi.selectedScrollSnap());
+  //   }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;

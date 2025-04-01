@@ -1,9 +1,9 @@
 {
-  "name": "vite-starter",
-  "private": true,
-  "version": "0.0.0",
+  "name": "diamond",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
-  "homepage": "https://AdiYd.github.io/diamond/",
+  "homepage": "adiyd.github.io/diamond_construct/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
