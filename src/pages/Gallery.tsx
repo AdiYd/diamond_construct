@@ -14,7 +14,7 @@ import {
 } from '@radix-ui/themes';
 import { Image as ImageIcon, X, ChevronRight, ChevronLeft } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
-import ContactSection from '../components/sections/contact';
+import ContactSection from '../components/sections/contactUs';
 
 // Project portfolio data
 const portfolioProjects = [

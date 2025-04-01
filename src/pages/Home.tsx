@@ -35,7 +35,7 @@ import useScreen from '../hooks/useScreen';
 import { TestimonialCarousel } from '../components/ui/TestimonialCarousel';
 import { ProjectShowcase } from '../components/sections/ProjectShowcase';
 import { TeamShowCase } from '../components/sections/TeamShowCase';
-import ContactSection from '../components/sections/contact';
+import ContactSection from '../components/sections/contactUs';
 
 interface QuickFormData {
   name: string;

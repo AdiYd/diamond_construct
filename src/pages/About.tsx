@@ -18,7 +18,7 @@ import useScreen from '../hooks/useScreen';
 import '../styles/about.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { teamImages } from '../components/sections/TeamShowCase';
-import ContactSection from '../components/sections/contact';
+import ContactSection from '../components/sections/contactUs';
 
 // Team members data
 const teamMembers = [
