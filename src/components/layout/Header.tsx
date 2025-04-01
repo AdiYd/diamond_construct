@@ -104,7 +104,7 @@ export function Header() {
               </Link>
 
               {/* Desktop Navigation */}
-              <Flex display={{ initial: 'none', md: 'flex' }} gap="4">
+              <Flex display={isMobile ? 'none' : 'flex'} gap="4">
                 {pagesConfig.map(page => (
                   <Link
                     key={page.id}

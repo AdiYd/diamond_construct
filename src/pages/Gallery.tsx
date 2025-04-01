@@ -14,6 +14,7 @@ import {
 } from '@radix-ui/themes';
 import { Image as ImageIcon, X, ChevronRight, ChevronLeft } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
+import ContactSection from '../components/sections/contact';
 
 // Project portfolio data
 const portfolioProjects = [
@@ -714,42 +715,24 @@ export function Gallery() {
             <Flex
               direction="column"
               align="center"
-              gap="6"
+              gap="4"
               style={{
                 textAlign: 'center',
                 maxWidth: '700px',
                 margin: '0 auto',
-                padding: 'var(--space-6) 0',
+                // padding: 'var(--space-6) 0',
               }}
             >
-              <Heading size="6">רוצים תוצאה דומה?</Heading>
+              <Heading as="h3" size="6">
+                רוצים תוצאה דומה?
+              </Heading>
               <Text size="3" style={{ marginBottom: '1.5rem' }}>
                 צור איתנו קשר עכשיו לשיחת ייעוץ ראשונית ללא התחייבות
               </Text>
-              <Box>
-                <a href="/contact">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    style={{
-                      backgroundColor: 'white',
-                      color: 'var(--accent-9)',
-                      border: 'none',
-                      padding: '12px 24px',
-                      borderRadius: '9999px',
-                      fontWeight: 'bold',
-                      fontSize: '16px',
-                      cursor: 'pointer',
-                      boxShadow: 'var(--shadow-4)',
-                    }}
-                  >
-                    צור קשר
-                  </motion.button>
-                </a>
-              </Box>
             </Flex>
           </motion.div>
         </Container>
+        <ContactSection noBackground />
       </Section>
 
       {/* Lightbox */}

@@ -1,10 +1,24 @@
 import { motion } from 'framer-motion';
-import { Container, Section, Heading, Text, Flex, Box, Grid, Card } from '@radix-ui/themes';
-import { Star, Heart, Users, Shield, Zap, Handshake } from 'lucide-react';
+import {
+  Container,
+  Section,
+  Heading,
+  Text,
+  Flex,
+  Box,
+  Grid,
+  Card,
+  IconButton,
+  Button,
+  TextArea,
+  TextField,
+} from '@radix-ui/themes';
+import { Star, Heart, Users, Shield, Zap, Handshake, Send } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
 import '../styles/about.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { teamImages } from '../components/sections/TeamShowCase';
+import ContactSection from '../components/sections/contact';
 
 // Team members data
 const teamMembers = [
@@ -47,6 +61,7 @@ const teamMembers = [
     description:
       'אנחנו צוות של אנשי מקצוע מנוסים שבאים לעבוד עם חיוך ורצון לספק תוצאות, כל אחד בתחומו.',
     education: 'שיפוצניקים, צבעים, אינסטלטורים, חשמלאים, וכל מה שצריך כדי שהפרויקט שלכם יצליח.',
+    final: true,
   },
 ];
 
@@ -125,7 +140,7 @@ const companyValues = [
 // ];
 
 export function About() {
-  const { isMobile } = useScreen();
+  const { isMobile, isTablet } = useScreen();
   return (
     <Box dir="rtl">
       {/* Hero Section */}
@@ -484,6 +499,10 @@ export function About() {
                     duration: 0.5,
                     delay: index * 0.1,
                   }}
+                  style={{
+                    gridColumn:
+                      member.final && !isMobile ? (isTablet ? 'span 2' : 'span 4') : 'span 1',
+                  }}
                 >
                   <Card
                     style={{
@@ -554,58 +573,7 @@ export function About() {
       </Section>
 
       {/* Call to action */}
-      <Section
-        size="3"
-        style={{ background: 'linear-gradient(to bottom right, var(--accent-5), var(--accent-3))' }}
-      >
-        <Container>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <Flex
-              direction="column"
-              align="center"
-              gap="6"
-              style={{
-                textAlign: 'center',
-                maxWidth: '700px',
-                margin: '0 auto',
-                padding: 'var(--space-9) 0',
-              }}
-            >
-              <Heading size="6">צרו איתנו קשר עוד היום</Heading>
-              <Text size="3" style={{ marginBottom: '2rem' }}>
-                אנו מזמינים אתכם לפנות אלינו לתיאום פגישת ייעוץ ללא התחייבות, בה נוכל לשמוע על
-                הצרכים שלכם ולהציע פתרונות מתאימים.
-              </Text>
-              <Box>
-                <a href="/contact">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    style={{
-                      backgroundColor: 'white',
-                      color: 'var(--accent-9)',
-                      border: 'none',
-                      padding: '12px 24px',
-                      borderRadius: '9999px',
-                      fontWeight: 'bold',
-                      fontSize: '16px',
-                      cursor: 'pointer',
-                      boxShadow: 'var(--shadow-4)',
-                    }}
-                  >
-                    צור קשר
-                  </motion.button>
-                </a>
-              </Box>
-            </Flex>
-          </motion.div>
-        </Container>
-      </Section>
+      <ContactSection />
     </Box>
   );
 }
