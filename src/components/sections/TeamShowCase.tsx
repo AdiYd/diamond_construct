@@ -13,16 +13,16 @@ export const teamImages = [
   {
     id: 1,
     url: '/image/team/IMG_20240703_134753_141.jpg',
-    title: 'יעקב כהן',
-    description: 'מנכ״ל ומייסד | 15 שנות ניסיון בניהול פרויקטי בנייה ושיפוצים',
+    title: 'גדי כהן',
+    description: '8 שנות נאסיון בתחום הבנייה | מתמחה בשיפוצים ובניה פרטית',
     category: 'management',
     size: 'large',
   },
   {
     id: 2,
     url: '/image/team/IMG20250131124919.jpg',
-    title: 'יעקב לוי',
-    description: 'מנהל פרויקטים | מלווה אתכם בכל שלב, מהתכנון ועד הביצוע',
+    title: 'יעקב דיאמונד',
+    description: 'מנהל פרויקטים ובעלים | מלווה אתכם בכל שלב, מהתכנון ועד הביצוע',
     category: 'customer-service',
     size: 'medium',
   },
@@ -37,7 +37,7 @@ export const teamImages = [
   {
     id: 4,
     url: '/image/team/PXL_20241001_132821300.MP.jpg',
-    title: 'רוני אברהם',
+    title: 'אבי גולן',
     description: 'מנהל עבודה | מוביל את הצוות בשטח מתוך מחויבות לאיכות ולו״ז',
     category: 'construction',
     size: 'medium',
@@ -106,6 +106,15 @@ export const teamImages = [
     description: 'צוות מקצועי, מסור ואכפתי שמתייחס לבית שלכם כאילו היה שלו',
     category: 'team',
     size: 'large',
+  },
+  {
+    id: 13,
+    name: 'אבי גולן',
+    position: 'מנהל עבודה',
+    url: 'image/team/PXL_20241001_132912903.jpg',
+    description: 'אבי מוביל את הצוות בשטח מתוך מחויבות לאיכות ולו״ז',
+    category: 'team',
+    size: 'medium',
   },
 ];
 
@@ -236,13 +245,16 @@ export function TeamShowCase() {
               className="embla__dots"
               style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}
             >
-              {shuffledTeamMembers.current.slice(0, 6).map((_, index) => (
-                <Box
-                  key={index}
-                  onClick={() => emblaApi?.scrollTo(index)}
-                  className={`embla__dot ${selectedIndex === index ? 'embla__dot--active' : ''}`}
-                />
-              ))}
+              {shuffledTeamMembers.current
+                .slice(0, 6)
+                .map((_, index) => (
+                  <Box
+                    key={index}
+                    onClick={() => emblaApi?.scrollTo(index)}
+                    className={`embla__dot ${selectedIndex === index ? 'embla__dot--active' : ''}`}
+                  />
+                ))
+                .reverse()}
             </Box>
           </Box>
         ) : (

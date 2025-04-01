@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/diamond_construct/',
+  // base: '/diamond_construct/',
+  base: '/',
   plugins: [react()],
 
   // css: {

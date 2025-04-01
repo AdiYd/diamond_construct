@@ -327,13 +327,15 @@ export function ProjectShowcase() {
               className="embla__dots"
               style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}
             >
-              {shuffledProjects.current.map((_, index) => (
-                <Box
-                  key={index}
-                  onClick={() => emblaApi?.scrollTo(index)}
-                  className={`embla__dot ${selectedIndex === index ? 'embla__dot--active' : ''}`}
-                />
-              ))}
+              {shuffledProjects.current
+                .map((_, index) => (
+                  <Box
+                    key={index}
+                    onClick={() => emblaApi?.scrollTo(index)}
+                    className={`embla__dot ${selectedIndex === index ? 'embla__dot--active' : ''}`}
+                  />
+                ))
+                .reverse()}
             </Box>
           </Box>
         ) : (

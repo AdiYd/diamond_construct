@@ -11,6 +11,7 @@ import {
   Card,
   TextField,
   TextArea,
+  IconButton,
 } from '@radix-ui/themes';
 import { Icon } from '@iconify/react';
 import {
@@ -832,8 +833,8 @@ export function Home() {
                         >
                           {item.icon}
                         </Box>
-                        <Box>
-                          <Text weight="bold" size="3" mb="1" ml="1">
+                        <Box as="div" style={{ textAlign: 'start' }}>
+                          <Text as="div" weight="bold" size="4">
                             {item.title}:
                           </Text>
                           <a
@@ -1095,17 +1096,18 @@ export function Home() {
                           </>
                         )}
 
-                        <Flex gap="3" mt="8" mb="4">
+                        <Flex align="center" wrap="wrap" justify="center" gap="3" mt="4" mb="4">
                           <Button
                             type="submit"
                             loading={loading}
                             size="4"
-                            style={{
-                              flex: 1,
-                              background: loading
-                                ? 'var(--gray-6)'
-                                : 'linear-gradient(135deg, var(--accent-9), var(--accent-10))',
-                            }}
+                            className="cta-button"
+                            // style={{
+                            //   flex: 1,
+                            //   background: loading
+                            //     ? 'var(--gray-6)'
+                            //     : 'linear-gradient(135deg, var(--accent-9), var(--accent-10))',
+                            // }}
                           >
                             <Send size={16} />
                             שליחת פרטים
@@ -1117,7 +1119,7 @@ export function Home() {
                             rel="noopener noreferrer"
                             style={{ flex: 1 }}
                           >
-                            <Button
+                            <IconButton
                               size="4"
                               // variant="soft"
                               onClick={e => {
@@ -1127,14 +1129,17 @@ export function Home() {
                                 window.open('https://wa.me/972527036959', '_blank');
                               }}
                               style={{
-                                width: '100%',
+                                width: 'fit-content',
+                                height: 'fit-content',
                                 backgroundColor: '#25D366',
+                                borderRadius: '100%',
+                                padding: '0.5rem',
                                 color: 'white',
                               }}
                             >
                               <Icon icon="mdi:whatsapp" width={20} />
-                              וואטסאפ
-                            </Button>
+                              {/* וואטסאפ */}
+                            </IconButton>
                           </a>
                         </Flex>
                       </Flex>

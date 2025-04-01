@@ -232,21 +232,23 @@ export function TestimonialCarousel() {
 
         {/* Carousel pagination */}
         <Flex justify="center" mt="4">
-          {testimonials.map((_, index) => (
-            <Box
-              key={index}
-              className={`pagination-dot ${currentIndex === index ? 'active' : ''}`}
-              onClick={() => goToSlide(index)}
-              style={{
-                width: '10px',
-                height: '10px',
-                borderRadius: '50%',
-                backgroundColor: currentIndex === index ? 'var(--accent-11)' : 'var(--gray-8)',
-                margin: '0 5px',
-                cursor: 'pointer',
-              }}
-            />
-          ))}
+          {testimonials
+            .map((_, index) => (
+              <Box
+                key={index}
+                className={`pagination-dot ${currentIndex === index ? 'active' : ''}`}
+                onClick={() => goToSlide(index)}
+                style={{
+                  width: '10px',
+                  height: '10px',
+                  borderRadius: '50%',
+                  backgroundColor: currentIndex === index ? 'var(--accent-11)' : 'var(--gray-8)',
+                  margin: '0 5px',
+                  cursor: 'pointer',
+                }}
+              />
+            ))
+            .reverse()}
         </Flex>
       </Box>
     </Box>
