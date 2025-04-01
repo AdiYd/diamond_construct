@@ -474,7 +474,7 @@ export function Gallery() {
               <Text
                 size="5"
                 align="center"
-                style={{ marginBottom: '2rem', color: 'var(--gray-9)', lineHeight: '1.6' }}
+                style={{ marginBottom: '2rem', color: 'var(--gray-8)', lineHeight: '1.6' }}
               >
                 פה תוכלו לראות מגוון פרויקטים שביצענו - לפני ואחרי השיפוץ
               </Text>

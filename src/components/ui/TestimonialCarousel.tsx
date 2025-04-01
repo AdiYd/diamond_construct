@@ -98,13 +98,18 @@ export function TestimonialCarousel() {
                   padding: '0 8px',
                 }}
               >
-                <Card
+                <div
                   style={{
                     display: 'flex',
                     height: '100%',
-                    border: 'none',
+                    // border: 'none',
+                    borderRadius: '12px',
+                    backgroundColor: 'var(--background-color)',
+                    backdropFilter: 'blur(20px)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    border: '0.8px solid var(--gray-a7)',
                   }}
-                  className="testimonial-slide* modern-testimonial-card*"
                 >
                   {index % 3 === 0 && <Box className="testimonial-decoration-1" />}
                   {index % 3 === 1 && <Box className="testimonial-decoration-2" />}
@@ -189,7 +194,7 @@ export function TestimonialCarousel() {
                       {testimonial.project}
                     </Text>
                   </Flex>
-                </Card>
+                </div>
               </Box>
             ))}
           </div>

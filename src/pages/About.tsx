@@ -4,6 +4,7 @@ import { Star, Heart, Users, Shield, Zap, Handshake } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
 import '../styles/about.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import { teamImages } from '../components/sections/TeamShowCase';
 
 // Team members data
 const teamMembers = [
@@ -151,7 +152,7 @@ export function About() {
               <Text
                 size="5"
                 align="center"
-                style={{ marginBottom: '2rem', color: 'var(--gray-9)', lineHeight: '1.6' }}
+                style={{ marginBottom: '2rem', color: 'var(--gray-8)', lineHeight: '1.6' }}
               >
                 שיפוץ ובנייה זה לא רק קירות – זה אנשים, הקשבה, ותוצאה שמשנה חיים
               </Text>
@@ -171,7 +172,7 @@ export function About() {
       </Section>
 
       {/* Vision Section */}
-      <Section size="3" style={{ background: 'var(--gray-1)' }}>
+      <Section size="3" style={{}}>
         <Container>
           <Flex direction="column" align="center" gap="6">
             <motion.div
@@ -181,18 +182,70 @@ export function About() {
               transition={{ duration: 0.5 }}
               style={{ maxWidth: '800px', textAlign: 'center' }}
             >
-              <Card style={{ padding: '2rem' }}>
-                <Text size="4" style={{ lineHeight: '1.8', marginBottom: '1.5rem' }}>
+              <Card
+                className="about-card"
+                style={{
+                  padding: isMobile ? '1rem 1.5rem' : '2rem 3.5rem',
+                  backdropFilter: 'blur(10px)',
+                }}
+              >
+                <Box className="service-card-decoration-circle" />
+                <Box
+                  style={{ animation: 'rotate 8s ease-in infinite' }}
+                  className="testimonial-decoration-3"
+                />
+                <Box
+                  style={{ animation: 'rotate 15s ease-in infinite' }}
+                  className="testimonial-decoration-4"
+                />
+                <Heading size="6" align="center" className="section-title with-accent" mb="4">
+                  החזון שלנו: שיפוץ עם נשמה
+                </Heading>
+                <Text
+                  as="div"
+                  size="4"
+                  style={{ lineHeight: '1.8', fontWeight: 600, marginBottom: '1rem' }}
+                >
                   אנחנו עוסקים בשיפוץ דירות ובתים פרטיים, תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור
                   כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב בין מקצועיות טכנית בלתי מתפשרת, לבין
                   יחס אישי שמציב את הלקוח במרכז.
                 </Text>
-                <Text size="4" style={{ lineHeight: '1.8' }}>
+                <Text as="div" size="4" style={{ lineHeight: '1.8', fontWeight: 600 }}>
                   אנו מאמינים ששיפוץ איכותי מתחיל בהקשבה אמיתית, ומתבצע מתוך הבנה שהבית שלכם הוא
                   הרבה יותר ממבנה – הוא המקום הכי חשוב בעולם.
                 </Text>
               </Card>
             </motion.div>
+            <Box as="div" style={{ width: '100vw' }}>
+              <div
+                style={{
+                  animation: 'scrollX 30s linear alternate infinite',
+                  display: 'flex',
+                  gap: '1rem',
+                  overflowX: 'visible',
+                  position: 'relative',
+                  // top: '-50px',
+                  rotate: '4deg',
+                  zIndex: 1,
+                }}
+              >
+                {teamImages.map((image, index) => (
+                  <div key={index}>
+                    <img
+                      src={image.url}
+                      className="team-image"
+                      alt={`Team member ${index + 1}`}
+                      style={{
+                        aspectRatio: '1/1',
+                        objectFit: 'cover',
+                        width: '200px',
+                        borderRadius: '8px',
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </Box>
           </Flex>
         </Container>
       </Section>
@@ -209,7 +262,7 @@ export function About() {
               style={{ width: '100%' }}
             >
               <Heading size="6" align="center" className="section-title with-accent" mb="4">
-                💡 הגישה שלנו: שקיפות, סדר ונשמה
+                הגישה שלנו: שקיפות, סדר ונשמה
               </Heading>
               <Text
                 as="div"
@@ -264,12 +317,17 @@ export function About() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card
-                    variant="classic"
-                    // size="3"
+                  <Box
                     style={{
-                      height: '100%',
-                      // background: 'linear-gradient(to right, #30345e, #0b0e29)',
+                      padding: isMobile ? 'var(--space-3)' : 'var(--space-4)',
+                      borderRadius: 'var(--radius-2)',
+                      border: '1px solid var(--gray-a1)',
+                      backgroundImage:
+                        'linear-gradient(to bottom left,var(--iris-a3), var(--sky-a3))',
+                      backgroundColor: 'var(--gray-a1)',
+                      // height: '100%',
+                      transform: 'skew(5deg)',
+                      textAlign: isMobile ? 'start' : 'start',
                     }}
                   >
                     <Heading style={{ display: 'flex', gap: '12px' }} size="4" mb="2">
@@ -279,7 +337,7 @@ export function About() {
                     <Text size="2" style={{ color: 'var(--gray-11)' }}>
                       {item.description}
                     </Text>
-                  </Card>
+                  </Box>
                 </motion.div>
               ))}
             </Grid>

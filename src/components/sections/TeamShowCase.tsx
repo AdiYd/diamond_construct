@@ -9,7 +9,7 @@ import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
 
 // Team members data with images and descriptions
-const teamImages = [
+export const teamImages = [
   {
     id: 1,
     url: '/image/team/IMG_20240703_134753_141.jpg',
@@ -21,8 +21,8 @@ const teamImages = [
   {
     id: 2,
     url: '/image/team/IMG20250131124919.jpg',
-    title: 'מיכל לוי',
-    description: 'מנהלת קשרי לקוחות | מומחית ביצירת חווית לקוח מושלמת',
+    title: 'יעקב לוי',
+    description: 'מנהל פרויקטים | מלווה אתכם בכל שלב, מהתכנון ועד הביצוע',
     category: 'customer-service',
     size: 'medium',
   },
@@ -45,8 +45,8 @@ const teamImages = [
   {
     id: 5,
     url: '/image/team/PXL_20241208_092655939.jpg',
-    title: 'שירה לוינסון',
-    description: 'מעצבת פנים | יוצרת חללים מרגשים שמתאימים בדיוק ללקוח',
+    title: 'אלכס לוינסון',
+    description: 'אני אתלכלך בשבילכם עד שהתוצאה תהיה מושלמת!',
     category: 'design',
     size: 'small',
   },
@@ -61,8 +61,8 @@ const teamImages = [
   {
     id: 7,
     url: '/image/team/PXL_20241001_132912903.jpg',
-    title: 'נועה פרץ',
-    description: 'אחראית תפעול | אשת המפתח שדואגת שכל גלגלי החברה יסתובבו',
+    title: 'צוות מנצח',
+    description: 'הצוות שלנו הוא הלב של החברה - מקצועי, מסור ואכפתי',
     category: 'operations',
     size: 'medium',
   },
@@ -70,15 +70,15 @@ const teamImages = [
     id: 8,
     url: '/image/team/PXL_20241007_105155714.jpg',
     title: 'אורי גולן',
-    description: 'מהנדס | מתכנן מערכות מורכבות ופותר בעיות בשטח',
+    description: '',
     category: 'engineering',
     size: 'small',
   },
   {
     id: 9,
-    url: '/image/team/team-9.jpg',
-    title: 'דנה שמעוני',
-    description: 'בוגרת בצלאל | מומחית באסתטיקה וצבע בחללים פנימיים',
+    url: '/image/team/PXL_20250216_081515079.MP~2.jpg',
+    title: 'מאור שטרית',
+    description: 'אנחנו עובדים תוך כבוד ושמירה על הסביבה שלכם ועל הטבע',
     category: 'design',
     size: 'large',
   },
@@ -93,15 +93,15 @@ const teamImages = [
   },
   {
     id: 11,
-    url: '/image/team/team-group-1.jpg',
-    title: 'הצוות שלנו',
+    url: '/image/team/PXL_20240905_151748546.MP.jpg',
+    title: 'מוכנים לכל אתגר',
     description: 'עובדים יחד כמו משפחה אחת למען ההצלחה שלכם',
     category: 'team',
     size: 'medium',
   },
   {
     id: 12,
-    url: '/image/team/team-group-2.jpg',
+    url: '/image/work/PXL_20250303_140836441.MP.jpg',
     title: 'האנשים שמאחורי הפרויקטים',
     description: 'צוות מקצועי, מסור ואכפתי שמתייחס לבית שלכם כאילו היה שלו',
     category: 'team',
@@ -185,7 +185,7 @@ export function TeamShowCase() {
             size={isMobile ? '3' : '5'}
             style={{ maxWidth: '600px', margin: '0 auto 2rem', color: 'var(--gray-11)' }}
           >
-            החוזק האמיתי שלנו הוא האנשים - צוות מקצועי, אכפתי ומסור
+            החוזק האמיתי שלנו הוא האנשים - צוות מקצועי, מנוסה, אכפתי ומסור
           </Text>
         </motion.div>
 
@@ -194,7 +194,7 @@ export function TeamShowCase() {
           <Box mt="4" className="embla" style={{ position: 'relative' }}>
             <Box className="embla__viewport" ref={emblaRef}>
               <Box className="embla__container">
-                {shuffledTeamMembers.current.slice(0, 6).map((member, index) => (
+                {shuffledTeamMembers.current.slice(0, 10).map((member, index) => (
                   <Box key={member.id} className="embla__slide">
                     <motion.div
                       viewport={{ once: true }}

@@ -69,7 +69,9 @@ export function Footer() {
               />
               Diamond
             </Link>
-            <p style={{ color: 'var(--muted-foreground)' }}>{t('brandDescription')}</p>
+            <p style={{ color: 'var(--muted-foreground)', textAlign: 'start' }}>
+              {t('brandDescription')}
+            </p>
           </div>
 
           {/* Quick Links */}

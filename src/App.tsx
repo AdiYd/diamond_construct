@@ -37,10 +37,10 @@ function App() {
                   width: '30vw',
                   zIndex: 0,
                   borderRadius: '50%',
-                  filter: 'blur(150px)',
+                  filter: 'blur(200px)',
                   background:
-                    'linear-gradient(to right, rgba(86, 218, 152, 0.8), rgba(237, 140, 71, 0.8))',
-                  opacity: 0.7,
+                    'linear-gradient(to right,rgba(237, 140, 71, 0.8), rgba(130, 133, 27, 0.8))',
+                  opacity: 0.9,
                 }}
               />
               <Routes>

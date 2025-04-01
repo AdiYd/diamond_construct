@@ -142,7 +142,7 @@ export function Services() {
                 style={{
                   maxWidth: '800px',
                   marginBottom: '2rem',
-                  color: 'var(--gray-9)',
+                  color: 'var(--gray-8)',
                   padding: isMobile ? '0 var(--space-3)' : 0,
                 }}
               >
@@ -203,10 +203,7 @@ export function Services() {
                   <Heading size={{ initial: '3', sm: '4' }} as="h3">
                     {service.title}
                   </Heading>
-                  <Text
-                    size={{ initial: '2', sm: '2' }}
-                    style={{ color: 'var(--gray-11)', flex: 1 }}
-                  >
+                  <Text as="div" size="3" style={{ color: 'var(--gray-11)', flex: 1 }}>
                     {service.shortDescription}
                   </Text>
                   <Box>
@@ -392,7 +389,7 @@ export function Services() {
                 transition={{ duration: 0.8 }}
               >
                 <Box>
-                  <Box
+                  {/* <Box
                     style={{
                       color: service.color,
                       marginBottom: '1rem',
@@ -400,7 +397,7 @@ export function Services() {
                     }}
                   >
                     {service.icon}
-                  </Box>
+                  </Box> */}
                   <Heading
                     as="h2"
                     size={{ initial: '5', sm: '6' }}
@@ -412,7 +409,9 @@ export function Services() {
                     {service.title}
                   </Heading>
                   <Text
-                    size={{ initial: '2', sm: '3' }}
+                    as="div"
+                    size={isMobile ? '3' : '4'}
+                    weight="medium"
                     style={{
                       color: 'var(--gray-11)',
                       lineHeight: '1.7',
@@ -445,9 +444,11 @@ export function Services() {
                       {service.benefits.map((benefit, idx) => (
                         <Flex key={idx} gap="2" align="center">
                           <Box style={{ color: service.color }}>
-                            <CheckCircle size={18} />
+                            <CheckCircle style={{ position: 'relative', top: '3px' }} size={16} />
                           </Box>
-                          <Text size="2">{benefit}</Text>
+                          <Text as="div" size="3">
+                            {benefit}
+                          </Text>
                         </Flex>
                       ))}
                     </Flex>

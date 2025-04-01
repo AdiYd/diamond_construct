@@ -3,7 +3,7 @@
 /* Main container */
 .project-showcase {
   padding: var(--section-spacing-md) 0;
-  background: var(--color-background);
+  /* background: var(--color-background); */
 }
 
 /* Masonry Gallery Layout */
@@ -85,8 +85,8 @@
 }
 
 .embla__dot--active {
-  width: 12px;
-  height: 12px;
+  /* width: 12px;
+  height: 12px; */
   background-color: var(--accent-9);
 }
 
@@ -151,9 +151,14 @@
 }
 
 .project-description {
-  color: rgb(183, 180, 180);
+  color: rgb(220, 217, 217);
   transform: translateY(20px);
   transition: transform 0.3s ease 0.1s;
+  max-width: 90%;
+  text-wrap: wrap;
+  margin-left: 5px;
+  margin-right: 0;
+  font-size: 1rem !important;
 }
 
 .project-card:hover .project-title,

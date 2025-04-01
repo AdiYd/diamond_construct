@@ -34,14 +34,14 @@ const projectImages = [
     category: 'design',
     size: 'small',
   },
-  {
-    id: 4,
-    url: '/image/IMG-20240517-WA0042.jpg',
-    title: 'תוספת בנייה',
-    description: 'הרחבת בית פרטי עם תוספת קומה',
-    category: 'construction',
-    size: 'medium',
-  },
+  //   {
+  //     id: 4,
+  //     url: '/image/IMG-20240517-WA0042.jpg',
+  //     title: 'תוספת בנייה',
+  //     description: 'הרחבת בית פרטי עם תוספת קומה',
+  //     category: 'construction',
+  //     size: 'medium',
+  //   },
   {
     id: 5,
     url: '/image/IMG-20240517-WA0043.jpg',
@@ -53,9 +53,9 @@ const projectImages = [
   {
     id: 6,
     url: '/image/IMG-20240517-WA0046.jpg',
-    title: 'חצר אחורית',
-    description: 'עיצוב ובניית חצר פרטית עם פינת ישיבה',
-    category: 'design',
+    title: 'מקלחת וכיור',
+    description: 'חידוש מקלחת וכיור עם אריחים חדשים',
+    category: 'bathrooms',
     size: 'large',
   },
   {
@@ -63,14 +63,14 @@ const projectImages = [
     url: '/image/IMG-20240517-WA0047.jpg',
     title: 'חדר שינה',
     description: 'עיצוב חדר שינה בסגנון מינימליסטי',
-    category: 'design',
+    category: 'bedrooms',
     size: 'medium',
   },
   {
     id: 8,
     url: '/image/IMG-20240517-WA0048.jpg',
-    title: 'מרפסת',
-    description: 'שיפוץ מרפסת כולל ריצוף ומעקות',
+    title: 'שיפוץ כללי',
+    description: 'שיפוץ פנים מטבח, כולל ארונות חדשים',
     category: 'renovations',
     size: 'small',
   },
@@ -79,7 +79,7 @@ const projectImages = [
     url: '/image/IMG-20240517-WA0054.jpg',
     title: 'שירוקלחת',
     description: 'התקנת שירותים ומקלחת חדשים',
-    category: 'kitchens',
+    category: 'bathrooms',
     size: 'large',
   },
   {
@@ -109,9 +109,9 @@ const projectImages = [
   {
     id: 13,
     url: '/image/IMG-20250325-WA0009.jpg',
-    title: 'חדר אמבטיה מודרני',
-    description: 'שיפוץ חדר אמבטיה עם עיצוב מודרני',
-    category: 'bathrooms',
+    title: 'פינת קפה מעוצבת',
+    description: 'פינת קפה מעוצבת עם ארונות חדשים',
+    category: 'kitchens',
     size: 'small',
   },
   {
@@ -233,7 +233,7 @@ export function ProjectShowcase() {
           <Box mt="4" className="embla" style={{ position: 'relative' }}>
             <Box className="embla__viewport" ref={emblaRef}>
               <Box className="embla__container">
-                {shuffledProjects.current.slice(0, 5).map((project, index) => (
+                {shuffledProjects.current.slice(0, 10).map((project, index) => (
                   <Box key={project.id} className="embla__slide">
                     <motion.div
                       //   initial={{ opacity: 0, y: 20 }}

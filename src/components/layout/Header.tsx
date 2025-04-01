@@ -80,7 +80,7 @@ export function Header() {
             : 'rgba(255,255,255,0.2)', // Semi-transparent background
           // borderBottom: '1px solid var(--gray-5)',
           zIndex: 50,
-          backdropFilter: 'blur(20px)',
+          backdropFilter: isOnTop ? 'none' : 'blur(20px)',
           color: 'white',
           transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
           transition: 'transform 0.3s ease',
@@ -101,7 +101,7 @@ export function Header() {
               </Link>
 
               {/* Desktop Navigation */}
-              <Flex display={{ initial: 'none', md: 'flex' }} gap="6">
+              <Flex display={{ initial: 'none', md: 'flex' }} gap="4">
                 {pagesConfig.map(page => (
                   <Link
                     key={page.id}
@@ -109,6 +109,9 @@ export function Header() {
                     className={location.pathname === page.path ? 'header-nav-active' : 'header-nav'}
                     style={{
                       textDecoration: 'none',
+                      padding: '4px 8px',
+                      borderRadius: '8px',
+                      // backgroundColor: isOnTop ? 'var(--gray-a4)' : 'transparent',
                       color:
                         location.pathname === page.path
                           ? isHomePage

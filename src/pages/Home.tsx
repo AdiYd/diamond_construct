@@ -119,8 +119,10 @@ export function Home() {
         size="3"
         className="hero-background"
         style={{
-          backgroundImage:
-            'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url("https://images.pexels.com/photos/31117955/pexels-photo-31117955.jpeg")',
+          backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.4), transparent), url("${
+            import.meta.env.VITE_BASE_URL
+          }/hero_2.jpg")`,
+          // 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url("https://images.pexels.com/photos/31117955/pexels-photo-31117955.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           minHeight: '90vh',
@@ -133,7 +135,7 @@ export function Home() {
         }}
       >
         {/* Enhanced decorative elements */}
-        <Box
+        {/* <Box
           style={{
             position: 'absolute',
             width: '100%',
@@ -214,7 +216,6 @@ export function Home() {
             }}
           />
 
-          {/* Add geometric accent shapes for modern look */}
           <motion.div
             animate={{ rotate: 360 }}
             transition={{
@@ -234,7 +235,7 @@ export function Home() {
               display: isMobile ? 'none' : 'block',
             }}
           />
-        </Box>
+        </Box> */}
 
         <Container
           mt={isMobile ? '8' : '0'}
@@ -269,7 +270,16 @@ export function Home() {
                   </Text>
                 </Box>
               </div>
-              <Flex direction="column" align="center" gap="4">
+              <Flex
+                style={{
+                  backdropFilter: 'blur(0px)',
+                  padding: '0.4rem',
+                  borderRadius: 'var(--radius-4)',
+                }}
+                direction="column"
+                align="center"
+                gap="4"
+              >
                 <Heading
                   size={{ initial: '6', xs: '7', sm: '8', md: '9' }}
                   weight="bold"
@@ -318,18 +328,22 @@ export function Home() {
               </Flex>
 
               <Flex justify="center" gap="4" mt={isMobile ? '0' : '2'}>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                <motion.div style={{}} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                   <Button
                     size="4"
                     className="cta-button primary"
-                    style={{ alignItems: 'center' }}
+                    style={{
+                      alignItems: 'center',
+                      boxShadow: '0 10px 50px var(--amber-a10)',
+                      borderRadius: 'var(--radius-6)',
+                    }}
                     mb={isMobile ? '8' : '0'}
                     onClick={() => {
                       const contactSection = document.getElementById('contact-section');
                       contactSection?.scrollIntoView({ behavior: 'smooth' });
                     }}
                   >
-                    צור קשר עכשיו
+                    צרו קשר עכשיו
                     {/* <Icon icon="ion:diamond-sharp" width={20} /> */}
                   </Button>
                 </motion.div>
@@ -790,14 +804,20 @@ export function Home() {
                         cursor: 'pointer',
                       }}
                     >
-                      <Flex gap="3" align="center">
+                      <Flex
+                        onClick={() => {
+                          window.open(item.action);
+                        }}
+                        gap="3"
+                        align="center"
+                      >
                         <Box
                           style={{
                             display: 'flex',
                             cursor: 'pointer',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            background: 'var(--accent-3)',
+                            background: 'var(--gray-a1)',
                             color: item.color,
                             width: '2.5rem',
                             height: '2.5rem',
@@ -825,13 +845,7 @@ export function Home() {
                               textDecoration: 'none',
                             }}
                           >
-                            <Text
-                              onClick={() => {
-                                window.open(item.action);
-                              }}
-                              size="2"
-                              mx="1"
-                            >
+                            <Text size="2" mx="1">
                               {item.content}
                               {item.title === 'יעקב' && (
                                 <Text

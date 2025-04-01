@@ -150,7 +150,7 @@ export function Contact() {
               <Text
                 size="5"
                 align="center"
-                style={{ marginBottom: '2rem', color: 'var(--gray-9)', lineHeight: '1.6' }}
+                style={{ marginBottom: '2rem', color: 'var(--gray-8)', lineHeight: '1.6' }}
               >
                 נשמח לעמוד לרשותך. מלא את הטופס או פנה אלינו באחת מהדרכים הבאות
               </Text>

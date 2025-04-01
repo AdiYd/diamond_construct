@@ -68,7 +68,7 @@
   position: relative;
   max-width: 60%;
   margin: 20px;
-  border: 1px solid var(--gray-4);
+  /* border: 1px solid var(--gray-4); */
   overflow: hidden;
 }
 
@@ -88,10 +88,10 @@
 
 .testimonial-decoration-1 {
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 100px;
-  height: 100px;
+  top: -60px;
+  left: -60px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background: linear-gradient(to bottom, var(--lime-6), var(--mint-8));
   opacity: 0.3;
@@ -99,10 +99,10 @@
 
 .testimonial-decoration-2 {
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 100px;
-  height: 100px;
+  top: -60px;
+  left: -60px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background: linear-gradient(to bottom, var(--secondary), var(--orange-8));
   opacity: 0.15;
@@ -110,14 +110,15 @@
 
 .testimonial-decoration-3 {
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 100px;
-  height: 100px;
+  top: -60px;
+  left: -60px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background: linear-gradient(to bottom, var(--indigo-8), var(--plum-6));
   opacity: 0.2;
 }
+
 
 .testimonial-text {
   position: relative;
