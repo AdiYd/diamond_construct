@@ -11,8 +11,7 @@ const teamMembers = [
   {
     name: 'יעקב כהן',
     position: 'מנכ"ל ומייסד',
-    image:
-      'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop',
+    image: 'image/team/IMG20250131124919.jpg',
     description:
       'יעקב הקים את דיאמונד לפני 15 שנים, אחרי שירות צבאי כמפקד בחיל ההנדסה הקרבית. עם נסיון של מעל 20 שנה בתחום הבנייה והשיפוצים, הוא מוביל את החברה עם חזון ברור למצוינות ושירות לקוחות יוצא דופן.',
     education: 'תואר בהנדסת בניין, טכניון חיפה',
@@ -20,8 +19,7 @@ const teamMembers = [
   {
     name: 'רונית לוי',
     position: 'אדריכלית ראשית',
-    image:
-      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2787&auto=format&fit=crop',
+    image: 'image/team/IMG_20240703_134753_141.jpg',
     description:
       'רונית מצטרפת אלינו עם ניסיון עשיר בעיצוב פנים ואדריכלות. היא בוגרת בצלאל ומתמחה בתכנון מרחבים פונקציונליים עם נגיעה אסתטית ייחודית.',
     education: 'תואר באדריכלות, בצלאל ירושלים',
@@ -29,21 +27,20 @@ const teamMembers = [
   {
     name: 'אייל גולן',
     position: 'מנהל פרויקטים',
-    image:
-      'https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    image: 'image/team/PXL_20241208_092655939.jpg',
     description:
       'אחרי שירות משמעותי כקצין בסיירת מטכ"ל, אייל הצטרף לצוות שלנו לפני 7 שנים. הוא מנהל את הפרויקטים הגדולים שלנו ביד רמה, עם דגש על יעילות וקפדנות.',
     education: 'תואר ראשון בניהול, אוניברסיטת תל אביב',
   },
-  {
-    name: 'מיכל אברהמי',
-    position: 'מנהלת קשרי לקוחות',
-    image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2961&auto=format&fit=crop',
-    description:
-      'מיכל היא הפנים של החברה מול הלקוחות שלנו. עם ניסיון רב בתחום השירות, היא מבטיחה שכל לקוח מקבל יחס אישי ומענה מהיר לכל שאלה.',
-    education: 'תואר בתקשורת ושיווק, המכללה למנהל',
-  },
+  // {
+  //   name: 'מיכל אברהמי',
+  //   position: 'מנהלת קשרי לקוחות',
+  //   image:
+  //     'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2961&auto=format&fit=crop',
+  //   description:
+  //     'מיכל היא הפנים של החברה מול הלקוחות שלנו. עם ניסיון רב בתחום השירות, היא מבטיחה שכל לקוח מקבל יחס אישי ומענה מהיר לכל שאלה.',
+  //   education: 'תואר בתקשורת ושיווק, המכללה למנהל',
+  // },
 ];
 
 // Company values data
@@ -225,14 +222,14 @@ export function About() {
                   overflowX: 'visible',
                   position: 'relative',
                   // top: '-50px',
-                  rotate: '4deg',
+                  rotate: '3deg',
                   zIndex: 1,
                 }}
               >
                 {teamImages.map((image, index) => (
                   <div key={index}>
                     <img
-                      src={image.url}
+                      src={`${import.meta.env.VITE_BASE_URL}${image.url}`}
                       className="team-image"
                       alt={`Team member ${index + 1}`}
                       style={{
@@ -502,7 +499,7 @@ export function About() {
                         }}
                       >
                         <img
-                          src={member.image}
+                          src={`${import.meta.env.VITE_BASE_URL}${member.image}`}
                           alt={member.name}
                           style={{
                             width: '100%',

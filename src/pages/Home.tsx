@@ -95,7 +95,7 @@ export function Home() {
   };
 
   const handleQuickFormInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setQuickFormData(prev => ({ ...prev, [name]: value }));
@@ -121,7 +121,7 @@ export function Home() {
         style={{
           backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.4), transparent), url("${
             import.meta.env.VITE_BASE_URL
-          }/hero_2.jpg")`,
+          }hero_2.jpg")`,
           // 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url("https://images.pexels.com/photos/31117955/pexels-photo-31117955.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',

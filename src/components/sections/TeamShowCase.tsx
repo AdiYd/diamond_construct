@@ -202,7 +202,11 @@ export function TeamShowCase() {
                     >
                       <Box className="project-card">
                         <Box className="project-image-container" style={{ height: '300px' }}>
-                          <img src={member.url} alt={member.title} className="project-image" />
+                          <img
+                            src={`${import.meta.env.VITE_BASE_URL}${member.url}`}
+                            alt={member.title}
+                            className="project-image"
+                          />
                           <Box className="project-overlay">
                             <div className="rt-r-position-absolute rt-r-bottom-3 rt-r-right-4">
                               <Text
@@ -257,7 +261,7 @@ export function TeamShowCase() {
                   <Box className="project-image-container">
                     <img
                       style={{ borderRadius: 'var(--radius-4)' }}
-                      src={member.url}
+                      src={`${import.meta.env.VITE_BASE_URL}${member.url}`}
                       alt={member.title}
                       className="project-image"
                     />

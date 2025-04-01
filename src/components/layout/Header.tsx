@@ -96,7 +96,7 @@ export function Header() {
               <Link to="/" style={{ textDecoration: 'none' }}>
                 <Box>
                   <img
-                    src={`${import.meta.env.VITE_BASE_URL}/logo.jpeg`}
+                    src={`${import.meta.env.VITE_BASE_URL}logo.jpeg`}
                     alt="Logo"
                     style={{ height: '2rem', borderRadius: '50%' }}
                   />
