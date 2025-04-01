@@ -185,28 +185,28 @@ export function Contact() {
           <Grid columns={isMobile ? '1' : '3'} gapY="4" gapX={!isMobile ? '4' : '0'}>
             {/* Contact Info Cards */}
             <Box>
-              <Grid rows="3" gap="4" height="100%">
+              <Grid rows="3" gap="4">
                 {[
                   {
                     icon: <Phone size={24} />,
                     title: 'טלפון',
                     content: '052-703-6959',
                     action: 'tel:+972527036959',
-                    color: 'var(--blue-9)',
+                    color: 'blue',
                   },
                   {
                     icon: <Mail size={24} />,
                     title: 'אימייל',
                     content: 'info@diamond-renovation.co.il',
                     action: 'mailto:info@diamond-renovation.co.il',
-                    color: 'var(--amber-9)',
+                    color: 'amber',
                   },
                   {
                     icon: <MapPin size={24} />,
                     title: 'כתובת',
                     content: 'רחוב המלאכה 5, כרמיאל',
                     action: 'https://maps.google.com/?q=כרמיאל+המלאכה+5',
-                    color: 'var(--crimson-9)',
+                    color: 'crimson',
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -218,9 +218,12 @@ export function Contact() {
                   >
                     <Card
                       style={{
-                        height: '100%',
+                        // height: '100%',
                         position: 'relative',
                         overflow: 'hidden',
+                        backdropFilter: 'blur(20px)',
+                        backgroundColor: 'var(--background)',
+                        boxShadow: 'var(--shadow-4)',
                       }}
                     >
                       {/* Decorative corner */}
@@ -232,22 +235,26 @@ export function Contact() {
                           width: '80px',
                           height: '80px',
                           borderBottomLeftRadius: '100%',
-                          background: `${item.color}10`,
+                          background: `var(--${item.color}-9)`,
                           marginRight: '-2rem',
                           marginTop: '-2rem',
                         }}
                       />
 
-                      <Flex gap="3" align="center" style={{ position: 'relative', zIndex: 1 }}>
+                      <Flex
+                        gap="4"
+                        align="center"
+                        style={{ position: 'relative', zIndex: 1, padding: '0rem 1.5rem' }}
+                      >
                         <Box
                           style={{
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            backgroundColor: `${item.color}20`,
-                            color: item.color,
-                            width: '3rem',
-                            height: '3rem',
+                            backgroundColor: `var(--${item.color}-3)`,
+                            color: `var(--${item.color}-9)`,
+                            width: '2.5rem',
+                            height: '2.5rem',
                             borderRadius: '50%',
                             flexShrink: 0,
                           }}
@@ -259,7 +266,7 @@ export function Contact() {
                             textAlign: 'start',
                           }}
                         >
-                          <Text weight="bold" size="3" mb="1">
+                          <Text as="div" weight="bold" size="3" mb="1">
                             {item.title}
                           </Text>
                           <a
@@ -272,7 +279,9 @@ export function Contact() {
                               display: 'block',
                             }}
                           >
-                            <Text size="3">{item.content}</Text>
+                            <Text as="div" weight="medium" size="3">
+                              {item.content}
+                            </Text>
                           </a>
                         </Box>
                       </Flex>
@@ -287,8 +296,30 @@ export function Contact() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <Card style={{ marginTop: '2rem' }}>
-                    <Flex gap="3" align="center">
+                  <Card
+                    style={{
+                      position: 'relative',
+                      overflow: 'hidden',
+                      backdropFilter: 'blur(20px)',
+                      backgroundColor: 'var(--background)',
+                      boxShadow: 'var(--shadow-4)',
+                    }}
+                  >
+                    {/* Decorative corner */}
+                    <Box
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        width: '80px',
+                        height: '80px',
+                        borderBottomLeftRadius: '100%',
+                        background: `var(--grass-9)`,
+                        marginRight: '-2rem',
+                        marginTop: '-2rem',
+                      }}
+                    />
+                    <Flex gap="4" align="center" style={{ padding: '0rem 1.5rem' }}>
                       <Box
                         style={{
                           display: 'flex',
@@ -296,22 +327,24 @@ export function Contact() {
                           justifyContent: 'center',
                           backgroundColor: 'var(--grass-3)',
                           color: 'var(--grass-9)',
-                          width: '3rem',
-                          height: '3rem',
+                          width: '2.5rem',
+                          height: '2.5rem',
                           borderRadius: '50%',
                           flexShrink: 0,
                         }}
                       >
                         <Clock size={24} />
                       </Box>
-                      <Box>
-                        <Text weight="bold" size="3" mb="1">
+                      <Box style={{ textAlign: 'start' }}>
+                        <Text as="div" weight="bold" size="3" mb="1">
                           שעות פעילות
                         </Text>
-                        <br />
-                        <Text size="2">ימים א'-ה': 09:00-18:00</Text>
-                        <br />
-                        <Text size="2">יום ו': 09:00-13:00</Text>
+                        <Text as="div" weight="medium" size="2">
+                          ימים א'-ה':{` `} 09:00-18:00
+                        </Text>
+                        <Text as="div" weight="medium" size="2">
+                          יום ו':{} 09:00-13:00
+                        </Text>
                       </Box>
                     </Flex>
                   </Card>

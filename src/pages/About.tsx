@@ -261,7 +261,13 @@ export function About() {
               transition={{ duration: 0.5 }}
               style={{ width: '100%' }}
             >
-              <Heading size="6" align="center" className="section-title with-accent" mb="4">
+              <Heading
+                mx="auto"
+                size="6"
+                align="center"
+                className="section-title with-accent"
+                mb="4"
+              >
                 הגישה שלנו: שקיפות, סדר ונשמה
               </Heading>
               <Text
@@ -539,128 +545,6 @@ export function About() {
                 </motion.div>
               ))}
             </Grid>
-          </Flex>
-        </Container>
-      </Section>
-
-      {/* Company Milestones */}
-      <Section size="3" style={{ background: 'var(--accent-2)' }}>
-        <Container>
-          <Flex direction="column" align="center" gap="6" py="6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <Heading
-                size={{ initial: '6', sm: '7' }}
-                className="section-title with-accent"
-                mb="4"
-              >
-                אבני דרך
-              </Heading>
-            </motion.div>
-
-            <Box style={{ width: '100%', position: 'relative' }}>
-              {/* Timeline line */}
-              <Box
-                display={{ initial: 'none', md: 'block' }}
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  bottom: 0,
-                  left: '50%',
-                  width: '2px',
-                  backgroundColor: 'var(--accent-6)',
-                  transform: 'translateX(-50%)',
-                  zIndex: 0,
-                  // display: { initial: 'none', md: 'block' },
-                }}
-              />
-
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.1,
-                  }}
-                >
-                  <Box
-                    pl={index % 2 === 0 ? { md: '3rem' } : { md: '0' }}
-                    pr={index % 2 === 1 ? { md: '3rem' } : { md: '0' }}
-                    ml={index % 2 === 0 ? { md: '50%' } : { md: '0' }}
-                    mr={index % 2 === 1 ? { md: '50%' } : { md: '0' }}
-                    style={{
-                      position: 'relative',
-                      marginBottom: '2rem',
-                      // paddingLeft: index % 2 === 0 ? { md: '3rem' } : { md: '0' },
-                      // paddingRight: index % 2 === 1 ? { md: '3rem' } : { md: '0' },
-                      // marginLeft: index % 2 === 0 ? { md: '50%' } : { md: '0' },
-                      // marginRight: index % 2 === 1 ? { md: '50%' } : { md: '0' },
-                      textAlign: index % 2 === 0 ? 'left' : 'right',
-                    }}
-                    className="milestone"
-                  >
-                    <Card
-                      style={{
-                        position: 'relative',
-                        overflow: 'hidden',
-                        zIndex: 2,
-                      }}
-                    >
-                      <Flex gap="4" align="center">
-                        <Box
-                          style={{
-                            backgroundColor: 'var(--accent-6)',
-                            color: 'var(--accent-contrast)',
-                            padding: '0.5rem 1rem',
-                            borderRadius: 'var(--radius-2)',
-                            fontWeight: 'bold',
-                            fontSize: '1.2rem',
-                            minWidth: '80px',
-                            textAlign: 'center',
-                          }}
-                        >
-                          {milestone.year}
-                        </Box>
-                        <Box>
-                          <Text weight="bold" size="3" mb="1">
-                            {milestone.title}
-                          </Text>
-                          <br />
-                          <Text size="2" style={{ color: 'var(--gray-11)' }}>
-                            {milestone.description}
-                          </Text>
-                        </Box>
-                      </Flex>
-
-                      {/* Circle on timeline (visible only on medium screens and up) */}
-                      <Box
-                        left={index % 2 === 0 ? { md: '-1.5rem' } : { md: 'auto' }}
-                        right={index % 2 === 1 ? { md: '-1.5rem' } : { md: 'auto' }}
-                        display={{ initial: 'none', md: 'block' }}
-                        style={{
-                          position: 'absolute',
-                          top: '50%',
-                          width: '1rem',
-                          height: '1rem',
-                          borderRadius: '50%',
-                          backgroundColor: 'var(--accent-9)',
-                          border: '3px solid var(--accent-3)',
-                          transform: 'translate(-50%, -50%)',
-                          zIndex: 3,
-                        }}
-                      />
-                    </Card>
-                  </Box>
-                </motion.div>
-              ))}
-            </Box>
           </Flex>
         </Container>
       </Section>

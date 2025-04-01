@@ -104,7 +104,7 @@ export function TestimonialCarousel() {
                     height: '100%',
                     // border: 'none',
                     borderRadius: '12px',
-                    backgroundColor: 'var(--background-color)',
+                    // backgroundColor: 'var(--background-color)',
                     backdropFilter: 'blur(20px)',
                     position: 'relative',
                     overflow: 'hidden',

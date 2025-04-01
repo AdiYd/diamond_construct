@@ -156,8 +156,8 @@
   transition: transform 0.3s ease 0.1s;
   max-width: 90%;
   text-wrap: wrap;
-  margin-left: 5px;
-  margin-right: 0;
+  margin-left: 5px ;
+  margin-right: 0 ;
   font-size: 1rem !important;
 }
 
@@ -212,6 +212,7 @@
   .project-title,
   .project-description {
     transform: translateY(0);
+    max-width: 100%;
   }
 
   .embla__slide {

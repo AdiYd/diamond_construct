@@ -845,7 +845,13 @@ export function Home() {
                               textDecoration: 'none',
                             }}
                           >
-                            <Text size="2" mx="1">
+                            <Text
+                              as="div"
+                              align="right"
+                              size={isMobile ? '3' : '4'}
+                              weight="medium"
+                              mx="1"
+                            >
                               {item.content}
                               {item.title === 'יעקב' && (
                                 <Text

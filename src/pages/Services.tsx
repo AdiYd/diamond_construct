@@ -286,7 +286,7 @@ export function Services() {
                 {
                   icon: <Clock size={24} />,
                   title: 'עמידה בזמנים',
-                  description: 'הקפדה על לוחות זמנים וסיום פרויקטים במועד',
+                  description: 'הקפדה על זמנים וסיום פרויקטים במועד',
                   color: 'var(--crimson-9)',
                 },
                 {
@@ -321,10 +321,10 @@ export function Services() {
                   <Flex
                     gap="3"
                     align={isMobile ? 'start' : 'center'}
-                    direction={isMobile ? 'column' : 'row'}
+                    // direction={isMobile ? 'column' : 'row'}
                     style={{
-                      padding: isMobile ? 'var(--space-3)' : 'var(--space-4)',
-                      borderRadius: 'var(--radius-2)',
+                      padding: isMobile ? 'var(--space-4)' : 'var(--space-4)',
+                      borderRadius: 'var(--radius-4)',
                       border: '1px solid var(--gray-a1)',
                       background: 'linear-gradient(to bottom left,var(--iris-a3), var(--sky-a3))',
                       height: '100%',
@@ -400,10 +400,11 @@ export function Services() {
                   </Box> */}
                   <Heading
                     as="h2"
-                    size={{ initial: '5', sm: '6' }}
+                    size="6"
+                    weight="bold"
                     mb="4"
                     style={{
-                      textAlign: isMobile ? 'center' : 'initial',
+                      textAlign: 'start',
                     }}
                   >
                     {service.title}
@@ -415,7 +416,7 @@ export function Services() {
                     style={{
                       color: 'var(--gray-11)',
                       lineHeight: '1.7',
-                      textAlign: isMobile ? 'center' : 'initial',
+                      textAlign: 'start',
                     }}
                   >
                     {service.fullDescription}

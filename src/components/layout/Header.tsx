@@ -6,6 +6,8 @@ import { useTheme } from '../../context/ThemeContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { pagesConfig } from '../../config/pages.config';
 import { ScrollToTop } from './scrollToTop';
+import { AnimatePresence, motion } from 'framer-motion';
+import useScreen from '../../hooks/useScreen';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -14,6 +16,7 @@ export function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const scrollThreshold = 1400; // Threshold for header visibility
   const { theme, toggleTheme } = useTheme();
+  const { isMobile } = useScreen();
   const { language } = useLanguage();
   const location = useLocation();
   const context = useThemeContext();
@@ -79,7 +82,7 @@ export function Header() {
             ? 'rgba(0, 0, 0, 0.4)'
             : 'rgba(255,255,255,0.2)', // Semi-transparent background
           // borderBottom: '1px solid var(--gray-5)',
-          zIndex: 50,
+          zIndex: 201,
           backdropFilter: isOnTop ? 'none' : 'blur(20px)',
           color: 'white',
           transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
@@ -141,7 +144,11 @@ export function Header() {
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   aria-label="Toggle menu"
                 >
-                  {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+                  {isMenuOpen ? (
+                    <X color={isOnTop ? 'white' : 'var(--gray-11)'} size={18} />
+                  ) : (
+                    <Menu color={isOnTop ? 'white' : 'var(--gray-11)'} size={18} />
+                  )}
                 </IconButton>
               </Box>
 
@@ -162,43 +169,52 @@ export function Header() {
           </Flex>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <Box
-              display={{ initial: 'block', md: 'none' }}
-              style={{
-                position: 'absolute',
-                top: '100%',
-                left: 0,
-                right: 0,
-                backgroundColor: 'var(--color-background)',
-                borderBottom: '1px solid var(--gray-5)',
-                padding: 'var(--space-4)',
-              }}
-            >
-              <Flex direction="column" gap="4">
-                {pagesConfig.map(page => (
-                  <Link
-                    key={page.id}
-                    to={page.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    style={{
-                      textDecoration: 'none',
-                      color:
-                        location.pathname === page.path
-                          ? isHomePage
-                            ? 'var(--secondary)'
-                            : 'var(--secondary)'
-                          : 'var(--gray-11)',
-                      fontWeight: location.pathname === page.path ? 700 : 600,
-                      padding: 'var(--space-2)',
-                    }}
-                  >
-                    {page.translations[language] || page.translations.en}
-                  </Link>
-                ))}
-              </Flex>
-            </Box>
-          )}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -100, opacity: 0 }}
+                style={{
+                  display: isMobile ? 'block' : 'none',
+                  position: 'absolute',
+                  top: '100%',
+                  transition: 'height 0.3s ease',
+                  left: 0,
+                  right: 0,
+                  backgroundImage: isDarkTheme
+                    ? 'linear-gradient(to right,rgba(0, 0, 0, 0.9),var(--gray-2))'
+                    : 'linear-gradient(to right,rgba(216, 217, 222, 0.85),rgba(234, 235, 241, 0.88))',
+                  backdropFilter: 'blur(40px)',
+                  borderBottom: '1px solid var(--gray-5)',
+                  padding: 'var(--space-4)',
+                }}
+              >
+                <Flex direction="column" gap="4">
+                  {pagesConfig.map(page => (
+                    <Link
+                      key={page.id}
+                      to={page.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      style={{
+                        textDecoration: 'none',
+                        color:
+                          location.pathname === page.path
+                            ? isHomePage
+                              ? 'var(--secondary)'
+                              : 'var(--secondary)'
+                            : 'var(--gray-11)',
+                        fontWeight: location.pathname === page.path ? 700 : 600,
+                        padding: 'var(--space-2)',
+                      }}
+                    >
+                      {page.translations[language] || page.translations.en}
+                    </Link>
+                  ))}
+                </Flex>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </Container>
       </Box>
       {/* <Box style={{ height: isMenuOpen ? 0 : '3.5rem' }} /> */}
