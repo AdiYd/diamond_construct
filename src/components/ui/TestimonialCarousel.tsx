@@ -54,8 +54,21 @@ export function TestimonialCarousel() {
   useEffect(() => {
     if (!emblaApi) return;
     let autoScroll = null; // Declare autoScroll variable
+    let clientEngaged = false; // Flag to check if the user has engaged with the carousel
+
+    emblaApi.on('pointerDown', () => {
+      clientEngaged = true; // User has engaged with the carousel
+    });
+    emblaApi.on('slideFocus', () => {
+      clientEngaged = true; // User has engaged with the carousel
+    });
+
+    emblaApi.on('pointerUp', () => {
+      clientEngaged = false;
+    });
+
     autoScroll = setInterval(() => {
-      if (emblaApi) emblaApi.scrollNext();
+      if (emblaApi && !clientEngaged) emblaApi.scrollNext();
     }, 5000); // Auto-scroll every 5 seconds
 
     // Set the number of slides to show
@@ -75,7 +88,15 @@ export function TestimonialCarousel() {
       window.removeEventListener('resize', handleResize);
       emblaApi.off('select', onSelect); // Clean up event listener
       emblaApi.off('reInit', onSelect);
-      //   emblaApi.off('scroll', onScroll); // Clean up event listener
+      emblaApi.off('pointerDown', () => {
+        clientEngaged = true;
+      }); // Clean up event listener
+      emblaApi.off('pointerUp', () => {
+        clientEngaged = false;
+      }); // Clean up event listener
+      emblaApi.off('slideFocus', () => {
+        clientEngaged = true;
+      }); // Clean up event listener
       clearInterval(autoScroll);
     };
   }, [emblaApi, onSelect, slidesToShow]);

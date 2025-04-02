@@ -348,15 +348,13 @@ export default function ContactSection({ extendSection = false, noBackground = f
                       <>
                         <Box>
                           <Text
-                            as="label"
                             align="right"
-                            // size="2"
-                            weight="bold"
-                            htmlFor="service"
+                            as="label"
+                            size="2"
                             mb="1"
                             style={{ display: 'block' }}
                           >
-                            סוג השירות
+                            סוג השירות*
                           </Text>
                           <select
                             id="service"
@@ -398,11 +396,9 @@ export default function ContactSection({ extendSection = false, noBackground = f
 
                         <Box>
                           <Text
-                            as="label"
                             align="right"
-                            // size="2"
-                            weight="bold"
-                            htmlFor="message"
+                            as="label"
+                            size="2"
                             mb="1"
                             style={{ display: 'block' }}
                           >

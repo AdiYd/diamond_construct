@@ -157,15 +157,37 @@ export function TeamShowCase() {
 
   // Auto-scroll carousel
   useEffect(() => {
-    if (!emblaApi) return;
+  if (!emblaApi) return;
 
-    const autoScroll = setInterval(() => {
-      if (emblaApi) emblaApi.scrollNext();
-    }, 4000);
+  let clientEngaged = false;
+  emblaApi.on('pointerDown', () => {
+    clientEngaged = true; // User has engaged with the carousel
+  });
+  emblaApi.on('slideFocus', () => {
+    clientEngaged = true; // User has engaged with the carousel
+  });
 
-    return () => {
-      clearInterval(autoScroll);
-    };
+  emblaApi.on('pointerUp', () => {
+    clientEngaged = false;
+  });
+
+  const autoScroll = setInterval(() => {
+    if (!clientEngaged && emblaApi) emblaApi.scrollNext();
+  }, 4000);
+
+  return () => {
+    clearInterval(autoScroll);
+    emblaApi.off('pointerDown', () => {
+      clientEngaged = true;
+    }); // Clean up event listener
+    emblaApi.off('pointerUp', () => {
+      clientEngaged = false;
+    }); // Clean up event listener
+    emblaApi.off('slideFocus', () => {
+      clientEngaged = true;
+    }); // Clean up event listener
+    clearInterval(autoScroll);
+  };
   }, [emblaApi]);
 
   return (
