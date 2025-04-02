@@ -704,7 +704,7 @@ export function Gallery() {
       </Section>
 
       {/* Call to action */}
-      <Section size="3" style={{ background: 'var(--accent-3)' }}>
+      {/* <Section size="3" style={{ background: 'var(--accent-3)' }}>
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -732,8 +732,8 @@ export function Gallery() {
             </Flex>
           </motion.div>
         </Container>
-        <ContactSection noBackground />
-      </Section>
+      </Section> */}
+      <ContactSection noBackground />
 
       {/* Lightbox */}
       <AnimatePresence>

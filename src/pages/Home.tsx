@@ -30,7 +30,7 @@ export function Home() {
         style={{
           backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.4), transparent), url("${
             import.meta.env.VITE_BASE_URL
-          }hero_2.jpg")`,
+          }hero_3.jpg")`,
           // 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url("https://images.pexels.com/photos/31117955/pexels-photo-31117955.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -426,7 +426,10 @@ export function Home() {
                     className="modern-service-card"
                   >
                     {/* Decorative elements */}
-                    <Box className="service-card-decoration-corner" />
+                    <Box
+                      style={{ animationDelay: `${index * 3}s` }}
+                      className="service-card-decoration-corner"
+                    />
                     <Box
                       style={{
                         animationDelay: `${index * 2}s`,
@@ -533,27 +536,29 @@ export function Home() {
                   title: 'מקצועיות וניסיון',
                   description:
                     'צוות שעבר הכשרות מתקדמות, עם תודעת שירות גבוהה ותשומת לב מיוחדת לכל פרט ופרט.',
-                  color: 'var(--blue-9)',
-                  borderColor: 'var(--blue-6)',
-                  bgColor: 'var(--blue-3)',
+                  color: 'var(--green-9)',
+                  // borderColor: 'var(--green-6)',
+                  borderColor: 'var(--accent-a10)',
+                  bgColor: 'var(--green-a3)',
                 },
                 {
                   icon: <Heart size={28} />,
                   title: 'שקיפות מלאה',
-                  description:
-                    'חוזה מסודר, לוחות זמנים ברורים, הצעת מחיר מפורטת ועדכונים שוטפים בקבוצת וואטסאפ ייעודית לפרויקט.',
+                  description: 'חוזה מסודר, לוחות זמנים ברורים, הצעת מחיר מפורטת ועדכונים שוטפים.',
                   color: 'var(--crimson-9)',
-                  borderColor: 'var(--crimson-6)',
-                  bgColor: 'var(--crimson-3)',
+                  // borderColor: 'var(--crimson-6)',
+                  borderColor: 'var(--accent-a10)',
+                  bgColor: 'var(--crimson-a3)',
                 },
                 {
                   icon: <Clock size={28} />,
                   title: 'עמידה בזמנים',
                   description:
                     'הזמן שלכם יקר לנו. אנחנו עומדים בלוחות הזמנים שנקבעו מראש ומתחייבים לסיום הפרויקט במועד.',
-                  color: 'var(--amber-9)',
-                  borderColor: 'var(--amber-6)',
-                  bgColor: 'var(--amber-3)',
+                  color: 'var(--mint-9)',
+                  // borderColor: 'var(--mint-6)',
+                  borderColor: 'var(--accent-a10)',
+                  bgColor: 'var(--mint-a3)',
                 },
               ].map((benefit, index) => (
                 <motion.div
@@ -570,7 +575,7 @@ export function Home() {
                     className="modern-benefit-card"
                     style={{
                       borderColor: benefit.borderColor,
-                      background: `linear-gradient(145deg, var(--gray-1), ${benefit.bgColor})`,
+                      // background: `linear-gradient(145deg, var(--gray-1), ${benefit.bgColor})`,
                     }}
                   >
                     <Box
@@ -589,6 +594,9 @@ export function Home() {
                     </Heading>
 
                     <Text
+                      as="div"
+                      align={isMobile ? 'center' : 'right'}
+                      weight="medium"
                       size="2"
                       className="benefit-description"
                       style={{ color: 'var(--gray-11)' }}

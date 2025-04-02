@@ -13,6 +13,7 @@ import {
   Shield,
 } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
+import '../styles/styles.css';
 
 const servicesList = [
   {
@@ -173,12 +174,12 @@ export function Services() {
                 delay: index * 0.1,
               }}
             >
-              <Card
+              <Box
+                as="div"
                 style={{
                   height: '100%',
-                  // background: 'var(--color-background)',
+                  background: index % 2 === 0 ? 'var(--gray-2)' : 'var(--color-background)',
                   border: 'none',
-                  boxShadow: 'var(--shadow-4)',
                   borderRadius: 'var(--radius-4)',
                   padding: isMobile ? 'var(--space-4)' : 'var(--space-5)',
                   cursor: 'pointer',
@@ -239,7 +240,7 @@ export function Services() {
                     </a>
                   </Box>
                 </Flex>
-              </Card>
+              </Box>
             </motion.div>
           ))}
         </Grid>
@@ -447,7 +448,7 @@ export function Services() {
                           <Box style={{ color: service.color }}>
                             <CheckCircle style={{ position: 'relative', top: '3px' }} size={16} />
                           </Box>
-                          <Text as="div" size="3">
+                          <Text weight="medium" as="div" size="3">
                             {benefit}
                           </Text>
                         </Flex>

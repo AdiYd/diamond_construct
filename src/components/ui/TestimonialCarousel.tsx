@@ -83,7 +83,7 @@ export function TestimonialCarousel() {
   return (
     <Box
       my={isMobile ? '8' : '4'}
-      style={{ width: '100%', position: 'relative', padding: '0 1rem' }}
+      style={{ width: '100%', position: 'relative', padding: isMobile ? '0' : '0 1rem' }}
     >
       <Box className="embla" dir="ltr">
         <Box className="embla__viewport" ref={emblaRef}>
@@ -133,11 +133,11 @@ export function TestimonialCarousel() {
                   <Flex
                     direction="column"
                     justify="between"
-                    p="2"
+                    p="4"
                     // gap="4"
                     style={{ position: 'relative', zIndex: 1 }}
                   >
-                    <Flex direction="column" gap="3" align="center" mb="4">
+                    <Flex direction="column" gap="3" align="center" my="4">
                       <Box style={{ textAlign: 'center' }}>
                         <Text size="4" weight="bold" mb="1" className="testimonial-author">
                           {testimonial.name}
@@ -149,7 +149,16 @@ export function TestimonialCarousel() {
                       </Box>
                     </Flex>
 
-                    <Text dir="rtl" className="testimonial-text" size="3">
+                    <Text
+                      as="div"
+                      mx={isMobile ? 'auto' : undefined}
+                      weight="medium"
+                      align={isMobile ? 'center' : 'right'}
+                      dir="rtl"
+                      className="testimonial-text"
+                      size="3"
+                      mb="2"
+                    >
                       {testimonial.content}
                     </Text>
 

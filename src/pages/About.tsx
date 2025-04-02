@@ -153,7 +153,7 @@ export function About() {
                 align="center"
                 style={{ marginBottom: '1.5rem', color: 'white' }}
               >
-                אודות Diamond
+                Diamond
               </Heading>
               <Text
                 size="5"
@@ -178,83 +178,81 @@ export function About() {
       </Section>
 
       {/* Vision Section */}
-      <Section size="3" style={{}}>
-        <Container>
-          <Flex direction="column" align="center" gap="6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              style={{ maxWidth: '800px', textAlign: 'center' }}
+      <Section size={isMobile ? '2' : '3'} style={{}}>
+        <Flex direction="column" align="center" gap="6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{ maxWidth: '800px', textAlign: 'center' }}
+          >
+            <Card
+              className="about-card"
+              style={{
+                padding: isMobile ? '1rem 1.5rem' : '2rem 3.5rem',
+                backdropFilter: 'blur(10px)',
+              }}
             >
-              <Card
-                className="about-card"
-                style={{
-                  padding: isMobile ? '1rem 1.5rem' : '2rem 3.5rem',
-                  backdropFilter: 'blur(10px)',
-                }}
+              <Box className="service-card-decoration-circle" />
+              <Box
+                style={{ animation: 'rotate 8s ease-in infinite' }}
+                className="testimonial-decoration-3"
+              />
+              <Box
+                style={{ animation: 'rotate 15s ease-in infinite' }}
+                className="testimonial-decoration-4"
+              />
+              <Heading size="6" align="center" className="section-title with-accent" mb="4">
+                החזון שלנו: שיפוץ עם נשמה
+              </Heading>
+              <Text
+                as="div"
+                size="3"
+                style={{ lineHeight: '1.8', fontWeight: 500, marginBottom: '1rem' }}
               >
-                <Box className="service-card-decoration-circle" />
-                <Box
-                  style={{ animation: 'rotate 8s ease-in infinite' }}
-                  className="testimonial-decoration-3"
-                />
-                <Box
-                  style={{ animation: 'rotate 15s ease-in infinite' }}
-                  className="testimonial-decoration-4"
-                />
-                <Heading size="6" align="center" className="section-title with-accent" mb="4">
-                  החזון שלנו: שיפוץ עם נשמה
-                </Heading>
-                <Text
-                  as="div"
-                  size="4"
-                  style={{ lineHeight: '1.8', fontWeight: 600, marginBottom: '1rem' }}
-                >
-                  אנחנו עוסקים בשיפוץ דירות ובתים פרטיים, תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור
-                  כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב בין מקצועיות טכנית בלתי מתפשרת, לבין
-                  יחס אישי שמציב את הלקוח במרכז.
-                </Text>
-                <Text as="div" size="4" style={{ lineHeight: '1.8', fontWeight: 600 }}>
-                  אנו מאמינים ששיפוץ איכותי מתחיל בהקשבה אמיתית, ומתבצע מתוך הבנה שהבית שלכם הוא
-                  הרבה יותר ממבנה – הוא המקום הכי חשוב בעולם.
-                </Text>
-              </Card>
-            </motion.div>
-            <Box as="div" style={{ width: '100vw' }}>
-              <div
-                style={{
-                  animation: `scrollX ${isMobile ? '15' : '30'}s linear alternate infinite`,
-                  display: 'flex',
-                  gap: '1rem',
-                  overflowX: 'visible',
-                  position: 'relative',
-                  top: isMobile ? '' : '50px',
-                  // top: '-50px',
-                  rotate: '3deg',
-                  zIndex: 1,
-                }}
-              >
-                {teamImages.map((image, index) => (
-                  <div key={index}>
-                    <img
-                      src={`${import.meta.env.VITE_BASE_URL}${image.url}`}
-                      className="team-image"
-                      alt={`Team member ${index + 1}`}
-                      style={{
-                        aspectRatio: '1/1',
-                        objectFit: 'cover',
-                        width: '200px',
-                        borderRadius: '8px',
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </Box>
-          </Flex>
-        </Container>
+                אנחנו עוסקים בשיפוץ דירות ובתים פרטיים, תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור
+                כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב בין מקצועיות טכנית בלתי מתפשרת, לבין יחס
+                אישי שמציב את הלקוח במרכז.
+              </Text>
+              <Text as="div" size="3" style={{ lineHeight: '1.8', fontWeight: 500 }}>
+                אנו מאמינים ששיפוץ איכותי מתחיל בהקשבה אמיתית, ומתבצע מתוך הבנה שהבית שלכם הוא הרבה
+                יותר ממבנה – הוא המקום הכי חשוב בעולם.
+              </Text>
+            </Card>
+          </motion.div>
+          <Box as="div" style={{ width: '100vw' }}>
+            <div
+              style={{
+                animation: `scrollX ${isMobile ? '15' : '30'}s linear alternate infinite`,
+                display: 'flex',
+                gap: '1rem',
+                overflowX: 'visible',
+                position: 'relative',
+                top: isMobile ? '' : '44px',
+                // top: '-50px',
+                rotate: '2deg',
+                zIndex: 1,
+              }}
+            >
+              {teamImages.map((image, index) => (
+                <div key={index}>
+                  <img
+                    src={`${import.meta.env.VITE_BASE_URL}${image.url}`}
+                    className="team-image"
+                    alt={`Team member ${index + 1}`}
+                    style={{
+                      aspectRatio: '1/1',
+                      objectFit: 'cover',
+                      width: '220px',
+                      borderRadius: '8px',
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </Box>
+        </Flex>
       </Section>
 
       {/* Our Approach Section */}

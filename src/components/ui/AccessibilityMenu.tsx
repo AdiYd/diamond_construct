@@ -210,6 +210,8 @@ export const AccessibilityMenu: React.FC<AccessibilityMenuProps> = ({
         style={{
           ...position,
           color: 'var(--accent-contrast)',
+          bottom: '1.5rem',
+          right: '1rem',
           backgroundColor: 'var(--accent-10)',
           position: 'fixed', // Ensure it stays fixed regardless of other settings
           transition: 'background-color 0.4s ease',
