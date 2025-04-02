@@ -99,6 +99,9 @@ export default function ContactSection({ extendSection = false, noBackground = f
         zIndex: 10,
       }}
     >
+      {!noBackground && (
+        <div style={{ zIndex: 0 }} className="bg-pattern2* cta-background-pattern" />
+      )}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +111,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
       >
         <Grid style={{ zIndex: 20 }} columns={{ initial: '1', sm: '2' }} gap="6">
           {/* Contact Information */}
-          <Box>
+          <Box style={{ zIndex: 10 }}>
             <Heading size="6" mb="4">
               בואו נדבר על הפרויקט שלכם
             </Heading>
@@ -600,9 +603,6 @@ export default function ContactSection({ extendSection = false, noBackground = f
             </Flex>
           </Container>
         </>
-      )}
-      {!noBackground && (
-        <div style={{ zIndex: 0 }} className="bg-pattern2* cta-background-pattern" />
       )}
     </Section>
   );

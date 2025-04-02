@@ -165,9 +165,9 @@ export function Home() {
                 }}
               >
                 <div className="rt-r-display-flex rt-r-jc-center">
-                  <Icon color="var(--amber-8)" icon="ion:diamond-sharp" width={40} />
+                  <Icon color="var(--amber-9)" icon="ion:diamond-sharp" width={40} />
                 </div>
-                <Box className="hero-badge">
+                <Box as="div" className="hero-badge">
                   <Wrench color="var(--text-color)" size={16} />
                   <Text
                     as="div"
@@ -538,7 +538,7 @@ export function Home() {
                     'צוות שעבר הכשרות מתקדמות, עם תודעת שירות גבוהה ותשומת לב מיוחדת לכל פרט ופרט.',
                   color: 'var(--green-9)',
                   // borderColor: 'var(--green-6)',
-                  borderColor: 'var(--accent-a10)',
+                  borderColor: 'var(--gray-a4)',
                   bgColor: 'var(--green-a3)',
                 },
                 {
@@ -547,7 +547,7 @@ export function Home() {
                   description: 'חוזה מסודר, לוחות זמנים ברורים, הצעת מחיר מפורטת ועדכונים שוטפים.',
                   color: 'var(--crimson-9)',
                   // borderColor: 'var(--crimson-6)',
-                  borderColor: 'var(--accent-a10)',
+                  borderColor: 'var(--gray-a4)',
                   bgColor: 'var(--crimson-a3)',
                 },
                 {
@@ -557,7 +557,7 @@ export function Home() {
                     'הזמן שלכם יקר לנו. אנחנו עומדים בלוחות הזמנים שנקבעו מראש ומתחייבים לסיום הפרויקט במועד.',
                   color: 'var(--mint-9)',
                   // borderColor: 'var(--mint-6)',
-                  borderColor: 'var(--accent-a10)',
+                  borderColor: 'var(--gray-a4)',
                   bgColor: 'var(--mint-a3)',
                 },
               ].map((benefit, index) => (

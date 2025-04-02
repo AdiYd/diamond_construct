@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Container, Section, Heading, Text, Flex, Box, Card, Grid } from '@radix-ui/themes';
+import { Container, Section, Heading, Text, Flex, Box, Grid } from '@radix-ui/themes';
 import {
   Droplet,
   ChefHat,
@@ -13,7 +13,7 @@ import {
   Shield,
 } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
-import '../styles/styles.css';
+import ContactSection from '../components/sections/contactUs';
 
 const servicesList = [
   {
@@ -500,6 +500,8 @@ export function Services() {
           </Container>
         </Section>
       ))}
+
+      <ContactSection />
     </Box>
   );
 }
