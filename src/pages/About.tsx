@@ -187,7 +187,7 @@ export function About() {
             transition={{ duration: 0.5 }}
             style={{ maxWidth: '800px', textAlign: 'center' }}
           >
-            <Card
+            <div
               className="about-card"
               style={{
                 padding: isMobile ? '1rem 1.5rem' : '2rem 4rem',
@@ -219,7 +219,7 @@ export function About() {
                 אנו מאמינים ששיפוץ איכותי מתחיל בהקשבה אמיתית, ומתבצע מתוך הבנה שהבית שלכם הוא הרבה
                 יותר ממבנה – הוא המקום הכי חשוב בעולם.
               </Text>
-            </Card>
+            </div>
           </motion.div>
           <Box as="div" style={{ width: '100vw' }}>
             <div

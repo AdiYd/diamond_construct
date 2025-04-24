@@ -243,10 +243,10 @@ button {
 }
 
 .service-brief-card {
-  box-shadow: var(--shadow-4) !important;
+  /* box-shadow: var(--shadow-4) !important; */
 }
 .service-brief-card:hover { 
-  box-shadow: var(--shadow-5) !important;
+  box-shadow: var(--shadow-4) !important;
   /* background-color: #06091c !important; */
 }
 

@@ -178,8 +178,8 @@ export function Services() {
                 as="div"
                 style={{
                   height: '100%',
-                  background: index % 2 === 0 ? 'var(--gray-2)' : 'var(--color-background)',
-                  border: 'none',
+                  background: index % 2 === 0 ? 'var(--gray-1)' : 'var(--color-background)',
+                  border: '0.8px solid var(--gray-a6)',
                   borderRadius: 'var(--radius-4)',
                   padding: isMobile ? 'var(--space-4)' : 'var(--space-5)',
                   cursor: 'pointer',

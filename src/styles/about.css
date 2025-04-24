@@ -41,10 +41,10 @@
 .about-card {
     position: relative;
     background-color: var(--gray-a1);
-    border: 0.8px solid var(--gray-a4);
+    border: 0.2px solid var(--gray-a4);
     box-shadow: none !important;
     border-radius: 25px 25px 25px 0 !important; /* Rounded corners except bottom-left */
-    /* padding: 2rem 3rem !important; */
+    padding: 2rem 3rem !important;
     margin: 2rem 0;
     overflow: hidden;
   }
