@@ -18,7 +18,7 @@ function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <Router basename="/diamond_construct">
+        <Router basename="/diamond_construct/">
           <div
             style={{
               minHeight: '100vh',

@@ -123,7 +123,7 @@ export function Contact() {
     <Box dir="rtl">
       {/* Hero Section */}
       <Section
-        size="3"
+        size="2"
         style={{
           background: 'linear-gradient(to right, #30345e, #0b0e29)',
           position: 'relative',
@@ -466,6 +466,7 @@ export function Contact() {
                               style={{
                                 width: '100%',
                                 minHeight: '2rem',
+                                height: '2.5rem',
                                 backgroundColor: 'var(--gray-1)',
                               }}
                               id="name"
@@ -500,6 +501,7 @@ export function Contact() {
                               style={{
                                 width: '100%',
                                 minHeight: '2rem',
+                                height: '2.5rem',
                                 backgroundColor: 'var(--gray-1)',
                               }}
                               id="phone"

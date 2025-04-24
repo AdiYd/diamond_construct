@@ -525,34 +525,34 @@ export function Home() {
             <Grid columns={{ initial: '1', sm: '2' }} gap="6" width="100%" pt="4">
               {[
                 {
-                  icon: <Building2 size={28} />, // Replace with a relevant icon
-                  title: '🏠 חוויה אחרת בעולם השיפוצים',
+                  icon: '🏠', // Replace with a relevant icon
+                  title: 'חוויה אחרת בעולם השיפוצים',
                   description:
                     'אצלנו השיפוץ עובר בראש שקט – עם ליווי אישי צמוד, קבוצת עדכונים ייעודית, ותיאום מלא בכל שלב.',
-                  color: 'var(--blue-9)',
+                  color: 'var(--blue-3)',
                 },
                 {
-                  icon: <CheckCircle2 size={28} />, // Replace with a relevant icon
-                  title: '🔒 ביטחון מלא בתהליך',
+                  icon: '🔒', // Replace with a relevant icon
+                  title: 'ביטחון מלא בתהליך',
                   description:
                     'הצוות שלנו מביא ניסיון, סדר, תכנון נכון והתחייבות לעמידה בזמנים, כדי שתוכלו להרגיש בטוחים לכל אורך הדרך.',
-                  color: 'var(--green-9)',
+                  color: 'var(--green-3)',
                 },
                 {
-                  icon: <Heart size={28} />, // Replace with a relevant icon
-                  title: '⭐ לקוחות פרטיים ועסקיים כאחד',
+                  icon: '❤️', // Replace with a relevant icon
+                  title: 'לקוחות פרטיים ועסקיים כאחד',
                   description:
                     'שירות מקצועי גם למשפחות שרוצות לשדרג את הבית – וגם לעסקים שצריכים חידוש מקיף למשרד, אולם ספורט או מבנה ציבורי.',
-                  color: 'var(--purple-9)',
+                  color: 'var(--purple-3)',
                   // gridColumn: '1 / -1', // Span full width on small screens
                   display: isMobile ? 'block' : 'none',
                 },
                 {
-                  icon: <Hammer size={28} />, // Replace with a relevant icon
-                  title: '🧱 תוצאה שלא מתפשרת',
+                  icon: '🔨', // Replace with a relevant icon
+                  title: 'תוצאה שלא מתפשרת',
                   description:
                     'הקפדה על גימורים מושלמים, חומרים איכותיים, ותיאום עם כל אנשי המקצוע הרלוונטיים – מהנדסים, אדריכלים ומעצבים.',
-                  color: 'var(--orange-9)',
+                  color: 'var(--orange-3)',
                   // gridColumn: '1 / -1', // Span full width
                   display: isMobile ? 'none' : 'block',
                 },
@@ -584,7 +584,7 @@ export function Home() {
                     <Box
                       className="benefit-icon-container"
                       style={{
-                        backgroundColor: 'var(--gray-3)',
+                        backgroundColor: item.color || 'var(--gray-3)',
                         color: item.color,
                         marginBottom: '1rem',
                         display: 'inline-flex',

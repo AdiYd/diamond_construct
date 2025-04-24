@@ -235,6 +235,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
             <Card
               style={{
                 backdropFilter: 'blur(10px)',
+                maxWidth: '600px',
                 // backgroundColor: 'rgba(255, 255, 255, 0.8)',
                 // border: '1px solid var(--accent-5)',
                 padding: isMobile ? 'var(--space-4)' : 'var(--space-5)',
@@ -268,6 +269,8 @@ export default function ContactSection({ extendSection = false, noBackground = f
                         style={{
                           backgroundColor: 'var(--gray-1)',
                           minHeight: '2rem',
+                          height: '2.5rem',
+                          maxWidth: '600px',
                           // padding: '0.5rem',
                         }}
                       >
@@ -302,6 +305,8 @@ export default function ContactSection({ extendSection = false, noBackground = f
                         style={{
                           backgroundColor: 'var(--gray-1)',
                           minHeight: '2rem',
+                          height: '2.5rem',
+                          maxWidth: '600px',
                           // padding: '0.5rem',
                         }}
                       />
@@ -432,7 +437,13 @@ export default function ContactSection({ extendSection = false, noBackground = f
                       </>
                     )}
 
-                    <Flex align="center" justify="between" gap="4" mt="4" mb="4">
+                    <Flex
+                      align="center"
+                      justify={isMobile ? 'between' : 'start'}
+                      gap={'6'}
+                      mt="4"
+                      mb="4"
+                    >
                       <Button
                         type="submit"
                         loading={loading}
@@ -453,7 +464,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                         href="https://wa.me/972527036959"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ flex: 1, display: 'flex', justifyContent: 'end' }}
+                        style={{ flex: 1, display: 'flex', justifyContent: 'start' }}
                       >
                         <IconButton
                           size="4"

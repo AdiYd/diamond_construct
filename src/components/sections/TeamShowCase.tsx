@@ -12,7 +12,7 @@ import '../../styles/project-showcase.css';
 export const teamImages = [
   {
     id: 1,
-    url: '/image/team/IMG_20240703_134753_141.jpg',
+    url: 'image/team/IMG_20240703_134753_141.jpg',
     title: 'גדי כהן',
     description: '8 שנות נאסיון בתחום הבנייה | מתמחה בשיפוצים ובניה פרטית',
     category: 'management',
@@ -20,7 +20,7 @@ export const teamImages = [
   },
   {
     id: 2,
-    url: '/image/team/IMG20250131124919.jpg',
+    url: 'image/team/IMG20250131124919.jpg',
     title: 'יעקב דיאמונד',
     description: 'מנהל פרויקטים ובעלים | מלווה אתכם בכל שלב, מהתכנון ועד הביצוע',
     category: 'customer-service',
@@ -28,7 +28,7 @@ export const teamImages = [
   },
   {
     id: 3,
-    url: '/image/team/PXL_20240908_115634333.jpg',
+    url: 'image/team/PXL_20240908_115634333.jpg',
     title: 'אלון דוד',
     description: 'אדריכל ראשי | שם דגש על פונקציונליות ואסתטיקה בכל פרויקט',
     category: 'design',
@@ -36,7 +36,7 @@ export const teamImages = [
   },
   {
     id: 4,
-    url: '/image/team/PXL_20241001_132821300.MP.jpg',
+    url: 'image/team/PXL_20241001_132821300.MP.jpg',
     title: 'אבי גולן',
     description: 'מנהל עבודה | מוביל את הצוות בשטח מתוך מחויבות לאיכות ולו״ז',
     category: 'construction',
@@ -44,7 +44,7 @@ export const teamImages = [
   },
   {
     id: 5,
-    url: '/image/team/PXL_20241208_092655939.jpg',
+    url: 'image/team/PXL_20241208_092655939.jpg',
     title: 'אלכס לוינסון',
     description: 'אני אתלכלך בשבילכם עד שהתוצאה תהיה מושלמת!',
     category: 'design',
@@ -52,7 +52,7 @@ export const teamImages = [
   },
   {
     id: 6,
-    url: '/image/team/PXL_20241010_115336941.jpg',
+    url: 'image/team/PXL_20241010_115336941.jpg',
     title: 'דני מזרחי',
     description: 'ראש צוות שיפוצים | בעל ידע רב בכל תחומי הבנייה והשיפוצים',
     category: 'renovations',
@@ -60,7 +60,7 @@ export const teamImages = [
   },
   {
     id: 7,
-    url: '/image/team/PXL_20241001_132912903.jpg',
+    url: 'image/team/PXL_20241001_132912903.jpg',
     title: 'צוות מנצח',
     description: 'הצוות שלנו הוא הלב של החברה - מקצועי, מסור ואכפתי',
     category: 'operations',
@@ -68,7 +68,7 @@ export const teamImages = [
   },
   {
     id: 8,
-    url: '/image/team/PXL_20241007_105155714.jpg',
+    url: 'image/team/PXL_20241007_105155714.jpg',
     title: 'אורי גולן',
     description: '',
     category: 'engineering',
@@ -76,7 +76,7 @@ export const teamImages = [
   },
   {
     id: 9,
-    url: '/image/team/PXL_20250216_081515079.MP~2.jpg',
+    url: 'image/team/PXL_20250216_081515079.MP~2.jpg',
     title: 'מאור שטרית',
     description: 'אנחנו עובדים תוך כבוד ושמירה על הסביבה שלכם ועל הטבע',
     category: 'design',
@@ -84,7 +84,7 @@ export const teamImages = [
   },
   {
     id: 10,
-    url: '/image/team/IMG-20250109-WA0083.jpg',
+    url: 'image/team/IMG-20250109-WA0083.jpg',
     title: 'דברו איתנו',
     description:
       'אנחנו כאן בשבילכם, יש לנו את הכלים והאנשים בשביל לשפץ לכם את הבית על הצד הטוב ביותר!',
@@ -93,7 +93,7 @@ export const teamImages = [
   },
   {
     id: 11,
-    url: '/image/team/PXL_20240905_151748546.MP.jpg',
+    url: 'image/team/PXL_20240905_151748546.MP.jpg',
     title: 'מוכנים לכל אתגר',
     description: 'עובדים יחד כמו משפחה אחת למען ההצלחה שלכם',
     category: 'team',
@@ -101,7 +101,7 @@ export const teamImages = [
   },
   {
     id: 12,
-    url: '/image/work/PXL_20250303_140836441.MP.jpg',
+    url: 'image/work/PXL_20250303_140836441.MP.jpg',
     title: 'האנשים שמאחורי הפרויקטים',
     description: 'צוות מקצועי, מסור ואכפתי שמתייחס לבית שלכם כאילו היה שלו',
     category: 'team',

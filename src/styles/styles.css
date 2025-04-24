@@ -529,7 +529,6 @@ button {
 .input {
   all: unset;
   width: 100%;
-  min-height: 30px;
   /* color: var (--foreground); */
 }
 

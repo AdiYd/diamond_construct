@@ -449,7 +449,7 @@ export function Gallery() {
     <Box dir="rtl">
       {/* Hero Section */}
       <Section
-        size="3"
+        size="2"
         style={{
           background: 'linear-gradient(to right, #30345e, #0b0e29)',
           position: 'relative',

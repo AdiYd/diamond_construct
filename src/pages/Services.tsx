@@ -110,7 +110,7 @@ export function Services() {
     <Box dir="rtl">
       {/* Hero Section */}
       <Section
-        size="3"
+        size="2"
         className="section services-hero"
         style={{
           background: 'linear-gradient(to right, #30345e, #0b0e29)',

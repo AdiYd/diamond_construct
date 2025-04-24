@@ -12,7 +12,7 @@ import '../../styles/project-showcase.css';
 const projectImages = [
   {
     id: 1,
-    url: '/image/IMG-20240517-WA0038.jpg',
+    url: 'image/IMG-20240517-WA0038.jpg',
     title: 'שיפוץ חדר אמבטיה',
     description: 'שיפוץ מלא של חדר אמבטיה כולל החלפת אריחים, כלים סניטריים ואביזרים',
     category: 'bathrooms',
@@ -20,7 +20,7 @@ const projectImages = [
   },
   {
     id: 2,
-    url: '/image/IMG-20240517-WA0040.jpg',
+    url: 'image/IMG-20240517-WA0040.jpg',
     title: 'שיפוץ מטבח',
     description: 'שדרוג מטבח מודרני עם אי וארונות בהירים',
     category: 'kitchens',
@@ -28,7 +28,7 @@ const projectImages = [
   },
   {
     id: 3,
-    url: '/image/IMG-20240517-WA0041.jpg',
+    url: 'image/IMG-20240517-WA0041.jpg',
     title: 'עיצוב פנים',
     description: 'תכנון ועיצוב דירה שלמה בסגנון מודרני',
     category: 'design',
@@ -36,7 +36,7 @@ const projectImages = [
   },
   //   {
   //     id: 4,
-  //     url: '/image/IMG-20240517-WA0042.jpg',
+  //     url: 'image/IMG-20240517-WA0042.jpg',
   //     title: 'תוספת בנייה',
   //     description: 'הרחבת בית פרטי עם תוספת קומה',
   //     category: 'construction',
@@ -44,7 +44,7 @@ const projectImages = [
   //   },
   {
     id: 5,
-    url: '/image/IMG-20240517-WA0043.jpg',
+    url: 'image/IMG-20240517-WA0043.jpg',
     title: 'שירותים ומקלחת',
     description: 'החלפת שירותים ומקלחת עם אריחים חדשים',
     category: 'renovations',
@@ -52,7 +52,7 @@ const projectImages = [
   },
   {
     id: 6,
-    url: '/image/IMG-20240517-WA0046.jpg',
+    url: 'image/IMG-20240517-WA0046.jpg',
     title: 'מקלחת וכיור',
     description: 'חידוש מקלחת וכיור עם אריחים חדשים',
     category: 'bathrooms',
@@ -60,7 +60,7 @@ const projectImages = [
   },
   {
     id: 7,
-    url: '/image/IMG-20240517-WA0047.jpg',
+    url: 'image/IMG-20240517-WA0047.jpg',
     title: 'חדר שינה',
     description: 'עיצוב חדר שינה בסגנון מינימליסטי',
     category: 'bedrooms',
@@ -68,7 +68,7 @@ const projectImages = [
   },
   {
     id: 8,
-    url: '/image/IMG-20240517-WA0048.jpg',
+    url: 'image/IMG-20240517-WA0048.jpg',
     title: 'שיפוץ כללי',
     description: 'שיפוץ פנים מטבח, כולל ארונות חדשים',
     category: 'renovations',
@@ -76,7 +76,7 @@ const projectImages = [
   },
   {
     id: 9,
-    url: '/image/IMG-20240517-WA0054.jpg',
+    url: 'image/IMG-20240517-WA0054.jpg',
     title: 'שירוקלחת',
     description: 'התקנת שירותים ומקלחת חדשים',
     category: 'bathrooms',
@@ -84,7 +84,7 @@ const projectImages = [
   },
   {
     id: 10,
-    url: '/image/IMG-20240517-WA0055.jpg',
+    url: 'image/IMG-20240517-WA0055.jpg',
     title: 'חדר רחצה',
     description: 'עיצוב חדר רחצה מודרני עם מקלחון',
     category: 'bathrooms',
@@ -92,7 +92,7 @@ const projectImages = [
   },
   //   {
   //     id: 11,
-  //     url: '/image/IMG-20250325-WA0004.jpg',
+  //     url: 'image/IMG-20250325-WA0004.jpg',
   //     title: 'עובדים יסודי ומקצועי',
   //     description: 'עבודה מקצועית עם דגש על פרטים',
   //     category: 'renovations',
@@ -100,7 +100,7 @@ const projectImages = [
   //   },
   {
     id: 12,
-    url: '/image/IMG-20250325-WA0006.jpg',
+    url: 'image/IMG-20250325-WA0006.jpg',
     title: 'מטבח מעוצב',
     description: 'שיפוץ והתאמה אישית של מטבח',
     category: 'kitchens',
@@ -108,7 +108,7 @@ const projectImages = [
   },
   {
     id: 13,
-    url: '/image/IMG-20250325-WA0009.jpg',
+    url: 'image/IMG-20250325-WA0009.jpg',
     title: 'פינת קפה מעוצבת',
     description: 'פינת קפה מעוצבת עם ארונות חדשים',
     category: 'kitchens',
@@ -116,7 +116,7 @@ const projectImages = [
   },
   {
     id: 14,
-    url: '/image/IMG-20250325-WA0016.jpg',
+    url: 'image/IMG-20250325-WA0016.jpg',
     title: 'שיפוץ מטבח',
     description: 'חידוש מטבח כולל ארונות חדשים ושטח עבודה',
     category: 'construction',
@@ -124,7 +124,7 @@ const projectImages = [
   },
   {
     id: 15,
-    url: '/image/IMG-20250325-WA0020.jpg',
+    url: 'image/IMG-20250325-WA0020.jpg',
     title: 'עיצוב פנים מודרני',
     description: 'עיצוב פנים לדירה חדשה בסגנון מודרני',
     category: 'design',
@@ -159,7 +159,7 @@ export function ProjectShowcase() {
     ...[...projectImages].sort(() => Math.random() - 0.5).slice(0, 9),
     {
       id: 11,
-      url: '/image/IMG-20250325-WA0004.jpg',
+      url: 'image/IMG-20250325-WA0004.jpg',
       title: 'עובדים יסודי ומקצועי',
       description: 'עבודה מקצועית עם דגש על פרטים',
       category: 'renovations',
