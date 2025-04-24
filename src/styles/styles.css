@@ -19,6 +19,7 @@
   --secondary: #c27f14;
   --text-color: #101437;
   --background-color: #ffffff;
+  --header-sub: #edededb0;
   /* --accent-1: #f0f4ff;
   --accent-2: #d9e2ff;
   --accent-3: #c0d0ff;
@@ -863,10 +864,10 @@ button {
 
 @keyframes scrollX {
   from {
-    transform: translateX(100%);
+    transform: translateX(0%);
   }
   to {
-    transform: translateX(0);
+    transform: translateX(50%);
   }
 }
 
@@ -1728,9 +1729,9 @@ div[role='dialog'] {
 
 /* Modern Card Styles - NEW */
 .modern-service-card {
-  background: var(--gray-a2);
-  border-radius: var(--radius-3);
-  padding: 1.2rem;
+  background: var(--gray-a10);
+  border-radius: var(--radius-5);
+  padding: 1.5rem 2rem;
   height: 100%;
   position: relative;
   overflow: hidden;
@@ -2019,7 +2020,8 @@ div[role='dialog'] {
 }
 
 .cta-button:hover {
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); */
+  box-shadow: 0 8px 40px var(--amber-a9);
 }
 
 .cta-link {

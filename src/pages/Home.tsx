@@ -29,7 +29,7 @@ export function Home() {
         className="hero-background"
         style={{
           backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.4), transparent), url("${
-            import.meta.env.VITE_BASE_URL
+            import.meta.env.BASE_URL
           }hero_3.jpg")`,
           // 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url("https://images.pexels.com/photos/31117955/pexels-photo-31117955.jpeg")',
           backgroundSize: 'cover',
@@ -232,7 +232,7 @@ export function Home() {
                 >
                   אנחנו כאן כדי להפוך את הבית שלכם למה שתמיד חלמתם עליו מבלי לעבור מסע ייסורים בדרך.
                   עם ניסיון עשיר, צוות איכותי ושקיפות מלאה – אנחנו מציעים חוויית שיפוץ אחרת: בטוחה,
-                  מדויקת, ומלאת אכפתיות.
+                  מדויקת, ומלאת אכפתיות
                 </Text>
               </Flex>
 
@@ -309,7 +309,6 @@ export function Home() {
           />
         </motion.div>
       </Section>
-
       {/* Services Section - Enhanced with modern card design */}
       <Section
         size="3"
@@ -380,7 +379,7 @@ export function Home() {
                   icon: <Building2 size={28} />,
                   title: 'שיפוץ דירות ובתים קומפלט',
                   description:
-                    'אנחנו מבצעים שיפוץ כולל לדירות ובתים – משלב הפירוק ועד הגימור הסופי. התהליך כולל תכנון מחודש של החלל, עבודות חשמל ואינסטלציה, ריצוף, צבע, נגרות ועוד.',
+                    'תכנון וביצוע שיפוצים כוללים בהתאמה אישית: תשתיות, חיפויים, ריצופים, עבודות גבס, חשמל וצבע – עם תשומת לב לכל פרט.',
                   color: 'var(--accent-9)',
                   gradient: 'linear-gradient(135deg, #3B82F6, #60A5FA)',
                 },
@@ -388,15 +387,15 @@ export function Home() {
                   icon: <Construction size={28} />,
                   title: 'תוספות בנייה ותכנון מותאם אישית',
                   description:
-                    'זקוקים לעוד חדר? משרד ביתי? יחידת דיור? אנחנו מתמחים בביצוע תוספות בנייה לפי כל התקנים – תוך שיתוף פעולה עם מהנדסים, אדריכלים ומעצבים.',
+                    'הרחבת הבית? קומת משרדים חדשה? אנחנו נלווה אתכם בתהליך מלא: מהיתרי בנייה ועד לגמר מושלם.',
                   color: 'var(--accent-10)',
                   gradient: 'linear-gradient(135deg, #0EA5E9, #38BDF8)',
                 },
                 {
                   icon: <Wrench size={28} />,
-                  title: 'שיפוץ מטבחים וחדרי רחצה',
+                  title: 'שיפוץ מטבחים וחדרי רחצה ברמת גימור גבוהה',
                   description:
-                    'המטבח וחדר הרחצה הם החללים הכי שימושיים בבית – ואצלנו הם זוכים לטיפול מיוחד. שיפוץ חכם ומדויק הכולל החלפת תשתיות, חיפויים מודרניים וריצוף איכותי.',
+                    'שדרוג חכם לפינות החשובות בבית – עם פתרונות עיצוביים, שימוש בחומרים מובחרים ועבודה מדויקת.',
                   color: 'var(--accent-11)',
                   gradient: 'linear-gradient(135deg, #F43F5E, #FB7185)',
                 },
@@ -404,7 +403,7 @@ export function Home() {
                   icon: <Hammer size={28} />,
                   title: 'תחזוקה שוטפת ואחזקת מבנים',
                   description:
-                    'שירותי תחזוקה שוטפת לבניינים, עסקים ובתים פרטיים – כולל תיקוני צבע, עבודות גבס, טיפול בנזילות, תיקוני חשמל, תחזוקה של תשתיות ועוד.',
+                    'ניהול ותיקון תשתיות שוטפות לבתים פרטיים, מבנים משותפים ומבני ציבור – ברמת שירות גבוהה וללא הפתעות.',
                   color: 'var(--accent-9)',
                   gradient: 'linear-gradient(135deg, #65A30D, #84CC16)',
                 },
@@ -494,16 +493,141 @@ export function Home() {
           </motion.div>
         </Container>
       </Section>
-
+      {/* Testimonial Section - Enhanced with modern design */}
       <ProjectShowcase />
-      <TeamShowCase />
+      {/* Why Choose Us Section - Enhanced with modern design */}
+      <Section
+        size="3"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          padding: isMobile ? '4rem 1.5rem' : '5rem 2rem',
+          // background: 'var(--gray-2)', // Optional: Add a subtle background color
+        }}
+      >
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Heading
+              mx="auto"
+              size={{ initial: '6', sm: '7' }}
+              align="center"
+              className="section-title with-accent"
+              mb="4"
+            >
+              מה מייחד אותנו?
+            </Heading>
 
+            <Grid columns={{ initial: '1', sm: '2' }} gap="6" width="100%" pt="4">
+              {[
+                {
+                  icon: <Building2 size={28} />, // Replace with a relevant icon
+                  title: '🏠 חוויה אחרת בעולם השיפוצים',
+                  description:
+                    'אצלנו השיפוץ עובר בראש שקט – עם ליווי אישי צמוד, קבוצת עדכונים ייעודית, ותיאום מלא בכל שלב.',
+                  color: 'var(--blue-9)',
+                },
+                {
+                  icon: <CheckCircle2 size={28} />, // Replace with a relevant icon
+                  title: '🔒 ביטחון מלא בתהליך',
+                  description:
+                    'הצוות שלנו מביא ניסיון, סדר, תכנון נכון והתחייבות לעמידה בזמנים, כדי שתוכלו להרגיש בטוחים לכל אורך הדרך.',
+                  color: 'var(--green-9)',
+                },
+                {
+                  icon: <Heart size={28} />, // Replace with a relevant icon
+                  title: '⭐ לקוחות פרטיים ועסקיים כאחד',
+                  description:
+                    'שירות מקצועי גם למשפחות שרוצות לשדרג את הבית – וגם לעסקים שצריכים חידוש מקיף למשרד, אולם ספורט או מבנה ציבורי.',
+                  color: 'var(--purple-9)',
+                  // gridColumn: '1 / -1', // Span full width on small screens
+                  display: isMobile ? 'block' : 'none',
+                },
+                {
+                  icon: <Hammer size={28} />, // Replace with a relevant icon
+                  title: '🧱 תוצאה שלא מתפשרת',
+                  description:
+                    'הקפדה על גימורים מושלמים, חומרים איכותיים, ותיאום עם כל אנשי המקצוע הרלוונטיים – מהנדסים, אדריכלים ומעצבים.',
+                  color: 'var(--orange-9)',
+                  // gridColumn: '1 / -1', // Span full width
+                  display: isMobile ? 'none' : 'block',
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.7,
+                    delay: index * 0.1,
+                  }}
+                  // style={{ gridColumn: item.gridColumn }}
+                >
+                  <Box
+                    className="modern-benefit-card"
+                    style={{
+                      borderColor: 'var(--gray-a4)',
+                      // background: 'var(--gray-1)',
+                      padding: '1.5rem',
+                      borderRadius: 'var(--radius-md)',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+                      height: '100%', // Ensure cards take up equal height
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <Box
+                      className="benefit-icon-container"
+                      style={{
+                        backgroundColor: 'var(--gray-3)',
+                        color: item.color,
+                        marginBottom: '1rem',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: '50%',
+                        width: '48px',
+                        height: '48px',
+                      }}
+                    >
+                      {item.icon}
+                    </Box>
+
+                    <Heading size="4" mb="0.5rem" className="benefit-title">
+                      {item.title}
+                    </Heading>
+
+                    <Text
+                      as="div"
+                      align="right"
+                      weight="medium"
+                      size="2"
+                      className="benefit-description"
+                      style={{ color: 'var(--gray-11)', lineHeight: '1.6' }}
+                    >
+                      {item.description}
+                    </Text>
+                  </Box>
+                </motion.div>
+              ))}
+            </Grid>
+          </motion.div>
+        </Container>
+      </Section>
+      {/* Team Showcase Section */}
+      <TeamShowCase />
       {/* Benefits Section - Enhanced with modern card design */}
       <Section
         size="3"
         style={{
           // background: 'linear-gradient(to bottom, var(--accent-a2), var(--gray-1))',
           position: 'relative',
+          display: 'none',
           overflow: 'hidden',
           padding: isMobile ? '4rem 1.5rem' : '5rem 2rem',
         }}
@@ -610,7 +734,6 @@ export function Home() {
           </motion.div>
         </Container>
       </Section>
-
       {/* Testimonials Section */}
       <Section mb="4" size="3" className="testimonials-section">
         <Box className="testimonial-bg-pattern" />
@@ -651,7 +774,6 @@ export function Home() {
           </Flex>
         </Container>
       </Section>
-
       {/* Contact Section */}
       <ContactSection />
     </Box>

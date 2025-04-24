@@ -11,11 +11,12 @@ export function Footer() {
   const { t, language } = useLanguage();
   const currentYear = new Date().getFullYear();
   const [legalContent, setLegalContent] = React.useState<Record<string, string>>({});
-
   const loadLegalContent = React.useCallback(
     async (type: string) => {
       try {
-        const response = await fetch(`/src/content/legal/${language}/${type}.md`);
+        const response = await fetch(
+          `${import.meta.env.BASE_URL}src/content/legal/${language}/${type}.md`
+        );
         const content = await response.text();
         const htmlContent = marked.parse(content);
         if (typeof htmlContent === 'string') {
@@ -47,7 +48,7 @@ export function Footer() {
       dir={language === 'he' ? 'rtl' : 'ltr'}
     >
       <div className="container">
-        <Grid columns={{ initial: '1', sm: '2', md: '4' }} gap="4">
+        <Grid columns={{ initial: '1', sm: '3', md: '3' }} gap="8">
           {/* Brand Section */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <Link
@@ -63,7 +64,7 @@ export function Footer() {
               }}
             >
               <img
-                src={`${import.meta.env.VITE_BASE_URL}logo.jpeg`}
+                src={`${import.meta.env.BASE_URL}logo.jpeg`}
                 alt="Logo"
                 style={{ height: '2rem', borderRadius: '50%' }}
               />
@@ -77,7 +78,8 @@ export function Footer() {
                   marginBottom: '0.1rem',
                 }}
               >
-                {t('brandDescription')}
+                {'דיאמונד – בונים אמון. בונים בית. בונים חוויה.'}
+                {/* {t('brandDescription')} */}
               </p>
               <Text
                 // align="center"
@@ -242,7 +244,7 @@ export function Footer() {
           </div>
 
           {/* Social Links */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'none', flexDirection: 'column', gap: '1rem' }}>
             <h3 style={{ color: 'var(--foreground)', fontWeight: 600 }}>{t('connectWithUs')}</h3>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <a

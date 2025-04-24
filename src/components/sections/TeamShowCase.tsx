@@ -234,7 +234,7 @@ export function TeamShowCase() {
                       <Box className="project-card">
                         <Box className="project-image-container" style={{ height: '300px' }}>
                           <img
-                            src={`${import.meta.env.VITE_BASE_URL}${member.url}`}
+                            src={`${import.meta.env.BASE_URL}${member.url}`}
                             alt={member.title}
                             className="project-image"
                           />
@@ -295,7 +295,7 @@ export function TeamShowCase() {
                   <Box className="project-image-container">
                     <img
                       style={{ borderRadius: 'var(--radius-4)' }}
-                      src={`${import.meta.env.VITE_BASE_URL}${member.url}`}
+                      src={`${import.meta.env.BASE_URL}${member.url}`}
                       alt={member.title}
                       className="project-image"
                     />

@@ -32,15 +32,16 @@ function App() {
                 style={{
                   position: 'fixed',
                   bottom: '-15%',
-                  left: '-15%',
-                  height: '30vh',
-                  width: '30vw',
+                  left: '-16%',
+                  height: '40vh',
+
+                  width: '40vw',
                   zIndex: 0,
-                  borderRadius: '50%',
-                  filter: 'blur(200px)',
+                  borderRadius: '40%',
+                  filter: 'blur(80px)',
                   background:
-                    'linear-gradient(to right,rgba(237, 140, 71, 0.8), rgba(130, 133, 27, 0.8))',
-                  opacity: 0.9,
+                    'linear-gradient(to right, rgb(195 83 3 / 20%), rgb(210 92 49 / 20%))',
+                  opacity: 0.8,
                 }}
               />
               <Routes>

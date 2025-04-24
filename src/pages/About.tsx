@@ -158,7 +158,7 @@ export function About() {
               <Text
                 size="5"
                 align="center"
-                style={{ marginBottom: '2rem', color: 'var(--gray-8)', lineHeight: '1.6' }}
+                style={{ marginBottom: '2rem', color: 'var(--header-sub)', lineHeight: '1.6' }}
               >
                 שיפוץ ובנייה זה לא רק קירות – זה אנשים, הקשבה, ותוצאה שמשנה חיים
               </Text>
@@ -190,7 +190,7 @@ export function About() {
             <Card
               className="about-card"
               style={{
-                padding: isMobile ? '1rem 1.5rem' : '2rem 3.5rem',
+                padding: isMobile ? '1rem 1.5rem' : '2rem 4rem',
                 backdropFilter: 'blur(10px)',
               }}
             >
@@ -224,27 +224,30 @@ export function About() {
           <Box as="div" style={{ width: '100vw' }}>
             <div
               style={{
-                animation: `scrollX ${isMobile ? '15' : '30'}s linear alternate infinite`,
+                animation: `scrollX ${isMobile ? '20' : '45'}s linear alternate infinite`,
                 display: 'flex',
                 gap: '1rem',
                 overflowX: 'visible',
                 position: 'relative',
-                top: isMobile ? '' : '44px',
+                top: isMobile ? '' : '24px',
                 // top: '-50px',
                 rotate: '2deg',
+                // height: '200px',
+                width: isMobile ? '450%' : '250%',
                 zIndex: 1,
               }}
             >
               {teamImages.map((image, index) => (
                 <div key={index}>
                   <img
-                    src={`${import.meta.env.VITE_BASE_URL}${image.url}`}
+                    src={`${import.meta.env.BASE_URL}${image.url}`}
                     className="team-image"
                     alt={`Team member ${index + 1}`}
                     style={{
                       aspectRatio: '1/1',
                       objectFit: 'cover',
-                      width: '220px',
+                      width: '250px',
+                      height: isMobile ? '180px' : '250px',
                       borderRadius: '8px',
                     }}
                   />
@@ -292,7 +295,7 @@ export function About() {
               {[
                 {
                   title: 'תקשורת שוטפת',
-                  description: 'עדכונים שוטפים בקבוצת וואטסאפ ייעודית לכל פרויקט',
+                  description: 'עדכונים שוטפים בקבוצת וואטסאפ ייעודית',
                   icon: (
                     <Icon color="var(--green-9)" icon="ri:whatsapp-fill" width="28" height="28" />
                   ),
@@ -513,7 +516,7 @@ export function About() {
                         }}
                       >
                         <img
-                          src={`${import.meta.env.VITE_BASE_URL}${member.image}`}
+                          src={`${import.meta.env.BASE_URL}${member.image}`}
                           alt={member.name}
                           style={{
                             width: '100%',

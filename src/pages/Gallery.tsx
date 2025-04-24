@@ -470,14 +470,17 @@ export function Gallery() {
                 align="center"
                 style={{ marginBottom: '1.5rem', color: 'white' }}
               >
-                גלריית פרויקטים
+                {isMobile ? 'גלריה' : 'גלריה - פרויקטים אחרונים שלנו'}
               </Heading>
               <Text
                 size="5"
                 align="center"
-                style={{ marginBottom: '2rem', color: 'var(--gray-8)', lineHeight: '1.6' }}
+                style={{ marginBottom: '2rem', color: 'var(--header-sub)', lineHeight: '1.6' }}
               >
-                פה תוכלו לראות מגוון פרויקטים שביצענו - לפני ואחרי השיפוץ
+                {
+                  'אנחנו מזמינים אתכם להתרשם מתמונות של פרויקטים אמיתיים שביצענו – ולדמיין את השדרוג הבא אצלכם בבית'
+                }
+                {/* { ' פה תוכלו לראות מגוון פרויקטים שביצענו - לפני ואחרי השיפוץ'} */}
               </Text>
             </motion.div>
           </Flex>

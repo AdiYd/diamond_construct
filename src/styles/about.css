@@ -50,7 +50,8 @@
   }
 
   .about-card:hover {
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08) !important;
+    /* box-shadow: 0 8px 40px var(--amber-a9) !important; */
   }
 
   .about-card::after {

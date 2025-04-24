@@ -143,7 +143,7 @@ export function Services() {
                 style={{
                   maxWidth: '800px',
                   marginBottom: '2rem',
-                  color: 'var(--gray-8)',
+                  color: 'var(--header-sub)',
                   padding: isMobile ? '0 var(--space-3)' : 0,
                 }}
               >

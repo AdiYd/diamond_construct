@@ -113,7 +113,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
           {/* Contact Information */}
           <Box style={{ zIndex: 10 }}>
             <Heading size="6" mb="4">
-              בואו נדבר על הפרויקט שלכם
+              מתחילים בשיחה אחת
             </Heading>
             <Text
               as="div"
@@ -121,8 +121,8 @@ export default function ContactSection({ extendSection = false, noBackground = f
               mb="6"
               style={{ color: 'var(--gray-11)', maxWidth: '500px' }}
             >
-              נשמח לענות על כל שאלה ולסייע בתכנון הפרויקט הבא שלכם. השאירו פרטים או פנו אלינו
-              ישירות.
+              רוצים לדעת איך גם אתם יכולים לעבור שיפוץ בראש שקט? נשמח להיפגש, להקשיב ולבנות לכם הצעת
+              מחיר מותאמת אישית.
             </Text>
 
             <Flex style={{ zIndex: 10 }} direction="column" gap="4" my="6">
@@ -144,7 +144,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                 {
                   icon: <MapPin size={20} />,
                   title: 'כתובת',
-                  content: 'רחוב המלאכה 5, כרמיאל',
+                  content: 'איזור כרמיאל והסביבה',
                   action: 'https://maps.google.com/?q=כרמיאל+המלאכה+5',
                   color: 'var(--green-9)',
                 },
@@ -263,7 +263,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                         // variant="soft"
                         value={quickFormData.name}
                         onChange={handleQuickFormInputChange}
-                        placeholder="הכנס את שמך המלא"
+                        placeholder="שם מלא"
                         // className="input"
                         style={{
                           backgroundColor: 'var(--gray-1)',
@@ -298,7 +298,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                         name="phone"
                         value={quickFormData.phone}
                         onChange={handleQuickFormInputChange}
-                        placeholder="הכנס מספר טלפון"
+                        placeholder="טלפון ליצירת קשר"
                         style={{
                           backgroundColor: 'var(--gray-1)',
                           minHeight: '2rem',
@@ -372,7 +372,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                               fontSize: '1rem',
                             }}
                           >
-                            <option value="">ובחר שירות מבוקש</option>
+                            <option value="">בחרו שירות מבוקש</option>
                             <option value="bathrooms">שיפוץ אמבטיות</option>
                             <option value="kitchens">שיפוץ מטבחים</option>
                             <option value="construction">בנייה פרטית</option>

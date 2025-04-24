@@ -150,9 +150,10 @@ export function Contact() {
               <Text
                 size="5"
                 align="center"
-                style={{ marginBottom: '2rem', color: 'var(--gray-8)', lineHeight: '1.6' }}
+                style={{ marginBottom: '2rem', color: 'var(--header-sub)', lineHeight: '1.6' }}
               >
-                נשמח לעמוד לרשותך. מלא את הטופס או פנה אלינו באחת מהדרכים הבאות
+                {'השאירו פרטים בטופס ונחזור אליכם בהקדם עם מענה אישי ומדויק'}
+                {/* {'נשמח לעמוד לרשותך. מלא את הטופס או פנה אלינו באחת מהדרכים הבאות'} */}
               </Text>
             </motion.div>
           </Flex>
@@ -171,8 +172,15 @@ export function Contact() {
             marginBottom: '0rem',
           }}
         >
-          <Heading align="center" as="h2" size="6" style={{ textAlign: 'center', zIndex: 10 }}>
-            אנחנו זמינים לעזור לך להגשים את החלום לבית המושלם שלך
+          <Heading
+            align="center"
+            as="h2"
+            size="6"
+            style={{ textAlign: 'center', zIndex: 10, maxWidth: '90%' }}
+          >
+            רוצים לקבל הצעת מחיר? יש לכם שאלה על שיפוץ, תוספת בנייה או תחזוקה שוטפת?
+            <br />
+            אנחנו כאן כדי להקשיב, לייעץ, ולהתחיל איתכם את הדרך לבית מחודש ומושלם
           </Heading>
           <br />
           <Text
@@ -180,7 +188,7 @@ export function Contact() {
             size="3"
             style={{ color: 'var(--gray-11)', textAlign: 'center', zIndex: 10 }}
           >
-            מוזמנים לפנות אלינו בכל שאלה, בקשה וייעוץ וללא התחייבות
+            {/* השאירו פרטים בטופס ונחזור אליכם בהקדם עם מענה אישי ומדויק */}
           </Text>
         </Box>
       </Section>
@@ -212,7 +220,7 @@ export function Contact() {
                 {
                   icon: <MapPin size={24} />,
                   title: 'כתובת',
-                  content: 'רחוב המלאכה 5, כרמיאל',
+                  content: 'עובדים באיזור כרמיאל והסביבה',
                   action: 'https://maps.google.com/?q=כרמיאל+המלאכה+5',
                   color: 'crimson',
                 },
@@ -231,7 +239,7 @@ export function Contact() {
                       overflow: 'hidden',
                       backdropFilter: 'blur(20px)',
                       backgroundColor: 'var(--background)',
-                      boxShadow: 'var(--shadow-4)',
+                      // boxShadow: 'var(--shadow-4)',
                     }}
                   >
                     {/* Decorative corner */}
@@ -310,7 +318,7 @@ export function Contact() {
                     overflow: 'hidden',
                     backdropFilter: 'blur(20px)',
                     backgroundColor: 'var(--background)',
-                    boxShadow: 'var(--shadow-4)',
+                    // boxShadow: 'var(--shadow-4)',
                   }}
                 >
                   {/* Decorative corner */}
@@ -373,7 +381,7 @@ export function Contact() {
                   position: 'relative',
                   overflow: 'hidden',
                   padding: 'var(--space-5)',
-                  boxShadow: 'var(--shadow-6)',
+                  // boxShadow: 'var(--shadow-6)',
                 }}
               >
                 <Flex direction="column" gap="5">
@@ -466,7 +474,7 @@ export function Contact() {
                               size="3"
                               value={formData.name}
                               onChange={handleInputChange}
-                              placeholder="הכנס את שמך המלא"
+                              placeholder="שם מלא"
                               //   state={formErrors.name ? 'invalid' : undefined}
                             ></TextField.Root>
                             {formErrors.name && (
@@ -500,7 +508,7 @@ export function Contact() {
                               // variant="soft"
                               value={formData.phone}
                               onChange={handleInputChange}
-                              placeholder="הכנס מספר טלפון"
+                              placeholder="טלפון ליצירת קשר"
                               //   state={formErrors.phone ? 'invalid' : undefined}
                             ></TextField.Root>
                             {formErrors.phone && (
@@ -567,7 +575,7 @@ export function Contact() {
                               fontSize: '1rem',
                             }}
                           >
-                            <option value="">בחר שירות מבוקש</option>
+                            <option value="">בחרו שירות מבוקש</option>
                             <option value="bathrooms">שיפוץ אמבטיות</option>
                             <option value="kitchens">שיפוץ מטבחים</option>
                             <option value="construction">בנייה פרטית</option>
@@ -595,7 +603,7 @@ export function Contact() {
                             // variant="soft"
                             value={formData.message}
                             onChange={handleInputChange}
-                            placeholder="תאר בקצרה את השירות שאתה מעוניין בו"
+                            placeholder="תארו בקצרה את השירות שאתם מעוניינים בו"
                             style={{
                               width: '100%',
                               minHeight: '150px',
@@ -629,12 +637,12 @@ export function Contact() {
                               </>
                             ) : submitStatus === 'error' ? (
                               <>
-                                <Text>נסה שוב</Text>
+                                <Text>נסו שוב</Text>
                                 <AlertCircle size={16} />
                               </>
                             ) : (
                               <>
-                                <Text>שלח פנייה</Text>
+                                <Text>שלחו פנייה</Text>
                                 <Send size={16} />
                               </>
                             )}
@@ -659,7 +667,7 @@ export function Contact() {
             maxHeight: '500px',
             width: '80%',
             aspectRatio: '1',
-            boxShadow: 'var(--shadow-6)',
+            boxShadow: 'var(--shadow-2)',
           }}
         >
           <iframe

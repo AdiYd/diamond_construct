@@ -90,35 +90,46 @@
   position: absolute;
   top: -60px;
   left: -60px;
-  width: 150px;
+  width: 140px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 50% 80% 60% 80%;
   background: linear-gradient(to bottom, var(--lime-6), var(--mint-8));
-  opacity: 0.3;
+  opacity: 0.2;
+  animation: rotate 20s linear infinite;
 }
 
 .testimonial-decoration-2 {
   position: absolute;
   top: -60px;
   left: -60px;
-  width: 150px;
+  width: 140px;
   height: 150px;
-  border-radius: 50%;
+  border-radius:  50% 80% 60% 80%;
   background: linear-gradient(to bottom, var(--secondary), var(--orange-8));
   opacity: 0.15;
+  animation: rotate 20s linear infinite;
 }
 
 .testimonial-decoration-3 {
   position: absolute;
   top: -60px;
   left: -60px;
-  width: 150px;
+  width: 140px;
   height: 150px;
-  border-radius: 50%;
+  border-radius:  50% 80% 60% 80%;
   background: linear-gradient(to bottom, var(--indigo-8), var(--plum-6));
   opacity: 0.2;
+  animation: rotate 20s linear infinite;
 }
 
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 .testimonial-text {
   position: relative;

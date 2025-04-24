@@ -45,8 +45,8 @@ const projectImages = [
   {
     id: 5,
     url: '/image/IMG-20240517-WA0043.jpg',
-    title: 'שיפוץ כללי',
-    description: 'שיפוץ מלא לדירה בת 4 חדרים',
+    title: 'שירותים ומקלחת',
+    description: 'החלפת שירותים ומקלחת עם אריחים חדשים',
     category: 'renovations',
     size: 'small',
   },
@@ -117,8 +117,8 @@ const projectImages = [
   {
     id: 14,
     url: '/image/IMG-20250325-WA0016.jpg',
-    title: 'תוספת קומה',
-    description: 'הרחבת דירה עם תוספת קומה חדשה',
+    title: 'שיפוץ מטבח',
+    description: 'חידוש מטבח כולל ארונות חדשים ושטח עבודה',
     category: 'construction',
     size: 'large',
   },
@@ -244,7 +244,7 @@ export function ProjectShowcase() {
                       <Box className="project-card">
                         <Box className="project-image-container" style={{ height: '300px' }}>
                           <img
-                            src={`${import.meta.env.VITE_BASE_URL}${project.url}`}
+                            src={`${import.meta.env.BASE_URL}${project.url}`}
                             alt={project.title}
                             className="project-image"
                           />
@@ -354,7 +354,7 @@ export function ProjectShowcase() {
                   <Box className="project-image-container">
                     <img
                       style={{ borderRadius: 'var(--radius-4)' }}
-                      src={`${import.meta.env.VITE_BASE_URL}${project.url}`}
+                      src={`${import.meta.env.BASE_URL}${project.url}`}
                       alt={project.title}
                       className="project-image"
                     />
