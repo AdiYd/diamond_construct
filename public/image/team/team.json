@@ -1,81 +1,70 @@
 [
   {
-    "url": "image/team/IMG_20240703_134753_141.jpg",
+    "image": "image/team/IMG_20240703_134753_141.jpg",
     "title": "גדי כהן",
     "description": "8 שנות נאסיון בתחום הבנייה | מתמחה בשיפוצים ובניה פרטית",
-    "category": "management",
     "size": "large"
   },
   {
-    "url": "image/team/IMG20250131124919.jpg",
+    "image": "image/team/IMG20250131124919.jpg",
     "title": "יעקב דיאמונד",
     "description": "מנהל פרויקטים ובעלים | מלווה אתכם בכל שלב, מהתכנון ועד הביצוע",
-    "category": "customer-service",
     "size": "medium"
   },
   {
-    "url": "image/team/PXL_20240908_115634333.jpg",
+    "image": "image/team/PXL_20240908_115634333.jpg",
     "title": "אלון דוד",
     "description": "אדריכל ראשי | שם דגש על פונקציונליות ואסתטיקה בכל פרויקט",
-    "category": "design",
     "size": "small"
   },
   {
-    "url": "image/team/PXL_20241001_132821300.MP.jpg",
+    "image": "image/team/PXL_20241001_132821300.MP.jpg",
     "title": "אבי גולןייי",
     "description": "מנהל עבודה | מוביל את הצוות בשטח מתוך מחויבות לאיכות ולו\"ז",
-    "category": "construction",
     "size": "medium"
   },
   {
-    "url": "image/team/PXL_20241208_092655939.jpg",
+    "image": "image/team/PXL_20241208_092655939.jpg",
     "title": "אלכס לוינסון",
     "description": "אני אתלכלך בשבילכם עד שהתוצאה תהיה מושלמת!",
-    "category": "design",
     "size": "small"
   },
   {
-    "url": "image/team/PXL_20241010_115336941.jpg",
+    "image": "image/team/PXL_20241010_115336941.jpg",
     "title": "דני מזרחי",
     "description": "ראש צוות שיפוצים | בעל ידע רב בכל תחומי הבנייה והשיפוצים",
-    "category": "renovations",
     "size": "large"
   },
   {
-    "url": "image/team/PXL_20241007_105155714.jpg",
+    "image": "image/team/PXL_20241007_105155714.jpg",
     "title": "אורי גולן",
     "description": "",
-    "category": "engineering",
     "size": "small"
   },
   {
-    "url": "image/team/PXL_20250216_081515079.MP~2.jpg",
+    "image": "image/team/PXL_20250216_081515079.MP~2.jpg",
     "title": "מאור שטרית",
     "description": "אנחנו עובדים תוך כבוד ושמירה על הסביבה שלכם ועל הטבע",
-    "category": "design",
     "size": "large"
   },
   {
-    "url": "image/team/IMG-20250109-WA0083.jpg",
+    "image": "image/team/IMG-20250109-WA0083.jpg",
     "title": "דברו איתנו",
     "description": "אנחנו כאן בשבילכם, יש לנו את הכלים והאנשים בשביל לשפץ לכם את הבית על הצד הטוב ביותר!",
-    "category": "renovations",
     "size": "medium"
   },
   {
-    "url": "image/team/PXL_20240905_151748546.MP.jpg",
+    "image": "image/team/PXL_20240905_151748546.MP.jpg",
     "title": "מוכנים לכל אתגר",
     "description": "עובדים יחד כמו משפחה אחת למען ההצלחה שלכם",
-    "category": "team",
     "size": "medium"
   },
   {
     "name": "שמואל לוי",
     "position": "מנהל עבודה",
-    "url": "image/team/PXL_20241001_132912903.jpg",
+    "image": "image/team/PXL_20241001_132912903.jpg",
     "title": "שמואל לוי",
     "description": "שמואל לוי ברגעים יפים עם הצוות",
-    "category": "team",
     "size": "medium"
   }
 ]

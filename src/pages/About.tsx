@@ -6,7 +6,7 @@ import '../styles/about.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import ContactSection from '../components/sections/contactUs';
 import { useEffect, useState } from 'react';
-import { TeamMember } from '../components/sections/TeamShowCase';
+import { TeamImage, TeamMember } from '../components/sections/TeamShowCase';
 
 // Company values data
 const companyValues = [
@@ -84,8 +84,9 @@ const companyValues = [
 
 export function About() {
   const { isMobile, isTablet } = useScreen();
-  const [teamImages, setTeamImages] = useState<TeamMember[]>([]);
-  const [teamMembers, setTeamMembers] = useState([]);
+  const [teamImages, setTeamImages] = useState<TeamImage[]>([]);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [vision, setVision] = useState<null | Record<string, string>>(null);
 
   useEffect(() => {
     const fetchTeamData = async () => {
@@ -98,6 +99,17 @@ export function About() {
       }
     };
 
+    const fetchVisionData = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.BASE_URL}content/vision.json`);
+        const data = await response.json();
+        setVision(data);
+      } catch (error) {
+        console.error('Error fetching vision data:', error);
+      }
+    };
+
+    fetchVisionData();
     fetchTeamData();
   }, []);
 
@@ -109,7 +121,6 @@ export function About() {
         );
         const teamMembersData = await teamMembersResponse.json();
         setTeamMembers(teamMembersData);
-        console.log('Team members:', teamMembersData);
       } catch (error) {
         console.error('Error fetching members data:', error);
       }
@@ -194,7 +205,7 @@ export function About() {
                 className="testimonial-decoration-4"
               />
               <Heading size="6" align="center" className="section-title with-accent" mb="4">
-                החזון שלנו: השיפוץ שלנו , הרוגע שלכם.
+                {vision?.title || 'החזון שלנו: השיפוץ שלנו , הרוגע שלכם.'}
               </Heading>
               <Text
                 as="div"
@@ -202,10 +213,11 @@ export function About() {
                 size="3"
                 style={{ lineHeight: '1.8', fontWeight: 500, marginBottom: '1rem' }}
               >
-                החזון של חברת דאימונד להפוך את עולה השיפוצים לחוויה רגועה, חיובית שמאפשרת ללקוח
+                {vision?.description ||
+                  `החזון של חברת דאימונד להפוך את עולה השיפוצים לחוויה רגועה, חיובית שמאפשרת ללקוח
                 להשאר בראש שקט ובבטחון מלא לאורך כל הדרך. אנחנו עוסקים בשיפוץ דירות ובתים פרטיים,
                 תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב
-                בין מקצועיות טכנית בלתי מתפשרת, לבין יחס אישי שמציב את הלקוח במרכז.
+                בין מקצועיות טכנית בלתי מתפשרת, לבין יחס אישי שמציב את הלקוח במרכז.`}
               </Text>
               <Text
                 align={isMobile ? 'center' : 'right'}
@@ -237,7 +249,7 @@ export function About() {
               {teamImages.map((image, index) => (
                 <div key={index}>
                   <img
-                    src={`${import.meta.env.BASE_URL}${image.url}`}
+                    src={`${import.meta.env.BASE_URL}${image.image}`}
                     className="team-image"
                     alt={`Team member ${index + 1}`}
                     style={{
@@ -490,7 +502,7 @@ export function About() {
                   }}
                   style={{
                     gridColumn:
-                      member.final && !isMobile ? (isTablet ? 'span 2' : 'span 4') : 'span 1',
+                      member.full && !isMobile ? (isTablet ? 'span 2' : 'span 4') : 'span 1',
                   }}
                 >
                   <Card

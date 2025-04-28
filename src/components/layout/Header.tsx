@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Box, Button, Container, Flex, IconButton, useThemeContext } from '@radix-ui/themes';
+import { Box, Container, Flex, IconButton } from '@radix-ui/themes';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -13,14 +13,13 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isOnTop, setIsOnTop] = useState(true);
-  const [currentFont, setFont] = useState('Assistant');
   const [lastScrollY, setLastScrollY] = useState(0);
   const scrollThreshold = 1400; // Threshold for header visibility
   const { theme, toggleTheme } = useTheme();
   const { isMobile } = useScreen();
   const { language } = useLanguage();
   const location = useLocation();
-  const context = useThemeContext();
+  // const context = useThemeContext();
   const pageName = location.pathname.split('/')[1] || 'home';
   const isHomePage = pageName === 'home';
 
@@ -54,17 +53,17 @@ export function Header() {
   }, [lastScrollY, isMenuOpen]);
 
   // Original theme context effect
-  useEffect(() => {
-    const config = {
-      accentColor: context.accentColor,
-      grayColor: context.grayColor,
-      panelBackground: context.panelBackground,
-      scaling: context.scaling,
-      radius: context.radius,
-      theme,
-    };
-    console.log('Theme config:', config);
-  }, [context, theme]);
+  // useEffect(() => {
+  //   const config = {
+  //     accentColor: context.accentColor,
+  //     grayColor: context.grayColor,
+  //     panelBackground: context.panelBackground,
+  //     scaling: context.scaling,
+  //     radius: context.radius,
+  //     theme,
+  //   };
+  //   console.log('Theme config:', config);
+  // }, [context, theme]);
 
   const isDarkTheme = theme === 'dark';
 
@@ -131,32 +130,6 @@ export function Header() {
                   </Link>
                 ))}
               </Flex>
-            </Flex>
-
-            {/* 3 buttons - 'Rubik', 'Habee', 'Assistant' to change the css variable for '--default-font-family' */}
-            <Flex gap={'1'} justify={'between'}>
-              {['Rubik', 'Heebo', 'Assistant', 'Inter', 'Alef'].map(font => (
-                <Button
-                  size="1"
-                  color="tomato"
-                  variant={currentFont === font ? 'solid' : 'soft'}
-                  key={font}
-                  onClick={() => {
-                    document.documentElement.style.setProperty(
-                      '--font-family',
-                      `'${font}', sans-serif`
-                    );
-                    setFont(font);
-                  }}
-                  style={{
-                    border: '0.8px solid var(--accent-8)',
-                    padding: '4px 8px',
-                    borderRadius: '8px',
-                  }}
-                >
-                  {font}
-                </Button>
-              ))}
             </Flex>
 
             <Flex align="center" direction="row-reverse" gap="6">

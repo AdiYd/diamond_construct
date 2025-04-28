@@ -18,6 +18,7 @@ import { Box } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { ScrollToTop } from './components/ScrollToTop';
+import FontSelector from './components/FontSelector';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <LanguageProvider>
         <Router basename="/diamond_construct/">
           <ScrollToTop />
+          <FontSelector />
           <div
             style={{
               minHeight: '100vh',

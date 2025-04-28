@@ -14,6 +14,15 @@ import {
 } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
 import ContactSection from '../components/sections/contactUs';
+import { JSX, useEffect, useState } from 'react';
+
+const iconDict: { [key: string]: JSX.Element } = {
+  droplet: <Droplet size={36} />,
+  chefHat: <ChefHat size={36} />,
+  construction: <Construction size={36} />,
+  wrench: <Wrench size={36} />,
+  clipboardCheck: <ClipboardCheck size={36} />,
+};
 
 const servicesList = [
   {
@@ -22,7 +31,7 @@ const servicesList = [
     shortDescription: 'שיפוצי חדרי אמבטיה מקצועיים עם חומרים איכותיים וטכניקות מתקדמות.',
     fullDescription:
       'חדר האמבטיה הוא אחד החדרים הכי שימושיים בבית, ואצלנו הוא זוכה לטיפול מיוחד. צוות המומחים שלנו בעל ניסיון רב בשיפוץ חדרי אמבטיה, החל מריצוף, חיפוי, החלפת סנטרייה, ועד התקנת אמבטיות, מקלחונים וארונות אמבטיה. אנו משתמשים בחומרים איכותיים ועמידים למים תוך שמירה על אסתטיקה ופונקציונליות.',
-    icon: <Droplet size={36} />,
+    icon: 'droplet',
     color: 'var(--blue-9)',
     benefits: [
       'עמידות בפני רטיבות ולחות',
@@ -39,7 +48,7 @@ const servicesList = [
     shortDescription: 'עיצוב והתקנת מטבחים מודרניים המשלבים פונקציונליות ואסתטיקה.',
     fullDescription:
       'המטבח הוא לב הבית, ואנחנו מבינים את חשיבותו. צוות המומחים שלנו מתמחה בשיפוץ מטבחים ברמה הגבוהה ביותר, תוך שילוב בין עיצוב מודרני לפונקציונליות מקסימלית. אנחנו מציעים פתרונות מותאמים אישית לכל חלל, כולל החלפת ארונות, משטחי עבודה, כיורים, ברזים, אריחים, תאורה ועוד. אנו עובדים עם מיטב הספקים לאספקת חומרים איכותיים ועמידים.',
-    icon: <ChefHat size={36} />,
+    icon: 'chefHat',
     color: 'var(--amber-9)',
     benefits: [
       'תכנון מותאם אישית לניצול מקסימלי של החלל',
@@ -56,7 +65,7 @@ const servicesList = [
     shortDescription: 'מימוש חלומות הבנייה שלכם מהיסוד ועד למפתח, בליווי מקצועי מלא.',
     fullDescription:
       'דיאמונד מציעה שירותי בנייה פרטית מקיפים, מהשלב התכנוני ועד מסירת המפתח. הצוות שלנו מורכב מאנשי מקצוע מנוסים הפועלים בסטנדרטים הגבוהים ביותר, תוך הקפדה על איכות הביצוע ועמידה בלוחות זמנים. אנחנו מלווים אתכם בכל שלבי הבנייה, מתכנון ואישור תכניות, דרך הנחת תשתיות, יציקת רצפות וקירות, ועד עבודות גמר.',
-    icon: <Construction size={36} />,
+    icon: 'construction',
     color: 'var(--crimson-9)',
     benefits: [
       'ליווי מקצועי לאורך כל התהליך',
@@ -73,7 +82,7 @@ const servicesList = [
     shortDescription: 'החזרת הברק לבית שלכם עם שיפוץ כולל מקיר לקיר.',
     fullDescription:
       'בין אם אתם מעוניינים בשינוי מראה הבית, בהגדלת החלל או בשיפור הפונקציונליות, צוות דיאמונד מציע מגוון רחב של שירותי שיפוץ. אנחנו מתמחים בהריסת קירות לא נושאים, בניית קירות גבס, החלפת ריצוף, צביעה מקצועית, החלפת דלתות וחלונות, שיפוץ מרפסות וחדרי מדרגות, ועוד. שירותי השיפוץ שלנו מאופיינים באיכות גבוהה, תוך שימוש בחומרים מתקדמים ועמידים.',
-    icon: <Wrench size={36} />,
+    icon: 'wrench',
     color: 'var(--grass-9)',
     benefits: [
       'תכנון מדויק לפי צרכי הלקוח',
@@ -90,7 +99,7 @@ const servicesList = [
     shortDescription: 'שמירה על הבית והנכס שלכם במצב מיטבי לאורך זמן.',
     fullDescription:
       'שירותי התחזוקה השוטפת שלנו נועדו לשמר את הנכס שלכם במצב מיטבי, למנוע בעיות עתידיות ולחסוך בעלויות תיקון גבוהות. אנחנו מציעים חוזי תחזוקה המותאמים לצרכים שלכם, הכוללים ביקורות תקופתיות, תיקוני נזילות, תחזוקת מערכות חשמל, טיפול בסדקים ברצפה ובקירות, צביעה תקופתית, ניקוי תעלות ניקוז, ועוד. צוות המומחים שלנו זמין לכל קריאת שירות.',
-    icon: <ClipboardCheck size={36} />,
+    icon: 'clipboardCheck',
     color: 'var(--indigo-9)',
     benefits: [
       'מניעת נזקים עתידיים',
@@ -105,6 +114,28 @@ const servicesList = [
 
 export function Services() {
   const { isMobile } = useScreen();
+  const [services, setServices] = useState(servicesList);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.BASE_URL}content/service_blog.json`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch services data');
+        }
+        const data = await response.json();
+        if (data.length > 0) {
+          setServices(data);
+        } else {
+          console.warn('No services data found');
+        }
+      } catch (error) {
+        console.error('Error fetching services:', error);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   return (
     <Box dir="rtl">
@@ -163,7 +194,7 @@ export function Services() {
         }}
       >
         <Grid columns={{ initial: '1', sm: '2', md: '3' }} gap={{ initial: '3', sm: '4' }} my="6">
-          {servicesList.map((service, index) => (
+          {services.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 20 }}
@@ -199,7 +230,7 @@ export function Services() {
                       marginBottom: '0.5rem',
                     }}
                   >
-                    {service.icon}
+                    {iconDict[service.icon]}
                   </Box>
                   <Heading size={{ initial: '3', sm: '4' }} as="h3">
                     {service.title}
@@ -332,15 +363,16 @@ export function Services() {
                       border: '1px solid var(--gray-a1)',
                       background: 'linear-gradient(to bottom left,var(--iris-a3), var(--sky-a3))',
                       height: '100%',
-                      transform: 'skew(5deg)',
+                      transform: 'skew(3deg)',
                       textAlign: isMobile ? 'start' : 'start',
                     }}
+                    className="shadowHover"
                   >
                     <Box
                       style={{
-                        backgroundColor: `${feature.color}20`,
                         borderRadius: 'var(--radius-2)',
                         padding: 'var(--space-2)',
+                        minHeight: '100px',
                         color: feature.color,
                         marginBottom: isMobile ? 'var(--space-2)' : 0,
                       }}
@@ -365,7 +397,7 @@ export function Services() {
       </Section>
 
       {/* Detailed Services */}
-      {servicesList.map((service, index) => (
+      {services.map((service, index) => (
         <Section
           key={service.id}
           id={service.id}

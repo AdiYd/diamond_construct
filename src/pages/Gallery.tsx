@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Container,
@@ -17,11 +17,11 @@ import useScreen from '../hooks/useScreen';
 import ContactSection from '../components/sections/contactUs';
 
 // Project portfolio data
-const portfolioProjects = [
+const demoProjects = [
   {
     id: 'kitchen-1',
     title: 'שיפוץ מטבח מודרני',
-    category: 'kitchens',
+    category: 'מטבחים',
     location: 'כרמיאל',
     description:
       'שיפוץ מקיף של מטבח ישן לעיצוב מודרני עם אי, ארונות בהירים ומשטח עבודה מאבן קיסר. המטבח החדש מספק פונקציונליות מקסימלית ואסתטיקה נקייה.',
@@ -43,15 +43,15 @@ const portfolioProjects = [
   {
     id: 'bathroom-1',
     title: 'שדרוג חדר רחצה',
-    category: 'bathrooms',
+    category: 'חדרי רחצה',
     location: 'עכו',
     description:
       'שיפוץ מלא של חדר אמבטיה משנות ה-90 לחדר מודרני עם אריחים גדולים, מקלחון זכוכית ואביזרים בשחור מט.',
     images: {
       before:
-        'https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?q=80&w=1936&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2670&auto=format&fit=crop',
       after:
-        'https://images.unsplash.com/photo-1645427911017-c14b9416ce08?q=80&w=2070&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?q=80&w=1936&auto=format&fit=crop',
       process: [
         'https://images.unsplash.com/photo-1632933964451-e11a62378034?q=80&w=1974&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1639501295122-28c362020c63?q=80&w=1974&auto=format&fit=crop',
@@ -65,7 +65,7 @@ const portfolioProjects = [
   {
     id: 'house-renovation',
     title: 'שיפוץ דירה קומפלט',
-    category: 'renovations',
+    category: 'חידוש מבנה',
     location: 'נהריה',
     description:
       'שיפוץ מקיף של דירה בת 4 חדרים שכלל החלפת ריצוף, צביעה, שדרוג מטבח וחדרי אמבטיה, החלפת דלתות ותאורה.',
@@ -86,7 +86,7 @@ const portfolioProjects = [
   },
   {
     id: 'private-house',
-    title: 'בית פרטי מהיסוד',
+    title: 'חידוש מבנה',
     category: 'construction',
     location: 'כפר ורדים',
     description:
@@ -109,7 +109,7 @@ const portfolioProjects = [
   {
     id: 'kitchen-2',
     title: 'מטבח בסגנון כפרי',
-    category: 'kitchens',
+    category: 'מטבחים',
     location: 'מעלות',
     description:
       'שיפוץ והסבה של מטבח עירוני למטבח בסגנון כפרי מודרני עם ארונות עץ, אי גדול במרכז ופינת ישיבה מובנית.',
@@ -131,7 +131,7 @@ const portfolioProjects = [
   {
     id: 'bathroom-2',
     title: 'חדר רחצה מעוצב',
-    category: 'bathrooms',
+    category: 'חדרי רחצה',
     location: 'קריית ביאליק',
     description:
       'שדרוג חדר אמבטיה לדירה בת 3 חדרים, כולל אמבטיה חדשה, ארון אמבטיה תלוי, מראה מעוצבת ותאורה ייחודית.',
@@ -153,7 +153,7 @@ const portfolioProjects = [
   {
     id: 'apartment-renovation',
     title: 'חידוש דירה ישנה',
-    category: 'renovations',
+    category: 'חידוש מבנה',
     location: 'חיפה',
     description:
       'שיפוץ מקיף לדירה משנות ה-70, כולל הריסת קירות פנימיים ליצירת חלל פתוח, החלפת תשתיות חשמל ואינסטלציה, ריצוף חדש ומטבח חדש.',
@@ -175,19 +175,13 @@ const portfolioProjects = [
   {
     id: 'garden-apartment',
     title: 'דירת גן עם חצר מעוצבת',
-    category: 'renovations',
+    category: 'חידוש מבנה',
     location: 'כרמיאל',
     description:
       'שיפוץ דירת גן שכלל עיצוב מחדש של החצר, הקמת פרגולה, מטבח חיצוני ופינת ישיבה. בפנים שופצו חדרי השינה והמטבח.',
     images: {
-      before:
-        'https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=2070&auto=format&fit=crop',
       after:
-        'https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=2070&auto=format&fit=crop',
-      process: [
-        'https://images.unsplash.com/photo-1541183663121-1f2dbbe23a1d?q=80&w=1974&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1574739782594-db4ead022697?q=80&w=1974&auto=format&fit=crop',
-      ],
+        'https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=2070&auto=format&fit=crop',
     },
     testimonial: {
       text: 'החצר הפכה להיות סלון חיצוני שאנחנו משתמשים בו כל השנה. השילוב של שיפוץ פנים וחוץ היה מושלם.',
@@ -252,6 +246,7 @@ const Lightbox: React.FC<LightboxProps> = ({
   processIndex = 0,
   setProcessIndex,
 }) => {
+  const { isMobile } = useScreen();
   const handlePrev = () => {
     if (currentImageType === 'process' && setProcessIndex && processIndex > 0) {
       setProcessIndex(processIndex - 1);
@@ -262,7 +257,7 @@ const Lightbox: React.FC<LightboxProps> = ({
     if (
       currentImageType === 'process' &&
       setProcessIndex &&
-      processIndex < project.images.process.length - 1
+      processIndex < project.images.process?.length - 1
     ) {
       setProcessIndex(processIndex + 1);
     }
@@ -293,7 +288,7 @@ const Lightbox: React.FC<LightboxProps> = ({
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 1000,
-        padding: '2rem',
+        padding: isMobile ? '0.5rem' : '2rem',
         backdropFilter: 'blur(10px)',
       }}
       onClick={onClose}
@@ -304,6 +299,7 @@ const Lightbox: React.FC<LightboxProps> = ({
           //   width: '90%',
           padding: '1rem',
           maxWidth: '900px',
+          minWidth: '60vw',
           height: '80vh',
           backgroundColor: 'transparent',
         }}
@@ -335,14 +331,14 @@ const Lightbox: React.FC<LightboxProps> = ({
               style={{
                 position: 'absolute',
                 top: '50%',
-                left: '1rem',
+                left: isMobile ? '0.5rem' : '1rem',
                 backgroundColor: 'rgba(0,0,0,0.5)',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '2.5rem',
-                height: '2.5rem',
+                width: isMobile ? '2rem' : '2.5rem',
+                height: isMobile ? '2rem' : '2.5rem',
                 cursor: processIndex === 0 ? 'not-allowed' : 'pointer',
                 opacity: processIndex === 0 ? 0.5 : 1,
                 transform: 'translateY(-50%)',
@@ -357,14 +353,14 @@ const Lightbox: React.FC<LightboxProps> = ({
               style={{
                 position: 'absolute',
                 top: '50%',
-                right: '1rem',
+                right: isMobile ? '0.5rem' : '1rem',
                 backgroundColor: 'rgba(0,0,0,0.5)',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '2.5rem',
-                height: '2.5rem',
+                width: isMobile ? '2rem' : '2.5rem',
+                height: isMobile ? '2rem' : '2.5rem',
                 cursor:
                   processIndex === project.images.process.length - 1 ? 'not-allowed' : 'pointer',
                 opacity: processIndex === project.images.process.length - 1 ? 0.5 : 1,
@@ -411,7 +407,7 @@ const Lightbox: React.FC<LightboxProps> = ({
               ? 'לפני השיפוץ'
               : currentImageType === 'after'
               ? 'אחרי השיפוץ'
-              : `תהליך העבודה - שלב ${processIndex + 1} מתוך ${project.images.process.length}`}
+              : `תהליך העבודה - שלב ${processIndex + 1} מתוך ${project.images.process?.length}`}
           </Text>
         </Box>
       </Box>
@@ -425,12 +421,30 @@ export function Gallery() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageType, setCurrentImageType] = useState<'before' | 'after' | 'process'>('after');
   const [processIndex, setProcessIndex] = useState(0);
+  const [projects, setProjects] = useState(demoProjects); // Initialize with demo projects
   const { isMobile } = useScreen();
+
+  useEffect(() => {
+    // Fetch projects from the server or API
+    const fetchProjects = async () => {
+      try {
+        // Simulate fetching data from an API
+        const response = await fetch(`${import.meta.env.BASE_URL}content/projects.json`);
+        const data = await response.json();
+        console.log('Fetched projects:', data);
+        setProjects(data); // Set the fetched projects
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const filteredProjects =
     selectedCategory === 'all'
-      ? portfolioProjects
-      : portfolioProjects.filter(project => project.category === selectedCategory);
+      ? projects
+      : projects.filter(project => project.category === selectedCategory);
 
   const openLightbox = (project: Project, imageType: 'before' | 'after' | 'process') => {
     setSelectedProject(project);
@@ -538,10 +552,12 @@ export function Gallery() {
                 >
                   {/* Project Images - Before & After */}
                   <Tabs.Root defaultValue="after">
-                    <Tabs.List style={{ justifyContent: 'center' }}>
-                      <Tabs.Trigger value="before">לפני</Tabs.Trigger>
-                      <Tabs.Trigger value="after">אחרי</Tabs.Trigger>
-                    </Tabs.List>
+                    {project.images?.after && project.images?.before && (
+                      <Tabs.List style={{ justifyContent: 'center' }}>
+                        {project.images.before && <Tabs.Trigger value="before">לפני</Tabs.Trigger>}
+                        {project.images.after && <Tabs.Trigger value="after">אחרי</Tabs.Trigger>}
+                      </Tabs.List>
+                    )}
 
                     <Box style={{ position: 'relative' }}>
                       <Tabs.Content value="before">
@@ -551,7 +567,7 @@ export function Gallery() {
                             height: '280px',
                             cursor: 'pointer',
                           }}
-                          onClick={() => openLightbox(project, 'before')}
+                          onClick={() => openLightbox(project as Project, 'before')}
                         >
                           <img
                             src={project.images.before}
@@ -606,7 +622,7 @@ export function Gallery() {
                             height: '280px',
                             cursor: 'pointer',
                           }}
-                          onClick={() => openLightbox(project, 'after')}
+                          onClick={() => openLightbox(project as Project, 'after')}
                         >
                           <img
                             src={project.images.after}
@@ -662,22 +678,28 @@ export function Gallery() {
                     <Heading size="3" mb="2">
                       {project.title}
                     </Heading>
-                    <Text size="2" color="gray" mb="3">
-                      מיקום: {project.location}
-                    </Text>
+                    {project.location && (
+                      <Text size="2" color="gray" mb="3">
+                        מיקום: {project.location}
+                      </Text>
+                    )}
                     <Text size="2" style={{ color: 'var(--gray-11)', flex: 1 }}>
                       {project.description}
                     </Text>
 
                     {/* View Process Button */}
-                    {/* <Button
-                      variant="outline"
-                      mt="4"
-                      onClick={() => openLightbox(project, 'process')}
-                      style={{ alignSelf: 'flex-start' }}
-                    >
-                      צפה בתהליך העבודה
-                    </Button> */}
+                    {project.images.process && project.images.process.length > 1 && (
+                      <Button
+                        variant="solid"
+                        className="glowing-button"
+                        size={isMobile ? '4' : '2'}
+                        mt="4"
+                        onClick={() => openLightbox(project as Project, 'process')}
+                        style={{ alignSelf: 'flex-start', borderRadius: 'var(--radius-4)' }}
+                      >
+                        לעוד תמונות מהשיפוץ
+                      </Button>
+                    )}
 
                     {/* Testimonial Quote */}
                     {project.testimonial && (
@@ -685,7 +707,7 @@ export function Gallery() {
                         mt="4"
                         style={{
                           padding: '1rem',
-                          backgroundColor: 'var(--lime-a2)',
+                          backgroundColor: 'var(--gray-a2)',
                           borderRadius: 'var(--radius-4)',
                           position: 'relative',
                         }}

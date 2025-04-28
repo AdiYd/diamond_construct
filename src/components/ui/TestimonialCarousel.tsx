@@ -2,13 +2,37 @@ import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Box, Flex, Text } from '@radix-ui/themes';
 import { Star, ChevronRight, ChevronLeft } from 'lucide-react';
-import { testimonials } from '../../content/testimonials';
 import '../../styles/carousel.css';
 import useScreen from '../../hooks/useScreen';
+
+interface Testimonial {
+  name: string;
+  type: string;
+  content: string;
+  rating: number;
+  project: string;
+}
 
 export function TestimonialCarousel() {
   const { isMobile, isTablet } = useScreen();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]); // Adjust type as needed
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.BASE_URL}content/testimonials.json`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch testimonials data');
+        }
+        const data = await response.json();
+        setTestimonials(data);
+      } catch (error) {
+        console.error('Error loading testimonials:', error);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
 
   // Calculate slides to show based on screen size
   const getSlidesToShow = () => {
@@ -112,7 +136,7 @@ export function TestimonialCarousel() {
             {testimonials.map((testimonial, index) => (
               <Box
                 className="embla__slide"
-                key={testimonial.id}
+                key={index}
                 style={{
                   flex: `0 0 ${100 / slidesToShow}%`,
                   minWidth: 0,
@@ -168,7 +192,7 @@ export function TestimonialCarousel() {
                         </Text>
                         <br />
                         <Text size="2" style={{ color: 'var(--gray-11)' }}>
-                          {testimonial.role}
+                          {testimonial.type}
                         </Text>
                       </Box>
                     </Flex>

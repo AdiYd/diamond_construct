@@ -8,27 +8,32 @@ import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
 
-// Define the TeamMember interface
-export interface TeamMember {
-  id: number;
-  url: string;
+// Define the TeamImage interface
+export interface TeamImage {
+  image: string;
   title: string;
   description: string;
-  category: string;
   size: string;
-  name?: string;
-  position?: string;
   show?: boolean;
+}
+
+export interface TeamMember {
+  image: string;
+  name: string;
+  position: string;
+  description: string;
+  education: string;
+  full: boolean;
 }
 
 export function TeamShowCase() {
   const navigate = useNavigate();
   const { isMobile } = useScreen();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [, setTeamImages] = useState<TeamMember[]>([]);
+  const [, setTeamImages] = useState<TeamImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const shuffledTeamMembers = useRef<TeamMember[]>([]);
+  const shuffledTeamImages = useRef<TeamImage[]>([]);
   // Set up Embla Carousel for mobile with improved spacing options
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
@@ -54,10 +59,10 @@ export function TeamShowCase() {
         const data = await response.json();
         if (data.length > 0) {
           const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
-          const mandatoryMembers = data.filter((member: TeamMember) => member.show === true);
+          const mandatoryMembers = data.filter((member: TeamImage) => member.show === true);
           const combinedTeams = new Set([...shuffled, ...mandatoryMembers]);
           // Convert Set back to array and shuffle
-          shuffledTeamMembers.current = Array.from(combinedTeams).sort(() => Math.random() - 0.5);
+          shuffledTeamImages.current = Array.from(combinedTeams).sort(() => Math.random() - 0.5);
         }
         setTeamImages(data);
       } catch (err) {
@@ -180,8 +185,8 @@ export function TeamShowCase() {
           <Box mt="4" className="embla" style={{ position: 'relative' }}>
             <Box className="embla__viewport" ref={emblaRef}>
               <Box className="embla__container">
-                {shuffledTeamMembers.current.slice(0, 10).map((member, index) => (
-                  <Box key={member.id} className="embla__slide">
+                {shuffledTeamImages.current.slice(0, 10).map((member, index) => (
+                  <Box key={index} className="embla__slide">
                     <motion.div
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -189,7 +194,7 @@ export function TeamShowCase() {
                       <Box className="project-card">
                         <Box className="project-image-container" style={{ height: '300px' }}>
                           <img
-                            src={`${import.meta.env.BASE_URL}${member.url}`}
+                            src={`${import.meta.env.BASE_URL}${member.image}`}
                             alt={member.title}
                             className="project-image"
                           />
@@ -228,7 +233,7 @@ export function TeamShowCase() {
               className="embla__dots"
               style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}
             >
-              {shuffledTeamMembers.current
+              {shuffledTeamImages.current
                 .slice(0, 6)
                 .map((_, index) => (
                   <Box
@@ -243,9 +248,9 @@ export function TeamShowCase() {
         ) : (
           // Desktop Masonry Layout
           <Box mt="4" className="masonry-gallery">
-            {shuffledTeamMembers.current.map((member, index) => (
+            {shuffledTeamImages.current.map((member, index) => (
               <motion.div
-                key={member.id}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -256,7 +261,7 @@ export function TeamShowCase() {
                   <Box className="project-image-container">
                     <img
                       style={{ borderRadius: 'var(--radius-4)' }}
-                      src={`${import.meta.env.BASE_URL}${member.url}`}
+                      src={`${import.meta.env.BASE_URL}${member.image}`}
                       alt={member.title}
                       className="project-image"
                     />

@@ -17,9 +17,34 @@ import { TestimonialCarousel } from '../components/ui/TestimonialCarousel';
 import { ProjectShowcase } from '../components/sections/ProjectShowcase';
 import { TeamShowCase } from '../components/sections/TeamShowCase';
 import ContactSection from '../components/sections/contactUs';
+import { useEffect, useState } from 'react';
+
+interface WhyUs {
+  icon: string;
+  title: string;
+  description: string;
+  color?: string;
+}
 
 export function Home() {
   const { isMobile } = useScreen();
+  const [whyUs, setWhyUs] = useState<WhyUs[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.BASE_URL}content/why_us.json`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch projects data');
+        }
+        const data = await response.json();
+        setWhyUs(data);
+      } catch (error) {
+        console.error('Error fetching projects data:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <Box style={{ position: 'relative' }} dir="rtl">
@@ -523,40 +548,7 @@ export function Home() {
             </Heading>
 
             <Grid columns={{ initial: '1', sm: '2' }} gap="6" width="100%" pt="4">
-              {[
-                {
-                  icon: '🏠', // Replace with a relevant icon
-                  title: 'חוויה אחרת בעולם השיפוצים',
-                  description:
-                    'אצלנו השיפוץ עובר בראש שקט – עם ליווי אישי צמוד, קבוצת עדכונים ייעודית, ותיאום מלא בכל שלב.',
-                  color: 'var(--blue-3)',
-                },
-                {
-                  icon: '🔒', // Replace with a relevant icon
-                  title: 'ביטחון מלא בתהליך',
-                  description:
-                    'הצוות שלנו מביא ניסיון, סדר, תכנון נכון והתחייבות לעמידה בזמנים, כדי שתוכלו להרגיש בטוחים לכל אורך הדרך.',
-                  color: 'var(--green-3)',
-                },
-                {
-                  icon: '❤️', // Replace with a relevant icon
-                  title: 'לקוחות פרטיים ועסקיים כאחד',
-                  description:
-                    'שירות מקצועי גם למשפחות שרוצות לשדרג את הבית – וגם לעסקים שצריכים חידוש מקיף למשרד, אולם ספורט או מבנה ציבורי.',
-                  color: 'var(--purple-3)',
-                  // gridColumn: '1 / -1', // Span full width on small screens
-                  display: isMobile ? 'block' : 'none',
-                },
-                {
-                  icon: '🔨', // Replace with a relevant icon
-                  title: 'תוצאה שלא מתפשרת',
-                  description:
-                    'הקפדה על גימורים מושלמים, חומרים איכותיים, ותיאום עם כל אנשי המקצוע הרלוונטיים – מהנדסים, אדריכלים ומעצבים.',
-                  color: 'var(--orange-3)',
-                  // gridColumn: '1 / -1', // Span full width
-                  display: isMobile ? 'none' : 'block',
-                },
-              ].map((item, index) => (
+              {whyUs.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
