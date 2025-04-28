@@ -86,6 +86,41 @@
   color: var(--accent-9);
 }
 
+.testimonial-background-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, var(--lime-a1), var(--lime-a2));
+  opacity: 0.2;
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+.testimonial-background-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, var(--amber-a1), var(--amber-a2));
+  opacity: 0.2;
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
+}
+.testimonial-background-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, var(--tomato-a1), var(--tomato-a2));
+  opacity: 0.2;
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
 .testimonial-decoration-1 {
   position: absolute;
   top: -60px;
@@ -183,4 +218,17 @@
   background-color: var(--accent-11);
   width: 12px;
   height: 12px;
+}
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 60% 0%;
+  }
 }

@@ -30,7 +30,7 @@ export function Home() {
         style={{
           backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.4), transparent), url("${
             import.meta.env.BASE_URL
-          }hero_3.jpg")`,
+          }hero.jpg")`,
           // 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url("https://images.pexels.com/photos/31117955/pexels-photo-31117955.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -244,7 +244,7 @@ export function Home() {
                     style={{
                       alignItems: 'center',
                       boxShadow: '0 8px 40px var(--amber-a9)',
-                      borderRadius: 'var(--radius-6)',
+                      // borderRadius: 'var(--radius-6)',
                     }}
                     mb={isMobile ? '8' : '0'}
                     onClick={() => {
@@ -349,7 +349,7 @@ export function Home() {
                 className="section-title with-accent"
                 mb="4"
               >
-                שירותי שיפוצים ובנייה בצפון
+                שירותי שיפוץ ובנייה בצפון
               </Heading>
 
               <Text
@@ -668,7 +668,7 @@ export function Home() {
                 {
                   icon: <Heart size={28} />,
                   title: 'שקיפות מלאה',
-                  description: 'חוזה מסודר, לוחות זמנים ברורים, הצעת מחיר מפורטת ועדכונים שוטפים.',
+                  description: 'חוזה מסודר, מפרט עבודה מפורט, עידכונים שוטפים ללא הפתעות',
                   color: 'var(--crimson-9)',
                   // borderColor: 'var(--crimson-6)',
                   borderColor: 'var(--gray-a4)',

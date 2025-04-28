@@ -1,40 +1,13 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import * as Dialog from '@radix-ui/react-dialog';
-import { Facebook, Twitter, Instagram, Linkedin, X as Close } from 'lucide-react';
+// import * as Dialog from '@radix-ui/react-dialog';
+import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
-import { marked } from 'marked';
 import { pagesConfig } from '../../config/pages.config';
 import { Grid, Text } from '@radix-ui/themes';
 
 export function Footer() {
   const { t, language } = useLanguage();
   const currentYear = new Date().getFullYear();
-  const [legalContent, setLegalContent] = React.useState<Record<string, string>>({});
-  const loadLegalContent = React.useCallback(
-    async (type: string) => {
-      try {
-        const response = await fetch(
-          `${import.meta.env.BASE_URL}src/content/legal/${language}/${type}.md`
-        );
-        const content = await response.text();
-        const htmlContent = marked.parse(content);
-        if (typeof htmlContent === 'string') {
-          setLegalContent(prev => ({
-            ...prev,
-            [type]: htmlContent,
-          }));
-        }
-      } catch (error) {
-        console.error(`Error loading ${type} content:`, error);
-        setLegalContent(prev => ({
-          ...prev,
-          [type]: 'Error loading content',
-        }));
-      }
-    },
-    [language]
-  );
 
   return (
     <footer
@@ -133,113 +106,53 @@ export function Footer() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <h3 style={{ color: 'var(--foreground)', fontWeight: 600 }}>{t('legal')}</h3>
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <Dialog.Root onOpenChange={() => loadLegalContent('privacy-policy')}>
-                <Dialog.Trigger asChild>
-                  <button
-                    className="nav-link"
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      textAlign: language === 'he' ? 'right' : 'left',
-                    }}
-                  >
-                    {t('privacyPolicy')}
-                  </button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                  <Dialog.Overlay className="DialogOverlay" />
-                  <Dialog.Content className="DialogContent">
-                    <div className="DialogHeader">
-                      <Dialog.Title asChild>
-                        <h1>{t('privacyPolicy')}</h1>
-                      </Dialog.Title>
-                      <Dialog.Close asChild>
-                        <button className="DialogCloseButton">
-                          <Close size={16} />
-                        </button>
-                      </Dialog.Close>
-                    </div>
-                    <div
-                      className="markdown-content"
-                      dir={language === 'he' ? 'rtl' : 'ltr'}
-                      dangerouslySetInnerHTML={{ __html: legalContent['privacy-policy'] || '' }}
-                    />
-                  </Dialog.Content>
-                </Dialog.Portal>
-              </Dialog.Root>
+              <Link
+                to="/privacy"
+                className="nav-link"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: language === 'he' ? 'right' : 'left',
+                  display: 'block',
+                  padding: '0.5rem 0',
+                  textDecoration: 'none',
+                }}
+              >
+                {t('privacyPolicy')}
+              </Link>
 
-              <Dialog.Root onOpenChange={() => loadLegalContent('terms-of-service')}>
-                <Dialog.Trigger asChild>
-                  <button
-                    className="nav-link"
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      textAlign: language === 'he' ? 'right' : 'left',
-                    }}
-                  >
-                    {t('termsOfService')}
-                  </button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                  <Dialog.Overlay className="DialogOverlay" />
-                  <Dialog.Content className="DialogContent">
-                    <div className="DialogHeader">
-                      <Dialog.Title asChild>
-                        <h1>{t('termsOfService')}</h1>
-                      </Dialog.Title>
-                      <Dialog.Close asChild>
-                        <button className="DialogCloseButton">
-                          <Close size={16} />
-                        </button>
-                      </Dialog.Close>
-                    </div>
-                    <div
-                      className="markdown-content"
-                      dir={language === 'he' ? 'rtl' : 'ltr'}
-                      dangerouslySetInnerHTML={{ __html: legalContent['terms-of-service'] || '' }}
-                    />
-                  </Dialog.Content>
-                </Dialog.Portal>
-              </Dialog.Root>
+              <Link
+                to="/terms"
+                className="nav-link"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: language === 'he' ? 'right' : 'left',
+                  display: 'block',
+                  padding: '0.5rem 0',
+                  textDecoration: 'none',
+                }}
+              >
+                {t('termsOfService')}
+              </Link>
 
-              <Dialog.Root onOpenChange={() => loadLegalContent('accessibility')}>
-                <Dialog.Trigger asChild>
-                  <button
-                    className="nav-link"
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      textAlign: language === 'he' ? 'right' : 'left',
-                    }}
-                  >
-                    {t('accessibility')}
-                  </button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                  <Dialog.Overlay className="DialogOverlay" />
-                  <Dialog.Content className="DialogContent">
-                    <div className="DialogHeader">
-                      <Dialog.Title asChild>
-                        <h1>{t('accessibility')}</h1>
-                      </Dialog.Title>
-                      <Dialog.Close asChild>
-                        <button className="DialogCloseButton">
-                          <Close size={16} />
-                        </button>
-                      </Dialog.Close>
-                    </div>
-                    <div
-                      className="markdown-content"
-                      dir={language === 'he' ? 'rtl' : 'ltr'}
-                      dangerouslySetInnerHTML={{ __html: legalContent['accessibility'] || '' }}
-                    />
-                  </Dialog.Content>
-                </Dialog.Portal>
-              </Dialog.Root>
+              <Link
+                to="/accessibility"
+                className="nav-link"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: language === 'he' ? 'right' : 'left',
+                  display: 'block',
+                  padding: '0.5rem 0',
+                  textDecoration: 'none',
+                }}
+              >
+                {t('accessibility')}
+              </Link>
             </nav>
           </div>
 

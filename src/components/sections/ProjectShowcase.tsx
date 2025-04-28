@@ -8,135 +8,25 @@ import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
 
-// Project data with images and descriptions
-const projectImages = [
-  {
-    id: 1,
-    url: 'image/IMG-20240517-WA0038.jpg',
-    title: 'שיפוץ חדר אמבטיה',
-    description: 'שיפוץ מלא של חדר אמבטיה כולל החלפת אריחים, כלים סניטריים ואביזרים',
-    category: 'bathrooms',
-    size: 'large',
-  },
-  {
-    id: 2,
-    url: 'image/IMG-20240517-WA0040.jpg',
-    title: 'שיפוץ מטבח',
-    description: 'שדרוג מטבח מודרני עם אי וארונות בהירים',
-    category: 'kitchens',
-    size: 'medium',
-  },
-  {
-    id: 3,
-    url: 'image/IMG-20240517-WA0041.jpg',
-    title: 'עיצוב פנים',
-    description: 'תכנון ועיצוב דירה שלמה בסגנון מודרני',
-    category: 'design',
-    size: 'small',
-  },
-  //   {
-  //     id: 4,
-  //     url: 'image/IMG-20240517-WA0042.jpg',
-  //     title: 'תוספת בנייה',
-  //     description: 'הרחבת בית פרטי עם תוספת קומה',
-  //     category: 'construction',
-  //     size: 'medium',
-  //   },
-  {
-    id: 5,
-    url: 'image/IMG-20240517-WA0043.jpg',
-    title: 'שירותים ומקלחת',
-    description: 'החלפת שירותים ומקלחת עם אריחים חדשים',
-    category: 'renovations',
-    size: 'small',
-  },
-  {
-    id: 6,
-    url: 'image/IMG-20240517-WA0046.jpg',
-    title: 'מקלחת וכיור',
-    description: 'חידוש מקלחת וכיור עם אריחים חדשים',
-    category: 'bathrooms',
-    size: 'large',
-  },
-  {
-    id: 7,
-    url: 'image/IMG-20240517-WA0047.jpg',
-    title: 'חדר שינה',
-    description: 'עיצוב חדר שינה בסגנון מינימליסטי',
-    category: 'bedrooms',
-    size: 'medium',
-  },
-  {
-    id: 8,
-    url: 'image/IMG-20240517-WA0048.jpg',
-    title: 'שיפוץ כללי',
-    description: 'שיפוץ פנים מטבח, כולל ארונות חדשים',
-    category: 'renovations',
-    size: 'small',
-  },
-  {
-    id: 9,
-    url: 'image/IMG-20240517-WA0054.jpg',
-    title: 'שירוקלחת',
-    description: 'התקנת שירותים ומקלחת חדשים',
-    category: 'bathrooms',
-    size: 'large',
-  },
-  {
-    id: 10,
-    url: 'image/IMG-20240517-WA0055.jpg',
-    title: 'חדר רחצה',
-    description: 'עיצוב חדר רחצה מודרני עם מקלחון',
-    category: 'bathrooms',
-    size: 'medium',
-  },
-  //   {
-  //     id: 11,
-  //     url: 'image/IMG-20250325-WA0004.jpg',
-  //     title: 'עובדים יסודי ומקצועי',
-  //     description: 'עבודה מקצועית עם דגש על פרטים',
-  //     category: 'renovations',
-  //     size: 'large',
-  //   },
-  {
-    id: 12,
-    url: 'image/IMG-20250325-WA0006.jpg',
-    title: 'מטבח מעוצב',
-    description: 'שיפוץ והתאמה אישית של מטבח',
-    category: 'kitchens',
-    size: 'medium',
-  },
-  {
-    id: 13,
-    url: 'image/IMG-20250325-WA0009.jpg',
-    title: 'פינת קפה מעוצבת',
-    description: 'פינת קפה מעוצבת עם ארונות חדשים',
-    category: 'kitchens',
-    size: 'small',
-  },
-  {
-    id: 14,
-    url: 'image/IMG-20250325-WA0016.jpg',
-    title: 'שיפוץ מטבח',
-    description: 'חידוש מטבח כולל ארונות חדשים ושטח עבודה',
-    category: 'construction',
-    size: 'large',
-  },
-  {
-    id: 15,
-    url: 'image/IMG-20250325-WA0020.jpg',
-    title: 'עיצוב פנים מודרני',
-    description: 'עיצוב פנים לדירה חדשה בסגנון מודרני',
-    category: 'design',
-    size: 'medium',
-  },
-];
+// Define the Project interface
+interface Project {
+  id: number;
+  url: string;
+  title: string;
+  description: string;
+  category: string;
+  size: string;
+  show: boolean;
+}
 
 export function ProjectShowcase() {
   const navigate = useNavigate();
   const { isMobile } = useScreen();
   const [selectedIndex, setSelectedIndex] = useState(0);
-
+  const [, setProjectImages] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const shuffledProjects = useRef<Project[]>([]);
   // Set up Embla Carousel for mobile with improved spacing options
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
@@ -148,27 +38,44 @@ export function ProjectShowcase() {
       '(min-width: 768px)': { slidesToScroll: 2 },
       '(min-width: 1024px)': { slidesToScroll: 3 },
     },
-    // slides: {
-    //   spacing: 16, // Add spacing between slides
-    //   perView: 1.2, // Show a bit of the next slide
-    //   origin: 'center', // Center align the active slide
-    // },
   });
 
-  const shuffledProjects = useRef([
-    ...[...projectImages].sort(() => Math.random() - 0.5).slice(0, 9),
-    {
-      id: 11,
-      url: 'image/IMG-20250325-WA0004.jpg',
-      title: 'עובדים יסודי ומקצועי',
-      description: 'עבודה מקצועית עם דגש על פרטים',
-      category: 'renovations',
-      size: 'medium',
-    },
-  ]); // Shuffle projects
+  // Fetch projects data
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${import.meta.env.BASE_URL}image/projects/projects.json`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch projects data');
+        }
+        const data = await response.json();
+        setProjectImages(data);
+        if (data.length > 0) {
+          // Create a shuffled selection of projects
+          const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
 
-  //   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  //   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+          // Find the special project with field show
+          const mandatoryProjects = data.filter((p: Project) => p.show === true);
+
+          if (mandatoryProjects.length > 0) {
+            // Use a Set to ensure uniqueness
+            const combinedProjects = new Set([...shuffled, ...mandatoryProjects]);
+            shuffledProjects.current = Array.from(combinedProjects);
+          } else {
+            shuffledProjects.current = shuffled;
+          }
+        }
+      } catch (err) {
+        console.error('Error fetching project data:', err);
+        setError('Failed to load projects. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -187,17 +94,27 @@ export function ProjectShowcase() {
     };
   }, [emblaApi, onSelect]);
 
-  useEffect(() => {
-    if (!emblaApi) return;
+  if (loading) {
+    return (
+      <Box className="project-showcase" py="6">
+        <Container>
+          <Text align="center">טוען פרויקטים...</Text>
+        </Container>
+      </Box>
+    );
+  }
 
-    emblaApi.on('select', onSelect);
-    onSelect();
-
-    return () => {
-      emblaApi.off('select', onSelect);
-    };
-  }, [emblaApi, onSelect]);
-
+  if (error) {
+    return (
+      <Box className="project-showcase" py="6">
+        <Container>
+          <Text align="center" color="red">
+            {error}
+          </Text>
+        </Container>
+      </Box>
+    );
+  }
   return (
     <Box className="project-showcase" py="6">
       <Container>
@@ -234,10 +151,8 @@ export function ProjectShowcase() {
             <Box className="embla__viewport" ref={emblaRef}>
               <Box className="embla__container">
                 {shuffledProjects.current.slice(0, 10).map((project, index) => (
-                  <Box key={project.id} className="embla__slide">
+                  <Box key={index} className="embla__slide">
                     <motion.div
-                      //   initial={{ opacity: 0, y: 20 }}
-                      //   whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
@@ -259,8 +174,13 @@ export function ProjectShowcase() {
                               >
                                 {project.title}
                               </Text>
-                              {/* <br /> */}
-                              <Text as="div" align="right" className="project-description" size="2">
+                              <Text
+                                as="div"
+                                dir="ltr"
+                                align="right"
+                                className="project-description"
+                                size="2"
+                              >
                                 {project.description}
                               </Text>
                             </div>
@@ -272,55 +192,6 @@ export function ProjectShowcase() {
                 ))}
               </Box>
             </Box>
-
-            {/* Navigation Buttons */}
-            {/* <button
-              className="embla__prev carousel-nav-button"
-              onClick={scrollPrev}
-              style={{
-                backgroundColor: 'var(--accent-9)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '50%',
-                width: '2.5rem',
-                height: '2.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'absolute',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                left: '5px',
-                zIndex: 10,
-                cursor: 'pointer',
-              }}
-            >
-              <ChevronRight size={20} />
-            </button>
-
-            <button
-              className="embla__next carousel-nav-button"
-              onClick={scrollNext}
-              style={{
-                backgroundColor: 'var(--accent-9)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '50%',
-                width: '2.5rem',
-                height: '2.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'absolute',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                right: '5px',
-                zIndex: 10,
-                cursor: 'pointer',
-              }}
-            >
-              <ChevronLeft size={20} />
-            </button> */}
 
             {/* Dots navigation */}
             <Box
@@ -343,7 +214,7 @@ export function ProjectShowcase() {
           <Box mt="4" className="masonry-gallery">
             {shuffledProjects.current.map((project, index) => (
               <motion.div
-                key={project.id}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -369,8 +240,13 @@ export function ProjectShowcase() {
                         >
                           {project.title}
                         </Text>
-                        {/* <br /> */}
-                        <Text as="div" align="right" className="project-description" size="2">
+                        <Text
+                          dir="ltr"
+                          as="div"
+                          align="right"
+                          className="project-description"
+                          size="2"
+                        >
                           {project.description}
                         </Text>
                       </Box>
@@ -387,7 +263,9 @@ export function ProjectShowcase() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.5 }}
           >
             <Button
               mx="auto"

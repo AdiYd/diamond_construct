@@ -32,7 +32,7 @@ export const ScrollToTop = () => {
           exit={{ opacity: 0, y: 20 }}
           style={{
             position: 'fixed',
-            bottom: '5rem',
+            bottom: '7.5rem',
             left: '1.2rem',
             zIndex: 50,
           }}

@@ -9,16 +9,22 @@ import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Gallery } from './pages/Gallery';
 import { Contact } from './pages/Contact';
+import { Accessibility } from './pages/Accessibility';
+import { Privacy } from './pages/Privacy';
+import { Terms } from './pages/Terms';
 import '@radix-ui/themes/styles.css';
 import './styles/styles.css';
 import { Box } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
+import { Icon } from '@iconify/react/dist/iconify.js';
+import { ScrollToTop } from './components/ScrollToTop';
 
 function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
         <Router basename="/diamond_construct/">
+          <ScrollToTop />
           <div
             style={{
               minHeight: '100vh',
@@ -50,13 +56,16 @@ function App() {
                 <Route path="/services" element={<Services />} />
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/accessibility" element={<Accessibility />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
               </Routes>
             </main>
             <Box
               left={{ initial: '1rem', md: '2rem' }}
               style={{
                 position: 'fixed',
-                bottom: '1.5rem',
+                bottom: '4.5rem',
                 left: '1rem',
                 zIndex: 100,
               }}
@@ -115,6 +124,60 @@ function App() {
                       fill="currentColor"
                     />
                   </svg>
+                </a>
+              </motion.div>
+            </Box>
+            {/* Call us */}
+            <Box
+              left={{ initial: '1rem', md: '2rem' }}
+              style={{
+                position: 'fixed',
+                bottom: '1.5rem',
+                left: '1rem',
+                zIndex: 100,
+              }}
+            >
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                whileHover={{
+                  scale: 1.05,
+                  rotate: 40,
+                }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 260,
+                  damping: 20,
+                  delay: 1,
+                }}
+              >
+                <a
+                  href="tel:+972527036959"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '2.5rem',
+                    height: '2.5rem',
+                    borderRadius: '50%',
+                    backgroundColor: 'var(--tomato-2)',
+                    color: 'white',
+                    boxShadow: 'var(--shadow-4)',
+                    transition: 'transform 0.2s ease',
+                  }}
+                  onMouseOver={e => {
+                    e.currentTarget.style.transform = 'scale(1.1) rotate(25deg)';
+                    e.currentTarget.style.boxShadow = 'var(--shadow-6)';
+                    e.currentTarget.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+                    e.currentTarget.style.boxShadow = 'var(--shadow-4)';
+                  }}
+                >
+                  <Icon icon="ic:round-phone" width="24" height="24" color={'var(--tomato-10)'} />
                 </a>
               </motion.div>
             </Box>

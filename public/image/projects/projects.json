@@ -1,0 +1,101 @@
+[
+  {
+    "url": "image/projects/IMG-20240517-WA0038.jpg",
+    "title": "שיפוץ חדר רחצה",
+    "description": ".טיפול מלא חדר רחצה כולל החלפת תשתית ואיטום",
+    "category": "bathrooms",
+    "size": "large"
+  },
+  {
+    "url": "image/projects/IMG-20240517-WA0040.jpg",
+    "title": "שיפוץ מטבח",
+    "description": "שדרוג מטבח מודרני עם אי וארונות בהירים",
+    "category": "kitchens",
+    "size": "medium"
+  },
+  {
+    "url": "image/projects/IMG-20240517-WA0041.jpg",
+    "title": "עיצוב פנים",
+    "description": "תכנון ועיצוב דירה שלמה בסגנון מודרני",
+    "category": "design",
+    "size": "small"
+  },
+  {
+    "url": "image/projects/IMG-20240517-WA0043.jpg",
+    "title": "שירותים ומקלחת",
+    "description": "החלפת שירותים ומקלחת עם אריחים חדשים",
+    "category": "renovations",
+    "size": "small"
+  },
+  {
+    "url": "image/projects/IMG-20240517-WA0046.jpg",
+    "title": "מקלחת וכיור",
+    "description": "חידוש מקלחת וכיור עם אריחים חדשים",
+    "category": "bathrooms",
+    "size": "large"
+  },
+  {
+    "url": "image/projects/IMG-20240517-WA0047.jpg",
+    "title": "חדר שינה",
+    "description": "עיצוב חדר שינה בסגנון מינימליסטי",
+    "category": "bedrooms",
+    "size": "medium"
+  },
+  {
+    "url": "image/projects/IMG-20240517-WA0048.jpg",
+    "title": "בניית חדר רחצה תוך שת\"פ עם מעצבת יצירתית",
+    "description": "שיפוץ פנים מטבח, כולל ארונות חדשים",
+    "category": "renovations",
+    "size": "small"
+  },
+  {
+    "url": "image/projects/IMG-20240517-WA0054.jpg",
+    "title": "שירוקלחת",
+    "description": "התקנת שירותים ומקלחת חדשים",
+    "category": "bathrooms",
+    "size": "large"
+  },
+  {
+    "url": "image/projects/IMG-20240517-WA0055.jpg",
+    "title": "חדר רחצה",
+    "description": "עיצוב חדר רחצה מודרני עם מקלחון",
+    "category": "bathrooms",
+    "size": "medium"
+  },
+  {
+    "url": "image/projects/IMG-20250325-WA0006.jpg",
+    "title": "מטבח מעוצב",
+    "description": "שיפוץ והתאמה אישית של מטבח",
+    "category": "kitchens",
+    "size": "medium"
+  },
+  {
+    "url": "image/projects/IMG-20250325-WA0009.jpg",
+    "title": "פינת קפה מעוצבת",
+    "description": "פינת קפה מעוצבת עם ארונות חדשים",
+    "category": "kitchens",
+    "size": "small"
+  },
+  {
+    "url": "image/projects/IMG-20250325-WA0016.jpg",
+    "title": "שיפוץ מטבח",
+    "description": "חידוש מטבח כולל ארונות חדשים ושטח עבודה",
+    "category": "construction",
+    "size": "large"
+  },
+  {
+    "url": "image/projects/IMG-20250325-WA0020.jpg",
+    "title": "עיצוב פנים מודרני",
+    "description": "עיצוב פנים לדירה חדשה בסגנון מודרני",
+    "category": "design",
+    "size": "medium"
+  },
+  {
+    "url": "image/projects/IMG-20250325-WA0004.jpg",
+    "title": "עובדים יסודי ומקצועי",
+    "description": "עבודה מקצועית עם דגש על פרטים",
+    "category": "renovations",
+    "size": "medium",
+    "show": true
+  }
+]

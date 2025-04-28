@@ -220,8 +220,8 @@ export function Contact() {
                 {
                   icon: <MapPin size={24} />,
                   title: 'כתובת',
-                  content: 'עובדים באיזור כרמיאל והסביבה',
-                  action: 'https://maps.google.com/?q=כרמיאל+המלאכה+5',
+                  content: 'הדס 22, כרמיאל',
+                  action: 'https://maps.google.com/?q=כרמיאל+הדס+22',
                   color: 'crimson',
                 },
               ].map((item, index) => (
@@ -251,7 +251,7 @@ export function Contact() {
                         width: '80px',
                         height: '80px',
                         borderBottomLeftRadius: '100%',
-                        background: `var(--${item.color}-9)`,
+                        background: `var(--${item.color}-3)`,
                         marginRight: '-2rem',
                         marginTop: '-2rem',
                       }}
@@ -330,7 +330,7 @@ export function Contact() {
                       width: '80px',
                       height: '80px',
                       borderBottomLeftRadius: '100%',
-                      background: `var(--grass-9)`,
+                      background: `var(--grass-3)`,
                       marginRight: '-2rem',
                       marginTop: '-2rem',
                     }}
@@ -580,6 +580,7 @@ export function Contact() {
                             <option value="">בחרו שירות מבוקש</option>
                             <option value="bathrooms">שיפוץ אמבטיות</option>
                             <option value="kitchens">שיפוץ מטבחים</option>
+                            <option value="add_room">הוספת קומה / חלל</option>
                             <option value="construction">בנייה פרטית</option>
                             <option value="renovations">שיפוצים כלליים</option>
                             <option value="maintenance">תחזוקה שוטפת</option>
@@ -623,6 +624,7 @@ export function Contact() {
                         <Button
                           size="4"
                           mx="auto"
+                          className="cta-button"
                           style={{
                             alignSelf: 'flex',
                             marginTop: '1rem',

@@ -8,121 +8,27 @@ import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
 
-// Team members data with images and descriptions
-export const teamImages = [
-  {
-    id: 1,
-    url: 'image/team/IMG_20240703_134753_141.jpg',
-    title: 'גדי כהן',
-    description: '8 שנות נאסיון בתחום הבנייה | מתמחה בשיפוצים ובניה פרטית',
-    category: 'management',
-    size: 'large',
-  },
-  {
-    id: 2,
-    url: 'image/team/IMG20250131124919.jpg',
-    title: 'יעקב דיאמונד',
-    description: 'מנהל פרויקטים ובעלים | מלווה אתכם בכל שלב, מהתכנון ועד הביצוע',
-    category: 'customer-service',
-    size: 'medium',
-  },
-  {
-    id: 3,
-    url: 'image/team/PXL_20240908_115634333.jpg',
-    title: 'אלון דוד',
-    description: 'אדריכל ראשי | שם דגש על פונקציונליות ואסתטיקה בכל פרויקט',
-    category: 'design',
-    size: 'small',
-  },
-  {
-    id: 4,
-    url: 'image/team/PXL_20241001_132821300.MP.jpg',
-    title: 'אבי גולן',
-    description: 'מנהל עבודה | מוביל את הצוות בשטח מתוך מחויבות לאיכות ולו״ז',
-    category: 'construction',
-    size: 'medium',
-  },
-  {
-    id: 5,
-    url: 'image/team/PXL_20241208_092655939.jpg',
-    title: 'אלכס לוינסון',
-    description: 'אני אתלכלך בשבילכם עד שהתוצאה תהיה מושלמת!',
-    category: 'design',
-    size: 'small',
-  },
-  {
-    id: 6,
-    url: 'image/team/PXL_20241010_115336941.jpg',
-    title: 'דני מזרחי',
-    description: 'ראש צוות שיפוצים | בעל ידע רב בכל תחומי הבנייה והשיפוצים',
-    category: 'renovations',
-    size: 'large',
-  },
-  {
-    id: 7,
-    url: 'image/team/PXL_20241001_132912903.jpg',
-    title: 'צוות מנצח',
-    description: 'הצוות שלנו הוא הלב של החברה - מקצועי, מסור ואכפתי',
-    category: 'operations',
-    size: 'medium',
-  },
-  {
-    id: 8,
-    url: 'image/team/PXL_20241007_105155714.jpg',
-    title: 'אורי גולן',
-    description: '',
-    category: 'engineering',
-    size: 'small',
-  },
-  {
-    id: 9,
-    url: 'image/team/PXL_20250216_081515079.MP~2.jpg',
-    title: 'מאור שטרית',
-    description: 'אנחנו עובדים תוך כבוד ושמירה על הסביבה שלכם ועל הטבע',
-    category: 'design',
-    size: 'large',
-  },
-  {
-    id: 10,
-    url: 'image/team/IMG-20250109-WA0083.jpg',
-    title: 'דברו איתנו',
-    description:
-      'אנחנו כאן בשבילכם, יש לנו את הכלים והאנשים בשביל לשפץ לכם את הבית על הצד הטוב ביותר!',
-    category: 'renovations',
-    size: 'medium',
-  },
-  {
-    id: 11,
-    url: 'image/team/PXL_20240905_151748546.MP.jpg',
-    title: 'מוכנים לכל אתגר',
-    description: 'עובדים יחד כמו משפחה אחת למען ההצלחה שלכם',
-    category: 'team',
-    size: 'medium',
-  },
-  {
-    id: 12,
-    url: 'image/work/PXL_20250303_140836441.MP.jpg',
-    title: 'האנשים שמאחורי הפרויקטים',
-    description: 'צוות מקצועי, מסור ואכפתי שמתייחס לבית שלכם כאילו היה שלו',
-    category: 'team',
-    size: 'large',
-  },
-  {
-    id: 13,
-    name: 'אבי גולן',
-    position: 'מנהל עבודה',
-    url: 'image/team/PXL_20241001_132912903.jpg',
-    description: 'אבי מוביל את הצוות בשטח מתוך מחויבות לאיכות ולו״ז',
-    category: 'team',
-    size: 'medium',
-  },
-];
+// Define the TeamMember interface
+export interface TeamMember {
+  id: number;
+  url: string;
+  title: string;
+  description: string;
+  category: string;
+  size: string;
+  name?: string;
+  position?: string;
+  show?: boolean;
+}
 
 export function TeamShowCase() {
   const navigate = useNavigate();
   const { isMobile } = useScreen();
   const [selectedIndex, setSelectedIndex] = useState(0);
-
+  const [, setTeamImages] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const shuffledTeamMembers = useRef<TeamMember[]>([]);
   // Set up Embla Carousel for mobile with improved spacing options
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
@@ -136,7 +42,34 @@ export function TeamShowCase() {
     },
   });
 
-  const shuffledTeamMembers = useRef([...teamImages].sort(() => Math.random() - 0.5)); // Shuffle team members
+  // Fetch team data
+  useEffect(() => {
+    const fetchTeamData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${import.meta.env.BASE_URL}image/team/team.json`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch team data');
+        }
+        const data = await response.json();
+        if (data.length > 0) {
+          const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
+          const mandatoryMembers = data.filter((member: TeamMember) => member.show === true);
+          const combinedTeams = new Set([...shuffled, ...mandatoryMembers]);
+          // Convert Set back to array and shuffle
+          shuffledTeamMembers.current = Array.from(combinedTeams).sort(() => Math.random() - 0.5);
+        }
+        setTeamImages(data);
+      } catch (err) {
+        console.error('Error fetching team data:', err);
+        setError('Failed to load team information. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTeamData();
+  }, []);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -157,38 +90,60 @@ export function TeamShowCase() {
 
   // Auto-scroll carousel
   useEffect(() => {
-  if (!emblaApi) return;
+    if (!emblaApi) return;
 
-  let clientEngaged = false;
-  emblaApi.on('pointerDown', () => {
-    clientEngaged = true; // User has engaged with the carousel
-  });
-  emblaApi.on('slideFocus', () => {
-    clientEngaged = true; // User has engaged with the carousel
-  });
+    let clientEngaged = false;
+    emblaApi.on('pointerDown', () => {
+      clientEngaged = true; // User has engaged with the carousel
+    });
+    emblaApi.on('slideFocus', () => {
+      clientEngaged = true; // User has engaged with the carousel
+    });
 
-  emblaApi.on('pointerUp', () => {
-    clientEngaged = false;
-  });
-
-  const autoScroll = setInterval(() => {
-    if (!clientEngaged && emblaApi) emblaApi.scrollNext();
-  }, 4000);
-
-  return () => {
-    clearInterval(autoScroll);
-    emblaApi.off('pointerDown', () => {
-      clientEngaged = true;
-    }); // Clean up event listener
-    emblaApi.off('pointerUp', () => {
+    emblaApi.on('pointerUp', () => {
       clientEngaged = false;
-    }); // Clean up event listener
-    emblaApi.off('slideFocus', () => {
-      clientEngaged = true;
-    }); // Clean up event listener
-    clearInterval(autoScroll);
-  };
+    });
+
+    const autoScroll = setInterval(() => {
+      if (!clientEngaged && emblaApi) emblaApi.scrollNext();
+    }, 4000);
+
+    return () => {
+      clearInterval(autoScroll);
+      emblaApi.off('pointerDown', () => {
+        clientEngaged = true;
+      }); // Clean up event listener
+      emblaApi.off('pointerUp', () => {
+        clientEngaged = false;
+      }); // Clean up event listener
+      emblaApi.off('slideFocus', () => {
+        clientEngaged = true;
+      }); // Clean up event listener
+      clearInterval(autoScroll);
+    };
   }, [emblaApi]);
+
+  if (loading) {
+    return (
+      <Box className="project-showcase" py="6">
+        <Container>
+          <Text align="center">טוען מידע על הצוות...</Text>
+        </Container>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box className="project-showcase" py="6">
+        <Container>
+          <Text align="center" color="red">
+            {error}
+          </Text>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box className="project-showcase" py="6">
@@ -249,7 +204,13 @@ export function TeamShowCase() {
                               >
                                 {member.title}
                               </Text>
-                              <Text as="div" align="right" className="project-description" size="2">
+                              <Text
+                                dir="ltr"
+                                as="div"
+                                align="right"
+                                className="project-description"
+                                size="2"
+                              >
                                 {member.description}
                               </Text>
                             </div>
@@ -310,7 +271,13 @@ export function TeamShowCase() {
                         >
                           {member.title}
                         </Text>
-                        <Text as="div" align="right" className="project-description" size="2">
+                        <Text
+                          dir="ltr"
+                          as="div"
+                          align="right"
+                          className="project-description"
+                          size="2"
+                        >
                           {member.description}
                         </Text>
                       </Box>
@@ -332,7 +299,7 @@ export function TeamShowCase() {
             <Button
               mx="auto"
               size="4"
-              onClick={() => navigate('/about')}
+              onClick={() => navigate('/about#team')}
               className="cta-button primary"
             >
               <Text>הכירו את הצוות המלא</Text>

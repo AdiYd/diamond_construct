@@ -13,13 +13,7 @@
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md}\"",
     "preview": "vite preview",
-    "test": "jest",
-    "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "inlineCss": true,
-    "source": "build",
-    "fixWebpackChunksIssue": true
+    "test": "jest"
   },
   "dependencies": {
     "@iconify/react": "^5.2.0",
@@ -64,17 +58,5 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

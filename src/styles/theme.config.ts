@@ -4,7 +4,7 @@ import { Theme } from '@radix-ui/themes';
 export const themeConfig = {
   accentColor: '#101437',
   // accentColor: 'brown',
-  grayColor: 'sage',
+  grayColor: 'mauve',
   scaling: '100%',
   radius: 'small',
 } as const;

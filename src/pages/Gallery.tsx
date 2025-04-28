@@ -42,7 +42,7 @@ const portfolioProjects = [
   },
   {
     id: 'bathroom-1',
-    title: 'שדרוג חדר אמבטיה',
+    title: 'שדרוג חדר רחצה',
     category: 'bathrooms',
     location: 'עכו',
     description:

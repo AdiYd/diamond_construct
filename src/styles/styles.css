@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
 
 @import "tailwindcss";
 /* @tailwind utilities; */
@@ -11,6 +13,7 @@
 :root {
   transition: all 0.4s ease-in-out;
   overflow-x: hidden;
+  --font-family: 'Assistant', sans-serif;
 
   /* Accent colors based on color: #101437 */
   --accent-color: #101437;
@@ -96,7 +99,7 @@
 }
 
 .radix-themes {
-  --default-font-family: 'Rubik', 'Alef', sans-serif;
+  --default-font-family: var(--font-family), 'Rubik', 'Alef', sans-serif;
   --default-font-size: 16px;
   --default-line-height: 1.5;
   --default-font-weight: 400;
@@ -157,11 +160,11 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Assistant', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden !important;
 }
+
 
 h1, h2, h3 {
   font-family: 'Rubik', serif;
@@ -918,7 +921,7 @@ div[role='dialog'] {
 .markdown-content {
   padding: var(--content-spacing-md);
   background: var(--gray-1);
-  max-height: calc(90vh - 5rem);
+  /* max-height: calc(90vh - 5rem); */
   overflow-y: auto;
 }
 
@@ -1394,7 +1397,7 @@ div[role='dialog'] {
 }
 
 .emphasize-links button:not(.accessibility-button):not(.font-size-button) {
-  border: 2px solid var(--accent-8) !important;
+  border: 2px solid var (--accent-8) !important;
 }
 
 /* Large Cursor */
@@ -1999,16 +2002,17 @@ div[role='dialog'] {
   padding: 0.6rem 1.5rem !important;
   height: fit-content;
   /* border-radius: 8px; */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .cta-button.primary {
-  background: linear-gradient(45deg, var(--accent-9), var(--accent-10));
+  background: linear-gradient(to right, var(--accent-9) , var(--accent-11));
   border: none;
 }
 
 .cta-button.primary:hover {
- background: linear-gradient(135deg, var(--accent-9), var(--accent-10));
+ background: linear-gradient(to left, var(--accent-9) , var(--accent-11));
+ box-shadow: 0 4px 20px var(--amber-a9);
 }
 
 .cta-button.secondary {
@@ -2261,6 +2265,68 @@ div[role='dialog'] {
   100% {
     background-position: 60% 0%;
   }
+}
+
+/* Legal Document Styling */
+.legal-document {
+  line-height: 1.6;
+}
+
+.legal-document h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--foreground);
+}
+
+.legal-document h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.legal-document h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--foreground);
+}
+
+.legal-document p {
+  margin-bottom: 1rem;
+  color: var(--muted-foreground);
+}
+
+.legal-document ul, .legal-document ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.legal-document li {
+  margin-bottom: 0.5rem;
+  color: var(--muted-foreground);
+}
+
+.legal-document a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.legal-document blockquote {
+  border-left: 4px solid var(--border);
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+.legal-document [dir="rtl"] blockquote {
+  border-left: none;
+  border-right: 4px solid var(--border);
+  padding-left: 0;
+  padding-right: 1rem;
 }
 
 

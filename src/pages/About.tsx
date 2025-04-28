@@ -4,53 +4,9 @@ import { Star, Heart, Users, Shield, Zap, Handshake } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
 import '../styles/about.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { teamImages } from '../components/sections/TeamShowCase';
 import ContactSection from '../components/sections/contactUs';
-
-// Team members data
-const teamMembers = [
-  {
-    name: 'יעקב דיאמונד',
-    position: 'מנהל פרויקטים ומייסד',
-    image: 'image/team/IMG20250131124919.jpg',
-    description:
-      'יעקב הקים את דיאמונד לפני 15 שנים, אחרי שירות צבאי כמפקד בחיל ההנדסה הקרבית. עם נסיון של מעל 20 שנה בתחום הבנייה והשיפוצים, הוא מוביל את החברה עם חזון ברור למצוינות ושירות לקוחות יוצא דופן.',
-    education: 'הסמכה בניהול פרויקטים ו 12 שנות ניסיון',
-  },
-  {
-    name: 'מאור שלו',
-    position: 'עוזר מנהל פרויקטים',
-    image: 'image/team/IMG_20240703_134753_141.jpg',
-    description:
-      'מאור מצטרף אלינו עם ניסיון עשיר בעיצוב פנים ואדריכלות. הוא בוגר בצלאל ומתמחה בתכנון מרחבים פונקציונליים עם נגיעה אסתטית ייחודית.',
-    education: 'הנדסאי מתמחה',
-  },
-  {
-    name: 'אלכס לוינסקי',
-    position: 'מנהל פרויקטים',
-    image: 'image/team/PXL_20241208_092655939.jpg',
-    description:
-      'אחרי שירות משמעותי כקצין בסיירת מטכ"ל, אייל הצטרף לצוות שלנו לפני 7 שנים. הוא מנהל את הפרויקטים הגדולים שלנו ביד רמה, עם דגש על יעילות וקפדנות.',
-    education: 'הנדסאי בניין, שיפוצניק מנוסה',
-  },
-  {
-    name: 'נאור דוידי',
-    position: 'שיפוצניק בכיר',
-    image: 'image/team/PXL_20250128_063250000.jpg',
-    description:
-      'נאור הוא שיפוצניק עם מעל 10 שנות ניסיון. הוא מתמחה בעבודות גבס, צבע, וריצוף, ומביא עימו תשוקה אמיתית למקצוע.',
-    education: 'שיפוצניק מוסמך ומנוסה עם מאות פרויקטים מאחוריו',
-  },
-  {
-    name: 'צוות Diamond',
-    position: 'צוות מסור ומקצועי',
-    image: 'image/team/PXL_20241001_132912903.jpg',
-    description:
-      'אנחנו צוות של אנשי מקצוע מנוסים שבאים לעבוד עם חיוך ורצון לספק תוצאות, כל אחד בתחומו.',
-    education: 'שיפוצניקים, צבעים, אינסטלטורים, חשמלאים, וכל מה שצריך כדי שהפרויקט שלכם יצליח.',
-    final: true,
-  },
-];
+import { useEffect, useState } from 'react';
+import { TeamMember } from '../components/sections/TeamShowCase';
 
 // Company values data
 const companyValues = [
@@ -128,6 +84,40 @@ const companyValues = [
 
 export function About() {
   const { isMobile, isTablet } = useScreen();
+  const [teamImages, setTeamImages] = useState<TeamMember[]>([]);
+  const [teamMembers, setTeamMembers] = useState([]);
+
+  useEffect(() => {
+    const fetchTeamData = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.BASE_URL}image/team/team.json`);
+        const data = await response.json();
+        setTeamImages(data);
+      } catch (error) {
+        console.error('Error fetching team data:', error);
+      }
+    };
+
+    fetchTeamData();
+  }, []);
+
+  useEffect(() => {
+    const fetchMembersData = async () => {
+      try {
+        const teamMembersResponse = await fetch(
+          `${import.meta.env.BASE_URL}content/team_members.json`
+        );
+        const teamMembersData = await teamMembersResponse.json();
+        setTeamMembers(teamMembersData);
+        console.log('Team members:', teamMembersData);
+      } catch (error) {
+        console.error('Error fetching members data:', error);
+      }
+    };
+
+    fetchMembersData();
+  }, []);
+
   return (
     <Box dir="rtl">
       {/* Hero Section */}
@@ -204,18 +194,25 @@ export function About() {
                 className="testimonial-decoration-4"
               />
               <Heading size="6" align="center" className="section-title with-accent" mb="4">
-                החזון שלנו: שיפוץ עם נשמה
+                החזון שלנו: השיפוץ שלנו , הרוגע שלכם.
               </Heading>
               <Text
                 as="div"
+                align={isMobile ? 'center' : 'right'}
                 size="3"
                 style={{ lineHeight: '1.8', fontWeight: 500, marginBottom: '1rem' }}
               >
-                אנחנו עוסקים בשיפוץ דירות ובתים פרטיים, תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור
-                כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב בין מקצועיות טכנית בלתי מתפשרת, לבין יחס
-                אישי שמציב את הלקוח במרכז.
+                החזון של חברת דאימונד להפוך את עולה השיפוצים לחוויה רגועה, חיובית שמאפשרת ללקוח
+                להשאר בראש שקט ובבטחון מלא לאורך כל הדרך. אנחנו עוסקים בשיפוץ דירות ובתים פרטיים,
+                תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב
+                בין מקצועיות טכנית בלתי מתפשרת, לבין יחס אישי שמציב את הלקוח במרכז.
               </Text>
-              <Text as="div" size="3" style={{ lineHeight: '1.8', fontWeight: 500 }}>
+              <Text
+                align={isMobile ? 'center' : 'right'}
+                as="div"
+                size="3"
+                style={{ lineHeight: '1.8', fontWeight: 500 }}
+              >
                 אנו מאמינים ששיפוץ איכותי מתחיל בהקשבה אמיתית, ומתבצע מתוך הבנה שהבית שלכם הוא הרבה
                 יותר ממבנה – הוא המקום הכי חשוב בעולם.
               </Text>
@@ -341,8 +338,9 @@ export function About() {
                       backgroundImage:
                         'linear-gradient(to bottom left,var(--iris-a3), var(--sky-a3))',
                       backgroundColor: 'var(--gray-a1)',
+                      backdropFilter: 'blur(20px)',
                       // height: '100%',
-                      transform: 'skew(5deg)',
+                      transform: 'skew(2deg)',
                       textAlign: isMobile ? 'start' : 'start',
                     }}
                   >
@@ -452,7 +450,7 @@ export function About() {
       </Section>
 
       {/* Our Team */}
-      <Section size="3" style={{ background: 'var(--color-background)' }}>
+      <Section id="team" size="3" style={{ background: 'var(--color-background)' }}>
         <Container>
           <Flex direction="column" align="center" gap="6" py="6">
             <motion.div

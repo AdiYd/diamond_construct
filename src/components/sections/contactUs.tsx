@@ -144,8 +144,8 @@ export default function ContactSection({ extendSection = false, noBackground = f
                 {
                   icon: <MapPin size={20} />,
                   title: 'כתובת',
-                  content: 'איזור כרמיאל והסביבה',
-                  action: 'https://maps.google.com/?q=כרמיאל+המלאכה+5',
+                  content: 'הדס 22, כרמיאל',
+                  action: 'https://maps.google.com/?q=כרמיאל+הדס+22',
                   color: 'var(--green-9)',
                 },
               ].map((item, index) => (
@@ -380,6 +380,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                             <option value="">בחרו שירות מבוקש</option>
                             <option value="bathrooms">שיפוץ אמבטיות</option>
                             <option value="kitchens">שיפוץ מטבחים</option>
+                            <option value="add_room">הוספת קומה\חלל</option>
                             <option value="construction">בנייה פרטית</option>
                             <option value="renovations">שיפוצים כלליים</option>
                             <option value="maintenance">תחזוקה שוטפת</option>
@@ -448,7 +449,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                         type="submit"
                         loading={loading}
                         size="4"
-                        className="cta-button"
+                        className="cta-button primary"
                         // style={{
                         //   flex: 1,
                         //   background: loading

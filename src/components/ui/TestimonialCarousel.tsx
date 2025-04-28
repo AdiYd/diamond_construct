@@ -132,9 +132,12 @@ export function TestimonialCarousel() {
                     border: '0.8px solid var(--gray-a7)',
                   }}
                 >
-                  {index % 3 === 0 && <Box className="testimonial-decoration-1" />}
+                  {/* {index % 3 === 0 && <Box className="testimonial-decoration-1" />}
                   {index % 3 === 1 && <Box className="testimonial-decoration-2" />}
-                  {index % 3 === 2 && <Box className="testimonial-decoration-3" />}
+                  {index % 3 === 2 && <Box className="testimonial-decoration-3" />} */}
+                  {index % 3 === 0 && <Box className="testimonial-background-1" />}
+                  {index % 3 === 1 && <Box className="testimonial-background-2" />}
+                  {index % 3 === 2 && <Box className="testimonial-background-3" />}
                   <Box
                     className="testimonial-quote-icon"
                     style={{
