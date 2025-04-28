@@ -1,65 +1,94 @@
-# Accessibility Statement
+# הצהרת נגישות
 
-Last updated: [Date]
+עודכן לאחרונה: 27 במרץ 2025
 
-## Our Commitment
+## מחויבותנו לנגישות
 
-[Brand Name] is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
+חברת דיאמונד רואה חשיבות רבה בהנגשת אתר האינטרנט שלה ומתן שירות שוויוני לכלל האוכלוסייה, כולל אנשים עם מוגבלויות. אנו מחויבים לתת מענה הולם ולאפשר שימוש נוח ויעיל באתר גם לאנשים עם מוגבלויות בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות (תשנ"ח-1998) ותקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013.
 
-## Conformance Status
+כחברת בנייה ושיפוצים הפועלת באזור כרמיאל והסביבה, אנו מאמינים שכשם שאנו מקפידים על סביבה נקייה, מסודרת ומקצועית בכל פרויקט, כך גם המרחב הדיגיטלי שלנו צריך להיות נגיש, נוח וידידותי לכל המשתמשים.
 
-The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA. [Brand Name] is partially conformant with WCAG 2.1 level AA. Partially conformant means that some parts of the content do not fully conform to the accessibility standard.
+## תאימות לתקנים
 
-## Technical Specifications
+אתר זה תוכנן ופותח כך שיהיה נגיש בהתאם להנחיות הבאות:
 
-Accessibility of [Brand Name] relies on the following technologies to work with the particular combination of web browser and any assistive technologies or plugins installed on your computer:
+- תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013
+- תקן ישראלי 5568 לנגישות תכנים באינטרנט
+- הנחיות הנגישות לתכני אינטרנט WCAG 2.1 ברמה AA
 
-- HTML
-- WAI-ARIA
-- CSS
-- JavaScript
+## אמצעי הנגישות באתר
 
-These technologies are relied upon for conformance with the accessibility standards used.
+אתר דיאמונד כולל תפריט נגישות ייעודי המאפשר התאמות מגוונות לצרכי המשתמש. לחיצה על כפתור הנגישות (סמל מוצג כאיש עם עיגול) בפינה הימנית התחתונה של המסך תפתח את תפריט הנגישות.
 
-## Assessment Approach
+התאמות הנגישות הזמינות באתר כוללות:
 
-[Brand Name] assesses the accessibility of our digital content using the following approaches:
+### גודל טקסט
 
-- Self-evaluation
-- External evaluation
-- User feedback and testing
+- הגדלת הטקסט באתר עד 200%
+- הקטנת הטקסט באתר
+- איפוס גודל הטקסט לברירת המחדל
 
-## Feedback
+### אפשרויות תצוגה
 
-We welcome your feedback on the accessibility of [Brand Name]. Please let us know if you encounter accessibility barriers:
+- מצב ניגודיות גבוהה להגברת הקריאות
+- היפוך צבעי האתר לשיפור הנראות
+- הדגשת קישורים לזיהוי קל יותר
+- סמן עכבר מוגדל לשימוש נוח יותר
+- הגדלת מרווח בין טקסטים להקלה על הקריאה
+- הפחתת אנימציות ותנועות למניעת הסחת דעת
 
-- Phone: [phone number]
-- E-mail: [email address]
-- Visitor address: [physical address]
+### תכונות נגישות נוספות
 
-We try to respond to feedback within 5 business days.
+- מבנה HTML סמנטי התומך בטכנולוגיות מסייעות
+- תיאורים חלופיים לתמונות (alt text)
+- ניווט מלא באמצעות מקלדת
+- תוכן מאורגן באופן היררכי ברור
+- תמיכה בתוכנות הקראת מסך
 
-## Compatibility with Browsers and Assistive Technology
+## שימוש במקלדת
 
-[Brand Name] is designed to be compatible with the following assistive technologies:
+האתר תוכנן לתמוך בניווט מלא באמצעות מקלדת עבור משתמשים שאינם יכולים להשתמש בעכבר. ניתן לנווט בין האלמנטים השונים באתר באמצעות מקש Tab ולהפעילם באמצעות Enter או רווח. ניתן לצאת מתפריטים באמצעות מקש Escape.
 
-- Screen readers
-- Screen magnification software
-- Speech recognition software
-- Keyboard-only navigation
+## דפדפנים נתמכים
 
-## Technical Specifications
+אתר האינטרנט שלנו תומך בדפדפנים העדכניים הנפוצים ביותר:
 
-Accessibility of [Brand Name] relies on the following technologies to work with the particular combination of web browser and any assistive technologies or plugins installed on your computer:
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge
+- Safari
+- Opera
 
-- HTML
-- WAI-ARIA
-- CSS
-- JavaScript
+## מגבלות ידועות
 
-## Contact Us
+למרות מאמצינו להנגיש את כלל תכני האתר, ייתכן שחלק מהתכנים טרם הונגשו באופן מלא:
 
-If you have any questions about our accessibility statement, please contact us:
+- מסמכים ישנים בפורמט PDF
+- תכנים המסופקים על ידי צד שלישי
+- תכני וידאו מסוימים
 
-- By email: [contact@example.com]
-- By visiting this page on our website: [Contact Page URL] 
+אנו פועלים באופן רציף לשיפור הנגישות באתר ומקווים להשלים את הנגשת כל התכנים בהקדם האפשרי.
+
+## פנייה בנושאי נגישות
+
+מצאתם בעיית נגישות באתר? נשמח לקבל את המשוב שלכם כדי שנוכל לשפר את חוויית השימוש באתר עבור כל המשתמשים.
+
+### צרו קשר עם רכז/ת הנגישות שלנו:
+
+**שם:** יעקב דיאמנט  
+**תפקיד:** מנהל חברת דיאמונד שיפוצים  
+**טלפון:** 052-703-6959  
+**דוא"ל:** diamondbuilding.il@gmail.com  
+**WhatsApp:** [שליחת הודעה](https://wa.me/972527036959)
+
+אנו מתחייבים למתן מענה לפניות בנושאי נגישות תוך 2 ימי עסקים.
+
+---
+
+---
+
+##
+
+אנו בדיאמונד מאמינים שכפי שאנו דואגים ליצור בית מותאם לצרכי הלקוח בעולם הפיזי, כך עלינו ליצור סביבה דיגיטלית המותאמת לכל אדם. אנו רואים בהנגשת האתר חלק בלתי נפרד ממחויבותנו לשירות מקצועי, אישי ומכבד לכלל לקוחותינו.
+
+הצהרת נגישות זו נבדקה ואושרה ב-27 במרץ 2025.

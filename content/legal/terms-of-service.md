@@ -1,49 +1,44 @@
-# Terms of Service
+# תנאי שימוש
 
-Last updated: [Date]
+עודכן לאחרונה: 23 במרץ 2025
 
-## 1. Agreement to Terms
+## 1. הסכמה לתנאים
 
-By accessing our website, you agree to be bound by these Terms of Service and agree that you are responsible for compliance with any applicable local laws.
+השימוש באתר ובשירותים שלנו כפוף לתנאי השימוש ("התנאים") ולמדיניות הפרטיות שלנו. תנאים אלה חלים על כל המבקרים, המשתמשים ואחרים הניגשים או משתמשים בשירות שלנו. אם אינך מסכים לחלק כלשהו מהתנאים, אינך רשאי לגשת לשירות.
 
-## 2. Use License
+## 2. רישיון שימוש
 
-Permission is granted to temporarily download one copy of the materials (information or software) on [Brand Name]'s website for personal, non-commercial transitory viewing only.
+אנו מעניקים לך רישיון מוגבל, שאינו בלעדי, אינו ניתן להעברה וניתן לביטול לגישה ושימוש בשירות שלנו למטרות אישיות ולא מסחריות. רישיון זה כפוף לתנאים אלה ואינו כולל:
 
-This is the grant of a license, not a transfer of title, and under this license you may not:
-- modify or copy the materials;
-- use the materials for any commercial purpose;
-- attempt to decompile or reverse engineer any software contained on [Brand Name]'s website;
-- remove any copyright or other proprietary notations from the materials; or
-- transfer the materials to another person or "mirror" the materials on any other server.
+- שינוי או העתקת החומרים שלנו
+- שימוש בחומר למטרות מסחריות
+- ניסיון להנדס לאחור תוכנה כלשהי הכלולה באתר שלנו
+- הסרת הודעות זכויות יוצרים או קניין רוחני
+- העברת החומרים לאדם אחר או "שיקוף" שלהם בשרתים אחרים
 
-## 3. Disclaimer
+## 3. זכויות קניין רוחני
 
-The materials on [Brand Name]'s website are provided on an 'as is' basis. [Brand Name] makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+השירות שלנו והתוכן המקורי שלו (למעט תוכן שסופק על ידי משתמשים), התכונות והפונקציונליות הם ויישארו הקניין הבלעדי שלנו ומוגנים על ידי חוקי זכויות יוצרים, סימני מסחר, פטנטים, סודות מסחריים וחוקי קניין רוחני אחרים של מדינת ישראל.
 
-## 4. Limitations
+## 4. תוכן משתמש
 
-In no event shall [Brand Name] or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on [Brand Name]'s website, even if [Brand Name] or a [Brand Name] authorized representative has been notified orally or in writing of the possibility of such damage.
+כאשר אתה יוצר, מפרסם או משתף תוכן באמצעות השירות שלנו, אתה מעניק לנו רישיון שאינו בלעדי, ללא תמלוגים, עולמי וניתן להעברה להשתמש, לשנות, להציג בפומבי, לשכפל ולהפיץ תוכן כזה בשירות שלנו ובאמצעותו.
 
-## 5. Accuracy of Materials
+## 5. הגבלת אחריות
 
-The materials appearing on [Brand Name]'s website could include technical, typographical, or photographic errors. [Brand Name] does not warrant that any of the materials on its website are accurate, complete or current. [Brand Name] may make changes to the materials contained on its website at any time without notice.
+במידה המרבית המותרת על פי חוק, בשום מקרה לא נהיה אחראים לנזקים עקיפים, מקריים, מיוחדים, תוצאתיים או עונשיים, כולל, ללא הגבלה, אובדן רווחים, נתונים, שימוש, מוניטין או הפסדים בלתי מוחשיים אחרים, הנובעים מהגישה או השימוש שלך, או חוסר היכולת לגשת או להשתמש בשירות.
 
-## 6. Links
+## 6. שינויים בתנאים
 
-[Brand Name] has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by [Brand Name] of the site. Use of any such linked website is at the user's own risk.
+אנו שומרים לעצמנו את הזכות לשנות או להחליף תנאים אלה בכל עת לפי שיקול דעתנו הבלעדי. נספק הודעה על שינויים משמעותיים על ידי פרסום התנאים החדשים בדף זה ועדכון תאריך "עודכן לאחרונה".
 
-## 7. Modifications
+## 7. החוק החל
 
-[Brand Name] may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.
+תנאים אלה יהיו כפופים ויפורשו בהתאם לחוקי מדינת ישראל, ומקום השיפוט הבלעדי יהיה בבתי המשפט בתל אביב-יפו.
 
-## 8. Governing Law
+## 8. יצירת קשר
 
-These terms and conditions are governed by and construed in accordance with the laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
+לשאלות בנוגע לתנאי שימוש אלה, אנא צרו קשר:
 
-## Contact Us
-
-If you have any questions about these Terms of Service, please contact us:
-
-- By email: [contact@example.com]
-- By visiting this page on our website: [Contact Page URL] 
+- דוא"ל: support@example.com
+- כתובת: הדס 22, כרמיאל

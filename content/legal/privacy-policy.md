@@ -1,50 +1,83 @@
-# Privacy Policy
+# מדיניות פרטיות
 
-Last updated: [Date]
+עודכן לאחרונה: 23 במרץ 2025
 
-## Introduction
+## זכויות הפרטיות שלך
 
-Welcome to [Brand Name] ("we," "our," or "us"). We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
+מסמך זה מתאר את זכויות הפרטיות שלך בנוגע לאיסוף, שימוש, אחסון, שיתוף והגנה על המידע האישי שלך. מדיניות זו חלה על האתר שלנו וכל השירותים הקשורים אליו, ללא קשר לאופן הגישה או השימוש בהם.
 
-## Information We Collect
+## המידע שאנו אוספים
 
-We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:
+### מידע אישי
 
-- Identity Data: includes first name, last name, username or similar identifier
-- Contact Data: includes email address and telephone numbers
-- Technical Data: includes internet protocol (IP) address, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform
-- Usage Data: includes information about how you use our website and services
+- שם ופרטי קשר
+- כתובת דואר אלקטרוני
+- כתובת IP ופרטי מכשיר
+- נתוני שימוש והעדפות
+- נתוני מיקום (אם מופעל)
 
-## How We Use Your Information
+### כיצד אנו אוספים מידע
 
-We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:
+- אינטראקציות ישירות
+- טכנולוגיות או אינטראקציות אוטומטיות
+- מקורות צד שלישי
 
-- To provide and maintain our Service
-- To notify you about changes to our Service
-- To provide customer support
-- To gather analysis or valuable information so that we can improve our Service
-- To monitor the usage of our Service
-- To detect, prevent and address technical issues
+## כיצד אנו משתמשים במידע שלך
 
-## Data Security
+אנו משתמשים במידע שלך כדי:
 
-We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed.
+- לספק ולשפר את השירותים שלנו
+- לתקשר איתך
+- לעבד עסקאות
+- להתאים אישית את החוויה שלך
+- להבטיח אבטחה ולמנוע הונאות
+- לציית לחובות חוקיות
 
-## Your Legal Rights
+## שיתוף וחשיפת מידע
 
-Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:
+אנו עשויים לשתף את המידע שלך עם:
 
-- Request access to your personal data
-- Request correction of your personal data
-- Request erasure of your personal data
-- Object to processing of your personal data
-- Request restriction of processing your personal data
-- Request transfer of your personal data
-- Right to withdraw consent
+- ספקי שירות
+- שותפים עסקיים
+- רשויות אכיפת החוק כנדרש
+- במהלך עסקאות תאגידיות (מיזוג, רכישה וכו')
 
-## Contact Us
+## זכויותיך לפי חוק הגנת הפרטיות הישראלי
 
-If you have any questions about this Privacy Policy, please contact us:
+יש לך את הזכות:
 
-- By email: [contact@example.com]
-- By visiting this page on our website: [Contact Page URL] 
+- לגשת למידע האישי שלך
+- לתקן מידע לא מדויק
+- לבקש מחיקת המידע שלך
+- להתנגד לעיבוד
+- לניידות מידע
+- לבטל הסכמה
+
+## אמצעי אבטחה
+
+אנו מיישמים אמצעי אבטחה טכניים וארגוניים מתאימים כדי להגן על המידע שלך מפני גישה, שינוי, חשיפה או השמדה בלתי מורשים, בהתאם לתקנות הגנת הפרטיות (אבטחת מידע) הישראליות.
+
+## פרטיות ילדים
+
+השירות שלנו אינו מיועד לילדים מתחת לגיל 13. איננו אוספים ביודעין מידע אישי מילדים מתחת לגיל 13. אם אתה הורה/אפוטרופוס ומאמין שילדך סיפק לנו מידע אישי, אנא צור איתנו קשר.
+
+## שינויים במדיניות זו
+
+אנו עשויים לעדכן מדיניות פרטיות זו מעת לעת. נודיע לך על כל שינוי מהותי על ידי פרסום מדיניות הפרטיות החדשה ועדכון תאריך "עודכן לאחרונה".
+
+## צור קשר
+
+לשאלות בנוגע למדיניות פרטיות זו:
+
+- דוא"ל: privacy@example.com
+- טלפון: 03-1234567
+- כתובת: הדס 22, כרמיאל
+
+## ציות לחוק
+
+מדיניות זו תואמת את:
+
+- חוק הגנת הפרטיות, התשמ"א-1981
+- תקנות הגנת הפרטיות (אבטחת מידע), התשע"ז-2017
+- תקנות הגנת הפרטיות (העברת מידע אל מאגרי מידע שמחוץ לגבולות המדינה), התשס"א-2001
+- חוק התקשורת (בזק ושידורים), התשמ"ב-1982 (סעיף 30א)
