@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Box, Container, Flex, IconButton } from '@radix-ui/themes';
+import { Box, Card, Container, Flex, IconButton } from '@radix-ui/themes';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -80,10 +80,10 @@ export function Header() {
             ? 'transparent'
             : isDarkTheme
             ? 'rgba(0, 0, 0, 0.4)'
-            : 'rgba(255,255,255,0.2)', // Semi-transparent background
+            : 'rgba(255,255,255,0.2)',
           // borderBottom: '1px solid var(--gray-5)',
           zIndex: 201,
-          backdropFilter: isOnTop ? 'none' : 'blur(20px)',
+          backdropFilter: isMenuOpen ? '' : 'blur(20px)',
           color: 'white',
           transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
           transition: 'transform 0.3s ease',
@@ -182,34 +182,36 @@ export function Header() {
                   transition: 'height 0.3s ease',
                   left: 0,
                   right: 0,
-                  background: isDarkTheme ? 'black' : 'white',
-                  backdropFilter: 'blur(40px)',
-                  borderBottom: '1px solid var(--gray-5)',
-                  padding: 'var(--space-4)',
+                  // background: isDarkTheme ? 'black' : 'white',
+
+                  // borderBottom: '1px solid var(--gray-5)',
+                  // padding: 'var(--space-4)',
                 }}
               >
-                <Flex direction="column" gap="4">
-                  {pagesConfig.map(page => (
-                    <Link
-                      key={page.id}
-                      to={page.path}
-                      onClick={() => setIsMenuOpen(false)}
-                      style={{
-                        textDecoration: 'none',
-                        color:
-                          location.pathname === page.path
-                            ? isHomePage
-                              ? 'var(--secondary)'
-                              : 'var(--secondary)'
-                            : 'var(--gray-11)',
-                        fontWeight: location.pathname === page.path ? 700 : 600,
-                        padding: 'var(--space-2)',
-                      }}
-                    >
-                      {page.translations[language] || page.translations.en}
-                    </Link>
-                  ))}
-                </Flex>
+                <Card style={{ backdropFilter: 'blur(40px)' }}>
+                  <Flex direction="column" gap="4">
+                    {pagesConfig.map(page => (
+                      <Link
+                        key={page.id}
+                        to={page.path}
+                        onClick={() => setIsMenuOpen(false)}
+                        style={{
+                          textDecoration: 'none',
+                          color:
+                            location.pathname === page.path
+                              ? isHomePage
+                                ? 'var(--secondary)'
+                                : 'var(--secondary)'
+                              : 'var(--gray-11)',
+                          fontWeight: location.pathname === page.path ? 700 : 600,
+                          padding: 'var(--space-2)',
+                        }}
+                      >
+                        {page.translations[language] || page.translations.en}
+                      </Link>
+                    ))}
+                  </Flex>
+                </Card>
               </motion.div>
             )}
           </AnimatePresence>

@@ -37,7 +37,7 @@ const FontSelector = () => {
           stiffness: 300,
           damping: 25,
         }}
-        style={{ position: 'fixed', top: '15%', left: '10px', zIndex: 1000 }}
+        style={{ position: 'fixed', top: isMobile ? '10%' : '15%', left: '8px', zIndex: 1000 }}
       >
         <Card mx={'auto'}>
           {/* Closing button */}
@@ -63,7 +63,7 @@ const FontSelector = () => {
           </div>
           {isOpen && (
             <Flex direction="column" gap={'2'} justify={'between'}>
-              {availableFonts.map((font, index) => (
+              {availableFonts.map(font => (
                 <Button
                   size="1"
                   color="tomato"
@@ -82,7 +82,7 @@ const FontSelector = () => {
                     borderRadius: '8px',
                   }}
                 >
-                  {isMobile ? `${index + 1}` : font}
+                  {font}
                 </Button>
               ))}
             </Flex>
