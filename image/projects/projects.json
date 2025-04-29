@@ -1,10 +1,11 @@
 [
   {
-    "url": "image/projects/IMG-20240517-WA0038.jpg",
+    "url": "video/VID-20250325-WA0056.mp4",
     "title": "שיפוץ חדר רחצה",
     "description": ".טיפול מלא חדר רחצה כולל החלפת תשתית ואיטום",
     "category": "bathrooms",
-    "size": "large"
+    "size": "large",
+    "video": true
   },
   {
     "url": "image/projects/IMG-20240517-WA0040.jpg",
