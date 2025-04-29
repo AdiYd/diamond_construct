@@ -2,10 +2,16 @@
   {
     "url": "video/VID-20250325-WA0056.mp4",
     "title": "שיפוץ חדר רחצה",
-    "description": ".טיפול מלא חדר רחצה כולל החלפת תשתית ואיטום",
+    "description": ".שיפוץ והתקנה של אריחים חדשים, אמבטיה וכיור",
     "category": "bathrooms",
-    "size": "large",
-    "video": true
+    "size": "large"
+  },
+  {
+    "url": "video/VID-20250325-WA0113.mp4",
+    "title": "שיפוץ חדר רחצה",
+    "description": ".טיפול מלא חדר רחצה, אריחים וכיור, כולל החלפת תשתית ואיטום",
+    "category": "bathrooms",
+    "size": "large"
   },
   {
     "url": "image/projects/IMG-20240517-WA0040.jpg",
@@ -57,7 +63,14 @@
     "size": "large"
   },
   {
-    "url": "image/projects/IMG-20240517-WA0055.jpg",
+    "url": "video/VID-20250325-WA0046.mp4",
+    "title": "שיפוץ חלל מטבח עם אי",
+    "description": "שיפוץ מטבח מודרני מעוצב עם אי",
+    "category": "bathrooms",
+    "size": "large"
+  },
+  {
+    "url": "video/VID-20250325-WA0079.mp4",
     "title": "חדר רחצה",
     "description": "עיצוב חדר רחצה מודרני עם מקלחון",
     "category": "bathrooms",
@@ -69,6 +82,13 @@
     "description": "שיפוץ והתאמה אישית של מטבח",
     "category": "kitchens",
     "size": "medium"
+  },
+  {
+    "url": "video/VID-20250325-WA0060.mp4",
+    "title": "מטבח חדש",
+    "description": "חידוש ובנייה של מטבח",
+    "category": "kitchens",
+    "size": "large"
   },
   {
     "url": "image/projects/IMG-20250325-WA0009.jpg",
