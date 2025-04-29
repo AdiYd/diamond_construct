@@ -7,6 +7,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import ContactSection from '../components/sections/contactUs';
 import { useEffect, useState } from 'react';
 import { TeamImage, TeamMember } from '../components/sections/TeamShowCase';
+import Asset from '../components/Asset';
 
 // Company values data
 const companyValues = [
@@ -102,7 +103,7 @@ export function About() {
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}image/team/team.json`);
+        const response = await fetch(`${import.meta.env.BASE_URL}content/team.json`);
         const data = await response.json();
         setTeamImages(data);
       } catch (error) {
@@ -258,10 +259,8 @@ export function About() {
             >
               {teamImages.map((image, index) => (
                 <div key={index}>
-                  <img
-                    src={`${import.meta.env.BASE_URL}${image.image}`}
-                    className="team-image"
-                    alt={`Team member ${index + 1}`}
+                  <Asset
+                    imageOnly
                     style={{
                       aspectRatio: '1/1',
                       objectFit: 'cover',
@@ -269,6 +268,9 @@ export function About() {
                       height: isMobile ? '180px' : '250px',
                       borderRadius: '8px',
                     }}
+                    url={image.image}
+                    alt={image.title}
+                    className="team-image"
                   />
                 </div>
               ))}
@@ -535,14 +537,16 @@ export function About() {
                           marginBottom: '0.5rem',
                         }}
                       >
-                        <img
-                          src={`${import.meta.env.BASE_URL}${member.image}`}
-                          alt={member.name}
+                        <Asset
                           style={{
                             width: '100%',
                             height: '100%',
                             objectFit: 'cover',
+                            borderRadius: 'var(--radius-3)',
                           }}
+                          url={member.image}
+                          alt={member.name}
+                          // className="team-image"
                         />
                         <Box
                           style={{

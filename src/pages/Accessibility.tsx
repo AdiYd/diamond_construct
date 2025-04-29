@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Text, Section, Flex, Box, Container } from '@radix-ui/themes';
+import { Text, Section, Flex, Box } from '@radix-ui/themes';
 import { useLanguage } from '../context/LanguageContext';
 import { marked } from 'marked';
 
@@ -44,7 +44,7 @@ export function Accessibility() {
 
           {/* <Separator size="4" /> */}
 
-          <Container style={{ marginTop: '1rem' }}>
+          <Box px={'4'} style={{ marginTop: '1rem' }}>
             {isLoading ? (
               <Text size="3">טוען תוכן...</Text>
             ) : (
@@ -53,7 +53,7 @@ export function Accessibility() {
                 dangerouslySetInnerHTML={{ __html: content }}
               />
             )}
-          </Container>
+          </Box>
         </Flex>
       </Section>
     </Box>

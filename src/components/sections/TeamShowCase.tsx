@@ -7,6 +7,7 @@ import useScreen from '../../hooks/useScreen';
 import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
+import Asset from '../Asset';
 
 // Define the TeamImage interface
 export interface TeamImage {
@@ -52,7 +53,7 @@ export function TeamShowCase() {
     const fetchTeamData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${import.meta.env.BASE_URL}image/team/team.json`);
+        const response = await fetch(`${import.meta.env.BASE_URL}content/team.json`);
         if (!response.ok) {
           throw new Error('Failed to fetch team data');
         }
@@ -193,8 +194,9 @@ export function TeamShowCase() {
                     >
                       <Box className="project-card">
                         <Box className="project-image-container" style={{ height: '300px' }}>
-                          <img
-                            src={`${import.meta.env.BASE_URL}${member.image}`}
+                          <Asset
+                            style={{ borderRadius: 'var(--radius-4)' }}
+                            url={member.image}
                             alt={member.title}
                             className="project-image"
                           />
@@ -259,9 +261,9 @@ export function TeamShowCase() {
               >
                 <Box className="project-card">
                   <Box className="project-image-container">
-                    <img
+                    <Asset
                       style={{ borderRadius: 'var(--radius-4)' }}
-                      src={`${import.meta.env.BASE_URL}${member.image}`}
+                      url={member.image}
                       alt={member.title}
                       className="project-image"
                     />

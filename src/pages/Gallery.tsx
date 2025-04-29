@@ -15,6 +15,7 @@ import {
 import { Image as ImageIcon, X, ChevronRight, ChevronLeft } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
 import ContactSection from '../components/sections/contactUs';
+import Asset from '../components/Asset';
 
 // Project portfolio data
 const demoProjects = [
@@ -371,15 +372,16 @@ const Lightbox: React.FC<LightboxProps> = ({
           </>
         )}
 
-        <img
-          src={imageSrc}
+        <Asset
+          url={imageSrc}
           alt={`${project.title} - ${currentImageType}`}
           style={{
             // width: '100%',
             aspectRatio: isMobile ? '' : '16/9',
             maxHeight: '100%',
-            height: '100%',
-            objectFit: 'contain',
+            // height: '100%',
+            margin: 'auto',
+            // objectFit: 'fit-cover',
           }}
         />
 
@@ -430,7 +432,7 @@ export function Gallery() {
     const fetchProjects = async () => {
       try {
         // Simulate fetching data from an API
-        const response = await fetch(`${import.meta.env.BASE_URL}content/projects.json`);
+        const response = await fetch(`${import.meta.env.BASE_URL}content/gallery.json`);
         const data = (await response.json()) as Project[]; // Ensure the data is of type Project[]
         if (data.length !== 0) {
           setProjects(data); // Set the fetched projects
@@ -585,8 +587,8 @@ export function Gallery() {
                           }}
                           onClick={() => openLightbox(project as Project, 'before')}
                         >
-                          <img
-                            src={project.images.before}
+                          <Asset
+                            url={project.images.before || ''}
                             alt={`${project.title} - לפני השיפוץ`}
                             style={{
                               width: '100%',
@@ -640,8 +642,8 @@ export function Gallery() {
                           }}
                           onClick={() => openLightbox(project as Project, 'after')}
                         >
-                          <img
-                            src={project.images.after}
+                          <Asset
+                            url={project.images.after || ''}
                             alt={`${project.title} - אחרי השיפוץ`}
                             style={{
                               width: '100%',

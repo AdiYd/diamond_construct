@@ -15,6 +15,7 @@ import {
 import useScreen from '../hooks/useScreen';
 import ContactSection from '../components/sections/contactUs';
 import { JSX, useEffect, useState } from 'react';
+import Asset from '../components/Asset';
 
 const iconDict: { [key: string]: JSX.Element } = {
   droplet: <Droplet size={36} />,
@@ -119,7 +120,7 @@ export function Services() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}content/service_blog.json`);
+        const response = await fetch(`${import.meta.env.BASE_URL}content/blog.json`);
         if (!response.ok) {
           throw new Error('Failed to fetch services data');
         }
@@ -508,8 +509,8 @@ export function Services() {
                     boxShadow: 'var(--shadow-4)',
                   }}
                 >
-                  <img
-                    src={service.image}
+                  <Asset
+                    url={service.image}
                     alt={service.title}
                     style={{
                       width: '100%',

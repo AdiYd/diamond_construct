@@ -7,6 +7,7 @@ import useScreen from '../../hooks/useScreen';
 import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
+import Asset from '../Asset';
 
 // Define the Project interface
 interface Project {
@@ -16,8 +17,8 @@ interface Project {
   description: string;
   category: string;
   size: string;
-  video: boolean;
   show: boolean;
+  video?: boolean;
 }
 
 export function ProjectShowcase() {
@@ -46,7 +47,7 @@ export function ProjectShowcase() {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${import.meta.env.BASE_URL}image/projects/projects.json`);
+        const response = await fetch(`${import.meta.env.BASE_URL}content/projects.json`);
         if (!response.ok) {
           throw new Error('Failed to fetch projects data');
         }
@@ -159,28 +160,13 @@ export function ProjectShowcase() {
                     >
                       <Box className="project-card">
                         <Box className="project-image-container" style={{ height: '300px' }}>
-                          {project.video ? (
-                            <video
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              className="project-image"
-                              style={{ borderRadius: 'var(--radius-4)' }}
-                            >
-                              <source
-                                src={`${import.meta.env.BASE_URL}${project.url}`}
-                                type="video/mp4"
-                              />
-                              Your browser does not support the video tag.
-                            </video>
-                          ) : (
-                            <img
-                              src={`${import.meta.env.BASE_URL}${project.url}`}
-                              alt={project.title}
-                              className="project-image"
-                            />
-                          )}
+                          <Asset
+                            video={project.video}
+                            style={{ borderRadius: 'var(--radius-4)' }}
+                            url={project.url}
+                            alt={project.title}
+                            className="project-image"
+                          />
                           <Box className="project-overlay">
                             <div className="rt-r-position-absolute rt-r-bottom-3 rt-r-right-4">
                               <Text
@@ -241,28 +227,13 @@ export function ProjectShowcase() {
               >
                 <Box className="project-card">
                   <Box className="project-image-container">
-                    {project.video ? (
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="project-image"
-                        style={{ borderRadius: 'var(--radius-4)' }}
-                      >
-                        <source
-                          src={`${import.meta.env.BASE_URL}${project.url}`}
-                          type="video/mp4"
-                        />
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : (
-                      <img
-                        src={`${import.meta.env.BASE_URL}${project.url}`}
-                        alt={project.title}
-                        className="project-image"
-                      />
-                    )}
+                    <Asset
+                      video={project.video}
+                      style={{ borderRadius: 'var(--radius-4)' }}
+                      url={project.url}
+                      alt={project.title}
+                      className="project-image"
+                    />
                     <Box className="project-overlay">
                       <Box width="100%" className="rt-r-position-absolute rt-r-bottom-4">
                         <Text
