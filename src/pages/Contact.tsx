@@ -605,7 +605,7 @@ export function Contact() {
                             <option value="">בחרו שירות מבוקש</option>
                             <option value="bathrooms">שיפוץ אמבטיות</option>
                             <option value="kitchens">שיפוץ מטבחים</option>
-                            <option value="add_room">הוספת קומה / חלל</option>
+                            <option value="add_room">הוספת קומה</option>
                             <option value="construction">בנייה פרטית</option>
                             <option value="renovations">שיפוצים כלליים</option>
                             <option value="maintenance">תחזוקה שוטפת</option>
@@ -700,7 +700,7 @@ export function Contact() {
           }}
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.694699349839!2d35.288500476202714!3d32.92052997611377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151c3e5de671c98f%3A0x30b93e686f80f837!2z15TXnteQ15vXlCAzLCDXpteo16og16rXqNep15nXl9eQ!5e0!3m2!1siw!2sil!4v1648314993704!5m2!1siw!2sil"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.694699349839!2d35.288500476202714!3d32.92052997611377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151c3e5de671c98f%3A0x30b93e686f80f837!2z15TXnteQ15vXlCAyLCDXpteo16og16rXqNep15nXl9eQ!5e0!3m2!1siw!2sil!4v1648314993704!5m2!1siw!2sil"
             width="100%"
             height="100%"
             style={{

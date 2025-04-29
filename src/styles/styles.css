@@ -141,7 +141,7 @@
   --accent-a11: rgba(208, 212, 237, 0.9);
   --accent-a12: rgba(208, 212, 237, 1);
 
-  --background-color: #0c1029;
+  --background-color: rgb(12, 16, 41);
   --accent-foreground: #101437;
   --text-color:white;
   --text-dialog: #ffffff;
@@ -1964,7 +1964,7 @@ div[role='dialog'] {
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(circle at 60% 80%, var(--accent-2) 0%, rgba(38, 133, 129, 0.274) 10%, transparent 50%),
+    radial-gradient(circle at 60% 80%, var(--amber-a2) 0%, rgba(38, 133, 129, 0.274) 10%, transparent 50%),
     radial-gradient(circle at 10% 60%, #ee65f03a 0%,#6b3bbd2d 20%, transparent 50%);
   opacity: 0.4;
   z-index: 0 !important;

@@ -57,13 +57,27 @@
   .about-card::after {
     content: "“";
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 0.6rem;
+    left: 0.6rem;
     font-size: 4rem;
     color: var(--gray-10);
     opacity: 0.8;
     pointer-events: none;
-    z-index: 20
+    z-index: 20;
+    animation: floating 6s ease-in-out infinite;
+  }
+  .about-card::before {
+    content: "“";
+    position: absolute;
+    bottom: -0.5rem;
+    right: 0.5rem;
+    font-size: 4rem;
+    color: var(--gray-10);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 20;
+    animation: floating 6s ease-in-out infinite;
+    animation-delay: 2s;
   }
   .team-image {
     width: 100%;
@@ -75,7 +89,7 @@
   }
 
   .team-image:hover {
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
 
   .service-card {
@@ -115,5 +129,21 @@
 
   .value-icon {
     font-size: 1.5rem;
+  }
+}
+
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+    rotate: 0deg;
+  }
+  50% {
+    transform: translateY(-10px);
+    rotate: 10deg;
+  }
+  100% {
+    transform: translateY(0);
+    rotate: 0deg;
   }
 }

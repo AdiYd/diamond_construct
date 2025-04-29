@@ -48,6 +48,17 @@ const companyValues = [
   },
 ];
 
+const visionDemo = {
+  title: 'החזון שלנו: השיפוץ שלנו , הרוגע שלכם.',
+  description: `החזון של חברת דאימונד להפוך את עולה השיפוצים לחוויה רגועה, חיובית שמאפשרת ללקוח\n                
+  להשאר בראש שקט ובבטחון מלא לאורך כל הדרך. אנחנו עוסקים בשיפוץ דירות ובתים פרטיים,\n                
+  תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב\n                
+  בין מקצועיות טכנית בלתי מתפשרת, לבין יחס אישי שמציב את הלקוח במרכז.`,
+  // description2: `החזון שלנו הוא להעניק ללקוחותינו חווית שיפוץ ייחודית, שבה כל פרט נחשב, וכל לקוח הוא חלק מהמשפחה שלנו.`,
+  description2: `אנו מאמינים ששיפוץ איכותי מתחיל בהקשבה אמיתית, ומתבצע מתוך הבנה שהבית שלכם הוא הרבה
+                יותר ממבנה – הוא המקום הכי חשוב בעולם.`,
+};
+
 // Milestones data
 // const milestones = [
 //   {
@@ -86,7 +97,7 @@ export function About() {
   const { isMobile, isTablet } = useScreen();
   const [teamImages, setTeamImages] = useState<TeamImage[]>([]);
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
-  const [vision, setVision] = useState<null | Record<string, string>>(null);
+  const [vision, setVision] = useState<null | Record<string, string>>(visionDemo);
 
   useEffect(() => {
     const fetchTeamData = async () => {
@@ -225,8 +236,7 @@ export function About() {
                 size="3"
                 style={{ lineHeight: '1.8', fontWeight: 500 }}
               >
-                אנו מאמינים ששיפוץ איכותי מתחיל בהקשבה אמיתית, ומתבצע מתוך הבנה שהבית שלכם הוא הרבה
-                יותר ממבנה – הוא המקום הכי חשוב בעולם.
+                {vision?.description2}
               </Text>
             </div>
           </motion.div>
@@ -269,7 +279,7 @@ export function About() {
 
       {/* Our Approach Section */}
       <Section size="3" style={{ background: 'var(--color-background)' }}>
-        <Container>
+        <Container px={'8'}>
           <Flex direction="column" align="center" gap="6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -373,7 +383,7 @@ export function About() {
 
       {/* Our Values */}
       <Section size="3" style={{ background: 'var(--gray-1)' }}>
-        <Container>
+        <Container px={'8'}>
           <Flex direction="column" align="center" gap="6" py="6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -463,7 +473,7 @@ export function About() {
 
       {/* Our Team */}
       <Section id="team" size="3" style={{ background: 'var(--color-background)' }}>
-        <Container>
+        <Container px={'8'}>
           <Flex direction="column" align="center" gap="6" py="6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -574,7 +584,7 @@ export function About() {
       </Section>
 
       {/* Call to action */}
-      <ContactSection />
+      <ContactSection noBackground />
     </Box>
   );
 }

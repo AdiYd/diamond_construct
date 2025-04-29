@@ -536,7 +536,7 @@ export function Services() {
         </Section>
       ))}
 
-      <ContactSection />
+      <ContactSection noBackground />
     </Box>
   );
 }

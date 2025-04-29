@@ -184,9 +184,11 @@ export default function ContactSection({ extendSection = false, noBackground = f
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  style={{
-                    cursor: 'pointer',
-                  }}
+                  style={
+                    {
+                      // cursor: 'pointer',
+                    }
+                  }
                 >
                   <Flex
                     onClick={() => {
@@ -194,6 +196,8 @@ export default function ContactSection({ extendSection = false, noBackground = f
                     }}
                     gap="3"
                     align="center"
+                    className="opacityHover"
+                    style={{ width: 'fit-content', cursor: 'pointer' }}
                   >
                     <Box
                       style={{
@@ -410,7 +414,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                             <option value="">בחרו שירות מבוקש</option>
                             <option value="bathrooms">שיפוץ אמבטיות</option>
                             <option value="kitchens">שיפוץ מטבחים</option>
-                            <option value="add_room">הוספת קומה\חלל</option>
+                            <option value="add_room">הוספת קומה</option>
                             <option value="construction">בנייה פרטית</option>
                             <option value="renovations">שיפוצים כלליים</option>
                             <option value="maintenance">תחזוקה שוטפת</option>

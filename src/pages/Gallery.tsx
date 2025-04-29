@@ -560,7 +560,7 @@ export function Gallery() {
                     overflow: 'hidden',
                     border: 'none',
                     // backgroundColor: 'var(--mint-a1)',
-                    boxShadow: 'var(--shadow-5)',
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -731,8 +731,9 @@ export function Gallery() {
                         <Text size="1" style={{ fontStyle: 'italic', color: 'var(--gray-11)' }}>
                           "{project.testimonial.text}"
                         </Text>
+                        <br />
                         <Text size="1" weight="bold" mt="2" style={{ color: 'var(--accent-9)' }}>
-                          — {project.testimonial.author}
+                          {project.testimonial.author}
                         </Text>
                       </Box>
                     )}
