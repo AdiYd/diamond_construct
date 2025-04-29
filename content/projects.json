@@ -42,14 +42,14 @@
     "size": "large"
   },
   {
-    "url": "image/projects/IMG-20240517-WA0047.jpg",
+    "url": "image/projects/IMG-20240517-WA0041.jpg",
     "title": "חדר שינה",
     "description": "עיצוב חדר שינה בסגנון מינימליסטי",
     "category": "bedrooms",
     "size": "medium"
   },
   {
-    "url": "image/projects/IMG-20240517-WA0048.jpg",
+    "url": "image/projects/IMG-20240517-WA0055.jpg",
     "title": "בניית חדר רחצה תוך שת\"פ עם מעצבת יצירתית",
     "description": "שיפוץ פנים מטבח, כולל ארונות חדשים",
     "category": "renovations",
@@ -77,28 +77,21 @@
     "size": "medium"
   },
   {
-    "url": "image/projects/IMG-20250325-WA0006.jpg",
+    "url": "video/VID-20250325-WA0060.mp4",
     "title": "מטבח מעוצב",
     "description": "שיפוץ והתאמה אישית של מטבח",
     "category": "kitchens",
     "size": "medium"
   },
   {
-    "url": "video/VID-20250325-WA0060.mp4",
-    "title": "מטבח חדש",
-    "description": "חידוש ובנייה של מטבח",
-    "category": "kitchens",
-    "size": "large"
-  },
-  {
-    "url": "image/projects/IMG-20250325-WA0009.jpg",
+    "url": "video/VID-20250325-WA0092.mp4",
     "title": "פינת קפה מעוצבת",
     "description": "פינת קפה מעוצבת עם ארונות חדשים",
     "category": "kitchens",
     "size": "small"
   },
   {
-    "url": "image/projects/IMG-20250325-WA0016.jpg",
+    "url": "image/projects/IMG-20240517-WA0047.jpg",
     "title": "שיפוץ מטבח",
     "description": "חידוש מטבח כולל ארונות חדשים ושטח עבודה",
     "category": "construction",
