@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import { useScreen } from '../../hooks/useScreen';
 import {
   Box,
@@ -17,6 +17,14 @@ import {
 import { ChevronLeft, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { motion } from 'framer-motion';
+
+export interface ContactInformation {
+  icon: string;
+  title: string;
+  color: string;
+  action: string;
+  content: string;
+}
 
 interface QuickFormData {
   name: string;
@@ -40,6 +48,35 @@ interface QuickFormData {
   info?: string;
 }
 
+const iconDict: { [key: string]: JSX.Element } = {
+  phone: <Phone size={20} />,
+  email: <Mail size={20} />,
+  address: <MapPin size={20} />,
+};
+const demoData: ContactInformation[] = [
+  {
+    icon: 'phone',
+    title: 'יעקב',
+    content: '052-703-6959',
+    action: 'tel:+972527036959',
+    color: 'var(--red-9)',
+  },
+  {
+    icon: 'email',
+    title: 'אימייל',
+    content: 'info@diamond-renovation.co.il',
+    action: 'mailto:info@diamond-renovation.co.il',
+    color: 'var(--blue-9)',
+  },
+  {
+    icon: 'address',
+    title: 'כתובת',
+    content: 'הדס 22, כרמיאל',
+    action: 'https://maps.google.com/?q=כרמיאל+הדס+22',
+    color: 'var(--green-9)',
+  },
+];
+
 export default function ContactSection({ extendSection = false, noBackground = false }) {
   const [quickFormData, setQuickFormData] = useState<QuickFormData>({
     name: '',
@@ -49,7 +86,21 @@ export default function ContactSection({ extendSection = false, noBackground = f
   const [moreInfo, setMoreInfo] = useState(false);
   const [loading, setLoading] = useState(false);
   const [, setShowModal] = useState(false);
+  const [contactData, setContactData] = useState<ContactInformation[]>(demoData);
   const { isMobile } = useScreen();
+  const phoneNumber = contactData
+    .find(item => item.icon === 'phone')
+    ?.content?.replace('-', '')
+    .replace('-', '');
+
+  useEffect(() => {
+    const fetchContactData = async () => {
+      const response = await fetch(`${import.meta.env.BASE_URL}content/contact_information.json`);
+      const data = await response.json();
+      setContactData(data);
+    };
+    fetchContactData();
+  }, []);
 
   const validateQuickForm = () => {
     const errors: QuickFormErrors = {};
@@ -126,29 +177,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
             </Text>
 
             <Flex style={{ zIndex: 10 }} direction="column" gap="4" my="6">
-              {[
-                {
-                  icon: <Phone size={20} />,
-                  title: 'יעקב',
-                  content: '052-703-6959',
-                  action: 'tel:+972527036959',
-                  color: 'var(--red-9)',
-                },
-                {
-                  icon: <Mail size={20} />,
-                  title: 'אימייל',
-                  content: 'info@diamond-renovation.co.il',
-                  action: 'mailto:info@diamond-renovation.co.il',
-                  color: 'var(--blue-9)',
-                },
-                {
-                  icon: <MapPin size={20} />,
-                  title: 'כתובת',
-                  content: 'הדס 22, כרמיאל',
-                  action: 'https://maps.google.com/?q=כרמיאל+הדס+22',
-                  color: 'var(--green-9)',
-                },
-              ].map((item, index) => (
+              {contactData.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
@@ -185,7 +214,8 @@ export default function ContactSection({ extendSection = false, noBackground = f
                         window.open(item.action, '_blank');
                       }}
                     >
-                      {item.icon}
+                      {iconDict[item.icon]}
+                      {/* <Icon icon={item.icon} width={20} /> */}
                     </Box>
                     <Box as="div" style={{ textAlign: 'start' }}>
                       <Text as="div" weight="bold" size="4">
@@ -208,7 +238,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                           mx="1"
                         >
                           {item.content}
-                          {item.title === 'יעקב' && (
+                          {item.icon === 'phone' && (
                             <Text
                               as="label"
                               className="rt-underline-hover rt-underline-always"
@@ -462,7 +492,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                       </Button>
 
                       <a
-                        href="https://wa.me/972527036959"
+                        href={`https://wa.me/972${phoneNumber}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{ flex: 1, display: 'flex', justifyContent: 'start' }}
@@ -474,7 +504,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
                             e.preventDefault();
                             e.stopPropagation();
                             // Open WhatsApp link in a new tab
-                            window.open('https://wa.me/972527036959', '_blank');
+                            window.open(`https://wa.me/972${phoneNumber}`, '_blank');
                           }}
                           style={{
                             width: 'fit-content',

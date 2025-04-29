@@ -431,7 +431,6 @@ export function Gallery() {
         // Simulate fetching data from an API
         const response = await fetch(`${import.meta.env.BASE_URL}content/projects.json`);
         const data = await response.json();
-        console.log('Fetched projects:', data);
         setProjects(data); // Set the fetched projects
       } catch (error) {
         console.error('Error fetching projects:', error);
@@ -506,9 +505,9 @@ export function Gallery() {
         <Container>
           <Box style={{ overflowX: 'auto', padding: '1rem 0' }}>
             <Flex gap="3" justify="center" wrap="wrap">
-              {categories.map(category => (
+              {categories.map((category, index) => (
                 <Button
-                  key={category.id}
+                  key={index}
                   size="3"
                   variant={selectedCategory === category.id ? 'solid' : 'outline'}
                   onClick={() => setSelectedCategory(category.id)}
@@ -530,7 +529,7 @@ export function Gallery() {
           <Grid columns={{ initial: '1', sm: '2', lg: '3' }} gap="6">
             {filteredProjects.map((project, index) => (
               <motion.div
-                key={project.id}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

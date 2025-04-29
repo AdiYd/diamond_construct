@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Container,
@@ -25,6 +25,7 @@ import {
   Loader2,
 } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
+import { ContactInformation } from '../components/sections/contactUs';
 
 interface FormData {
   name: string;
@@ -41,6 +42,35 @@ interface FormErrors {
   message?: string;
 }
 
+const iconDict: { [key: string]: JSX.Element } = {
+  phone: <Phone size={20} />,
+  email: <Mail size={20} />,
+  address: <MapPin size={20} />,
+};
+const demoData: ContactInformation[] = [
+  {
+    icon: 'phone',
+    title: 'יעקב',
+    content: '052-703-6959',
+    action: 'tel:+972527036959',
+    color: 'var(--red-9)',
+  },
+  {
+    icon: 'email',
+    title: 'אימייל',
+    content: 'info@diamond-renovation.co.il',
+    action: 'mailto:info@diamond-renovation.co.il',
+    color: 'var(--blue-9)',
+  },
+  {
+    icon: 'address',
+    title: 'כתובת',
+    content: 'הדס 22, כרמיאל',
+    action: 'https://maps.google.com/?q=כרמיאל+הדס+22',
+    color: 'var(--green-9)',
+  },
+];
+
 export function Contact() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -53,7 +83,24 @@ export function Contact() {
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [contactInfo, setContactInfo] = useState<ContactInformation[]>(demoData);
   const { isMobile } = useScreen();
+
+  useEffect(() => {
+    const fetchContactData = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.BASE_URL}content/contact_information.json`);
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error('Failed to fetch contact information');
+        }
+        setContactInfo(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchContactData();
+  }, []);
 
   const validateForm = () => {
     const errors: FormErrors = {};
@@ -202,29 +249,7 @@ export function Contact() {
           {/* Contact Info Cards */}
           <Box>
             <Grid rows="3" gap="4">
-              {[
-                {
-                  icon: <Phone size={24} />,
-                  title: 'טלפון',
-                  content: '052-703-6959',
-                  action: 'tel:+972527036959',
-                  color: 'blue',
-                },
-                {
-                  icon: <Mail size={24} />,
-                  title: 'אימייל',
-                  content: 'info@diamond.com',
-                  action: 'mailto:info@diamond.com',
-                  color: 'amber',
-                },
-                {
-                  icon: <MapPin size={24} />,
-                  title: 'כתובת',
-                  content: 'הדס 22, כרמיאל',
-                  action: 'https://maps.google.com/?q=כרמיאל+הדס+22',
-                  color: 'crimson',
-                },
-              ].map((item, index) => (
+              {contactInfo.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -251,7 +276,7 @@ export function Contact() {
                         width: '80px',
                         height: '80px',
                         borderBottomLeftRadius: '100%',
-                        background: `var(--${item.color}-3)`,
+                        background: `${item.color.replace(/9/g, '3')}`,
                         marginRight: '-2rem',
                         marginTop: '-2rem',
                       }}
@@ -267,15 +292,15 @@ export function Contact() {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          backgroundColor: `var(--${item.color}-3)`,
-                          color: `var(--${item.color}-9)`,
+                          backgroundColor: `${item.color.replace(/9/g, '3')}`,
+                          color: `${item.color}`,
                           width: '2.5rem',
                           height: '2.5rem',
                           borderRadius: '50%',
                           flexShrink: 0,
                         }}
                       >
-                        {item.icon}
+                        {iconDict[item.icon]}
                       </Box>
                       <Box
                         style={{
@@ -330,7 +355,7 @@ export function Contact() {
                       width: '80px',
                       height: '80px',
                       borderBottomLeftRadius: '100%',
-                      background: `var(--grass-3)`,
+                      background: `var(--indigo-3)`,
                       marginRight: '-2rem',
                       marginTop: '-2rem',
                     }}
@@ -341,8 +366,8 @@ export function Contact() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: 'var(--grass-3)',
-                        color: 'var(--grass-9)',
+                        backgroundColor: 'var(--indigo-3)',
+                        color: 'var(--indigo-9)',
                         width: '2.5rem',
                         height: '2.5rem',
                         borderRadius: '50%',

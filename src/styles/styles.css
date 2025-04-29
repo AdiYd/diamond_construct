@@ -17,7 +17,7 @@
 :root {
   transition: all 0.4s ease-in-out;
   overflow-x: hidden;
-  --font-family: 'Alef', sans-serif;
+  --font-family: 'David Libre', 'Assistant', 'Alef', 'Roboto', sans-serif;
 
   /* Accent colors based on color: #101437 */
   --accent-color: #101437;
@@ -162,10 +162,9 @@
 
 /* Global Styles */
 body {
-  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.5;
   overflow-x: hidden !important;
 }
 

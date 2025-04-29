@@ -182,13 +182,10 @@ export function Header() {
                   transition: 'height 0.3s ease',
                   left: 0,
                   right: 0,
-                  // background: isDarkTheme ? 'black' : 'white',
-
-                  // borderBottom: '1px solid var(--gray-5)',
-                  // padding: 'var(--space-4)',
+                  backdropFilter: 'blur(20px)',
                 }}
               >
-                <Card style={{ backdropFilter: 'blur(40px)' }}>
+                <Card>
                   <Flex direction="column" gap="4">
                     {pagesConfig.map(page => (
                       <Link

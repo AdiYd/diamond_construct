@@ -16,6 +16,7 @@ interface Project {
   description: string;
   category: string;
   size: string;
+  video: boolean;
   show: boolean;
 }
 
@@ -158,11 +159,28 @@ export function ProjectShowcase() {
                     >
                       <Box className="project-card">
                         <Box className="project-image-container" style={{ height: '300px' }}>
-                          <img
-                            src={`${import.meta.env.BASE_URL}${project.url}`}
-                            alt={project.title}
-                            className="project-image"
-                          />
+                          {project.video ? (
+                            <video
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              className="project-image"
+                              style={{ borderRadius: 'var(--radius-4)' }}
+                            >
+                              <source
+                                src={`${import.meta.env.BASE_URL}${project.url}`}
+                                type="video/mp4"
+                              />
+                              Your browser does not support the video tag.
+                            </video>
+                          ) : (
+                            <img
+                              src={`${import.meta.env.BASE_URL}${project.url}`}
+                              alt={project.title}
+                              className="project-image"
+                            />
+                          )}
                           <Box className="project-overlay">
                             <div className="rt-r-position-absolute rt-r-bottom-3 rt-r-right-4">
                               <Text
@@ -223,12 +241,28 @@ export function ProjectShowcase() {
               >
                 <Box className="project-card">
                   <Box className="project-image-container">
-                    <img
-                      style={{ borderRadius: 'var(--radius-4)' }}
-                      src={`${import.meta.env.BASE_URL}${project.url}`}
-                      alt={project.title}
-                      className="project-image"
-                    />
+                    {project.video ? (
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="project-image"
+                        style={{ borderRadius: 'var(--radius-4)' }}
+                      >
+                        <source
+                          src={`${import.meta.env.BASE_URL}${project.url}`}
+                          type="video/mp4"
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <img
+                        src={`${import.meta.env.BASE_URL}${project.url}`}
+                        alt={project.title}
+                        className="project-image"
+                      />
+                    )}
                     <Box className="project-overlay">
                       <Box width="100%" className="rt-r-position-absolute rt-r-bottom-4">
                         <Text

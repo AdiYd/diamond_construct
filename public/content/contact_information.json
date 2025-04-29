@@ -1,0 +1,23 @@
+[
+  {
+    "icon": "phone",
+    "title": "יעקב",
+    "content": "052-703-6959",
+    "action": "tel:+972527036959",
+    "color": "var(--red-9)"
+  },
+  {
+    "icon": "email",
+    "title": "אימייל",
+    "content": "israel@isaeli.co.il",
+    "action": "mailto:israel@isaeli.co.il",
+    "color": "var(--blue-9)"
+  },
+  {
+    "icon": "address",
+    "title": "כתובת",
+    "content": "הדס 22, כרמיאל",
+    "action": "https://maps.google.com/?q=כרמיאל+הדס+22",
+    "color": "var(--green-9)"
+  }
+]
