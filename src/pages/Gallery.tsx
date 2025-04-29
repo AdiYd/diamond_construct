@@ -191,13 +191,7 @@ const demoProjects = [
 ];
 
 // Categories
-const categories = [
-  { id: 'all', label: 'הכל' },
-  { id: 'kitchens', label: 'מטבחים' },
-  { id: 'bathrooms', label: 'חדרי אמבטיה' },
-  { id: 'renovations', label: 'שיפוצים כלליים' },
-  { id: 'construction', label: 'בנייה פרטית' },
-];
+const demoCategory = ['מטבחים', 'חדרי רחצה', 'חידוש מבנה', 'עיצוב פנים'];
 
 interface Project {
   id: string;
@@ -283,7 +277,7 @@ const Lightbox: React.FC<LightboxProps> = ({
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -298,7 +292,7 @@ const Lightbox: React.FC<LightboxProps> = ({
           position: 'relative',
           //   width: '90%',
           padding: '1rem',
-          maxWidth: '900px',
+          maxWidth: '950px',
           minWidth: '60vw',
           height: '80vh',
           backgroundColor: 'transparent',
@@ -308,31 +302,32 @@ const Lightbox: React.FC<LightboxProps> = ({
         <Box
           style={{
             position: 'absolute',
-            top: '1rem',
-            right: '1rem',
-            backgroundColor: 'rgba(0,0,0,0.5)',
+            top: isMobile ? '-0.2rem' : '-1rem',
+            right: isMobile ? '-0.2rem' : '-1rem',
+            backgroundColor: 'rgba(0,0,0,0.8)',
             borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '2.5rem',
-            height: '2.5rem',
+            width: '2rem',
+            height: '2rem',
             cursor: 'pointer',
             zIndex: 10,
           }}
           onClick={onClose}
+          className="opacityHover"
         >
           <X size={24} color="white" />
         </Box>
 
-        {currentImageType === 'process' && (
+        {currentImageType === 'process' && project.images?.process.length && (
           <>
             <Box
               style={{
                 position: 'absolute',
-                top: '50%',
-                left: isMobile ? '0.5rem' : '1rem',
-                backgroundColor: 'rgba(0,0,0,0.5)',
+                top: isMobile ? '20%' : '50%',
+                right: isMobile ? '0.5rem' : '1rem',
+                backgroundColor: 'rgba(0,0,0,0.8)',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
@@ -340,21 +335,22 @@ const Lightbox: React.FC<LightboxProps> = ({
                 width: isMobile ? '2rem' : '2.5rem',
                 height: isMobile ? '2rem' : '2.5rem',
                 cursor: processIndex === 0 ? 'not-allowed' : 'pointer',
-                opacity: processIndex === 0 ? 0.5 : 1,
+                opacity: processIndex === 0 ? 0.2 : 1,
                 transform: 'translateY(-50%)',
                 zIndex: 10,
               }}
+              className="opacityHover"
               onClick={handlePrev}
             >
-              <ChevronLeft size={24} color="white" />
+              <ChevronRight size={24} color="white" />
             </Box>
 
             <Box
               style={{
                 position: 'absolute',
-                top: '50%',
-                right: isMobile ? '0.5rem' : '1rem',
-                backgroundColor: 'rgba(0,0,0,0.5)',
+                top: isMobile ? '20%' : '50%',
+                left: isMobile ? '0.5rem' : '1rem',
+                backgroundColor: 'rgba(0,0,0,0.8)',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
@@ -363,13 +359,14 @@ const Lightbox: React.FC<LightboxProps> = ({
                 height: isMobile ? '2rem' : '2.5rem',
                 cursor:
                   processIndex === project.images.process.length - 1 ? 'not-allowed' : 'pointer',
-                opacity: processIndex === project.images.process.length - 1 ? 0.5 : 1,
+                opacity: processIndex === project.images.process.length - 1 ? 0.2 : 1,
                 transform: 'translateY(-50%)',
                 zIndex: 10,
               }}
+              className="opacityHover"
               onClick={handleNext}
             >
-              <ChevronRight size={24} color="white" />
+              <ChevronLeft size={24} color="white" />
             </Box>
           </>
         )}
@@ -378,7 +375,9 @@ const Lightbox: React.FC<LightboxProps> = ({
           src={imageSrc}
           alt={`${project.title} - ${currentImageType}`}
           style={{
-            width: '100%',
+            // width: '100%',
+            aspectRatio: isMobile ? '' : '16/9',
+            maxHeight: '100%',
             height: '100%',
             objectFit: 'contain',
           }}
@@ -388,15 +387,16 @@ const Lightbox: React.FC<LightboxProps> = ({
           mx="auto"
           style={{
             position: 'absolute',
-            bottom: '1rem',
+            bottom: isMobile ? '-0.2rem' : '-2rem',
+            // width: isMobile ? '' : '100%',
             left: '1rem',
             right: '1rem',
-            padding: '1rem',
+            padding: '0.7rem',
             backgroundColor: 'rgba(0,0,0,0.7)',
-            width: '95%',
+            // width: '99%',
             color: 'white',
             backdropFilter: 'blur(10px)',
-            borderRadius: 'var(--radius-3)',
+            borderRadius: 'var(--radius-0)',
           }}
         >
           <Text size="3" weight="bold">
@@ -416,12 +416,13 @@ const Lightbox: React.FC<LightboxProps> = ({
 };
 
 export function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('הכל');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageType, setCurrentImageType] = useState<'before' | 'after' | 'process'>('after');
   const [processIndex, setProcessIndex] = useState(0);
   const [projects, setProjects] = useState(demoProjects); // Initialize with demo projects
+  const [categories, setCategories] = useState(demoCategory); // Initialize with demo categories
   const { isMobile } = useScreen();
 
   useEffect(() => {
@@ -430,8 +431,13 @@ export function Gallery() {
       try {
         // Simulate fetching data from an API
         const response = await fetch(`${import.meta.env.BASE_URL}content/projects.json`);
-        const data = await response.json();
-        setProjects(data); // Set the fetched projects
+        const data = (await response.json()) as Project[]; // Ensure the data is of type Project[]
+        if (data.length !== 0) {
+          setProjects(data); // Set the fetched projects
+          const categories = data.map(project => project.category); // Extract categories from projects
+          console.log('Categories:', categories);
+          setCategories([...new Set(categories)]); // Set unique categories
+        }
       } catch (error) {
         console.error('Error fetching projects:', error);
       }
@@ -441,7 +447,7 @@ export function Gallery() {
   }, []);
 
   const filteredProjects =
-    selectedCategory === 'all'
+    selectedCategory === 'הכל'
       ? projects
       : projects.filter(project => project.category === selectedCategory);
 
@@ -505,17 +511,27 @@ export function Gallery() {
         <Container>
           <Box style={{ overflowX: 'auto', padding: '1rem 0' }}>
             <Flex gap="3" justify="center" wrap="wrap">
+              <Button
+                size="3"
+                variant={selectedCategory === 'הכל' ? 'solid' : 'outline'}
+                onClick={() => setSelectedCategory('הכל')}
+                style={{
+                  minWidth: '120px',
+                }}
+              >
+                הכל
+              </Button>
               {categories.map((category, index) => (
                 <Button
                   key={index}
                   size="3"
-                  variant={selectedCategory === category.id ? 'solid' : 'outline'}
-                  onClick={() => setSelectedCategory(category.id)}
+                  variant={selectedCategory === category ? 'solid' : 'outline'}
+                  onClick={() => setSelectedCategory(category)}
                   style={{
                     minWidth: '120px',
                   }}
                 >
-                  {category.label}
+                  {category}
                 </Button>
               ))}
             </Flex>
@@ -542,8 +558,9 @@ export function Gallery() {
                   style={{
                     borderRadius: 'var(--radius-4)',
                     overflow: 'hidden',
-                    // backgroundColor: 'white',
-                    // boxShadow: 'var(--shadow-5)',
+                    border: 'none',
+                    // backgroundColor: 'var(--mint-a1)',
+                    boxShadow: 'var(--shadow-5)',
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -687,7 +704,7 @@ export function Gallery() {
                     </Text>
 
                     {/* View Process Button */}
-                    {project.images.process && project.images.process.length > 1 && (
+                    {project.images.process && project.images.process.length && (
                       <Button
                         variant="solid"
                         className="glowing-button"

@@ -14,7 +14,6 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
   const [phoneNumber, setPhoneNumber] = useState<string>('052-703-6959');
   const directPhoneNumber = phoneNumber.replace(/-/g, '');
-  console.log('directPhoneNumber', directPhoneNumber);
 
   useEffect(() => {
     const fetchContactData = async () => {

@@ -565,6 +565,7 @@ export function Home() {
                     style={{
                       borderColor: 'var(--gray-a4)',
                       // background: 'var(--gray-1)',
+                      cursor: 'default',
                       padding: '1.5rem',
                       borderRadius: 'var(--radius-md)',
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',

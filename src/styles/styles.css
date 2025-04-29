@@ -256,6 +256,10 @@ button {
   /* background-color: #06091c !important; */
 }
 
+.opacityHover:hover {
+  opacity: 0.8 !important;
+}
+
 
 @media (min-width: 768px) {
   .section-lg {
