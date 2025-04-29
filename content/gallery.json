@@ -1,0 +1,146 @@
+[
+  {
+    "title": "שיפוץ מטבח מודרני",
+    "category": "מטבחים",
+    "location": "כרמיאל",
+    "description": "שיפוץ מקיף של מטבח ישן לעיצוב מודרני עם אי, ארונות בהירים ומשטח עבודה מאבן קיסר. המטבח החדש מספק פונקציונליות מקסימלית ואסתטיקה נקייה.",
+    "images": {
+      "before": "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=2074&auto=format&fit=crop",
+      "after": "https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=2070&auto=format&fit=crop",
+      "process": [
+        "https://images.unsplash.com/photo-1677159555085-b60f68166603?q=80&w=2070&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1974&auto=format&fit=crop"
+      ]
+    },
+    "testimonial": {
+      "text": "התהליך היה חלק מאוד, והתוצאה עולה על כל הציפיות שלנו. המטבח הפך להיות מרכז הבית.",
+      "author": "משפחת לוי"
+    }
+  },
+  {
+    "title": "שדרוג חדר רחצה",
+    "category": "חדרי רחצה",
+    "location": "עכו",
+    "description": "שיפוץ מלא של חדר אמבטיה משנות ה-90 לחדר מודרני עם אריחים גדולים, מקלחון זכוכית ואביזרים בשחור מט.",
+    "images": {
+      "after": "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?q=80&w=1936&auto=format&fit=crop",
+      "before": "https://images.unsplash.com/photo-1632933964451-e11a62378034?q=80&w=1974&auto=format&fit=crop",
+      "process": [
+        "https://images.unsplash.com/photo-1632933964451-e11a62378034?q=80&w=1974&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1639501295122-28c362020c63?q=80&w=1974&auto=format&fit=crop"
+      ]
+    },
+    "testimonial": {
+      "text": "הצוות עבד במקצועיות וסיים את העבודה מהר יותר מהצפוי. חדר האמבטיה נראה כמו מתוך מגזין עיצוב.",
+      "author": "משפחת כהן"
+    }
+  },
+  {
+    "title": "שיפוץ דירה קומפלט",
+    "category": "חידוש מבנים",
+    "location": "נהריה",
+    "description": "שיפוץ מקיף של דירה בת 4 חדרים שכלל החלפת ריצוף, צביעה, שדרוג מטבח וחדרי אמבטיה, החלפת דלתות ותאורה.",
+    "images": {
+      "before": "https://images.unsplash.com/photo-1560184611-064284d0e628?q=80&w=1974&auto=format&fit=crop",
+      "after": "https://images.unsplash.com/photo-1585128903994-9788298932a6?q=80&w=1974&auto=format&fit=crop",
+      "process": [
+        "https://images.unsplash.com/photo-1687385504211-cf7bc95bbcc9?q=80&w=2071&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=1974&auto=format&fit=crop"
+      ]
+    },
+    "testimonial": {
+      "text": "הדירה הישנה שלנו הפכה לבית חלומות מודרני! כל פרט נבחן בקפידה והעבודה בוצעה במקצועיות רבה.",
+      "author": "משפחת טל"
+    }
+  },
+  {
+    "title": "בית פרטי מהיסוד",
+    "category": "איטום",
+    "location": "כפר ורדים",
+    "description": "בניית בית פרטי בן 2 קומות מהיסוד, כולל תכנון מלא והתאמה לצרכי המשפחה. הבית כולל 5 חדרי שינה וחצר מעוצבת.",
+    "images": {
+      "before": "https://images.unsplash.com/photo-1620332372374-f108c53d2e03?q=80&w=1972&auto=format&fit=crop",
+      "after": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1975&auto=format&fit=crop",
+      "process": [
+        "video/VID-20250325-WA0276.mp4",
+        "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=2067&auto=format&fit=crop"
+      ]
+    },
+    "testimonial": {
+      "text": "מתחילת התכנון ועד למסירת המפתח, דיאמונד ליוותה אותנו בצורה מושלמת. הבית בדיוק כמו שחלמנו.",
+      "author": "משפחת גולן"
+    }
+  },
+  {
+    "title": "מטבח בסגנון כפרי",
+    "category": "מטבחים",
+    "location": "מעלות",
+    "description": "שיפוץ והסבה של מטבח עירוני למטבח בסגנון כפרי מודרני עם ארונות עץ, אי גדול במרכז ופינת ישיבה מובנית.",
+    "images": {
+      "before": "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+      "after": "video/VID-20250325-WA0071.mp4",
+      "process": [
+        "video/VID-20250325-WA0067.mp4",
+        "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?q=80&w=2070&auto=format&fit=crop"
+      ]
+    },
+    "testimonial": {
+      "text": "המטבח החדש שלנו הוא החלל הכי אהוב עלינו בבית. הייעוץ והביצוע היו מעולים.",
+      "author": "משפחת אברהם"
+    }
+  },
+  {
+    "title": "חדר רחצה מעוצב",
+    "category": "חדרי רחצה",
+    "location": "קריית ביאליק",
+    "description": "שדרוג חדר אמבטיה לדירה בת 3 חדרים, כולל אמבטיה חדשה, ארון אמבטיה תלוי, מראה מעוצבת ותאורה ייחודית.",
+    "images": {
+      "before": "https://images.unsplash.com/photo-1620626011761-996c9275e9df?q=80&w=2069&auto=format&fit=crop",
+      "after": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1887&auto=format&fit=crop",
+      "process": [
+        "https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?q=80&w=1974&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop"
+      ]
+    },
+    "testimonial": {
+      "text": "מקצועיות גבוהה ותוצאה מרשימה. חדר הרחצה שודרג מהיסוד והתוצאה היא חלל יפהפה ופונקציונלי.",
+      "author": "משפחת שלומי"
+    }
+  },
+  {
+    "title": "חידוש דירה ישנה",
+    "category": "חידוש מבנים",
+    "location": "חיפה",
+    "description": "שיפוץ מקיף לדירה משנות ה-70, כולל הריסת קירות פנימיים ליצירת חלל פתוח, החלפת תשתיות חשמל ואינסטלציה, ריצוף חדש ומטבח חדש.",
+    "images": {
+      "before": "https://images.unsplash.com/photo-1493809712911-5ff8e7d5a064?q=80&w=2070&auto=format&fit=crop",
+      "after": "https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=2080&auto=format&fit=crop",
+      "process": [
+        "https://images.unsplash.com/photo-1560184611-da934a86fef1?q=80&w=1974&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1560185007-5f0bb1866cab?q=80&w=1974&auto=format&fit=crop"
+      ]
+    },
+    "testimonial": {
+      "text": "הדירה עברה מהפך מדהים. יעקב וצוות דיאמונד פשוט עשו את הבלתי אפשרי והפכו דירה ישנה לחדשה ומודרנית.",
+      "author": "משפחת אדרי"
+    }
+  },
+  {
+    "title": "דירת גן עם חצר מעוצבת",
+    "category": "חידוש מבנים",
+    "location": "כרמיאל",
+    "description": "שיפוץ דירת גן שכלל עיצוב מחדש של החצר, הקמת פרגולה, מטבח חיצוני ופינת ישיבה. בפנים שופצו חדרי השינה והמטבח.",
+    "images": {
+      "before": "https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=2070&auto=format&fit=crop",
+      "after": "https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=2070&auto=format&fit=crop",
+      "process": [
+        "https://images.unsplash.com/photo-1541183663121-1f2dbbe23a1d?q=80&w=1974&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1574739782594-db4ead022697?q=80&w=1974&auto=format&fit=crop"
+      ]
+    },
+    "testimonial": {
+      "text": "החצר הפכה להיות סלון חיצוני שאנחנו משתמשים בו כל השנה. השילוב של שיפוץ פנים וחוץ היה מושלם.",
+      "author": "משפחת רוזן"
+    }
+  }
+]
