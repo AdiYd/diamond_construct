@@ -8,7 +8,7 @@ export default defineConfig({
   // base: '/',
   plugins: [react(), tailwindcss()],
   build: {
-    outDir: 'dist',
+    outDir: 'build',
   },
   // css: {
   //   postcss: './postcss.config.js',
