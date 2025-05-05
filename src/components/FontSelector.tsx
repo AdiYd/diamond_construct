@@ -20,7 +20,7 @@ const availableFonts = [
 const FontSelector = () => {
   const { isMobile } = useScreen();
   const [currentFont, setCurrentFont] = React.useState('David Libre');
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
   const setFont = (font: string) => {
     document.documentElement.style.setProperty('--font-family', `'${font}', sans-serif`);
     setCurrentFont(font);
