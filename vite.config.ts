@@ -7,9 +7,9 @@ export default defineConfig({
   base: '/diamond_construct/',
   // base: '/',
   plugins: [react(), tailwindcss()],
-  // build: {
-  //   outDir: 'dist',
-  // },
+  build: {
+    outDir: 'dist',
+  },
   // css: {
   //   postcss: './postcss.config.js',
   // },
