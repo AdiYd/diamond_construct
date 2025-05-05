@@ -21,7 +21,7 @@ function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <Router basename="/diamond_construct/">
+        <Router>
           <ScrollToTop />
           <FontSelector />
           <div
