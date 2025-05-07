@@ -15,7 +15,7 @@ import { Terms } from './pages/Terms';
 import '@radix-ui/themes/styles.css';
 import './styles/styles.css';
 import { ScrollToTop } from './components/ScrollToTop';
-import FontSelector from './components/FontSelector';
+// import FontSelector from './components/FontSelector';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
       <LanguageProvider>
         <Router>
           <ScrollToTop />
-          <FontSelector />
+          {/* <FontSelector /> */}
           <div
             style={{
               minHeight: '100vh',
@@ -61,7 +61,7 @@ function App() {
               </Routes>
             </main>
             <Footer />
-            <AccessibilityMenu position={{ bottom: '2rem', right: '2rem' }} />
+            {/* <AccessibilityMenu position={{ bottom: '2rem', right: '2rem' }} /> */}
           </div>
         </Router>
       </LanguageProvider>

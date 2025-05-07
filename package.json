@@ -13,7 +13,23 @@
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md}\"",
     "preview": "vite preview",
+    "postbuild": "react-snap",
     "test": "jest"
+  },
+  "reactSnap": {
+    "source": "build",
+    "destination": "build",
+    "include": [
+      "/",
+      "/services",
+      "/about",
+      "/gallery",
+      "/contact"
+    ],
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
   },
   "dependencies": {
     "@iconify/react": "^5.2.0",
@@ -28,6 +44,7 @@
     "@radix-ui/themes": "^3.2.1",
     "@react-hook/media-query": "^1.1.1",
     "@tailwindcss/vite": "^4.1.1",
+    "axios": "^1.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.5.2",

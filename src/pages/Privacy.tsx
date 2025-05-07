@@ -12,12 +12,10 @@ export function Privacy() {
     const fetchContent = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${import.meta.env.BASE_URL}content/legal/privacy-policy.md`);
+        const response = await fetch(`/content/legal/privacy-policy.md`);
         if (!response.ok) {
           // Fallback to the default privacy-policy.md if language-specific version doesn't exist
-          const fallbackResponse = await fetch(
-            `${import.meta.env.BASE_URL}content/legal/privacy-policy.md`
-          );
+          const fallbackResponse = await fetch(`/content/legal/privacy-policy.md`);
           const fallbackContent = await fallbackResponse.text();
           setContent(await marked.parse(fallbackContent));
         } else {

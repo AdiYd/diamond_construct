@@ -29,15 +29,6 @@ These technologies are relied upon for conformance with the accessibility standa
 - External evaluation
 - User feedback and testing
 
-## Feedback
-
-We welcome your feedback on the accessibility of [Brand Name]. Please let us know if you encounter accessibility barriers:
-
-- Phone: [phone number]
-- E-mail: [email address]
-- Visitor address: [physical address]
-
-We try to respond to feedback within 5 business days.
 
 ## Compatibility with Browsers and Assistive Technology
 

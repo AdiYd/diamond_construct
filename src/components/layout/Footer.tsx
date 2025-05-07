@@ -17,7 +17,7 @@ export function Footer() {
 
   useEffect(() => {
     const fetchContactData = async () => {
-      const response = await fetch(`${import.meta.env.BASE_URL}content/contact_information.json`);
+      const response = await fetch(`/content/contact_information.json`);
       const data = await response.json();
       const phoneNumberUpdate = data.find(
         (item: ContactInformation) => item.icon === 'phone'
@@ -180,7 +180,7 @@ export function Footer() {
                 }}
               >
                 <img
-                  src={`${import.meta.env.BASE_URL}logo.jpeg`}
+                  src={`/logo.jpeg`}
                   alt="Logo"
                   style={{ height: '2rem', borderRadius: '50%' }}
                 />

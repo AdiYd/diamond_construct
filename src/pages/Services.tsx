@@ -120,7 +120,7 @@ export function Services() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}content/blog.json`);
+        const response = await fetch(`/content/blog.json`);
         if (!response.ok) {
           throw new Error('Failed to fetch services data');
         }
@@ -459,38 +459,40 @@ export function Services() {
                     {service.fullDescription}
                   </Text>
 
-                  <Box my="6">
-                    <Text
-                      weight="bold"
-                      size="3"
-                      mb="4"
-                      style={{
-                        textAlign: 'start',
-                        marginBottom: '1rem',
-                      }}
-                    >
-                      היתרונות שלנו:
-                    </Text>
-                    <Flex
-                      mt="4"
-                      direction="column"
-                      gap="2"
-                      style={{
-                        alignItems: isMobile ? 'center' : 'flex-start',
-                      }}
-                    >
-                      {service.benefits.map((benefit, idx) => (
-                        <Flex key={idx} gap="2" align="center">
-                          <Box style={{ color: service.color }}>
-                            <CheckCircle style={{ position: 'relative', top: '3px' }} size={16} />
-                          </Box>
-                          <Text weight="medium" as="div" size="3">
-                            {benefit}
-                          </Text>
-                        </Flex>
-                      ))}
-                    </Flex>
-                  </Box>
+                  {service?.benefits && service.benefits?.length > 0 && (
+                    <Box my="6">
+                      <Text
+                        weight="bold"
+                        size="3"
+                        mb="4"
+                        style={{
+                          textAlign: 'start',
+                          marginBottom: '1rem',
+                        }}
+                      >
+                        היתרונות שלנו:
+                      </Text>
+                      <Flex
+                        mt="4"
+                        direction="column"
+                        gap="2"
+                        style={{
+                          alignItems: isMobile ? 'center' : 'flex-start',
+                        }}
+                      >
+                        {service.benefits.map((benefit, idx) => (
+                          <Flex key={idx} gap="2" align="start">
+                            <Box style={{ color: service.color }}>
+                              <CheckCircle style={{ position: 'relative', top: '3px' }} size={16} />
+                            </Box>
+                            <Text align="right" weight="medium" as="div" size="3">
+                              {benefit}
+                            </Text>
+                          </Flex>
+                        ))}
+                      </Flex>
+                    </Box>
+                  )}
                 </Box>
               </motion.div>
 

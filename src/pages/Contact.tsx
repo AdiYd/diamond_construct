@@ -1,5 +1,6 @@
 import React, { JSX, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 import {
   Container,
   Section,
@@ -89,7 +90,7 @@ export function Contact() {
   useEffect(() => {
     const fetchContactData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}content/contact_information.json`);
+        const response = await fetch(`/content/contact_information.json`);
         const data = await response.json();
         if (!response.ok) {
           throw new Error('Failed to fetch contact information');
@@ -129,28 +130,58 @@ export function Contact() {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (validateForm()) {
       setIsSubmitting(true);
-
+      const formDataToSend = {
+        API: '9f2edb6c-8dbe-41c9-aeda-7cac06e0791b',
+        service: 'send_lead',
+        data: {
+          to: 'info@diamond-il.com',
+          subject: 'New Lead',
+          data: {
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            message: formData.message,
+            service: formData.service,
+          },
+        },
+      };
       // Simulate form submission to backend
-      setTimeout(() => {
+      try {
+        const response = await axios.post('https://taskomatic.net:7443/test1-mail', formDataToSend);
+
+        if (response.status === 200) {
+          setSubmitStatus('success');
+        } else {
+          setSubmitStatus('error');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        setSubmitStatus('error');
+      } finally {
         setIsSubmitting(false);
-        setSubmitStatus('success');
-        // Reset form after successful submission
-        setTimeout(() => {
-          setFormData({
-            name: '',
-            phone: '',
-            email: '',
-            message: '',
-            service: '',
-          });
-          setSubmitStatus('idle');
-        }, 3000);
-      }, 1500);
+      }
+
+      // setTimeout(() => {
+      //   setIsSubmitting(false);
+      //   setSubmitStatus('success');
+
+      //   // Reset form after successful submission
+      //   setTimeout(() => {
+      //     setFormData({
+      //       name: '',
+      //       phone: '',
+      //       email: '',
+      //       message: '',
+      //       service: '',
+      //     });
+      //     setSubmitStatus('idle');
+      //   }, 3000);
+      // }, 1500);
     }
   };
 

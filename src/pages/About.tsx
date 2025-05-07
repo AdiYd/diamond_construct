@@ -8,6 +8,8 @@ import ContactSection from '../components/sections/contactUs';
 import { useEffect, useState } from 'react';
 import { TeamImage, TeamMember } from '../components/sections/TeamShowCase';
 import Asset from '../components/Asset';
+import fallbackTeamMember from '../components/sections/team_members.json';
+import fallbackTeamImage from '../components/sections/team.json';
 
 // Company values data
 const companyValues = [
@@ -103,17 +105,19 @@ export function About() {
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}content/team.json`);
+        const response = await fetch(`/content/team.json`);
         const data = await response.json();
         setTeamImages(data);
       } catch (error) {
+        const data = fallbackTeamImage as TeamImage[];
+        setTeamImages(data);
         console.error('Error fetching team data:', error);
       }
     };
 
     const fetchVisionData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.BASE_URL}content/vision.json`);
+        const response = await fetch(`/content/vision.json`);
         const data = await response.json();
         setVision(data);
       } catch (error) {
@@ -128,12 +132,12 @@ export function About() {
   useEffect(() => {
     const fetchMembersData = async () => {
       try {
-        const teamMembersResponse = await fetch(
-          `${import.meta.env.BASE_URL}content/team_members.json`
-        );
+        const teamMembersResponse = await fetch(`/content/team_members.json`);
         const teamMembersData = await teamMembersResponse.json();
         setTeamMembers(teamMembersData);
       } catch (error) {
+        const data = fallbackTeamMember as TeamMember[];
+        setTeamMembers(data);
         console.error('Error fetching members data:', error);
       }
     };

@@ -8,6 +8,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
 import Asset from '../Asset';
+import fallbackData from './projects.json';
 
 // Define the Project interface
 interface Project {
@@ -27,7 +28,7 @@ export function ProjectShowcase() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [, setProjectImages] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
   const shuffledProjects = useRef<Project[]>([]);
   // Set up Embla Carousel for mobile with improved spacing options
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -47,7 +48,7 @@ export function ProjectShowcase() {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${import.meta.env.BASE_URL}content/projects.json`);
+        const response = await fetch(`/content/projects.json`);
         if (!response.ok) {
           throw new Error('Failed to fetch projects data');
         }
@@ -69,8 +70,25 @@ export function ProjectShowcase() {
           }
         }
       } catch (err) {
-        console.error('Error fetching project data:', err);
-        setError('Failed to load projects. Please try again later.');
+        console.error('Error fetching project data, showing fallback:', err);
+        const data = fallbackData as Project[]; // Fallback to local data
+        setProjectImages(data);
+        if (data.length > 0) {
+          // Create a shuffled selection of projects
+          const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
+
+          // Find the special project with field show
+          const mandatoryProjects = data.filter((p: Project) => p.show === true);
+
+          if (mandatoryProjects.length > 0) {
+            // Use a Set to ensure uniqueness
+            const combinedProjects = new Set([...shuffled, ...mandatoryProjects]);
+            shuffledProjects.current = Array.from(combinedProjects);
+          } else {
+            shuffledProjects.current = shuffled;
+          }
+        }
+        // setError('Failed to load projects. Please try again later.');
       } finally {
         setLoading(false);
       }

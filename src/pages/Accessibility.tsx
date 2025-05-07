@@ -13,7 +13,7 @@ export function Accessibility() {
       try {
         setIsLoading(true);
         // For Hebrew content specifically as requested
-        const response = await fetch(`${import.meta.env.BASE_URL}content/legal/accessibility.md`);
+        const response = await fetch(`/content/legal/accessibility.md`);
         if (!response.ok) {
           setContent('');
         } else {

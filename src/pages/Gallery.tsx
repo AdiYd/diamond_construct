@@ -432,7 +432,7 @@ export function Gallery() {
     const fetchProjects = async () => {
       try {
         // Simulate fetching data from an API
-        const response = await fetch(`${import.meta.env.BASE_URL}content/gallery.json`);
+        const response = await fetch(`/content/gallery.json`);
         const data = (await response.json()) as Project[]; // Ensure the data is of type Project[]
         if (data.length !== 0) {
           setProjects(data); // Set the fetched projects

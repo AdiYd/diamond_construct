@@ -96,7 +96,7 @@ export function Header() {
               <Link to="/" style={{ textDecoration: 'none' }}>
                 <Box>
                   <img
-                    src={`${import.meta.env.BASE_URL}logo.jpeg`}
+                    src={`/logo.jpeg`}
                     alt="Logo"
                     style={{ height: '2rem', borderRadius: '50%' }}
                   />

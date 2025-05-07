@@ -89,7 +89,7 @@ npm run build
 For a quote or consultation without obligation, contact us:
 - Phone: 052-703-6959
 - WhatsApp: [Send a message now](https://wa.me/972527036959)
-- Email: diamondbuilding.il@gmail.com
+- Email: info@diamond-il.com
 
 ---
 

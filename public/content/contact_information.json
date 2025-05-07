@@ -9,8 +9,8 @@
   {
     "icon": "email",
     "title": "אימייל",
-    "content": "israel@isaeli.co.il",
-    "action": "mailto:israel@isaeli.co.il",
+    "content": "info@diamond-il.com",
+    "action": "mailto:info@diamond-il.com",
     "color": "var(--blue-9)"
   },
   {

@@ -12,14 +12,10 @@ export function Terms() {
     const fetchContent = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          `${import.meta.env.BASE_URL}content/legal/terms-of-service.md`
-        );
+        const response = await fetch(`/content/legal/terms-of-service.md`);
         if (!response.ok) {
           // Fallback to the default terms-of-service.md if language-specific version doesn't exist
-          const fallbackResponse = await fetch(
-            `${import.meta.env.BASE_URL}content/legal/terms-of-service.md`
-          );
+          const fallbackResponse = await fetch(`/content/legal/terms-of-service.md`);
           const fallbackContent = await fallbackResponse.text();
           setContent(await marked.parse(fallbackContent));
         } else {

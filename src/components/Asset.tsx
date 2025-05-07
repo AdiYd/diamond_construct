@@ -24,6 +24,13 @@ const Asset: React.FC<AssetProps> = ({ url, alt = '', ...props }) => {
     return null;
   }
 
+  // Check if url starts with 'http' or 'https'
+  if (!url.startsWith('http') && !url.startsWith('https')) {
+    if (!url.startsWith('/')) {
+      url = `/${url}`;
+    }
+  }
+
   const fileExtension = url.split('.').pop()?.toLowerCase() as FileExtension | undefined;
 
   if (!fileExtension) {
@@ -32,8 +39,6 @@ const Asset: React.FC<AssetProps> = ({ url, alt = '', ...props }) => {
 
   //   const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp'];
   const videoExtensions = ['mp4', 'webm', 'ogg', 'mov'];
-  console.log('url:', url);
-  console.log('fileExtension:', fileExtension);
   if (videoExtensions.includes(fileExtension) || props.video) {
     if (props.imageOnly) {
       return null;

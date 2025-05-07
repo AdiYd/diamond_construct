@@ -8,6 +8,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
 import Asset from '../Asset';
+import fallbackData from './team.json'; // Fallback data for team members
 
 // Define the TeamImage interface
 export interface TeamImage {
@@ -33,7 +34,7 @@ export function TeamShowCase() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [, setTeamImages] = useState<TeamImage[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
   const shuffledTeamImages = useRef<TeamImage[]>([]);
   // Set up Embla Carousel for mobile with improved spacing options
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -53,7 +54,7 @@ export function TeamShowCase() {
     const fetchTeamData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${import.meta.env.BASE_URL}content/team.json`);
+        const response = await fetch(`/content/team.json`);
         if (!response.ok) {
           throw new Error('Failed to fetch team data');
         }
@@ -67,8 +68,17 @@ export function TeamShowCase() {
         }
         setTeamImages(data);
       } catch (err) {
-        console.error('Error fetching team data:', err);
-        setError('Failed to load team information. Please try again later.');
+        console.error('Error fetching team data, showing fallback:', err);
+        const data = fallbackData as TeamImage[]; // Fallback to local data
+        if (data.length > 0) {
+          const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
+          const mandatoryMembers = data.filter((member: TeamImage) => member.show === true);
+          const combinedTeams = new Set([...shuffled, ...mandatoryMembers]);
+          // Convert Set back to array and shuffle
+          shuffledTeamImages.current = Array.from(combinedTeams).sort(() => Math.random() - 0.5);
+        }
+        setTeamImages(data);
+        // setError('Failed to load team information. Please try again later.');
       } finally {
         setLoading(false);
       }

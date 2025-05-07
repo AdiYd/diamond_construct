@@ -17,7 +17,7 @@
 :root {
   transition: all 0.4s ease-in-out;
   overflow-x: hidden;
-  --font-family: 'David Libre', 'Assistant', 'Alef', 'Roboto', sans-serif;
+  --font-family: 'Heebo','David Libre', 'Assistant', 'Alef', 'Roboto', sans-serif;
 
   /* Accent colors based on color: #101437 */
   --accent-color: #101437;

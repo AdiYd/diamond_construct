@@ -17,6 +17,7 @@ import {
 import { ChevronLeft, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 export interface ContactInformation {
   icon: string;
@@ -64,8 +65,8 @@ const demoData: ContactInformation[] = [
   {
     icon: 'email',
     title: 'אימייל',
-    content: 'info@diamond-renovation.co.il',
-    action: 'mailto:info@diamond-renovation.co.il',
+    content: 'info@diamond-il.com',
+    action: 'mailto:info@diamond-il.com',
     color: 'var(--blue-9)',
   },
   {
@@ -95,7 +96,7 @@ export default function ContactSection({ extendSection = false, noBackground = f
 
   useEffect(() => {
     const fetchContactData = async () => {
-      const response = await fetch(`${import.meta.env.BASE_URL}content/contact_information.json`);
+      const response = await fetch(`/content/contact_information.json`);
       const data = await response.json();
       setContactData(data);
     };
@@ -119,10 +120,32 @@ export default function ContactSection({ extendSection = false, noBackground = f
     e.preventDefault();
     if (validateQuickForm()) {
       console.log('Quick form submitted:', quickFormData);
+
       setLoading(true);
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setLoading(false);
+      const formDataToSend = {
+        API: '9f2edb6c-8dbe-41c9-aeda-7cac06e0791b',
+        service: 'send_lead',
+        data: {
+          to: 'info@diamond-il.com',
+          subject: 'New Lead',
+          data: quickFormData,
+        },
+      };
+      // Simulate form submission to backend
+      try {
+        const response = await axios.post('https://taskomatic.net:7443/test1-mail', formDataToSend);
+        console.log('Form submitted successfully:', response.data);
+        if (response.status === 200) {
+          setLoading(false);
+        } else {
+          setQuickFormErrors({});
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        setQuickFormErrors({});
+      } finally {
+        setLoading(false);
+      }
       // setQuickFormData({ name: '', phone: '', ...(moreInfo ? { service: '', info: '' } : {}) });
       setQuickFormErrors({});
     }
