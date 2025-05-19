@@ -61,7 +61,7 @@ function App() {
               </Routes>
             </main>
             <Footer />
-            {/* <AccessibilityMenu position={{ bottom: '2rem', right: '2rem' }} /> */}
+            <AccessibilityMenu position={{ bottom: '2rem', right: '2rem' }} />
           </div>
         </Router>
       </LanguageProvider>
