@@ -229,6 +229,8 @@ export function Services() {
                     style={{
                       color: service.color,
                       marginBottom: '0.5rem',
+                      display: 'flex',
+                      justifyContent: 'center',
                     }}
                   >
                     {iconDict[service.icon]}
