@@ -17,7 +17,8 @@ import { TestimonialCarousel } from '../components/ui/TestimonialCarousel';
 import { ProjectShowcase } from '../components/sections/ProjectShowcase';
 import { TeamShowCase } from '../components/sections/TeamShowCase';
 import ContactSection from '../components/sections/contactUs';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import heroImage from '../assets/hero.jpg';
 
 interface WhyUs {
   icon: string;
@@ -26,25 +27,56 @@ interface WhyUs {
   color?: string;
 }
 
+const whyUsList: WhyUs[] = [
+  {
+    icon: '🏠',
+    title: 'חוויה אחרת בעולם השיפוצים',
+    description:
+      'אצלנו השיפוץ עובר בראש שקט – עם ליווי אישי צמוד, קבוצת עדכונים ייעודית, ותיאום מלא בכל שלב.',
+    color: 'var(--blue-3)',
+  },
+  {
+    icon: '🔒',
+    title: 'ביטחון מלא בתהליך',
+    description:
+      'הצוות שלנו מביא ניסיון, סדר, תכנון נכון והתחייבות לעמידה בזמנים, כדי שתוכלו להרגיש בטוחים לכל אורך הדרך.',
+    color: 'var(--green-3)',
+  },
+  {
+    icon: '❤️',
+    title: 'לקוחות פרטיים ועסקיים כאחד',
+    description:
+      'שירות מקצועי גם למשפחות שרוצות לשדרג את הבית – וגם לעסקים שצריכים חידוש מקיף למשרד, אולם ספורט או מבנה ציבורי.',
+    color: 'var(--purple-3)',
+  },
+  {
+    icon: '🔨',
+    title: 'תוצאה שלא מתפשרת',
+    description:
+      'הקפדה על גימורים מושלמים, חומרים איכותיים, ותיאום עם כל אנשי המקצוע הרלוונטיים – מהנדסים, אדריכלים ומעצבים.',
+    color: 'var(--orange-3)',
+  },
+];
+
 export function Home() {
   const { isMobile } = useScreen();
-  const [whyUs, setWhyUs] = useState<WhyUs[]>([]);
+  const [whyUs] = useState<WhyUs[]>(whyUsList);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`/content/why_us.json`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch projects data');
-        }
-        const data = await response.json();
-        setWhyUs(data);
-      } catch (error) {
-        console.error('Error fetching projects data:', error);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`/content/why_us.json`);
+  //       if (!response.ok) {
+  //         throw new Error('Failed to fetch projects data');
+  //       }
+  //       const data = await response.json();
+  //       setWhyUs(data);
+  //     } catch (error) {
+  //       console.error('Error fetching projects data:', error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
     <Box style={{ position: 'relative' }} dir="rtl">
@@ -53,9 +85,7 @@ export function Home() {
         size="3"
         className="hero-background"
         style={{
-          backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.4), transparent), url("${
-            import.meta.env.BASE_URL
-          }hero.jpg")`,
+          backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.3), transparent), url("${heroImage}")`, // Use a local image or a URL
           // 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url("https://images.pexels.com/photos/31117955/pexels-photo-31117955.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -240,7 +270,7 @@ export function Home() {
                       padding: '0 1rem',
                     }}
                   >
-                    Diamond – מקצועיות ואכפתיות מכל הלב
+                    Diamond – חוויה אחרת בעולם השיפוצים
                   </Text>
                 )}
 
@@ -393,8 +423,8 @@ export function Home() {
                   lineHeight: 1.7,
                 }}
               >
-                אצלנו תקבלו ליווי אישי וצמוד לכל אורך הדרך – משלב הרעיון ועד גמר נקי ומסודר. אנחנו
-                מתמחים בבנייה פרטית, תוספות בנייה, שיפוץ כללי, חידוש מטבחים, אמבטיות ותחזוקה שוטפת.
+                אנחנו מתמחים בבניה פרטית, תוספות בניה, שיפוצים כלליים, שיפוץ משרדים ושטחי מסחר וכל
+                סוגי הגמרים
               </Text>
             </div>
 
@@ -426,9 +456,9 @@ export function Home() {
                 },
                 {
                   icon: <Hammer size={28} />,
-                  title: 'תחזוקה שוטפת ואחזקת מבנים',
+                  title: 'בינוי ושיפוץ מסחרי',
                   description:
-                    'ניהול ותיקון תשתיות שוטפות לבתים פרטיים, מבנים משותפים ומבני ציבור – ברמת שירות גבוהה וללא הפתעות.',
+                    'שיפוץ משרדים ושטחי מסחר בעיצובים המתקדמים ביותר, תוך התאמה לצרכים של העסק. שימוש בחומרים איכותיים, תיכנון מוקפד ועמידה בלוחות זמנים מדוייקים',
                   color: 'var(--accent-9)',
                   gradient: 'linear-gradient(135deg, #65A30D, #84CC16)',
                 },

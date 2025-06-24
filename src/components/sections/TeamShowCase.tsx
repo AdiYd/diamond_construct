@@ -8,7 +8,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
 import Asset from '../Asset';
-import fallbackData from './team.json'; // Fallback data for team members
+import teamData from './team.json'; // Fallback data for team members
 
 // Define the TeamImage interface
 export interface TeamImage {
@@ -54,11 +54,11 @@ export function TeamShowCase() {
     const fetchTeamData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/content/team.json`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch team data');
-        }
-        const data = await response.json();
+        // const response = await fetch(`/content/team.json`);
+        // if (!response.ok) {
+        //   throw new Error('Failed to fetch team data');
+        // }
+        const data = teamData;
         if (data.length > 0) {
           const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
           const mandatoryMembers = data.filter((member: TeamImage) => member.show === true);
@@ -69,7 +69,7 @@ export function TeamShowCase() {
         setTeamImages(data);
       } catch (err) {
         console.error('Error fetching team data, showing fallback:', err);
-        const data = fallbackData as TeamImage[]; // Fallback to local data
+        const data = teamData as TeamImage[]; // Fallback to local data
         if (data.length > 0) {
           const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
           const mandatoryMembers = data.filter((member: TeamImage) => member.show === true);

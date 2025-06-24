@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import useScreen from '../hooks/useScreen';
 import ContactSection from '../components/sections/contactUs';
-import { JSX, useEffect, useState } from 'react';
+import { JSX, useState } from 'react';
 import Asset from '../components/Asset';
 
 const iconDict: { [key: string]: JSX.Element } = {
@@ -27,52 +27,18 @@ const iconDict: { [key: string]: JSX.Element } = {
 
 const servicesList = [
   {
-    id: 'bathrooms',
-    title: 'שיפוץ אמבטיות',
-    shortDescription: 'שיפוצי חדרי אמבטיה מקצועיים עם חומרים איכותיים וטכניקות מתקדמות.',
-    fullDescription:
-      'חדר האמבטיה הוא אחד החדרים הכי שימושיים בבית, ואצלנו הוא זוכה לטיפול מיוחד. צוות המומחים שלנו בעל ניסיון רב בשיפוץ חדרי אמבטיה, החל מריצוף, חיפוי, החלפת סנטרייה, ועד התקנת אמבטיות, מקלחונים וארונות אמבטיה. אנו משתמשים בחומרים איכותיים ועמידים למים תוך שמירה על אסתטיקה ופונקציונליות.',
-    icon: 'droplet',
-    color: 'var(--blue-9)',
-    benefits: [
-      'עמידות בפני רטיבות ולחות',
-      'חיפויים איכותיים נגד עובש',
-      'סנטרייה מיובאת ממיטב היצרנים',
-      'עבודה מדויקת ונקייה',
-    ],
-    image:
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1770&auto=format&fit=crop',
-  },
-  {
-    id: 'kitchens',
-    title: 'שיפוץ מטבחים',
-    shortDescription: 'עיצוב והתקנת מטבחים מודרניים המשלבים פונקציונליות ואסתטיקה.',
-    fullDescription:
-      'המטבח הוא לב הבית, ואנחנו מבינים את חשיבותו. צוות המומחים שלנו מתמחה בשיפוץ מטבחים ברמה הגבוהה ביותר, תוך שילוב בין עיצוב מודרני לפונקציונליות מקסימלית. אנחנו מציעים פתרונות מותאמים אישית לכל חלל, כולל החלפת ארונות, משטחי עבודה, כיורים, ברזים, אריחים, תאורה ועוד. אנו עובדים עם מיטב הספקים לאספקת חומרים איכותיים ועמידים.',
-    icon: 'chefHat',
-    color: 'var(--amber-9)',
-    benefits: [
-      'תכנון מותאם אישית לניצול מקסימלי של החלל',
-      'חומרים עמידים במיוחד',
-      'פתרונות אחסון חכמים',
-      'שילוב מערכות חשמל מתקדמות',
-    ],
-    image:
-      'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=1768&auto=format&fit=crop',
-  },
-  {
     id: 'construction',
     title: 'בנייה פרטית קומפלט',
-    shortDescription: 'מימוש חלומות הבנייה שלכם מהיסוד ועד למפתח, בליווי מקצועי מלא.',
+    shortDescription: 'מימוש חלום הבית הפרטי מתחיל כאן.',
     fullDescription:
-      'דיאמונד מציעה שירותי בנייה פרטית מקיפים, מהשלב התכנוני ועד מסירת המפתח. הצוות שלנו מורכב מאנשי מקצוע מנוסים הפועלים בסטנדרטים הגבוהים ביותר, תוך הקפדה על איכות הביצוע ועמידה בלוחות זמנים. אנחנו מלווים אתכם בכל שלבי הבנייה, מתכנון ואישור תכניות, דרך הנחת תשתיות, יציקת רצפות וקירות, ועד עבודות גמר.',
+      'מימוש חלום הבית הפרטי מתחיל כאן. אנו מציעים ליווי מלא מהשלב התכנוני ועד קבלת המפתח, עם צוות מקצועי המורכב מבעלי מקצוע מנוסים. אנו מקפידים על תכנון מוקפד, ביצוע איכותי ועמידה בלוחות זמנים, תוך שימוש בחומרים הטובים ביותר וסטנדרטים בלתי מתפשרים.',
     icon: 'construction',
     color: 'var(--crimson-9)',
     benefits: [
-      'ליווי מקצועי לאורך כל התהליך',
-      'עבודה לפי תקנים ותקנות הבנייה',
-      'שימוש בחומרים איכותיים',
-      'פיקוח הנדסי צמוד',
+      'ליווי אישי ומקצועי לאורך כל הדרך',
+      'עבודה לפי תקנים ותקנות הבניה',
+      'שימוש בחומרי גלם מובחרים',
+      'ביצוע מדויק בלוחות זמנים',
     ],
     image:
       'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1772&auto=format&fit=crop',
@@ -80,63 +46,112 @@ const servicesList = [
   {
     id: 'renovations',
     title: 'שיפוצים כלליים',
-    shortDescription: 'החזרת הברק לבית שלכם עם שיפוץ כולל מקיר לקיר.',
+    shortDescription: 'מתחדשים בבית? אנחנו כאן כדי להפוך כל רעיון למציאות.',
     fullDescription:
-      'בין אם אתם מעוניינים בשינוי מראה הבית, בהגדלת החלל או בשיפור הפונקציונליות, צוות דיאמונד מציע מגוון רחב של שירותי שיפוץ. אנחנו מתמחים בהריסת קירות לא נושאים, בניית קירות גבס, החלפת ריצוף, צביעה מקצועית, החלפת דלתות וחלונות, שיפוץ מרפסות וחדרי מדרגות, ועוד. שירותי השיפוץ שלנו מאופיינים באיכות גבוהה, תוך שימוש בחומרים מתקדמים ועמידים.',
+      'מתחדשים בבית? אנחנו כאן כדי להפוך כל רעיון למציאות. צוות דיאמונד מציע מגוון רחב של שירותי שיפוץ– שבירת קירות, עבודות חשמל ואינסטלציה, ריצוף, טיח, צבע, ועוד. שירותי השיפוץ שלנו מאופיינים באיכות גבוהה, תוך שימוש בחומרים מתקדמים ועמידים.',
     icon: 'wrench',
     color: 'var(--grass-9)',
     benefits: [
-      'תכנון מדויק לפי צרכי הלקוח',
-      'ביצוע בסטנדרטים גבוהים',
       'פתרונות יצירתיים לכל בעיה',
+      'עבודה לפי תקני איכות מחמירים',
+      'התאמה אישית לצרכי הלקוח',
       'גימור ברמה הגבוהה ביותר',
+    ],
+    image:
+      'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=1768&auto=format&fit=crop',
+  },
+  {
+    id: 'offices',
+    title: 'שיפוץ משרדים',
+    shortDescription: 'יצירת סביבת עבודה נעימה, פרקטית ומעוצבת.',
+    fullDescription:
+      'יצירת סביבת עבודה נעימה, פרקטית ומעוצבת – זו המומחיות שלנו. אנו מבצעים שיפוץ משרדים כולל תכנון אדריכלי, התאמת פתרונות תאורה, מערכות חשמל, חלוקת חללים חכמה, ריצוף, צבע ואלמנטים עיצוביים – והכל בהתאמה מלאה לצרכי העסק.',
+    icon: 'clipboardCheck',
+    color: 'var(--indigo-9)',
+    benefits: [
+      'תכנון חכם לחוויית עבודה מיטבית',
+      'ביצוע מהיר עם מינימום הפרעה',
+      'פתרונות עיצוביים בהתאמה אישית',
+      'עבודה בסטנדרטים עסקיים',
+    ],
+    image: 'https://images.unsplash.com/photo-0116?q=80&w=1769&auto=format&fit=crop',
+  },
+  {
+    id: 'lightweight-construction',
+    title: 'בנייה קלה',
+    shortDescription: 'פתרונות בנייה קלה לכל מטרה – מהיר, איכותי ומותאם אישית.',
+    fullDescription:
+      'פתרונות בנייה קלה לכל מטרה – יחידות דיור, משרדים, תוספות בנייה ועוד. אנו מתמחים בביצוע מהיר ואיכותי תוך שמירה על תקני אש, בידוד, עמידות ובטיחות. כל מבנה מתוכנן ומבוצע בהתאמה מושלמת לצרכי הלקוח – עם אחריות מלאה ושקט נפשי.',
+    icon: 'construction',
+    color: 'var(--blue-9)',
+    benefits: [
+      'בנייה מהירה ויעילה',
+      'בידוד תרמי ואקוסטי איכותי',
+      'פתרון משתלם לתוספת מקום',
+      'תכנון אישי לפי דרישה',
     ],
     image:
       'https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=1770&auto=format&fit=crop',
   },
   {
-    id: 'maintenance',
-    title: 'תחזוקה שוטפת',
-    shortDescription: 'שמירה על הבית והנכס שלכם במצב מיטבי לאורך זמן.',
+    id: 'bathroom-kitchen',
+    title: 'שיפוץ חדרי רחצה ומטבחים',
+    shortDescription: 'הפיכת חללים פונקציונליים לחללים מעוצבים, איכותיים ונוחים.',
     fullDescription:
-      'שירותי התחזוקה השוטפת שלנו נועדו לשמר את הנכס שלכם במצב מיטבי, למנוע בעיות עתידיות ולחסוך בעלויות תיקון גבוהות. אנחנו מציעים חוזי תחזוקה המותאמים לצרכים שלכם, הכוללים ביקורות תקופתיות, תיקוני נזילות, תחזוקת מערכות חשמל, טיפול בסדקים ברצפה ובקירות, צביעה תקופתית, ניקוי תעלות ניקוז, ועוד. צוות המומחים שלנו זמין לכל קריאת שירות.',
-    icon: 'clipboardCheck',
-    color: 'var(--indigo-9)',
+      'המטבח וחדר הרחצה הם הלב הפונקציונלי של הבית – ואנחנו הופכים אותם לחללים מעוצבים, איכותיים ונוחים. אנו מציעים פתרונות מותאמים אישית הכוללים פירוק, תכנון מחודש, חיפויים, אינסטלציה, חשמל, ריצוף, ארונות, תאורה ועוד.',
+    icon: 'droplet',
+    color: 'var(--amber-9)',
     benefits: [
-      'מניעת נזקים עתידיים',
-      'חיסכון בהוצאות תיקון',
-      'טיפול מהיר בתקלות',
-      'שמירה על ערך הנכס',
+      'תכנון מותאם אישית',
+      'שילוב מערכות מתקדמות',
+      'חומרים עמידים ויוקרתיים',
+      'הקפדה על פרטים ואסתטיקה',
     ],
     image:
-      'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1769&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1770&auto=format&fit=crop',
+  },
+  {
+    id: 'commercial',
+    title: 'שיפוץ שטחי מסחר',
+    shortDescription: 'שיפוצים חכמים ואסתטיים בחנויות, קליניקות ועסקים.',
+    fullDescription:
+      'ביצוע שיפוצים חכמים ואסתטיים בחנויות, קליניקות, עסקים ושטחי מסחר – כולל מיתוג, עיצוב חלל, פתרונות מידוף, תקרות, תאורה, ריצוף ומערכות טכניות. אנו מלווים אתכם משלב הרעיון ועד פתיחת העסק, עם תוצאה מרשימה ומקצועית.',
+    icon: 'chefHat',
+    color: 'var(--crimson-9)',
+    benefits: [
+      'ניסיון בשיפוץ עסקים פעילים',
+      'תכנון לפי קונספט ומיתוג',
+      'שילוב מערכות חשמל ותאורה',
+      'עבודה מהירה עם תיאום מלא',
+    ],
+    image: 'video/VID-20250325-WA0075.mp4',
   },
 ];
 
 export function Services() {
   const { isMobile } = useScreen();
-  const [services, setServices] = useState(servicesList);
+  const [services] = useState(servicesList);
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await fetch(`/content/blog.json`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch services data');
-        }
-        const data = await response.json();
-        if (data.length > 0) {
-          setServices(data);
-        } else {
-          console.warn('No services data found');
-        }
-      } catch (error) {
-        console.error('Error fetching services:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchServices = async () => {
+  //     try {
+  //       const response = await fetch(`/content/blog.json`);
+  //       if (!response.ok) {
+  //         throw new Error('Failed to fetch services data');
+  //       }
+  //       const data = await response.json();
+  //       if (data.length > 0) {
+  //         setServices(data);
+  //       } else {
+  //         console.warn('No services data found');
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching services:', error);
+  //     }
+  //   };
 
-    fetchServices();
-  }, []);
+  //   fetchServices();
+  // }, []);
 
   return (
     <Box dir="rtl">
@@ -203,7 +218,7 @@ export function Services() {
               viewport={{ once: true }}
               transition={{
                 duration: 0.5,
-                delay: index * 0.1,
+                delay: index * 0.05,
               }}
             >
               <Box

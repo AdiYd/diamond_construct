@@ -8,7 +8,7 @@ import ContactSection from '../components/sections/contactUs';
 import { useEffect, useState } from 'react';
 import { TeamImage, TeamMember } from '../components/sections/TeamShowCase';
 import Asset from '../components/Asset';
-import fallbackTeamMember from '../components/sections/team_members.json';
+import teamMembersJson from '../components/sections/team_members.json';
 import fallbackTeamImage from '../components/sections/team.json';
 
 // Company values data
@@ -51,9 +51,9 @@ const companyValues = [
   },
 ];
 
-const visionDemo = {
+const visionDict = {
   title: 'החזון שלנו: השיפוץ שלנו , הרוגע שלכם.',
-  description: `החזון של חברת דאימונד להפוך את עולה השיפוצים לחוויה רגועה, חיובית שמאפשרת ללקוח\n                
+  description: `החזון של חברת דאימונד להפוך את עולם השיפוצים לחוויה רגועה, חיובית שמאפשרת ללקוח\n                
   להשאר בראש שקט ובבטחון מלא לאורך כל הדרך. אנחנו עוסקים בשיפוץ דירות ובתים פרטיים,\n                
   תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב\n                
   בין מקצועיות טכנית בלתי מתפשרת, לבין יחס אישי שמציב את הלקוח במרכז.`,
@@ -99,8 +99,8 @@ const visionDemo = {
 export function About() {
   const { isMobile, isTablet } = useScreen();
   const [teamImages, setTeamImages] = useState<TeamImage[]>([]);
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
-  const [vision, setVision] = useState<null | Record<string, string>>(visionDemo);
+  const [teamMembers] = useState<TeamMember[]>(teamMembersJson as TeamMember[]);
+  const [vision] = useState<null | Record<string, string>>(visionDict);
 
   useEffect(() => {
     const fetchTeamData = async () => {
@@ -115,35 +115,35 @@ export function About() {
       }
     };
 
-    const fetchVisionData = async () => {
-      try {
-        const response = await fetch(`/content/vision.json`);
-        const data = await response.json();
-        setVision(data);
-      } catch (error) {
-        console.error('Error fetching vision data:', error);
-      }
-    };
+    //   const fetchVisionData = async () => {
+    //     try {
+    //       const response = await fetch(`/content/vision.json`);
+    //       const data = await response.json();
+    //       setVision(data);
+    //     } catch (error) {
+    //       console.error('Error fetching vision data:', error);
+    //     }
+    //   };
 
-    fetchVisionData();
+    //   fetchVisionData();
     fetchTeamData();
   }, []);
 
-  useEffect(() => {
-    const fetchMembersData = async () => {
-      try {
-        const teamMembersResponse = await fetch(`/content/team_members.json`);
-        const teamMembersData = await teamMembersResponse.json();
-        setTeamMembers(teamMembersData);
-      } catch (error) {
-        const data = fallbackTeamMember as TeamMember[];
-        setTeamMembers(data);
-        console.error('Error fetching members data:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchMembersData = async () => {
+  //     try {
+  //       const teamMembersResponse = await fetch(`/content/team_members.json`);
+  //       const teamMembersData = await teamMembersResponse.json();
+  //       setTeamMembers(teamMembersData);
+  //     } catch (error) {
+  //       const data = fallbackTeamMember as TeamMember[];
+  //       setTeamMembers(data);
+  //       console.error('Error fetching members data:', error);
+  //     }
+  //   };
 
-    fetchMembersData();
-  }, []);
+  //   fetchMembersData();
+  // }, []);
 
   return (
     <Box dir="rtl">
@@ -230,7 +230,7 @@ export function About() {
                 style={{ lineHeight: '1.8', fontWeight: 500, marginBottom: '1rem' }}
               >
                 {vision?.description ||
-                  `החזון של חברת דאימונד להפוך את עולה השיפוצים לחוויה רגועה, חיובית שמאפשרת ללקוח
+                  `החזון של חברת דאימונד להפוך את עולם השיפוצים לחוויה רגועה, חיובית שמאפשרת ללקוח
                 להשאר בראש שקט ובבטחון מלא לאורך כל הדרך. אנחנו עוסקים בשיפוץ דירות ובתים פרטיים,
                 תוספות בניה ותחזוקה שוטפת, עם מיקוד באזור כרמיאל והסביבה. מה שמייחד אותנו הוא השילוב
                 בין מקצועיות טכנית בלתי מתפשרת, לבין יחס אישי שמציב את הלקוח במרכז.`}
@@ -505,7 +505,7 @@ export function About() {
               </Text>
             </motion.div>
 
-            <Grid columns={{ initial: '1', sm: '2', md: '4' }} gap="6" width="100%">
+            <Grid columns={{ initial: '1', sm: '2', md: '3' }} gap="6" width="100%">
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
@@ -518,7 +518,7 @@ export function About() {
                   }}
                   style={{
                     gridColumn:
-                      member.full && !isMobile ? (isTablet ? 'span 2' : 'span 4') : 'span 1',
+                      member.full && !isMobile ? (isTablet ? 'span 2' : 'span 2') : 'span 1',
                   }}
                 >
                   <Card
