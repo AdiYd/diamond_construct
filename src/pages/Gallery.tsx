@@ -18,14 +18,14 @@ import ContactSection from '../components/sections/contactUs';
 import Asset from '../components/Asset';
 
 // Project portfolio data
-const demoProjects = [
+const projectsList = [
   {
-    id: 'kitchen-1',
-    title: 'שיפוץ מטבח מודרני',
-    category: 'מטבחים',
-    location: 'כרמיאל',
+    id: 'rozen-complete-renovation',
+    title: 'שיפוץ בית פרטי קומפלט',
+    category: 'חידוש מבנה',
+    location: 'כרמיאל – שכונת מכוש',
     description:
-      'שיפוץ מקיף של מטבח ישן לעיצוב מודרני עם אי, ארונות בהירים ומשטח עבודה מאבן קיסר. המטבח החדש מספק פונקציונליות מקסימלית ואסתטיקה נקייה.',
+      'שיפוץ כולל ומעמיק של בית פרטי, כולל תשתיות חדשות, גמרים מוקפדים ותוספות בנייה בסגנון כפרי-חדשני. הפרויקט בוצע ברמה עיצובית גבוהה במיוחד, תוך מענה אישי לצרכי הלקוח. העבודה התבצעה בשיתוף פעולה עם המעצבת יהודית ויינשטיין, שהובילה קו עיצובי מחודש ומעורר השראה.',
     images: {
       before:
         'https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=2074&auto=format&fit=crop',
@@ -37,17 +37,17 @@ const demoProjects = [
       ],
     },
     testimonial: {
-      text: 'התהליך היה חלק מאוד, והתוצאה עולם על כל הציפיות שלנו. המטבח הפך להיות מרכז הבית.',
-      author: 'משפחת לוי',
+      text: 'הבית שלנו עבר מהפך מדהים! צוות דיאמונד היה קשוב לכל בקשה ופרט. יצאנו עם תוצאה שעולה על כל ציפיותינו.',
+      author: 'משפחת רוזן',
     },
   },
   {
-    id: 'bathroom-1',
-    title: 'שדרוג חדר רחצה',
-    category: 'חדרי רחצה',
-    location: 'עכו',
+    id: 'krannenberg-kitchen-bathroom',
+    title: 'תוספת בנייה למטבח ושיפוץ חדרי רחצה',
+    category: 'מטבחים',
+    location: 'כרמיאל – שכונת מכוש',
     description:
-      'שיפוץ מלא של חדר אמבטיה משנות ה-90 לחדר מודרני עם אריחים גדולים, מקלחון זכוכית ואביזרים בשחור מט.',
+      'הפרויקט כלל תוספת בנייה משמעותית למטבח, שבוצעה תוך הקפדה על תכנון והנדסה – עם יציקת בטון וייסודות עמוקים, ועליה בנייה קלה מותאמת לחזית הבית. העבודה בוצעה בשיתוף פעולה עם המעצבת אושרת כהן, וכללה שיפוץ מלא של מטבח עתיק שהוסב לחלל חדשני ומואר.',
     images: {
       before:
         'https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2670&auto=format&fit=crop',
@@ -59,17 +59,17 @@ const demoProjects = [
       ],
     },
     testimonial: {
-      text: 'הצוות עבד במקצועיות וסיים את העבודה מהר יותר מהצפוי. חדר האמבטיה נראה כמו מתוך מגזין עיצוב.',
-      author: 'משפחת כהן',
+      text: 'המטבח החדש שלנו הוא פשוט יצירת אמנות! אושרת וצוות דיאמונד הבינו בדיוק את החלום שלנו והפכו אותו למציאות.',
+      author: 'משפחת קרננברג',
     },
   },
   {
-    id: 'house-renovation',
-    title: 'שיפוץ דירה קומפלט',
+    id: 'kalish-second-floor',
+    title: 'הוספת קומה ובניית יחידות דיור',
     category: 'חידוש מבנה',
-    location: 'נהריה',
+    location: 'כרמיאל – שכונת רבין',
     description:
-      'שיפוץ מקיף של דירה בת 4 חדרים שכלל החלפת ריצוף, צביעה, שדרוג מטבח וחדרי אמבטיה, החלפת דלתות ותאורה.',
+      'במסגרת הפרויקט בוצעה הוספת קומה שלמה על גג בית קיים, באמצעות בנייה קלה חכמה שתוכננה בקפידה. בפנים נבנו שתי יחידות דיור מעוצבות, בסגנון נקי ופרקטי, תוך ניהול חכם של השטח ויצירת פתרונות מותאמים אישית לצרכי הלקוחות. העבודה התבצעה בשיתוף פעולה עם המעצבת נועה קאליש.',
     images: {
       before:
         'https://images.unsplash.com/photo-1560184611-064284d0e628?q=80&w=1974&auto=format&fit=crop',
@@ -81,61 +81,17 @@ const demoProjects = [
       ],
     },
     testimonial: {
-      text: 'הדירה הישנה שלנו הפכה לבית חלומות מודרני! כל פרט נבחן בקפידה והעבודה בוצעה במקצועיות רבה.',
-      author: 'משפחת טל',
+      text: 'קיבלנו שתי יחידות דיור מושלמות בקומה חדשה! התהליך היה מקצועי וההשקעה בפרטים הקטנים ניכרת בכל פינה.',
+      author: 'משפחת קאליש',
     },
   },
   {
-    id: 'private-house',
-    title: 'חידוש מבנה',
-    category: 'construction',
-    location: 'כפר ורדים',
+    id: 'neiman-investment',
+    title: 'שיפוץ בית פרטי להשקעה',
+    category: 'חידוש מבנה',
+    location: 'כרמיאל',
     description:
-      'בניית בית פרטי בן 2 קומות מהיסוד, כולל תכנון מלא והתאמה לצרכי המשפחה. הבית כולל 5 חדרי שינה וחצר מעוצבת.',
-    images: {
-      before:
-        'https://images.unsplash.com/photo-1620332372374-f108c53d2e03?q=80&w=1972&auto=format&fit=crop',
-      after:
-        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1975&auto=format&fit=crop',
-      process: [
-        'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=2067&auto=format&fit=crop',
-      ],
-    },
-    testimonial: {
-      text: 'מתחילת התכנון ועד למסירת המפתח, דיאמונד ליוותה אותנו בצורה מושלמת. הבית בדיוק כמו שחלמנו.',
-      author: 'משפחת גולן',
-    },
-  },
-  {
-    id: 'kitchen-2',
-    title: 'מטבח בסגנון כפרי',
-    category: 'מטבחים',
-    location: 'מעלות',
-    description:
-      'שיפוץ והסבה של מטבח עירוני למטבח בסגנון כפרי מודרני עם ארונות עץ, אי גדול במרכז ופינת ישיבה מובנית.',
-    images: {
-      before:
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
-      after:
-        'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?q=80&w=2071&auto=format&fit=crop',
-      process: [
-        'https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2670&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?q=80&w=2070&auto=format&fit=crop',
-      ],
-    },
-    testimonial: {
-      text: 'המטבח החדש שלנו הוא החלל הכי אהוב עלינו בבית. הייעוץ והביצוע היו מעולים.',
-      author: 'משפחת אברהם',
-    },
-  },
-  {
-    id: 'bathroom-2',
-    title: 'חדר רחצה מעוצב',
-    category: 'חדרי רחצה',
-    location: 'קריית ביאליק',
-    description:
-      'שדרוג חדר אמבטיה לדירה בת 3 חדרים, כולל אמבטיה חדשה, ארון אמבטיה תלוי, מראה מעוצבת ותאורה ייחודית.',
+      'שיפוץ מקיף של בית פרטי שנרכש כנדל"ן להשקעה. העבודה כללה החלפת תשתיות, שדרוג המטבח, שיפוץ חדרי רחצה וחדרים פרטיים – הכל בתכנון שמותאם להשכרה עם עיצוב חמים ומזמין. שמרנו על גמישות מירבית לשינויים עתידיים והתאמות לדיירים שונים, תוך שילוב מדויק בין פונקציונליות ואסתטיקה.',
     images: {
       before:
         'https://images.unsplash.com/photo-1620626011761-996c9275e9df?q=80&w=2069&auto=format&fit=crop',
@@ -147,17 +103,17 @@ const demoProjects = [
       ],
     },
     testimonial: {
-      text: 'מקצועיות גבוהה ותוצאה מרשימה. חדר הרחצה שודרג מהיסוד והתוצאה היא חלל יפהפה ופונקציונלי.',
-      author: 'משפחת שלומי',
+      text: 'השיפוץ הגדיל משמעותית את ערך הנכס שלנו! דיאמונד הבינו בדיוק את הצרכים של נכס להשקעה וביצעו עבודה מצוינת.',
+      author: 'משפחת ניימן',
     },
   },
   {
-    id: 'apartment-renovation',
-    title: 'חידוש דירה ישנה',
+    id: 'salvis-guest-unit',
+    title: 'הוספת יחידת אירוח בקומה שנייה',
     category: 'חידוש מבנה',
-    location: 'חיפה',
+    location: 'כרמיאל',
     description:
-      'שיפוץ מקיף לדירה משנות ה-70, כולל הריסת קירות פנימיים ליצירת חלל פתוח, החלפת תשתיות חשמל ואינסטלציה, ריצוף חדש ומטבח חדש.',
+      'בניית יחידת אירוח בקומה שנייה על גבי עמודים, בשילוב בנייה קלה ושלד ברזל, כולל חדר שירותים פרטי ונגישות נוחה. המבנה עוגן בקפידה למבנה הקיים, תוך מתן פתרונות הנדסיים מתקדמים והתאמה לתנאי השטח. העבודה בוצעה בפיקוח קונסטרוקטור, ליצירת חלל אירוח איכותי ונעים לשהייה.',
     images: {
       before:
         'https://images.unsplash.com/photo-1493809712911-5ff8e7d5a064?q=80&w=2070&auto=format&fit=crop',
@@ -169,24 +125,52 @@ const demoProjects = [
       ],
     },
     testimonial: {
-      text: 'הדירה עברה מהפך מדהים. יעקב וצוות דיאמונד פשוט עשו את הבלתי אפשרי והפכו דירה ישנה לחדשה ומודרנית.',
-      author: 'משפחת אדרי',
+      text: 'יחידת האירוח שנבנתה היא בדיוק מה שחלמנו עליה. האורחים שלנו מתלהבים מהנוחות והעיצוב הנפלא של המקום.',
+      author: 'משפחת סלביס',
     },
   },
   {
-    id: 'garden-apartment',
-    title: 'דירת גן עם חצר מעוצבת',
+    id: 'carlos-connected-apartments',
+    title: 'שיפוץ בית פרטי וחיבור דירות',
     category: 'חידוש מבנה',
-    location: 'כרמיאל',
+    location: 'כרמיאל – שכונת גבעת רם',
     description:
-      'שיפוץ דירת גן שכלל עיצוב מחדש של החצר, הקמת פרגולה, מטבח חיצוני ופינת ישיבה. בפנים שופצו חדרי השינה והמטבח.',
+      'שיפוץ קומפלט לבית פרטי, כולל תוספות בנייה והתאמות ייחודיות, תוך איחוד של שתי דירות נפרדות לכדי בית אחד מרווח. הפרויקט כלל תכנון מחדש של חללים, פתרונות אדריכליים יעילים, ושדרוג מערכות הבית – הכל במטרה ליצור בית רחב ידיים, זורם ופונקציונלי, עם דגש על תחושת מרחב והתאמה אישית.',
     images: {
+      before:
+        'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
       after:
-        'https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=2070&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?q=80&w=2071&auto=format&fit=crop',
+      process: [
+        'https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2670&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?q=80&w=2070&auto=format&fit=crop',
+      ],
     },
     testimonial: {
-      text: 'החצר הפכה להיות סלון חיצוני שאנחנו משתמשים בו כל השנה. השילוב של שיפוץ פנים וחוץ היה מושלם.',
-      author: 'משפחת רוזן',
+      text: 'המעבר משתי דירות למרחב אחד גדול היה פשוט קסם! צוות דיאמונד הצליח לחבר את החללים בצורה מושלמת.',
+      author: 'משפחת קרלוס',
+    },
+  },
+  {
+    id: 'avi-modern-home',
+    title: 'שיפוץ בית פרטי בסגנון מודרני',
+    category: 'עיצוב פנים',
+    location: 'כרמיאל',
+    description:
+      'שיפוץ יסודי של בית פרטי, בסגנון מודרני חמים ונעים, עם דגש על רמת גימור מוקפדת, מדויקת ואחידה. הפרויקט תוכנן ובוצע בשיתוף פעולה עם המעצבת מיכל גוטמן, מתוך מטרה להגשים את חזון הלקוח וליצור בית שמשלב אסתטיקה עדכנית עם תחושת ביתיות, חמימות ופונקציונליות יומיומית.',
+    images: {
+      before:
+        'https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=2070&auto=format&fit=crop',
+      after:
+        'https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1974&auto=format&fit=crop',
+      process: [
+        'https://images.unsplash.com/photo-1560184611-da934a86fef1?q=80&w=1974&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?q=80&w=1974&auto=format&fit=crop',
+      ],
+    },
+    testimonial: {
+      text: 'המעבר מבית מיושן לבית מודרני ומעוצב היה חלק ומהנה. מיכל וצוות דיאמונד הפכו את הבית שלנו לגן עדן מודרני.',
+      author: 'משפחת אבי',
     },
   },
 ];
@@ -423,20 +407,19 @@ export function Gallery() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageType, setCurrentImageType] = useState<'before' | 'after' | 'process'>('after');
   const [processIndex, setProcessIndex] = useState(0);
-  const [projects, setProjects] = useState(demoProjects); // Initialize with demo projects
+  const [projects] = useState(projectsList); // Initialize with demo projects
   const [categories, setCategories] = useState(demoCategory); // Initialize with demo categories
   const { isMobile } = useScreen();
 
   useEffect(() => {
     // Fetch projects from the server or API
-    const fetchProjects = async () => {
+    const fetchProjectsCategories = async () => {
       try {
         // Simulate fetching data from an API
-        const response = await fetch(`/content/gallery.json`);
-        const data = (await response.json()) as Project[]; // Ensure the data is of type Project[]
-        if (data.length !== 0) {
-          setProjects(data); // Set the fetched projects
-          const categories = data.map(project => project.category); // Extract categories from projects
+        // const response = await fetch(`/content/gallery.json`);
+        // const data = (await response.json()) as Project[]; // Ensure the data is of type Project[]
+        if (projects.length !== 0) {
+          const categories = projects.map(project => project.category); // Extract categories from projects
           console.log('Categories:', categories);
           setCategories([...new Set(categories)]); // Set unique categories
         }
@@ -445,8 +428,8 @@ export function Gallery() {
       }
     };
 
-    fetchProjects();
-  }, []);
+    fetchProjectsCategories();
+  }, [projects]);
 
   const filteredProjects =
     selectedCategory === 'הכל'

@@ -1,7 +1,7 @@
-import { Theme } from '@radix-ui/themes';
+import { Theme, ThemeProps } from '@radix-ui/themes';
 // import '@radix-ui/themes/styles.css';
 
-export const themeConfig = {
+export const themeConfig: ThemeProps = {
   accentColor: '#101437',
   // accentColor: 'brown',
   grayColor: 'mauve',

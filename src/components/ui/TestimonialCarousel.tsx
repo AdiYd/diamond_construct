@@ -8,7 +8,8 @@ import useScreen from '../../hooks/useScreen';
 interface TestimonialCardProps {
   testimonial: {
     name: string;
-    type: string;
+    date: string;
+    context: string;
     content: string;
     rating: number;
     project: string;
@@ -21,7 +22,7 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   // Define content truncation conditions
-  const maxLength = 80; // Character limit for truncation
+  const maxLength = 100; // Character limit for truncation
   const shouldTruncate = testimonial.content.length > maxLength && !expanded;
   const displayContent = shouldTruncate
     ? `${testimonial.content.substring(0, maxLength).trim()}...`
@@ -54,41 +55,60 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
         <div style={{ position: 'relative' }}>❝</div>
       </Box>
 
-      <Flex
-        direction="column"
-        justify="between"
-        dir="rtl"
-        p="2"
+      <div
         style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: '100%',
+          // gridTemplateRows: '1fr auto 0.5fr 1fr',
+          gap: '0.5rem',
+          padding: '2rem',
           position: 'relative',
           zIndex: 1,
-          paddingLeft: '2rem',
-          paddingRight: '2rem',
+          direction: 'rtl',
         }}
       >
-        <Flex direction="column" gap="3" align="center" mt="4" mb="2">
-          <Box style={{ textAlign: 'center' }}>
-            <Text size="4" weight="bold" mb="1" className="testimonial-author">
-              {testimonial.name}
-            </Text>
-            <br />
-            <br />
-            <Text size="2" style={{ color: 'var(--gray-11)' }}>
-              {testimonial.project}
-            </Text>
-          </Box>
-        </Flex>
+        {/* Header - Name and Project */}
+        <div style={{ textAlign: 'center', height: '100px' }}>
+          <Text
+            size="5"
+            weight="bold"
+            mb="2"
+            style={{
+              marginBottom: '0.5rem',
+              display: 'block',
+              color: 'var(--gray-12)',
+            }}
+            className="testimonial-author"
+          >
+            {testimonial.name}
+          </Text>
+          <Text
+            size="2"
+            style={{
+              color: 'var(--gray-11)',
+              display: 'block',
+              fontStyle: 'italic',
+            }}
+          >
+            {testimonial.project}
+          </Text>
+        </div>
 
-        <div>
+        {/* Content - Testimonial Text */}
+        <div style={{ overflow: 'auto', height: expanded ? 'auto' : '100px' }}>
           <Text
             as="div"
-            weight="medium"
+            weight="regular"
             align="right"
             dir="rtl"
             className="testimonial-text"
             size="3"
-            mb="0"
-            style={{ whiteSpace: 'pre-line' }}
+            style={{
+              whiteSpace: 'pre-line',
+              lineHeight: '1.5',
+            }}
           >
             {displayContent}
           </Text>
@@ -101,7 +121,7 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
               style={{
                 color: 'var(--accent-11)',
                 cursor: 'pointer',
-                fontWeight: 500,
+                fontWeight: 600,
                 display: 'block',
                 textAlign: 'left',
                 marginTop: '0.5rem',
@@ -116,13 +136,14 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
             <Text
               as="span"
               size="2"
+              dir="ltr"
               style={{
                 color: 'var(--accent-11)',
                 cursor: 'pointer',
-                fontWeight: 500,
+                fontWeight: 600,
                 display: 'block',
                 textAlign: 'left',
-                marginTop: '0.5rem',
+                // marginTop: '0.5rem',
               }}
               onClick={() => setExpanded(false)}
             >
@@ -131,7 +152,8 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
           )}
         </div>
 
-        <Flex gap="1" mt="2" justify="center">
+        {/* Rating Stars */}
+        <Flex gap="1" justify="center" style={{ height: '24px' }}>
           {[...Array(5)].map((_, i) => (
             <Star
               key={i}
@@ -142,26 +164,40 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
           ))}
         </Flex>
 
+        {/* Footer - Type/Date */}
         <Text
           size="2"
           align="center"
           dir="rtl"
           style={{
             color: 'var(--accent-11)',
-            marginTop: '1rem',
             fontWeight: 500,
+            height: '20px',
           }}
         >
-          {testimonial.type}
+          {testimonial.date}
         </Text>
-      </Flex>
+        <Text
+          size="2"
+          align="center"
+          dir="rtl"
+          style={{
+            color: 'var(--accent-11)',
+            fontWeight: 500,
+            height: '20px',
+          }}
+        >
+          {testimonial.context}
+        </Text>
+      </div>
     </div>
   );
 }
 
 interface Testimonial {
   name: string;
-  type: string;
+  date: string;
+  context: string;
   content: string;
   rating: number;
   project: string;
@@ -170,7 +206,8 @@ interface Testimonial {
 const testimonialsList: Testimonial[] = [
   {
     name: 'נעה קאליש',
-    type: '8.2023',
+    date: '8.2023',
+    context: 'מעצבת פנים ששיפצה עם דיאמונד את הבית שלה',
     content:
       'התחלנו שיפוץ בעזרת ש.י.דיאמונד ממש בתחילת המלחמה, וכשהשכנים פנו אלי נלחצתי.אבל מה שהיה חשוב להם לומר היה שמעולם הם לא פגשו עובדי בניה כל כך חרוצים, נעימים ומתחשבים\nוכלקוחה, וגם כמעצבת שנים בתחום, הכרתי הרבה קבלנים, והפעם זה היה משהו אחר.\nעבודה מקצועית ברמה גבוהה ביותר, עם אחריות גם להמשך, והכל באווירה הכי טובה שיש, ובהרגשה הכי בטוחה שאפשר.\nלגבי פעמים נוספות - אני אעדיף להמתין שדיאמונד יוכלו לבצע את העבודה, גם אם זה ייקח זמן.',
     rating: 5,
@@ -178,21 +215,24 @@ const testimonialsList: Testimonial[] = [
   },
   {
     name: 'חגי דביר',
-    type: '9.6.24',
+    date: '9.6.24',
+    context: 'אשדוד',
     content: 'עשה לי כל מה שאני צריך. אחלה שירות.',
     rating: 5,
     project: 'שיפוץ משרד',
   },
   {
     name: 'יהודה ארנפרוינג',
-    type: '8.7.24',
+    date: '8.7.24',
+    context: 'כרמיאל',
     content: 'השירות היה מצוין, הוא בסדר גמור. השתמשתי בשירות שלהם כבר כמה פעמים.',
     rating: 5,
     project: 'שיפוץ דירה שכלל שירותים, אמבטיה, חדר שינה, צביעה ובניה בחצר',
   },
   {
     name: 'יהודה קרוננברג',
-    type: '8.7.24',
+    date: '8.7.24',
+    context: 'כרמיאל',
     content:
       'עשיתי כמה פעמים שיפוצים מאז שהגעתי לארץ, וזו פעם ראשונה שיש לי מישהו לדבר איתו, ושבן אדם נותן שירות. עם קבלנים אחרים כל הזמן היו ויכוחים זה כן שלי זה לא שלי, והוא עובד על הכל, יודע לדבר ולקחת אחריות על נזק שהעובדים שלו עשו, כי לכל קבלן יהיה נזק. בשורה התחתונה הוא בן אדם שנותן שירות עבודה ברמה מאד מאד גבוהה. היו כמה דברים שביקשתי שהוא יעשה שוב ובאמת לפני שהוא יצא הוא ואח שלו שגם בא לבית עשו רשימה של פינישים בלי שהייתי צריך לבקש, וגם אמרו דברים שלא חשבתי עליהם. אין שירות כזה בארץ, זה כמו בארצות הברית. מבחינת המחיר בטוח שילמתי יותר מקבלנים אחרים, המחיר שלו מוצדק בגלל האחריות, השירות והאיכות. לדוגמא לפני שנתיים וחצי עשיתי עבודה אצל קבלן אחר אבל הייתי צריך לשלם 50 אלף יותר כדי לעשות את העבודה שוב...',
     rating: 5,
@@ -201,7 +241,8 @@ const testimonialsList: Testimonial[] = [
   },
   {
     name: 'מוטי כץ',
-    type: '13.1.24 | ירושלים- מנכל "נפש יהודי"',
+    date: '13.1.24',
+    context: 'ירושלים- מנכ"ל "נפש יהודי"',
     content:
       'אני ממליץ מאד. הוא ישר, הגון ומקצועי מאד. לקח אחריות על העבודה שלו גם כשהיו שינויים. התאים את עצמו לשטח, כל דבר שאל אותנו לפני שעשה.',
     rating: 5,
@@ -210,33 +251,47 @@ const testimonialsList: Testimonial[] = [
   },
   {
     name: 'משה לוי',
-    type: '12.1.24 | סמנכל תשתיות ולוגיסטיקה "איחוד הצלה"',
+    date: '12.1.24',
+    context: 'ירושלים- סמנכ"ל תשתיות ולוגיסטיקה "איחוד הצלה"',
     content: 'הוא אדם מאד אמין, דייקן, עומד במה שסגרנו ולא מרמה.',
     rating: 5,
     project: 'שיפוץ בית עסק שכלל עבודות בחשמל, צבע, מטבח, אינסטלציה במתחם בגודל 120 מ"ר.',
   },
   {
     name: 'משה רוט',
-    type: '8.7.24',
+    date: '8.7.24',
+    context: 'כרמיאל',
     content: 'הוא בחור מדהים בעל מרץ עבודה ורצון טוב, רוצה להצליח, המלצתי עליו כבר לאנשים',
     rating: 5,
     project: 'בניית מקלחות בישיבה, שיפוץ דירות כולל תיקון צנרת וצביעת 4-5 קומות',
   },
   {
     name: 'צחי בסו',
-    type: '10.1.24',
+    date: '10.1.24',
+    context: 'כרמיאל',
     content: 'ממליץ מאד, מקצועיים, רציניים. הם אחלה אנשים, הייתי מבסוט',
     rating: 5,
     project: 'בניה קלה של שני חדרים',
   },
   {
     name: 'קרלוס פרטו',
-    type: '8.7.24',
+    date: '8.7.24',
+    context: 'כרמיאל',
     content: 'הוא מצוין, אחלה, עדיין לא סיימנו, נשארו עוד כמה דברים קטנים',
     rating: 5,
     project: 'שיפוץ דירה שכלל עבודות חשמל, צביעה, אינסטלציה וריצוף',
   },
 ];
+
+// You'll also need to update the Testimonial interface to include the new fields:
+interface Testimonial {
+  name: string;
+  date: string;
+  context: string;
+  content: string;
+  rating: number;
+  project: string;
+}
 
 export function TestimonialCarousel() {
   const { isMobile, isTablet } = useScreen();

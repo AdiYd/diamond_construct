@@ -74,7 +74,8 @@ const servicesList = [
       'פתרונות עיצוביים בהתאמה אישית',
       'עבודה בסטנדרטים עסקיים',
     ],
-    image: 'https://images.unsplash.com/photo-0116?q=80&w=1769&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1585128903994-9788298932a6?q=80&w=1974&auto=format&fit=crop',
   },
   {
     id: 'lightweight-construction',
@@ -218,7 +219,7 @@ export function Services() {
               viewport={{ once: true }}
               transition={{
                 duration: 0.5,
-                delay: index * 0.05,
+                // delay: index * 0.05,
               }}
             >
               <Box

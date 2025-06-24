@@ -106,8 +106,7 @@
   --default-font-family: var(--font-family), 'Rubik', 'Alef', sans-serif;
   --default-font-size: 16px;
   --default-line-height: 1.5;
-  --default-font-weight: 400;
-  
+  --default-font-weight: 400;  
 }
 
 .dark {
@@ -187,6 +186,10 @@ span {
 button {
   cursor: pointer !important;
   /* padding: 0.5rem 1rem; */
+}
+
+.rt-Card {
+  background-color: var(--accent-a1);
 }
 
 /* Layout Components - Enhanced with better mobile responsiveness */
