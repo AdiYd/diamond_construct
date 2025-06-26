@@ -121,11 +121,7 @@
     "images": {
       "before": "/video/VID-20240805-WA0090.mp4",
       "after": "/video/VID-20250325-WA01143.mp4",
-      "process": [
-        "/video/VID_20240911_173537.mp4",
-        "/video/VID-20240820-WA0099.mp4",
-        "/video/VID-20240830-WA0027.mp4"
-      ]
+      "process": ["/video/VID_20240911_173537.mp4", "/video/VID-20240830-WA0027.mp4"]
     },
     "testimonial": {
       "text": "המעבר מבית מיושן לבית מודרני ומעוצב היה חלק ומהנה. מיכל וצוות דיאמונד הפכו את הבית שלנו לגן עדן מודרני.",
