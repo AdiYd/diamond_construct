@@ -37,6 +37,7 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
         backdropFilter: 'blur(20px)',
         position: 'relative',
         overflow: 'hidden',
+        padding: 0,
         border: '0.8px solid var(--gray-a7)',
       }}
     >
@@ -89,7 +90,7 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
             style={{
               color: 'var(--gray-11)',
               display: 'block',
-              fontStyle: 'italic',
+              // fontStyle: 'italic',
             }}
           >
             {testimonial.project}
@@ -97,17 +98,19 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
         </div>
 
         {/* Content - Testimonial Text */}
-        <div style={{ overflow: 'auto', height: expanded ? 'auto' : '100px' }}>
+        <div style={{ overflow: 'auto', height: expanded ? 'auto' : '120px' }}>
           <Text
             as="div"
             weight="regular"
             align="right"
             dir="rtl"
             className="testimonial-text"
-            size="3"
+            size="2"
             style={{
               whiteSpace: 'pre-line',
               lineHeight: '1.5',
+              display: 'contents',
+              textAlign: 'center',
             }}
           >
             {displayContent}
@@ -211,13 +214,13 @@ const testimonialsList: Testimonial[] = [
     content:
       'התחלנו שיפוץ בעזרת ש.י.דיאמונד ממש בתחילת המלחמה, וכשהשכנים פנו אלי נלחצתי.אבל מה שהיה חשוב להם לומר היה שמעולם הם לא פגשו עובדי בניה כל כך חרוצים, נעימים ומתחשבים\nוכלקוחה, וגם כמעצבת שנים בתחום, הכרתי הרבה קבלנים, והפעם זה היה משהו אחר.\nעבודה מקצועית ברמה גבוהה ביותר, עם אחריות גם להמשך, והכל באווירה הכי טובה שיש, ובהרגשה הכי בטוחה שאפשר.\nלגבי פעמים נוספות - אני אעדיף להמתין שדיאמונד יוכלו לבצע את העבודה, גם אם זה ייקח זמן.',
     rating: 5,
-    project: 'שיפוץ בית קומפלט, הוספת קומה על הגג בבניה קלה עם חלוקה ל- 2 יחידות דיור. כולל מדרגות',
+    project: 'שיפוץ בית קומפלט, הוספת קומה על הגג בבניה קלה עם חלוקה ל- 2 יחידות דיור ומדרגות',
   },
   {
     name: 'חגי דביר',
     date: '9.6.24',
     context: 'אשדוד',
-    content: 'עשה לי כל מה שאני צריך. אחלה שירות.',
+    content: 'עשה לי כל מה שאני צריך. אחלה אנשים ושירות מעולה.',
     rating: 5,
     project: 'שיפוץ משרד',
   },
