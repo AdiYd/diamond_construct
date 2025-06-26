@@ -64,7 +64,7 @@ export function TeamShowCase() {
           const shuffled = [...data]
             .filter((member: TeamImage) => member.hide !== true)
             .sort(() => Math.random() - 0.5)
-            .slice(0, 11);
+            .slice(0, 12);
           const mandatoryMembers = data.filter((member: TeamImage) => member.show === true);
           const combinedTeams = new Set([...shuffled, ...mandatoryMembers]);
           // Convert Set back to array and shuffle

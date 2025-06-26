@@ -236,7 +236,7 @@ export function About() {
                       aspectRatio: '1/1',
                       objectFit: 'cover',
                       width: '250px',
-                      height: isMobile ? '180px' : '250px',
+                      height: isMobile ? '140px' : '250px',
                       borderRadius: '8px',
                     }}
                     src={image.image}

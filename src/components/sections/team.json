@@ -1,6 +1,6 @@
 [
   {
-    "image": "image/team/IMG_20240703_134753_141.jpg",
+    "image": "image/team/yaakov123.jpg",
     "title": "יעקב דיאמונד",
     "description": "מלווה את הלקוחות בביטחון מלא ובשקט נפשי מהתחלה ועד הסיום",
     "size": "large",
@@ -28,24 +28,18 @@
     "show": true
   },
   {
-    "image": "image/team/PXL_20241208_092655939.jpg",
+    "image": "image/team/kaplan123.jpg",
     "title": "משה קפלן",
     "description": "ראש צוות עם אחריות, אכפתיות ומסירות – דוגמה אישית לעבודה מדויקת ונאמנה",
     "size": "small",
     "show": true
   },
   {
-    "image": "image/team/kaplan123.jpg",
-    "title": "משה קפלן",
-    "description": "ראש צוות עם אחריות, אכפתיות ומסירות – דוגמה אישית לעבודה מדויקת ונאמנה",
-    "size": "small",
-    "hide": true
-  },
-  {
     "image": "image/team/PXL_20241010_115336941.jpg",
     "title": "משה שרמן",
     "description": "מנהל אתר עם אנרגיות חיוביות – מדביק את הצוות במרץ ומוביל קדימה",
-    "size": "large"
+    "size": "large",
+    "hide": true
   },
   {
     "image": "image/team/sherman123.jpg",
@@ -78,7 +72,8 @@
     "image": "image/team/PXL_20241007_105155714.jpg",
     "title": "זאבי סובול",
     "description": "מומחה שפכטל וצבע – מקצוען, שמח, וחוקר כל משטח לעומק עד לתוצאה מושלמת",
-    "size": "medium"
+    "size": "medium",
+    "hide": true
   },
   {
     "image": "image/team/moshe_diamond.jpg",
