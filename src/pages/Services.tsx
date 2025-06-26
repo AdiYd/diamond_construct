@@ -57,8 +57,7 @@ const servicesList = [
       'התאמה אישית לצרכי הלקוח',
       'גימור ברמה הגבוהה ביותר',
     ],
-    image:
-      'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=1768&auto=format&fit=crop',
+    image: 'image/projects/0115.jpg',
   },
   {
     id: 'offices',
@@ -74,8 +73,7 @@ const servicesList = [
       'פתרונות עיצוביים בהתאמה אישית',
       'עבודה בסטנדרטים עסקיים',
     ],
-    image:
-      'https://images.unsplash.com/photo-1585128903994-9788298932a6?q=80&w=1974&auto=format&fit=crop',
+    image: 'image/projects/0116.jpg',
   },
   {
     id: 'lightweight-construction',
@@ -91,8 +89,7 @@ const servicesList = [
       'פתרון משתלם לתוספת מקום',
       'תכנון אישי לפי דרישה',
     ],
-    image:
-      'https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=1770&auto=format&fit=crop',
+    image: '/image/projects/IMG20250622154.jpg',
   },
   {
     id: 'bathroom-kitchen',
@@ -108,8 +105,7 @@ const servicesList = [
       'חומרים עמידים ויוקרתיים',
       'הקפדה על פרטים ואסתטיקה',
     ],
-    image:
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1770&auto=format&fit=crop',
+    image: 'image/projects/0117.jpg',
   },
   {
     id: 'commercial',
@@ -125,7 +121,7 @@ const servicesList = [
       'שילוב מערכות חשמל ותאורה',
       'עבודה מהירה עם תיאום מלא',
     ],
-    image: 'video/VID-20250325-WA0075.mp4',
+    image: 'image/projects/ac8d8cca-332c-4b4b-bfba-05613.jpg',
   },
 ];
 
@@ -530,7 +526,7 @@ export function Services() {
                   }}
                 >
                   <Asset
-                    url={service.image}
+                    src={service.image}
                     alt={service.title}
                     style={{
                       width: '100%',

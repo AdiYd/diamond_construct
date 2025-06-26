@@ -22,7 +22,7 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   // Define content truncation conditions
-  const maxLength = 100; // Character limit for truncation
+  const maxLength = 80; // Character limit for truncation
   const shouldTruncate = testimonial.content.length > maxLength && !expanded;
   const displayContent = shouldTruncate
     ? `${testimonial.content.substring(0, maxLength).trim()}...`
@@ -222,7 +222,7 @@ const testimonialsList: Testimonial[] = [
     project: 'שיפוץ משרד',
   },
   {
-    name: 'יהודה ארנפרוינג',
+    name: 'יהודה ארנפרוינד',
     date: '8.7.24',
     context: 'כרמיאל',
     content: 'השירות היה מצוין, הוא בסדר גמור. השתמשתי בשירות שלהם כבר כמה פעמים.',

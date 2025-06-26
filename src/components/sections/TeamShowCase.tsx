@@ -17,6 +17,7 @@ export interface TeamImage {
   description: string;
   size: string;
   show?: boolean;
+  hide?: boolean; // Optional property to hide certain members
 }
 
 export interface TeamMember {
@@ -60,7 +61,10 @@ export function TeamShowCase() {
         // }
         const data = teamData;
         if (data.length > 0) {
-          const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
+          const shuffled = [...data]
+            .filter((member: TeamImage) => member.hide !== true)
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 11);
           const mandatoryMembers = data.filter((member: TeamImage) => member.show === true);
           const combinedTeams = new Set([...shuffled, ...mandatoryMembers]);
           // Convert Set back to array and shuffle
@@ -206,7 +210,7 @@ export function TeamShowCase() {
                         <Box className="project-image-container" style={{ height: '300px' }}>
                           <Asset
                             style={{ borderRadius: 'var(--radius-4)' }}
-                            url={member.image}
+                            src={member.image}
                             alt={member.title}
                             className="project-image"
                           />
@@ -273,7 +277,7 @@ export function TeamShowCase() {
                   <Box className="project-image-container">
                     <Asset
                       style={{ borderRadius: 'var(--radius-4)' }}
-                      url={member.image}
+                      src={member.image}
                       alt={member.title}
                       className="project-image"
                     />

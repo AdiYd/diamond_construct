@@ -3,66 +3,109 @@
     "image": "image/team/IMG_20240703_134753_141.jpg",
     "title": "יעקב דיאמונד",
     "description": "מלווה את הלקוחות בביטחון מלא ובשקט נפשי מהתחלה ועד הסיום",
-    "size": "large"
+    "size": "large",
+    "show": true
   },
   {
-    "image": "image/team/IMG20250131124919.jpg",
+    "image": "image/team/shlomo_123.jpg",
     "title": "שלמה דיאמונד",
     "description": "מפקח קפדן ודייקן – לא מתפשר על אף פרט עד שהביצוע מושלם",
-    "size": "medium"
+    "size": "medium",
+    "show": true
   },
   {
-    "image": "image/team/PXL_20240908_115634333.jpg",
+    "image": "image/team/ariel_cohen_profile.jpg",
     "title": "אריאל כהן",
     "description": "חשמלאי מקצוען שמתקתק עבודות ומוצא פתרון חכם לכל אתגר",
-    "size": "small"
+    "size": "small",
+    "show": true
   },
   {
-    "image": "image/team/PXL_20241001_132821300.MP.jpg",
+    "image": "image/team/harel_gartziani_profile.jpg",
     "title": "הראל גרציאני",
     "description": "תמיד ראשון לתת יד – עם מוסר עבודה גבוה ושירות מכל הלב",
-    "size": "medium"
+    "size": "medium",
+    "show": true
   },
   {
     "image": "image/team/PXL_20241208_092655939.jpg",
     "title": "משה קפלן",
     "description": "ראש צוות עם אחריות, אכפתיות ומסירות – דוגמה אישית לעבודה מדויקת ונאמנה",
-    "size": "small"
+    "size": "small",
+    "show": true
+  },
+  {
+    "image": "image/team/kaplan123.jpg",
+    "title": "משה קפלן",
+    "description": "ראש צוות עם אחריות, אכפתיות ומסירות – דוגמה אישית לעבודה מדויקת ונאמנה",
+    "size": "small",
+    "hide": true
   },
   {
     "image": "image/team/PXL_20241010_115336941.jpg",
-    "title": "שמואל לוי",
-    "description": "מנהל פרויקטים שניגש לכל משימה בנעימות – פותר בעיות עם חיוך ובגובה העיניים",
+    "title": "משה שרמן",
+    "description": "מנהל אתר עם אנרגיות חיוביות – מדביק את הצוות במרץ ומוביל קדימה",
     "size": "large"
   },
   {
-    "image": "image/team/PXL_20241007_105155714.jpg",
+    "image": "image/team/sherman123.jpg",
     "title": "משה שרמן",
     "description": "מנהל אתר עם אנרגיות חיוביות – מדביק את הצוות במרץ ומוביל קדימה",
-    "size": "small"
+    "size": "large",
+    "show": true
+  },
+  {
+    "image": "image/team/IMG20250131124919.jpg",
+    "title": "משה שרמן",
+    "description": "מנהל אתר עם אנרגיות חיוביות – מדביק את הצוות במרץ ומוביל קדימה",
+    "size": "small",
+    "hide": true
   },
   {
     "image": "image/team/PXL_20250216_081515079.MP~2.jpg",
-    "title": "זאבי סובול",
-    "description": "מומחה שפכטל וצבע – מקצוען, שמח, וחוקר כל משטח לעומק עד לתוצאה מושלמת",
+    "title": "גישה חיובית",
+    "description": "תמיד עם חיוך, מקצוענות ושאיפה למצוינות",
     "size": "large"
   },
   {
-    "image": "image/team/IMG-20250109-WA0083.jpg",
+    "image": "image/team/zeevi_subul_profile.jpg",
+    "title": "זאבי סובול",
+    "description": "מומחה שפכטל וצבע – מקצוען, שמח, וחוקר כל משטח לעומק עד לתוצאה מושלמת",
+    "size": "medium",
+    "show": true
+  },
+  {
+    "image": "image/team/PXL_20241007_105155714.jpg",
+    "title": "זאבי סובול",
+    "description": "מומחה שפכטל וצבע – מקצוען, שמח, וחוקר כל משטח לעומק עד לתוצאה מושלמת",
+    "size": "medium"
+  },
+  {
+    "image": "image/team/moshe_diamond.jpg",
     "title": "משה דיאמונד",
     "description": "איש פינישים עם ידי זהב – מטפל בפרטים הקטנים ובמגוון תחומים ברמה הגבוהה ביותר",
-    "size": "medium"
+    "size": "medium",
+    "show": true
   },
   {
     "image": "image/team/PXL_20240905_151748546.MP.jpg",
     "title": "צוות דיאמונד",
     "description": "עובדים יחד כמו משפחה אחת למען ההצלחה שלכם",
-    "size": "medium"
+    "size": "medium",
+    "show": true
   },
   {
-    "image": "image/team/PXL_20241001_132912903.jpg",
+    "image": "image/team/IMG-20250109-WA0083.jpg",
+    "title": "צוות דיאמונד",
+    "description": "עובדים יחד כמו משפחה אחת למען ההצלחה שלכם",
+    "size": "medium",
+    "hide": true
+  },
+  {
+    "image": "image/team/PXL_20240908_115634333.jpg",
     "title": "שמואל לוי",
     "description": "מנהל פרויקטים שניגש לכל משימה בנעימות – פותר בעיות עם חיוך ובגובה העיניים",
-    "size": "medium"
+    "size": "medium",
+    "show": true
   }
 ]

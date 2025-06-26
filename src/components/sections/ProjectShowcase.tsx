@@ -8,7 +8,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import '../../styles/carousel.css';
 import '../../styles/project-showcase.css';
 import Asset from '../Asset';
-import fallbackData from './projects.json';
+import proectsData from './projects.json';
 
 // Define the Project interface
 interface Project {
@@ -26,7 +26,6 @@ export function ProjectShowcase() {
   const navigate = useNavigate();
   const { isMobile } = useScreen();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [, setProjectImages] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error] = useState<string | null>(null);
   const shuffledProjects = useRef<Project[]>([]);
@@ -46,52 +45,24 @@ export function ProjectShowcase() {
   // Fetch projects data
   useEffect(() => {
     const fetchProjects = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`/content/projects.json`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch projects data');
+      setLoading(true);
+      const data = proectsData as Project[];
+      if (data.length > 0) {
+        // Create a shuffled selection of projects
+        const shuffled = [...data].sort(() => Math.random() - 0.5);
+
+        // Find the special project with field show
+        const mandatoryProjects = data.filter((p: Project) => p.show === true);
+
+        if (mandatoryProjects.length > 0) {
+          // Use a Set to ensure uniqueness
+          const combinedProjects = new Set([...shuffled, ...mandatoryProjects]);
+          shuffledProjects.current = Array.from(combinedProjects);
+        } else {
+          shuffledProjects.current = shuffled;
         }
-        const data = await response.json();
-        setProjectImages(data);
-        if (data.length > 0) {
-          // Create a shuffled selection of projects
-          const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
-
-          // Find the special project with field show
-          const mandatoryProjects = data.filter((p: Project) => p.show === true);
-
-          if (mandatoryProjects.length > 0) {
-            // Use a Set to ensure uniqueness
-            const combinedProjects = new Set([...shuffled, ...mandatoryProjects]);
-            shuffledProjects.current = Array.from(combinedProjects);
-          } else {
-            shuffledProjects.current = shuffled;
-          }
-        }
-      } catch (err) {
-        console.error('Error fetching project data, showing fallback:', err);
-        const data = fallbackData as Project[]; // Fallback to local data
-        setProjectImages(data);
-        if (data.length > 0) {
-          // Create a shuffled selection of projects
-          const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 9);
-
-          // Find the special project with field show
-          const mandatoryProjects = data.filter((p: Project) => p.show === true);
-
-          if (mandatoryProjects.length > 0) {
-            // Use a Set to ensure uniqueness
-            const combinedProjects = new Set([...shuffled, ...mandatoryProjects]);
-            shuffledProjects.current = Array.from(combinedProjects);
-          } else {
-            shuffledProjects.current = shuffled;
-          }
-        }
-        // setError('Failed to load projects. Please try again later.');
-      } finally {
-        setLoading(false);
       }
+      setLoading(false);
     };
 
     fetchProjects();
@@ -181,7 +152,7 @@ export function ProjectShowcase() {
                           <Asset
                             video={project.video}
                             style={{ borderRadius: 'var(--radius-4)' }}
-                            url={project.url}
+                            src={project.url}
                             alt={project.title}
                             className="project-image"
                           />
@@ -248,7 +219,7 @@ export function ProjectShowcase() {
                     <Asset
                       video={project.video}
                       style={{ borderRadius: 'var(--radius-4)' }}
-                      url={project.url}
+                      src={project.url}
                       alt={project.title}
                       className="project-image"
                     />

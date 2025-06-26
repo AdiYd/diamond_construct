@@ -5,11 +5,11 @@ import useScreen from '../hooks/useScreen';
 import '../styles/about.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import ContactSection from '../components/sections/contactUs';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TeamImage, TeamMember } from '../components/sections/TeamShowCase';
 import Asset from '../components/Asset';
 import teamMembersJson from '../components/sections/team_members.json';
-import fallbackTeamImage from '../components/sections/team.json';
+import enviromentList from '../components/sections/team.json';
 
 // Company values data
 const companyValues = [
@@ -98,36 +98,9 @@ const visionDict = {
 
 export function About() {
   const { isMobile, isTablet } = useScreen();
-  const [teamImages, setTeamImages] = useState<TeamImage[]>([]);
+  const [teamImages] = useState<TeamImage[]>(enviromentList);
   const [teamMembers] = useState<TeamMember[]>(teamMembersJson as TeamMember[]);
   const [vision] = useState<null | Record<string, string>>(visionDict);
-
-  useEffect(() => {
-    const fetchTeamData = async () => {
-      try {
-        const response = await fetch(`/content/team.json`);
-        const data = await response.json();
-        setTeamImages(data);
-      } catch (error) {
-        const data = fallbackTeamImage as TeamImage[];
-        setTeamImages(data);
-        console.error('Error fetching team data:', error);
-      }
-    };
-
-    //   const fetchVisionData = async () => {
-    //     try {
-    //       const response = await fetch(`/content/vision.json`);
-    //       const data = await response.json();
-    //       setVision(data);
-    //     } catch (error) {
-    //       console.error('Error fetching vision data:', error);
-    //     }
-    //   };
-
-    //   fetchVisionData();
-    fetchTeamData();
-  }, []);
 
   // useEffect(() => {
   //   const fetchMembersData = async () => {
@@ -197,13 +170,7 @@ export function About() {
       {/* Vision Section */}
       <Section size={isMobile ? '2' : '3'} style={{}}>
         <Flex direction="column" align="center" gap="6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            style={{ maxWidth: '800px', textAlign: 'center' }}
-          >
+          <motion.div style={{ maxWidth: '800px', textAlign: 'center' }}>
             <div
               className="about-card"
               style={{
@@ -248,7 +215,7 @@ export function About() {
           <Box as="div" style={{ width: '100vw' }}>
             <div
               style={{
-                animation: `scrollX ${isMobile ? '20' : '45'}s linear alternate infinite`,
+                animation: `scrollX ${isMobile ? '20' : '30'}s linear alternate infinite`,
                 display: 'flex',
                 gap: '1rem',
                 overflowX: 'visible',
@@ -272,7 +239,7 @@ export function About() {
                       height: isMobile ? '180px' : '250px',
                       borderRadius: '8px',
                     }}
-                    url={image.image}
+                    src={image.image}
                     alt={image.title}
                     className="team-image"
                   />
@@ -548,7 +515,7 @@ export function About() {
                             objectFit: 'cover',
                             borderRadius: 'var(--radius-3)',
                           }}
-                          url={member.image}
+                          src={member.image}
                           alt={member.name}
                           // className="team-image"
                         />
