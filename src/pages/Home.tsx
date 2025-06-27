@@ -85,7 +85,7 @@ export function Home() {
         size="3"
         className="hero-background"
         style={{
-          backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.3), transparent), url("${heroImage}")`, // Use a local image or a URL
+          backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.4), transparent), url("${heroImage}")`, // Use a local image or a URL
           // 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url("https://images.pexels.com/photos/31117955/pexels-photo-31117955.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -236,7 +236,7 @@ export function Home() {
               </div>
               <Flex
                 style={{
-                  backdropFilter: 'blur(0px)',
+                  backdropFilter: 'blur(2px)',
                   padding: '0.4rem',
                   borderRadius: 'var(--radius-4)',
                 }}
@@ -281,6 +281,7 @@ export function Home() {
                   style={{
                     width: '100%',
                     // maxWidth: '42rem',
+
                     opacity: 0.85,
                     padding: isMobile ? '0' : '0 1rem',
                   }}

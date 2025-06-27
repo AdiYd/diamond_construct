@@ -51,6 +51,8 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
           fontSize: '2rem',
           fontFamily: 'serif',
           top: '1.5rem',
+          right: '-0.5rem',
+          animation: 'floating 5s ease-in-out infinite',
         }}
       >
         <div style={{ position: 'relative' }}>❝</div>
@@ -98,7 +100,7 @@ export function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
         </div>
 
         {/* Content - Testimonial Text */}
-        <div style={{ overflow: 'auto', height: expanded ? 'auto' : '120px' }}>
+        <div style={{ overflow: 'auto', minHeight: expanded ? 'auto' : '100px' }}>
           <Text
             as="div"
             weight="regular"
@@ -385,12 +387,15 @@ export function TestimonialCarousel() {
     window.addEventListener('resize', handleResize);
 
     // Set up the auto-scroll interval
-    const autoScrollInterval = setInterval(() => {
-      // Only scroll if the user is not hovering and not actively engaging
-      if (emblaApi && !isClientEngaged.value && !isHovering.value) {
-        emblaApi.scrollNext();
-      }
-    }, 5000); // Auto-scroll every 5 seconds
+    let autoScrollInterval: NodeJS.Timeout | null = null;
+    if (!isMobile) {
+      autoScrollInterval = setInterval(() => {
+        // Only scroll if the user is not hovering and not actively engaging
+        if (emblaApi && !isClientEngaged.value && !isHovering.value) {
+          emblaApi.scrollNext();
+        }
+      }, 5000); // Auto-scroll every 5 seconds
+    }
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -419,9 +424,12 @@ export function TestimonialCarousel() {
       emblaApi.off('pointerUp', pointerUpHandler);
       emblaApi.off('slideFocus', slideFocusHandler);
 
-      clearInterval(autoScrollInterval);
+      // Clear the auto-scroll interval if it exists
+      if (autoScrollInterval) {
+        clearInterval(autoScrollInterval);
+      }
     };
-  }, [emblaApi, onSelect, slidesToShow]);
+  }, [emblaApi, onSelect, slidesToShow, isMobile]);
 
   return (
     <Box

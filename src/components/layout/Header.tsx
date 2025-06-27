@@ -158,8 +158,9 @@ export function Header() {
                 // variant="outline"
                 onClick={toggleTheme}
                 style={{
-                  backgroundColor: 'var(--gray-2)',
-                  color: 'var(--gray-11)',
+                  backgroundColor: 'var(--gray-a1)',
+                  // color: 'var(--gray-11)',
+                  color: isOnTop ? 'white' : 'var(--text-color)',
                 }}
                 aria-label={isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'}
               >
